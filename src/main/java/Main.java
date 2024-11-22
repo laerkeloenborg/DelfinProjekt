@@ -10,5 +10,6 @@ public class Main {
         System.out.println(medlem1);
         medlem2.cprOmregning();
         System.out.println(medlem2);
+        System.out.println(medlem2.betalKontigent());
     }
 }

@@ -2,7 +2,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 
-public abstract class Medlem {
+public class Medlem {
     private String navn;
     private String cpr;
     private boolean aktivitetsStatus;
@@ -68,6 +68,23 @@ public abstract class Medlem {
         String resultat2 = String.valueOf(resultat);
         String deSidsteTo = resultat2.substring(resultat2.length() - 2);
         return deSidsteTo;
+    }
+
+
+    public String betalKontigent(){
+        LocalDate indmeldingsDato = LocalDate.now();
+        DateTimeFormatter formaterDato = DateTimeFormatter.ofPattern("yyyy");
+        String formateretDato = indmeldingsDato.format(formaterDato);
+        int kontigent = 1000;
+
+        for(int i = 0; formateretDato.length() == 4;i++){
+            int årstal = Integer.parseInt(formateretDato);
+
+        }
+
+
+        return formateretDato;
+
     }
 
 
