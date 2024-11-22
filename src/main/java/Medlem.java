@@ -8,7 +8,7 @@ public class Medlem {
     private boolean aktivitetsStatus;
     private boolean aktivitetsForm;
 
-    public Medlem(String navn, String cpr, boolean aktivitetsStatus, boolean aktivitetsForm){
+    public Medlem(String navn, String cpr, boolean aktivitetsStatus, boolean aktivitetsForm) {
         this.navn = navn;
         this.cpr = cpr;
         this.aktivitetsStatus = aktivitetsStatus;
@@ -17,55 +17,57 @@ public class Medlem {
 
 
     //------------------ GETTER & SETTER ----------------
-    public String getNavn(){
+    public String getNavn() {
         return navn;
     }
-    public void setNavn(String navn){
+
+    public void setNavn(String navn) {
         this.navn = navn;
     }
 
-    public String getCpr(){
+    public String getCpr() {
         return cpr;
     }
-    public void setCpr(String cpr){
+
+    public void setCpr(String cpr) {
         this.cpr = cpr;
     }
 
-    public boolean getAktivitetsStatus(){
+    public boolean getAktivitetsStatus() {
         return aktivitetsStatus;
     }
-    public void setAktivitetsStatus(boolean aktivitetsStatus){
+
+    public void setAktivitetsStatus(boolean aktivitetsStatus) {
         this.aktivitetsStatus = aktivitetsStatus;
     }
 
-    public boolean getAktivitetsForm(){
+    public boolean getAktivitetsForm() {
         return aktivitetsForm;
     }
-    public void setAktivitetsForm(boolean aktivitetsForm){
+
+    public void setAktivitetsForm(boolean aktivitetsForm) {
         this.aktivitetsForm = aktivitetsForm;
     }
 
 
-
-
-        //Metode til omregning af cpr til alder
-        public String cprOmregning(){
-            LocalDate date = LocalDate.now();
-            DateTimeFormatter formatDate = DateTimeFormatter.ofPattern("ddMMyy");
-            String formattedDate = date.format(formatDate);
-            int result = Integer.parseInt(formattedDate) - Integer.parseInt(this.getCpr());
-            String trim = String.valueOf(result);
-            trim.getChars([4],[5]);
-
-        }
+    //Metode til omregning af cpr til alder
+    public String cprOmregning() {
+        LocalDate dato = LocalDate.now();
+        DateTimeFormatter formaterDato = DateTimeFormatter.ofPattern("ddMMyy");
+        String formatteretDato = dato.format(formaterDato);
+        int resultat = Integer.parseInt(formatteretDato) - Integer.parseInt(this.getCpr());
+        String resultat2 = String.valueOf(resultat);
+        String deSidsteTo = resultat2.substring(resultat2.length() - 2);
+        return deSidsteTo;
+    }
 
 
     @Override
     public String toString() {
-        return "navn: "+ getNavn() +
+        return "navn: " + getNavn() +
                 " Alder: " + cprOmregning() +
                 " aktivitets status: " + getAktivitetsStatus() +
-                " aktivitetsform: "+ getAktivitetsForm();
+                " aktivitetsform: " + getAktivitetsForm();
     }
 }
 
