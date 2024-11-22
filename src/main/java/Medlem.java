@@ -17,32 +17,39 @@ public class Medlem {
 
 
     //------------------ GETTER & SETTER ----------------
-    public String getNavn(){
+    public String getNavn() {
         return navn;
     }
-    public void setNavn(String navn){
+
+    public void setNavn(String navn) {
         this.navn = navn;
     }
 
-    //TODO: LAV EN EXCEPTION SÅ MAN SKAL SKRIVE 6 TAL
+    //cpr skal være specifik 6 cifre ellers exception
     public String getCpr() {
-       return cpr;
+        int cprLængde = cpr.length();
+        if (cprLængde != 6) {
+            throw new RuntimeException("Cpr nummeret skal være 6 cifre");
+        }
+        return cpr;
     }
-    public void setCpr(String cpr){
+
+    public void setCpr(String cpr) {
         this.cpr = cpr;
     }
 
-    public boolean getAktivitetsStatus(){
+    public boolean getAktivitetsStatus() {
         return aktivitetsStatus;
     }
-    public void setAktivitetsStatus(boolean aktivitetsStatus){
+
+    public void setAktivitetsStatus(boolean aktivitetsStatus) {
         this.aktivitetsStatus = aktivitetsStatus;
     }
 
     public String getAktivitetsForm() {
-        if(aktivitetsForm.equalsIgnoreCase("konkurrence")){
+        if (aktivitetsForm.equalsIgnoreCase("konkurrence")) {
             setAktivitetsForm("Konkurrence svømmer");
-        } else if (aktivitetsForm.equalsIgnoreCase("motionist")){
+        } else if (aktivitetsForm.equalsIgnoreCase("motionist")) {
             setAktivitetsForm("Motionist");
         }
         return aktivitetsForm;
@@ -67,10 +74,10 @@ public class Medlem {
 
     @Override
     public String toString() {
-        return "navn: "+ getNavn() +
+        return "navn: " + getNavn() +
                 " Alder: " + cprOmregning() +
                 " aktivitets status: " + getAktivitetsStatus() +
-                " aktivitetsform: "+ getAktivitetsForm();
+                " aktivitetsform: " + getAktivitetsForm();
     }
 }
 
