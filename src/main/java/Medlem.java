@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.time.Period;
 import java.time.format.DateTimeFormatter;
 
 
@@ -17,36 +18,36 @@ public class Medlem {
 
 
     //------------------ GETTER & SETTER ----------------
-
-    public String getNavn() {
+    public String getNavn(){
         return navn;
     }
-
-    public void setNavn(String navn) {
+    public void setNavn(String navn){
         this.navn = navn;
     }
 
-    //TODO: LAV EN EXCEPTION SÅ MAN SKAL SKRIVE 6 TAL
+    //cpr skal være specifik 6 cifre ellers exception
     public String getCpr() {
+        int cprLængde = cpr.length();
+        if (cprLængde != 6) {
+            throw new RuntimeException("Cpr nummeret skal være 6 cifre");
+        }
         return cpr;
     }
-
-    public void setCpr(String cpr) {
+    public void setCpr(String cpr){
         this.cpr = cpr;
     }
 
-    public boolean getAktivitetsStatus() {
+    public boolean getAktivitetsStatus(){
         return aktivitetsStatus;
     }
-
-    public void setAktivitetsStatus(boolean aktivitetsStatus) {
+    public void setAktivitetsStatus(boolean aktivitetsStatus){
         this.aktivitetsStatus = aktivitetsStatus;
     }
 
     public String getAktivitetsForm() {
-        if (aktivitetsForm.equalsIgnoreCase("konkurrence")) {
+        if(aktivitetsForm.equalsIgnoreCase("konkurrence")){
             setAktivitetsForm("Konkurrence svømmer");
-        } else if (aktivitetsForm.equalsIgnoreCase("motionist")) {
+        } else if (aktivitetsForm.equalsIgnoreCase("motionist")){
             setAktivitetsForm("Motionist");
         }
         return aktivitetsForm;
@@ -58,23 +59,29 @@ public class Medlem {
 
 
     //Metode til omregning af cpr til alder
-    public String cprOmregning() {
-        LocalDate dato = LocalDate.now();
-        DateTimeFormatter formaterDato = DateTimeFormatter.ofPattern("ddMMyy");
-        String formatteretDato = dato.format(formaterDato);
-        int resultat = Integer.parseInt(formatteretDato) - Integer.parseInt(this.getCpr());
-        String resultat2 = String.valueOf(resultat);
-        String deSidsteTo = resultat2.substring(resultat2.length() - 2);
-        return deSidsteTo;
+    public int cprOmregning() {
+        LocalDate nu = LocalDate.now();
+        String cpr = this.getCpr();
+        int dag = Integer.parseInt(cpr.substring(0, 2));
+        int måned = Integer.parseInt(cpr.substring(2, 4));
+        int år = Integer.parseInt(cpr.substring(4, 6));
+        if (år >= 0 && år <= LocalDate.now().getYear() % 100) {
+            år += 2000;
+        } else {
+            år += 1900;
+        }
+        LocalDate fødselsdato = LocalDate.of(år, måned, dag);
+        int alder = Period.between(fødselsdato, nu).getYears();
+        return alder;
     }
 
 
     @Override
     public String toString() {
-        return "navn: " + getNavn() +
-                " Alder: " + cprOmregning() +
-                " aktivitets status: " + getAktivitetsStatus() +
-                " aktivitetsform: " + getAktivitetsForm();
+        return "Navn: " + getNavn() +
+                ", Alder: " + cprOmregning() + " år" +
+                ", Aktivitets status: " + (getAktivitetsStatus() ? "Aktiv" : "Passiv") +
+                ", Aktivitetsform: " + getAktivitetsForm();
     }
 }
 
