@@ -1,11 +1,11 @@
 import java.util.ArrayList;
 
 public class Formand {
-    private ArrayList<Medlem> testListe;
+    private ArrayList<Medlem> medlemsListe;
     private FileHandler fileHandler;
 
     public Formand() {
         fileHandler = new FileHandler();
-        testListe = fileHandler.hentListeAfMedlemmer();
+        medlemsListe = fileHandler.hentListeAfMedlemmer();
     }
 }
