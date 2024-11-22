@@ -33,9 +33,9 @@ public ArrayList<Medlem> hentListeAfMedlemmer(){
         String line = scanner.nextLine();
         String[] attributes = line.split(";");
         medlem = new Medlem(attributes[0],
-                Integer.parseInt(attributes[1]),
+                (attributes[1]),
                 Boolean.parseBoolean(attributes[2]),
-                Boolean.parseBoolean(attributes[3]));
+                (attributes[3]));
 
         medlemsListe.add(medlem);
     }
