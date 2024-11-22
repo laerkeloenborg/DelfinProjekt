@@ -6,9 +6,9 @@ public class Medlem {
     private String navn;
     private String cpr;
     private boolean aktivitetsStatus;
-    private boolean aktivitetsForm;
+    private String aktivitetsForm;
 
-    public Medlem(String navn, String cpr, boolean aktivitetsStatus, boolean aktivitetsForm) {
+    public Medlem(String navn, String cpr, boolean aktivitetsStatus, String aktivitetsForm) {
         this.navn = navn;
         this.cpr = cpr;
         this.aktivitetsStatus = aktivitetsStatus;
@@ -17,35 +17,38 @@ public class Medlem {
 
 
     //------------------ GETTER & SETTER ----------------
-    public String getNavn() {
+    public String getNavn(){
         return navn;
     }
-
-    public void setNavn(String navn) {
+    public void setNavn(String navn){
         this.navn = navn;
     }
 
+    //TODO: LAV EN EXCEPTION SÅ MAN SKAL SKRIVE 6 TAL
     public String getCpr() {
-        return cpr;
+       return cpr;
     }
-
-    public void setCpr(String cpr) {
+    public void setCpr(String cpr){
         this.cpr = cpr;
     }
 
-    public boolean getAktivitetsStatus() {
+    public boolean getAktivitetsStatus(){
         return aktivitetsStatus;
     }
-
-    public void setAktivitetsStatus(boolean aktivitetsStatus) {
+    public void setAktivitetsStatus(boolean aktivitetsStatus){
         this.aktivitetsStatus = aktivitetsStatus;
     }
 
-    public boolean getAktivitetsForm() {
+    public String getAktivitetsForm() {
+        if(aktivitetsForm.equalsIgnoreCase("konkurrence")){
+            setAktivitetsForm("Konkurrence svømmer");
+        } else if (aktivitetsForm.equalsIgnoreCase("motionist")){
+            setAktivitetsForm("Motionist");
+        }
         return aktivitetsForm;
     }
 
-    public void setAktivitetsForm(boolean aktivitetsForm) {
+    public void setAktivitetsForm(String aktivitetsForm) {
         this.aktivitetsForm = aktivitetsForm;
     }
 
@@ -64,10 +67,10 @@ public class Medlem {
 
     @Override
     public String toString() {
-        return "navn: " + getNavn() +
+        return "navn: "+ getNavn() +
                 " Alder: " + cprOmregning() +
                 " aktivitets status: " + getAktivitetsStatus() +
-                " aktivitetsform: " + getAktivitetsForm();
+                " aktivitetsform: "+ getAktivitetsForm();
     }
 }
 
