@@ -17,6 +17,7 @@ public class Medlem {
 
 
     //------------------ GETTER & SETTER ----------------
+
     public String getNavn(){
         return navn;
     }
