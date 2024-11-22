@@ -1,8 +1,9 @@
 import java.time.LocalDate;
+import java.time.Period;
 import java.time.format.DateTimeFormatter;
 
 
-public abstract class Medlem {
+public class Medlem {
     private String navn;
     private String cpr;
     private boolean aktivitetsStatus;
@@ -17,11 +18,10 @@ public abstract class Medlem {
 
 
     //------------------ GETTER & SETTER ----------------
-    public String getNavn() {
+    public String getNavn(){
         return navn;
     }
-
-    public void setNavn(String navn) {
+    public void setNavn(String navn){
         this.navn = navn;
     }
 
@@ -33,23 +33,21 @@ public abstract class Medlem {
         }
         return cpr;
     }
-
-    public void setCpr(String cpr) {
+    public void setCpr(String cpr){
         this.cpr = cpr;
     }
 
-    public boolean getAktivitetsStatus() {
+    public boolean getAktivitetsStatus(){
         return aktivitetsStatus;
     }
-
-    public void setAktivitetsStatus(boolean aktivitetsStatus) {
+    public void setAktivitetsStatus(boolean aktivitetsStatus){
         this.aktivitetsStatus = aktivitetsStatus;
     }
 
     public String getAktivitetsForm() {
-        if (aktivitetsForm.equalsIgnoreCase("konkurrence")) {
+        if(aktivitetsForm.equalsIgnoreCase("konkurrence")){
             setAktivitetsForm("Konkurrence svømmer");
-        } else if (aktivitetsForm.equalsIgnoreCase("motionist")) {
+        } else if (aktivitetsForm.equalsIgnoreCase("motionist")){
             setAktivitetsForm("Motionist");
         }
         return aktivitetsForm;
@@ -59,15 +57,22 @@ public abstract class Medlem {
         this.aktivitetsForm = aktivitetsForm;
     }
 
+
     //Metode til omregning af cpr til alder
-    public String cprOmregning() {
-        LocalDate dato = LocalDate.now();
-        DateTimeFormatter formaterDato = DateTimeFormatter.ofPattern("ddMMyy");
-        String formatteretDato = dato.format(formaterDato); //nuværende dato formatteret
-        int resultat = Integer.parseInt(formatteretDato) - Integer.parseInt(this.getCpr());
-        String resultat2 = String.valueOf(resultat);
-        String deSidsteTo = resultat2.substring(resultat2.length() - 2);
-        return deSidsteTo;
+    public int cprOmregning() {
+        LocalDate nu = LocalDate.now();
+        String cpr = this.getCpr();
+        int dag = Integer.parseInt(cpr.substring(0, 2));
+        int måned = Integer.parseInt(cpr.substring(2, 4));
+        int år = Integer.parseInt(cpr.substring(4, 6));
+        if (år >= 0 && år <= LocalDate.now().getYear() % 100) {
+            år += 2000;
+        } else {
+            år += 1900;
+        }
+        LocalDate fødselsdato = LocalDate.of(år, måned, dag);
+        int alder = Period.between(fødselsdato, nu).getYears();
+        return alder;
     }
 
 
