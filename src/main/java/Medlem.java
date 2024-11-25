@@ -49,7 +49,7 @@ public class Medlem {
   }
 
   public Alderstype getALDERSTYPE(){
-      int alder = Integer.parseInt(this.cprOmregning());
+      int alder = this.cprOmregning();
         if(alder < 18){ //TODO: spørgsmål til PO, vi antager at når man fylder 18 så skifter det til SENIOR
             setALDERSTYPE(Alderstype.JUNIOR);
         } else{
@@ -95,7 +95,7 @@ public class Medlem {
 
     public int betalKontigent(){
         int kontigent = 0;
-        int alder = Integer.parseInt(this.cprOmregning());
+        int alder = this.cprOmregning();
 
         if(getMedlemsstatus().equals(Medlemsstatus.AKTIV)){
             if (getALDERSTYPE().equals(Alderstype.JUNIOR)){
