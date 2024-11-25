@@ -6,22 +6,24 @@ import java.time.format.DateTimeFormatter;
 public class Medlem {
     private String navn;
     private String cpr;
-    private boolean aktivitetsStatus;
+    private Medlemsstatus MEDLEMSSTATUS;
+    private Alderstype ALDERSTYPE;
     private String aktivitetsForm;
 
-    public Medlem(String navn, String cpr, boolean aktivitetsStatus, String aktivitetsForm) {
+    public Medlem(String navn, String cpr, Medlemsstatus MEDLEMSSTATUS, String aktivitetsForm) {
         this.navn = navn;
         this.cpr = cpr;
-        this.aktivitetsStatus = aktivitetsStatus;
+        this.MEDLEMSSTATUS = MEDLEMSSTATUS;
         this.aktivitetsForm = aktivitetsForm;
     }
 
 
     //------------------ GETTER & SETTER ----------------
-    public String getNavn(){
+    public String getNavn() {
         return navn;
     }
-    public void setNavn(String navn){
+
+    public void setNavn(String navn) {
         this.navn = navn;
     }
 
@@ -33,21 +35,38 @@ public class Medlem {
         }
         return cpr;
     }
-    public void setCpr(String cpr){
+
+    public void setCpr(String cpr) {
         this.cpr = cpr;
     }
 
-    public boolean getAktivitetsStatus(){
-        return aktivitetsStatus;
-    }
-    public void setAktivitetsStatus(boolean aktivitetsStatus){
-        this.aktivitetsStatus = aktivitetsStatus;
-    }
+  public Medlemsstatus getMedlemsstatus(){
+        return MEDLEMSSTATUS;
+  }
+
+  public void setMedlemsstatus(Medlemsstatus MEDLEMSSTATUS){
+        this.MEDLEMSSTATUS = MEDLEMSSTATUS;
+  }
+
+  public Alderstype getALDERSTYPE(){
+      int alder = Integer.parseInt(this.cprOmregning());
+        if(alder < 18){ //TODO: spørgsmål til PO, vi antager at når man fylder 18 så skifter det til SENIOR
+            setALDERSTYPE(Alderstype.JUNIOR);
+        } else{
+            setALDERSTYPE(Alderstype.SENIOR);
+        }
+
+        return ALDERSTYPE;
+  }
+
+  public void setALDERSTYPE(Alderstype ALDERSTYPE){
+        this.ALDERSTYPE = ALDERSTYPE;
+  }
 
     public String getAktivitetsForm() {
-        if(aktivitetsForm.equalsIgnoreCase("konkurrence")){
+        if (aktivitetsForm.equalsIgnoreCase("konkurrence")) {
             setAktivitetsForm("Konkurrence svømmer");
-        } else if (aktivitetsForm.equalsIgnoreCase("motionist")){
+        } else if (aktivitetsForm.equalsIgnoreCase("motionist")) {
             setAktivitetsForm("Motionist");
         }
         return aktivitetsForm;
@@ -56,7 +75,6 @@ public class Medlem {
     public void setAktivitetsForm(String aktivitetsForm) {
         this.aktivitetsForm = aktivitetsForm;
     }
-
 
     //Metode til omregning af cpr til alder
     public int cprOmregning() {
@@ -75,12 +93,33 @@ public class Medlem {
         return alder;
     }
 
+    public int betalKontigent(){
+        int kontigent = 0;
+        int alder = Integer.parseInt(this.cprOmregning());
+
+        if(getMedlemsstatus().equals(Medlemsstatus.AKTIV)){
+            if (getALDERSTYPE().equals(Alderstype.JUNIOR)){
+                kontigent = 1000;
+            } else if(getALDERSTYPE().equals(Alderstype.SENIOR)){
+                if (alder > 60){
+                    int rabat = 1600 * 25 / 100;
+                    kontigent = 1600 - rabat;
+                } else {
+                    kontigent = 1600;
+                }
+            }
+        } else if(getMedlemsstatus().equals(Medlemsstatus.PASSIV)){
+            kontigent = 500;
+        }
+
+        return kontigent;
+    }
 
     @Override
     public String toString() {
         return "Navn: " + getNavn() +
                 ", Alder: " + cprOmregning() + " år" +
-                ", Aktivitets status: " + (getAktivitetsStatus() ? "Aktiv" : "Passiv") +
+                ", Aktivitets status: " + (MEDLEMSSTATUS==Medlemsstatus.AKTIV ? "Aktiv" : "Passiv") +
                 ", Aktivitetsform: " + getAktivitetsForm();
     }
 }
