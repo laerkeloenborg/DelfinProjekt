@@ -3,7 +3,7 @@ public class Kasserer {
 private FileHandler fileHandler;
 
     public Kasserer(){
-
+navn;
     }
 
     //TODO: Metode til at finde samlede beløb af alle medlemmernes kontigent
