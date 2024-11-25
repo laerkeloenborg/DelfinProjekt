@@ -10,8 +10,8 @@ public class Formand {
     }
 
     // metode til at tilføje et medlem
-    public void tilføjMedlem(String navn, String cpr, boolean aktivitetsStatus, String aktivitetsForm) {
-        Medlem nytMedlem = new Medlem(navn, cpr, aktivitetsStatus, aktivitetsForm);
+    public void tilføjMedlem(String navn, String cpr, Medlemsstatus MEDLEMSSTATUS, String aktivitetsForm) {
+        Medlem nytMedlem = new Medlem(navn, cpr, MEDLEMSSTATUS, aktivitetsForm);
         medlemsListe.add(nytMedlem);
         fileHandler.gemListeAfMedlemmer(medlemsListe);
     }
@@ -27,11 +27,11 @@ public class Formand {
     }
 
     // metode til at redigere medlem
-    public void redigerMedlem(String cpr, String nytNavn, boolean nyAktivitetsStatus, String nyAktivitetsForm) {
+    public void redigerMedlem(String cpr, String nytNavn, Medlemsstatus NY_MEDLEMSSTATUS, String nyAktivitetsForm) {
         for (Medlem medlem : medlemsListe) {
             if (medlem.getCpr().equals(cpr)) {
                 medlem.setNavn(nytNavn);
-                medlem.setAktivitetsStatus(nyAktivitetsStatus);
+                medlem.setMedlemsstatus(NY_MEDLEMSSTATUS);
                 medlem.setAktivitetsForm(nyAktivitetsForm);
                 fileHandler.gemListeAfMedlemmer(medlemsListe);
             }
