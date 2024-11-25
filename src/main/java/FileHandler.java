@@ -14,11 +14,12 @@ public class FileHandler {
             throw new RuntimeException(e);
         }
         for (Medlem medlem : medlemsListe) {
-            output.println(medlem);
+            output.println(medlem.toStringTilFil());
         }
         return medlemsListe;
     }
 
+    //TODO: kommentar
     public ArrayList<Medlem> hentListeAfMedlemmer() {
         ArrayList<Medlem> medlemsListe = new ArrayList<>();
         Scanner scanner = null;
@@ -33,12 +34,14 @@ public class FileHandler {
             String line = scanner.nextLine();
             String[] attributes = line.split(";");
 
-            MedlemsStatus medlemsStatus = parseMedlemsStatus(attributes[2]);
+            MedlemsStatus medlemsStatus = parseMedlemsStatus(attributes[3]);
+         //   AldersGruppe aldersGruppe = parseAldersgruppe(attributes[2]);
 
             medlem = new Medlem(attributes[0],
                     (attributes[1]),
+                   // aldersGruppe,
                     medlemsStatus,
-                    (attributes[3]));
+                    attributes[4]);
 
             medlemsListe.add(medlem);
         }
@@ -53,6 +56,14 @@ public class FileHandler {
             throw new RuntimeException("Ukendt status.");
         }
     }
-
+/*
+    public AldersGruppe parseAldersgruppe(String statusString){
+        try {
+            return AldersGruppe.valueOf(statusString.toUpperCase());
+        } catch (IllegalArgumentException e) {
+            throw new RuntimeException("Ukendt alder.");
+        }
+    }
+*/
 
 }

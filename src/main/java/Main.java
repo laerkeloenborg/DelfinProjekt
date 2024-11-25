@@ -3,6 +3,11 @@
 public class Main {
 
     public static void main(String[] args) {
+        Formand formand = new Formand();
+
+        formand.tilføjMedlem("Kasper","011275", MedlemsStatus.AKTIV,"motionist");
+       formand.visMedlemmer();
+
 
         Medlem medlem1 = new Medlem("Camilla", "061026", MedlemsStatus.AKTIV, "konkurrence");
         Medlem medlem2 = new Medlem("Lærke", "231119", MedlemsStatus.PASSIV, "motionist");

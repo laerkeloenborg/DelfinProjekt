@@ -6,12 +6,20 @@ public class Medlem {
     private String navn;
     private String cpr;
     private MedlemsStatus MEDLEMSSTATUS;
-    private AldersGruppe ALDERSTYPE;
+    private AldersGruppe ALDERSGRUPPE;
     private String aktivitetsForm;
 
     public Medlem(String navn, String cpr, MedlemsStatus MEDLEMSSTATUS, String aktivitetsForm) {
         this.navn = navn;
         this.cpr = cpr;
+        this.MEDLEMSSTATUS = MEDLEMSSTATUS;
+        this.aktivitetsForm = aktivitetsForm;
+    }
+
+    public Medlem(String navn, String cpr,AldersGruppe ALDERSGRUPPE, MedlemsStatus MEDLEMSSTATUS, String aktivitetsForm){
+        this.navn = navn;
+        this.cpr = cpr;
+        this.ALDERSGRUPPE = ALDERSGRUPPE;
         this.MEDLEMSSTATUS = MEDLEMSSTATUS;
         this.aktivitetsForm = aktivitetsForm;
     }
@@ -47,19 +55,19 @@ public class Medlem {
         this.MEDLEMSSTATUS = MEDLEMSSTATUS;
   }
 
-  public AldersGruppe getALDERSTYPE(){
+  public AldersGruppe getALDERSGRUPPE(){
       int alder = this.cprOmregning();
         if(alder < 18){ //TODO: spørgsmål til PO, vi antager at når man fylder 18 så skifter det til SENIOR
-            setALDERSTYPE(AldersGruppe.JUNIOR);
+            setALDERSGRUPPE(AldersGruppe.JUNIOR);
         } else{
-            setALDERSTYPE(AldersGruppe.SENIOR);
+            setALDERSGRUPPE(AldersGruppe.SENIOR);
         }
 
-        return ALDERSTYPE;
+        return ALDERSGRUPPE;
   }
 
-  public void setALDERSTYPE(AldersGruppe ALDERSTYPE){
-        this.ALDERSTYPE = ALDERSTYPE;
+  public void setALDERSGRUPPE(AldersGruppe ALDERSGRUPPE){
+        this.ALDERSGRUPPE = ALDERSGRUPPE;
   }
 
     public String getAktivitetsForm() {
@@ -97,9 +105,9 @@ public class Medlem {
         int alder = this.cprOmregning();
 
         if(getMedlemsstatus().equals(MedlemsStatus.AKTIV)){
-            if (getALDERSTYPE().equals(AldersGruppe.JUNIOR)){
+            if (getALDERSGRUPPE().equals(AldersGruppe.JUNIOR)){
                 kontigent = 1000;
-            } else if(getALDERSTYPE().equals(AldersGruppe.SENIOR)){
+            } else if(getALDERSGRUPPE().equals(AldersGruppe.SENIOR)){
                 if (alder > 60){
                     int rabat = 1600 * 25 / 100;
                     kontigent = 1600 - rabat;
@@ -118,10 +126,19 @@ public class Medlem {
     public String toString() {
         return "Navn: " + getNavn() +
                 ", Alder: " + cprOmregning() + " år" +
-                ", Aldersgruppe: " + getALDERSTYPE() +
+                ", Aldersgruppe: " + getALDERSGRUPPE() +
                 ", Aktivitets status: " + (MEDLEMSSTATUS== MedlemsStatus.AKTIV ? "Aktiv" : "Passiv") +
                 ", Aktivitetsform: " + getAktivitetsForm() +
-                ", Betalingsgebyr: " + betalKontigent() + " kr/år.";
+                ", Betalingskontigent: " + betalKontigent() + " kr/år.";
+    }
+
+    public String toStringTilFil(){
+        return this.navn + ";" +
+                this.cpr + ";" +
+                this.ALDERSGRUPPE + ";" +
+                (this.MEDLEMSSTATUS== MedlemsStatus.AKTIV ? "Aktiv" : "Passiv") + ";" +
+                this.aktivitetsForm + ";" +
+                this.betalKontigent();
     }
 }
 
