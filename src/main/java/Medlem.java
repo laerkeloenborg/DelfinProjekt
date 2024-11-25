@@ -5,13 +5,14 @@ import java.time.format.DateTimeFormatter;
 public class Medlem {
     private String navn;
     private String cpr;
-    private boolean aktivitetsStatus;
+    private Medlemsstatus MEDLEMSSTATUS;
+    private Alderstype ALDERSTYPE;
     private String aktivitetsForm;
 
-    public Medlem(String navn, String cpr, boolean aktivitetsStatus, String aktivitetsForm) {
+    public Medlem(String navn, String cpr, Medlemsstatus MEDLEMSSTATUS, String aktivitetsForm) {
         this.navn = navn;
         this.cpr = cpr;
-        this.aktivitetsStatus = aktivitetsStatus;
+        this.MEDLEMSSTATUS = MEDLEMSSTATUS;
         this.aktivitetsForm = aktivitetsForm;
     }
 
@@ -38,13 +39,28 @@ public class Medlem {
         this.cpr = cpr;
     }
 
-    public boolean getAktivitetsStatus() {
-        return aktivitetsStatus;
-    }
+  public Medlemsstatus getMedlemsstatus(){
+        return MEDLEMSSTATUS;
+  }
 
-    public void setAktivitetsStatus(boolean aktivitetsStatus) {
-        this.aktivitetsStatus = aktivitetsStatus;
-    }
+  public void setMedlemsstatus(Medlemsstatus MEDLEMSSTATUS){
+        this.MEDLEMSSTATUS = MEDLEMSSTATUS;
+  }
+
+  public Alderstype getALDERSTYPE(){
+      int alder = Integer.parseInt(this.cprOmregning());
+        if(alder < 18){ //TODO: spørgsmål til PO, vi antager at når man fylder 18 så skifter det til SENIOR
+            setALDERSTYPE(Alderstype.JUNIOR);
+        } else{
+            setALDERSTYPE(Alderstype.SENIOR);
+        }
+
+        return ALDERSTYPE;
+  }
+
+  public void setALDERSTYPE(Alderstype ALDERSTYPE){
+        this.ALDERSTYPE = ALDERSTYPE;
+  }
 
     public String getAktivitetsForm() {
         if (aktivitetsForm.equalsIgnoreCase("konkurrence")) {
@@ -70,29 +86,33 @@ public class Medlem {
         return deSidsteTo;
     }
 
+    public int betalKontigent(){
+        int kontigent = 0;
+        int alder = Integer.parseInt(this.cprOmregning());
 
-    public String betalKontigent(){
-        LocalDate indmeldingsDato = LocalDate.now();
-        DateTimeFormatter formaterDato = DateTimeFormatter.ofPattern("yyyy");
-        String formateretDato = indmeldingsDato.format(formaterDato);
-        int kontigent = 1000;
-
-        for(int i = 0; formateretDato.length() == 4;i++){
-            int årstal = Integer.parseInt(formateretDato);
-
+        if(getMedlemsstatus().equals(Medlemsstatus.AKTIV)){
+            if (getALDERSTYPE().equals(Alderstype.JUNIOR)){
+                kontigent = 1000;
+            } else if(getALDERSTYPE().equals(Alderstype.SENIOR)){
+                if (alder > 60){
+                    int rabat = 1600 * 25 / 100;
+                    kontigent = 1600 - rabat;
+                } else {
+                    kontigent = 1600;
+                }
+            }
+        } else if(getMedlemsstatus().equals(Medlemsstatus.PASSIV)){
+            kontigent = 500;
         }
 
-
-        return formateretDato;
-
+        return kontigent;
     }
-
 
     @Override
     public String toString() {
         return "Navn: " + getNavn() +
                 ", Alder: " + cprOmregning() + " år" +
-                ", Aktivitets status: " + (getAktivitetsStatus() ? "Aktiv" : "Passiv") +
+                ", Aktivitets status: " + (MEDLEMSSTATUS==Medlemsstatus.AKTIV ? "Aktiv" : "Passiv") +
                 ", Aktivitetsform: " + getAktivitetsForm();
     }
 }
