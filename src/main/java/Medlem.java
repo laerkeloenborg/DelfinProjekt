@@ -16,15 +16,6 @@ public class Medlem {
         this.aktivitetsForm = aktivitetsForm;
     }
 
-    public Medlem(String navn, String cpr,AldersGruppe ALDERSGRUPPE, MedlemsStatus MEDLEMSSTATUS, String aktivitetsForm){
-        this.navn = navn;
-        this.cpr = cpr;
-        this.ALDERSGRUPPE = ALDERSGRUPPE;
-        this.MEDLEMSSTATUS = MEDLEMSSTATUS;
-        this.aktivitetsForm = aktivitetsForm;
-    }
-
-
     //------------------ GETTER & SETTER ----------------
     public String getNavn() {
         return navn;
@@ -135,7 +126,7 @@ public class Medlem {
     public String toStringTilFil(){
         return this.navn + ";" +
                 this.cpr + ";" +
-                this.ALDERSGRUPPE + ";" +
+                this.getALDERSGRUPPE() + ";" +
                 (this.MEDLEMSSTATUS== MedlemsStatus.AKTIV ? "Aktiv" : "Passiv") + ";" +
                 this.aktivitetsForm + ";" +
                 this.betalKontigent();

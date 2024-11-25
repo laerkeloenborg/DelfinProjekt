@@ -1,4 +1,6 @@
+
 public class Kasserer {
+private FileHandler fileHandler;
 
     public Kasserer(){
 
@@ -6,6 +8,7 @@ public class Kasserer {
 
     //TODO: Metode til at finde samlede beløb af alle medlemmernes kontigent
     public int samletBetaltBeløb(){
+
 return 0;
     }
 

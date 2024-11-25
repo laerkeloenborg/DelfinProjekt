@@ -34,14 +34,10 @@ public class FileHandler {
             String line = scanner.nextLine();
             String[] attributes = line.split(";");
 
-            MedlemsStatus medlemsStatus = parseMedlemsStatus(attributes[3]);
-         //   AldersGruppe aldersGruppe = parseAldersgruppe(attributes[2]);
-
             medlem = new Medlem(attributes[0],
                     (attributes[1]),
-                   // aldersGruppe,
-                    medlemsStatus,
-                    attributes[4]);
+                    MedlemsStatus.parseMedlemsStatus(attributes[2]),
+                    attributes[3]);
 
             medlemsListe.add(medlem);
         }
@@ -49,21 +45,5 @@ public class FileHandler {
         return medlemsListe;
     }
 
-    public MedlemsStatus parseMedlemsStatus(String statusString) {
-        try {
-            return MedlemsStatus.valueOf(statusString.toUpperCase());
-        } catch (IllegalArgumentException e) {
-            throw new RuntimeException("Ukendt status.");
-        }
-    }
-/*
-    public AldersGruppe parseAldersgruppe(String statusString){
-        try {
-            return AldersGruppe.valueOf(statusString.toUpperCase());
-        } catch (IllegalArgumentException e) {
-            throw new RuntimeException("Ukendt alder.");
-        }
-    }
-*/
 
 }
