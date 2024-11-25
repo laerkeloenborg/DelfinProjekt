@@ -32,9 +32,12 @@ public class FileHandler {
         while (scanner.hasNext()) {
             String line = scanner.nextLine();
             String[] attributes = line.split(";");
+
+            MedlemsStatus medlemsStatus = parseMedlemsStatus(attributes[2]);
+
             medlem = new Medlem(attributes[0],
                     (attributes[1]),
-                    Boolean.parseBoolean(attributes[2]),
+                    medlemsStatus,
                     (attributes[3]));
 
             medlemsListe.add(medlem);
@@ -42,4 +45,14 @@ public class FileHandler {
         scanner.close();
         return medlemsListe;
     }
+
+    public MedlemsStatus parseMedlemsStatus(String statusString) {
+        try {
+            return MedlemsStatus.valueOf(statusString.toUpperCase());
+        } catch (IllegalArgumentException e) {
+            throw new RuntimeException("Ukendt status.");
+        }
+    }
+
+
 }

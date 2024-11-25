@@ -1,16 +1,15 @@
 import java.time.LocalDate;
 import java.time.Period;
-import java.time.format.DateTimeFormatter;
 
 
 public class Medlem {
     private String navn;
     private String cpr;
-    private Medlemsstatus MEDLEMSSTATUS;
-    private Alderstype ALDERSTYPE;
+    private MedlemsStatus MEDLEMSSTATUS;
+    private AldersGruppe ALDERSTYPE;
     private String aktivitetsForm;
 
-    public Medlem(String navn, String cpr, Medlemsstatus MEDLEMSSTATUS, String aktivitetsForm) {
+    public Medlem(String navn, String cpr, MedlemsStatus MEDLEMSSTATUS, String aktivitetsForm) {
         this.navn = navn;
         this.cpr = cpr;
         this.MEDLEMSSTATUS = MEDLEMSSTATUS;
@@ -40,26 +39,26 @@ public class Medlem {
         this.cpr = cpr;
     }
 
-  public Medlemsstatus getMedlemsstatus(){
+  public MedlemsStatus getMedlemsstatus(){
         return MEDLEMSSTATUS;
   }
 
-  public void setMedlemsstatus(Medlemsstatus MEDLEMSSTATUS){
+  public void setMedlemsstatus(MedlemsStatus MEDLEMSSTATUS){
         this.MEDLEMSSTATUS = MEDLEMSSTATUS;
   }
 
-  public Alderstype getALDERSTYPE(){
+  public AldersGruppe getALDERSTYPE(){
       int alder = this.cprOmregning();
         if(alder < 18){ //TODO: spørgsmål til PO, vi antager at når man fylder 18 så skifter det til SENIOR
-            setALDERSTYPE(Alderstype.JUNIOR);
+            setALDERSTYPE(AldersGruppe.JUNIOR);
         } else{
-            setALDERSTYPE(Alderstype.SENIOR);
+            setALDERSTYPE(AldersGruppe.SENIOR);
         }
 
         return ALDERSTYPE;
   }
 
-  public void setALDERSTYPE(Alderstype ALDERSTYPE){
+  public void setALDERSTYPE(AldersGruppe ALDERSTYPE){
         this.ALDERSTYPE = ALDERSTYPE;
   }
 
@@ -97,10 +96,10 @@ public class Medlem {
         int kontigent = 0;
         int alder = this.cprOmregning();
 
-        if(getMedlemsstatus().equals(Medlemsstatus.AKTIV)){
-            if (getALDERSTYPE().equals(Alderstype.JUNIOR)){
+        if(getMedlemsstatus().equals(MedlemsStatus.AKTIV)){
+            if (getALDERSTYPE().equals(AldersGruppe.JUNIOR)){
                 kontigent = 1000;
-            } else if(getALDERSTYPE().equals(Alderstype.SENIOR)){
+            } else if(getALDERSTYPE().equals(AldersGruppe.SENIOR)){
                 if (alder > 60){
                     int rabat = 1600 * 25 / 100;
                     kontigent = 1600 - rabat;
@@ -108,7 +107,7 @@ public class Medlem {
                     kontigent = 1600;
                 }
             }
-        } else if(getMedlemsstatus().equals(Medlemsstatus.PASSIV)){
+        } else if(getMedlemsstatus().equals(MedlemsStatus.PASSIV)){
             kontigent = 500;
         }
 
@@ -119,8 +118,10 @@ public class Medlem {
     public String toString() {
         return "Navn: " + getNavn() +
                 ", Alder: " + cprOmregning() + " år" +
-                ", Aktivitets status: " + (MEDLEMSSTATUS==Medlemsstatus.AKTIV ? "Aktiv" : "Passiv") +
-                ", Aktivitetsform: " + getAktivitetsForm();
+                ", Aldersgruppe: " + getALDERSTYPE() +
+                ", Aktivitets status: " + (MEDLEMSSTATUS== MedlemsStatus.AKTIV ? "Aktiv" : "Passiv") +
+                ", Aktivitetsform: " + getAktivitetsForm() +
+                ", Betalingsgebyr: " + betalKontigent() + " kr/år.";
     }
 }
 
