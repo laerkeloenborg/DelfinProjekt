@@ -8,13 +8,16 @@ public class Medlem {
     private MedlemsStatus MEDLEMSSTATUS;
     private AldersGruppe ALDERSGRUPPE;
     private String aktivitetsForm;
+    private boolean harBetalt;
 
-    public Medlem(String navn, String cpr, MedlemsStatus MEDLEMSSTATUS, String aktivitetsForm) {
+    public Medlem(String navn, String cpr, MedlemsStatus MEDLEMSSTATUS, String aktivitetsForm, boolean harBetalt) {
         this.navn = navn;
         this.cpr = cpr;
         this.MEDLEMSSTATUS = MEDLEMSSTATUS;
         this.aktivitetsForm = aktivitetsForm;
+        this.harBetalt = harBetalt;
     }
+
 
     //------------------ GETTER & SETTER ----------------
     public String getNavn() {
@@ -74,6 +77,16 @@ public class Medlem {
         this.aktivitetsForm = aktivitetsForm;
     }
 
+    public boolean getHarBetalt(){
+        return harBetalt;
+    }
+
+    public void setHarBetalt(boolean harBetalt){
+        this.harBetalt = harBetalt;
+    }
+
+    //---------------------------------------------
+
     //Metode til omregning af cpr til alder
     public int cprOmregning() {
         LocalDate nu = LocalDate.now();
@@ -91,7 +104,7 @@ public class Medlem {
         return alder;
     }
 
-    public int betalKontigent(){
+    public int kontigent(){
         int kontigent = 0;
         int alder = this.cprOmregning();
 
@@ -120,7 +133,8 @@ public class Medlem {
                 ", Aldersgruppe: " + getALDERSGRUPPE() +
                 ", Aktivitets status: " + (MEDLEMSSTATUS== MedlemsStatus.AKTIV ? "Aktiv" : "Passiv") +
                 ", Aktivitetsform: " + getAktivitetsForm() +
-                ", Betalingskontigent: " + betalKontigent() + " kr/år.";
+                ", Betalingskontigent: " + kontigent() + " kr/år." +
+                ", Betalingsstatus: " + (getHarBetalt() ? "Betalt" : "Ikke betalt");
     }
 
     public String toStringTilFil(){
@@ -128,8 +142,9 @@ public class Medlem {
                 this.cpr + ";" +
                 this.getALDERSGRUPPE() + ";" +
                 (this.MEDLEMSSTATUS== MedlemsStatus.AKTIV ? "Aktiv" : "Passiv") + ";" +
-                this.aktivitetsForm + ";" +
-                this.betalKontigent();
+                this.getAktivitetsForm() + ";" +
+                this.kontigent() + ";" +
+                (this.getHarBetalt() ? "Betalt" : "Ikke betalt");
     }
 }
 

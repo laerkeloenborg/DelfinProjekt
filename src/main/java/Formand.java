@@ -10,8 +10,8 @@ public class Formand {
     }
 
     // metode til at tilføje et medlem
-    public void tilføjMedlem(String navn, String cpr, MedlemsStatus MEDLEMSSTATUS, String aktivitetsForm) {
-        Medlem nytMedlem = new Medlem(navn, cpr, MEDLEMSSTATUS, aktivitetsForm);
+    public void tilføjMedlem(String navn, String cpr, MedlemsStatus MEDLEMSSTATUS, String aktivitetsForm, boolean harBetalt) {
+        Medlem nytMedlem = new Medlem(navn, cpr, MEDLEMSSTATUS, aktivitetsForm, harBetalt);
         medlemsListe.add(nytMedlem);
         fileHandler.gemListeAfMedlemmer(medlemsListe);
     }
