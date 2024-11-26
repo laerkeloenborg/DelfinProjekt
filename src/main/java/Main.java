@@ -24,7 +24,7 @@ public class Main {
         System.out.println("\n");
 
         System.out.println("\n");
-        System.out.println("Svømmeklubbens samlede restance af kontigent: " + kasserer.RestanceKontingent() + " kr.");
+        System.out.println("Svømmeklubbens samlede restance af kontigent: " + kasserer.restanceKontingent() + " kr.");
         System.out.println("\n");
 
         medlem1.cprOmregning();
@@ -33,5 +33,7 @@ public class Main {
         System.out.println(medlem2);
         medlem3.cprOmregning();
         System.out.println(medlem3);
+
+        System.out.println(kasserer.hentTilKasserer());
     }
 }

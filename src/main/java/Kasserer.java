@@ -26,7 +26,7 @@ public class Kasserer {
     }
 
     //TODO: Metode til at finde samlede beløb af ikke betalte kontigenter
-    public int RestanceKontingent() {
+    public int restanceKontingent() {
         int restance = 0;
         if (medlemsListe.isEmpty()) {
             return 0;
@@ -39,13 +39,17 @@ public class Kasserer {
             }
         }
         return restance;
+    }
 
 
-        //TODO: Metode til at få vist om et medlem har betalt eller ikke betalt
-        //TODO: se en liste over medlemmer men uden de unødvendige emner, hvis passiv står der bare navn og passiv
-//        public void hentTilKasserer() {
-//            fileHandler.hentListeAfMedlemmer();
-//
-
+    //TODO: Metode til at få vist om et medlem har betalt eller ikke betalt
+    //TODO: se en liste over medlemmer men uden de unødvendige emner, hvis passiv står der bare navn og passiv
+    public String hentTilKasserer() {
+        String udskriv = "";
+        for (Medlem medlem : medlemsListe) {
+            udskriv = medlem.getNavn() + " "
+                    + medlem.getHarBetalt();
+        }
+        return udskriv;
     }
 }
