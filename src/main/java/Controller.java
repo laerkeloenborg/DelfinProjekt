@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 public class Controller {
     private Formand formand;
     private Kasserer kasserer;
@@ -7,6 +5,7 @@ public class Controller {
     public Controller() {
         formand = new Formand();
         kasserer = new Kasserer();
+
     }
 
     public void opretMedlem(String navn, String cpr, MedlemsStatus status, String aktivitetsForm, boolean harBetalt) {
@@ -21,12 +20,24 @@ public class Controller {
         formand.redigerMedlem(cpr, nytNavn, nyStatus, nyAktivitetsForm, harBetalt);
     }
 
+    public void redigerMedlem2(Medlem medlem, int valg, String newValue){
+        formand.redigerMedlem2(medlem, valg, newValue);
+    }
+
     public void visMedlemmer() {
         formand.visMedlemmer();
     }
 
     public void getMedlemsListe() {
          formand.visMedlemmer();
+    }
+
+    public String findSpecifiktMedlemsNavn(String cpr){
+        return formand.findSpecifiktMedlemsNavn(cpr);
+    }
+
+    public Medlem findSpecifiktMedlem(String cpr){
+        return formand.findSpecifiktMedlem(cpr);
     }
 
 

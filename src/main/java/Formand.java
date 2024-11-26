@@ -16,7 +16,7 @@ public class Formand {
         fileHandler.gemListeAfMedlemmer(medlemsListen);
     }
 
-    public void formandUI(boolean harBetalt){
+    public void formandUI(boolean harBetalt) {
 
     }
 
@@ -42,6 +42,51 @@ public class Formand {
             }
         }
     }
+
+    public String redigerMedlem2(Medlem medlem, int choice, String newValue) {
+        switch (choice) {
+            case 1:
+                medlem.setNavn(newValue);
+                break;
+            case 2:
+                medlem.setCpr(newValue);
+                break;
+            case 3:
+                medlem.setMedlemsstatus(MedlemsStatus.parseMedlemsStatus(newValue));
+                break;
+            case 4:
+                medlem.setAktivitetsForm(newValue);
+                break;
+            case 5:
+                boolean harBetalt = newValue.equalsIgnoreCase("ja");
+                medlem.setHarBetalt(harBetalt);
+                break;
+            default:
+                return "Ugyldigt valg";
+        }
+        return " ";
+    }
+
+
+    public String findSpecifiktMedlemsNavn(String cpr) {
+        String medlemNavn = "";
+        for (Medlem medlem : medlemsListen) {
+            if (medlem.getCpr().equalsIgnoreCase(cpr)) {
+                medlemNavn = medlem.getNavn();
+            }
+        }
+        return medlemNavn;
+    }
+
+    public Medlem findSpecifiktMedlem(String cpr) {
+        for (Medlem medlem : medlemsListen) {
+            if (medlem.getCpr().equalsIgnoreCase(cpr)) {
+                return medlem;
+            }
+        }
+        return null;
+    }
+
 
     // metode til at printe medlemmer
     public void visMedlemmer() {
