@@ -21,6 +21,7 @@ public class Main {
 
         System.out.println("\n");
         System.out.println("Svømmeklubbens samlede forventede betalte kontigent: " + kasserer.forventetKontigentIndkomst() + " kr.");
+        System.out.println("Svømmeklubbens samlede restance kontigent: " + kasserer.restanceKontingent() + " kr.");
         System.out.println("\n");
 
         System.out.println("\n");
