@@ -29,7 +29,11 @@ public class Kasserer {
 
     //TODO: Metode til at få vist om et medlem har betalt eller ikke betalt
     //TODO: se en liste over medlemmer men uden de unødvendige emner, hvis passiv står der bare navn og passiv
+    public void hentTilKasserer(){
+        fileHandler.hentListeAfMedlemmer();
 
+
+    }
 
 
 

@@ -10,11 +10,12 @@ public class Medlem {
     private String aktivitetsForm;
     private boolean harBetalt;
 
-    public Medlem(String navn, String cpr, MedlemsStatus MEDLEMSSTATUS, String aktivitetsForm) {
+    public Medlem(String navn, String cpr, MedlemsStatus MEDLEMSSTATUS, String aktivitetsForm, boolean harBetalt) {
         this.navn = navn;
         this.cpr = cpr;
         this.MEDLEMSSTATUS = MEDLEMSSTATUS;
         this.aktivitetsForm = aktivitetsForm;
+        this.harBetalt = harBetalt;
     }
 
 
@@ -76,6 +77,14 @@ public class Medlem {
         this.aktivitetsForm = aktivitetsForm;
     }
 
+    public boolean getHarBetalt(){
+        return harBetalt;
+    }
+
+    public void setHarBetalt(boolean harBetalt){
+        this.harBetalt = harBetalt;
+    }
+
     //---------------------------------------------
 
     //Metode til omregning af cpr til alder
@@ -123,7 +132,8 @@ public class Medlem {
                 ", Alder: " + cprOmregning() + " år" +
                 ", Aldersgruppe: " + getALDERSGRUPPE() +
                 ", Aktivitets status: " + (MEDLEMSSTATUS== MedlemsStatus.AKTIV ? "Aktiv" : "Passiv") +
-                ", Aktivitetsform: " + getAktivitetsForm();
+                ", Aktivitetsform: " + getAktivitetsForm() +
+                ", Betalingsstatus: " + getHarBetalt();
     }
 
     public String toStringTilFil(){
@@ -131,7 +141,8 @@ public class Medlem {
                 this.cpr + ";" +
                 this.getALDERSGRUPPE() + ";" +
                 (this.MEDLEMSSTATUS== MedlemsStatus.AKTIV ? "Aktiv" : "Passiv") + ";" +
-                this.getAktivitetsForm() + ";";
+                this.getAktivitetsForm() + ";" +
+                (this.getHarBetalt() ? "Betalt" : "Ikke betalt");
     }
 }
 
