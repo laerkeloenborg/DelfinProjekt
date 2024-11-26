@@ -20,12 +20,12 @@ public class Main {
         Medlem medlem3 = new Medlem("Christian", "100894", MedlemsStatus.AKTIV, "konkurrence", true);
 
         System.out.println("\n");
-        System.out.println("Svømmeklubbens samlede forventede betalte kontigent: " + kasserer.forventetKontigentIndkomst() + " kr.");
-        System.out.println("Svømmeklubbens samlede restance kontigent: " + kasserer.restanceKontingent() + " kr.");
+        System.out.println("Svømmeklubbens samlede forventede betalte kontingent: " + kasserer.forventetKontingentIndkomst() + " kr.");
+        System.out.println("Svømmeklubbens samlede restance kontingent: " + kasserer.restanceKontingent() + " kr.");
         System.out.println("\n");
 
         System.out.println("\n");
-        System.out.println("Svømmeklubbens samlede restance af kontigent: " + kasserer.restanceKontingent() + " kr.");
+        System.out.println("Svømmeklubbens samlede restance af kontingent: " + kasserer.restanceKontingent() + " kr.");
         System.out.println("\n");
 
         medlem1.cprOmregning();

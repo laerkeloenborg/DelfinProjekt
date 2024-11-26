@@ -10,8 +10,8 @@ public class Kasserer {
     }
 
     //TODO: Metode til at finde samlede beløb af alle medlemmernes kontigent
-    public int forventetKontigentIndkomst() {
-        int samletKontigent = 0;
+    public int forventetKontingentIndkomst() {
+        int samletKontingent = 0;
 
         if (medlemsListe.isEmpty()) {
             return 0;
@@ -19,11 +19,11 @@ public class Kasserer {
 
         for (Medlem medlem : medlemsListe) {
             if(medlem.getHarBetalt()){
-                int medlemsKontigent = medlem.kontigent();
-                samletKontigent += medlemsKontigent;
+                int medlemsKontingent = medlem.kontingent();
+                samletKontingent += medlemsKontingent;
             }
         }
-        return samletKontigent;
+        return samletKontingent;
     }
 
     //TODO: Metode til at finde samlede beløb af ikke betalte kontigenter
@@ -35,8 +35,8 @@ public class Kasserer {
 
         for (Medlem medlem : medlemsListe) {
             if (!medlem.getHarBetalt()) {
-                int medlemsKontigent = medlem.kontigent();
-                restance += medlemsKontigent;
+                int medlemsKontingent = medlem.kontingent();
+                restance += medlemsKontingent;
             }
         }
         return restance;

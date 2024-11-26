@@ -104,26 +104,26 @@ public class Medlem {
         return alder;
     }
 
-    public int kontigent(){
-        int kontigent = 0;
+    public int kontingent(){
+        int kontingent = 0;
         int alder = this.cprOmregning();
 
         if(getMedlemsstatus().equals(MedlemsStatus.AKTIV)){
             if (getALDERSGRUPPE().equals(AldersGruppe.JUNIOR)){
-                kontigent = 1000;
+                kontingent = 1000;
             } else if(getALDERSGRUPPE().equals(AldersGruppe.SENIOR)){
                 if (alder > 60){
                     int rabat = 1600 * 25 / 100;
-                    kontigent = 1600 - rabat;
+                    kontingent = 1600 - rabat;
                 } else {
-                    kontigent = 1600;
+                    kontingent = 1600;
                 }
             }
         } else if(getMedlemsstatus().equals(MedlemsStatus.PASSIV)){
-            kontigent = 500;
+            kontingent = 500;
         }
 
-        return kontigent;
+        return kontingent;
     }
 
     @Override
