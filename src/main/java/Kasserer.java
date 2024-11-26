@@ -1,9 +1,8 @@
 import java.util.ArrayList;
 
 public class Kasserer {
-    private final FileHandler fileHandler;
-    private final ArrayList<Medlem> medlemsListe;
-
+    private FileHandler fileHandler;
+    private ArrayList<Medlem> medlemsListe;
 
     public Kasserer() {
         fileHandler = new FileHandler();
@@ -19,14 +18,16 @@ public class Kasserer {
         }
 
         for (Medlem medlem : medlemsListe) {
-            int medlemsKontigent = medlem.kontigent();
-            samletKontigent += medlemsKontigent;
+            if(medlem.getHarBetalt()){
+                int medlemsKontigent = medlem.kontigent();
+                samletKontigent += medlemsKontigent;
+            }
         }
         return samletKontigent;
     }
 
     //TODO: Metode til at finde samlede beløb af ikke betalte kontigenter
-    public int RestanceKontingent() {
+    public int restanceKontingent() {
         int restance = 0;
         if (medlemsListe.isEmpty()) {
             return 0;
@@ -48,4 +49,8 @@ public class Kasserer {
 //
 
     }
+
+
+
+
 }
