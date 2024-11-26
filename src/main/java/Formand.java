@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Collections;
+
 
 public class Formand {
     private ArrayList<Medlem> medlemsListen;
@@ -19,6 +21,8 @@ public class Formand {
     public void formandUI(boolean harBetalt) {
 
     }
+
+
 
     // metode til at slette medlem via cpr
     public void sletMedlem(String cpr) {
@@ -86,6 +90,30 @@ public class Formand {
         }
         return null;
     }
+
+
+
+    public void sorterMedlemmerValgMetode(int valg) {
+        switch (valg) {
+            case 1:
+                Collections.sort(medlemsListen, new Comparators.sorteringNavn());
+                break;
+            case 2:
+                Collections.sort(medlemsListen, new Comparators.sorteringAlder());
+                break;
+            case 3:
+                Collections.sort(medlemsListen, new Comparators.sorteringMedlemsstatus());
+                break;
+            case 4:
+                Collections.sort(medlemsListen, new Comparators.sorteringAldersgruppe());
+                break;
+            case 5:
+                Collections.sort(medlemsListen, new Comparators.sorteringAktivitetsform());
+                break;
+        }
+        visMedlemmer();
+    }
+
 
 
     // metode til at printe medlemmer

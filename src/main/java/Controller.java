@@ -28,9 +28,10 @@ public class Controller {
         formand.visMedlemmer();
     }
 
-    public void getMedlemsListe() {
-         formand.visMedlemmer();
-    }
+
+
+
+
 
     public String findSpecifiktMedlemsNavn(String cpr){
         return formand.findSpecifiktMedlemsNavn(cpr);
@@ -39,6 +40,14 @@ public class Controller {
     public Medlem findSpecifiktMedlem(String cpr){
         return formand.findSpecifiktMedlem(cpr);
     }
+
+
+
+    public void sorterMedlemmerValgMetode(int valg) {
+        formand.sorterMedlemmerValgMetode(valg);
+    }
+
+
 
 
 }
