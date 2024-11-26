@@ -10,15 +10,22 @@ public class Main {
     //formand.tilføjMedlem("Lær","121156",MedlemsStatus.PASSIV,"konkurrence", false);
       // formand.tilføjMedlem("Camilla", "061026", MedlemsStatus.AKTIV, "konkurrence", true);
      //formand.tilføjMedlem("isa", "020202", MedlemsStatus.AKTIV,"motionist", true);
+        //formand.tilføjMedlem("isa", "020202", MedlemsStatus.AKTIV,"motionist", false);
+
        formand.visMedlemmer();
 
 
-        Medlem medlem1 = new Medlem("Camilla", "061026", MedlemsStatus.AKTIV, "konkurrence", true);
+        Medlem medlem1 = new Medlem("Camilla", "061026", MedlemsStatus.AKTIV, "konkurrence", false);
         Medlem medlem2 = new Medlem("Lærke", "231119", MedlemsStatus.PASSIV, "motionist", false);
         Medlem medlem3 = new Medlem("Christian", "100894", MedlemsStatus.AKTIV, "konkurrence", true);
 
         System.out.println("\n");
-        System.out.println("Svømmeklubbens samlede forventede betalte kontigent: " + kasserer.forventetKontigentIndkomst() + " kr.");
+        System.out.println("Svømmeklubbens samlede forventede betalte kontingent: " + kasserer.forventetKontingentIndkomst() + " kr.");
+        System.out.println("Svømmeklubbens samlede restance kontingent: " + kasserer.restanceKontingent() + " kr.");
+        System.out.println("\n");
+
+        System.out.println("\n");
+        System.out.println("Svømmeklubbens samlede restance af kontingent: " + kasserer.restanceKontingent() + " kr.");
         System.out.println("\n");
 
         medlem1.cprOmregning();
@@ -27,5 +34,7 @@ public class Main {
         System.out.println(medlem2);
         medlem3.cprOmregning();
         System.out.println(medlem3);
+
+        System.out.println(kasserer.hentTilKasserer());
     }
 }
