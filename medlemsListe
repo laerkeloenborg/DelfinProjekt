@@ -1,4 +1,4 @@
-Kasper;011275;SENIOR;Aktiv;Motionist;Betalt
-Lær;121156;SENIOR;Passiv;Konkurrence svømmer;Ikke betalt
-Camilla;061026;SENIOR;Aktiv;Konkurrence svømmer;Betalt
-isa;020202;SENIOR;Aktiv;Motionist;Betalt
+Kasper;011275;SENIOR;Aktiv;Motionist;true
+Lær;121156;SENIOR;Passiv;Konkurrence svømmer;false
+Camilla;061026;SENIOR;Aktiv;Konkurrence svømmer;true
+isa;020202;SENIOR;Aktiv;Motionist;true

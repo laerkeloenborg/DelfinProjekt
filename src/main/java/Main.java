@@ -6,10 +6,10 @@ public class Main {
         Formand formand = new Formand();
         Kasserer kasserer = new Kasserer();
 
-    // formand.tilføjMedlem("Kasper","011275", MedlemsStatus.AKTIV,"motionist", true);
-      // formand.tilføjMedlem("Lær","121156",MedlemsStatus.PASSIV,"konkurrence", false);
-       //formand.tilføjMedlem("Camilla", "061026", MedlemsStatus.AKTIV, "konkurrence", true);
-       //formand.tilføjMedlem("isa", "020202", MedlemsStatus.AKTIV,"motionist", true);
+   // formand.tilføjMedlem("Kasper","011275", MedlemsStatus.AKTIV,"motionist", true);
+    //formand.tilføjMedlem("Lær","121156",MedlemsStatus.PASSIV,"konkurrence", false);
+      // formand.tilføjMedlem("Camilla", "061026", MedlemsStatus.AKTIV, "konkurrence", true);
+     //formand.tilføjMedlem("isa", "020202", MedlemsStatus.AKTIV,"motionist", true);
        formand.visMedlemmer();
 
 

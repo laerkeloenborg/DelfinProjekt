@@ -142,7 +142,7 @@ public class Medlem {
                 this.getALDERSGRUPPE() + ";" +
                 (this.MEDLEMSSTATUS== MedlemsStatus.AKTIV ? "Aktiv" : "Passiv") + ";" +
                 this.getAktivitetsForm() + ";" +
-                (this.getHarBetalt() ? "Betalt" : "Ikke betalt");
+                this.getHarBetalt();
     }
 }
 
