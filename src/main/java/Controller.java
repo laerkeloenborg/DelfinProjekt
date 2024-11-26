@@ -25,8 +25,8 @@ public class Controller {
         formand.visMedlemmer();
     }
 
-    public ArrayList<Medlem> getMedlemsListe() {
-        return formand.getMedlemsListe();
+    public void getMedlemsListe() {
+         formand.visMedlemmer();
     }
 
 

@@ -16,6 +16,10 @@ public class Formand {
         fileHandler.gemListeAfMedlemmer(medlemsListen);
     }
 
+    public void formandUI(boolean harBetalt){
+
+    }
+
     // metode til at slette medlem via cpr
     public void sletMedlem(String cpr) {
         for (Medlem medlem : medlemsListen) {
