@@ -16,20 +16,12 @@ public class Controller {
         formand.sletMedlem(cpr);
     }
 
-    public void redigerMedlem(String cpr, String nytNavn, MedlemsStatus nyStatus, String nyAktivitetsForm, boolean harBetalt) {
-        formand.redigerMedlem(cpr, nytNavn, nyStatus, nyAktivitetsForm, harBetalt);
-    }
-
-    public void redigerMedlem2(Medlem medlem, int valg, String newValue){
-        formand.redigerMedlem2(medlem, valg, newValue);
+    public void redigerMedlem(Medlem medlem, int valg, String newValue){
+        formand.redigerMedlem(medlem, valg, newValue);
     }
 
     public void visMedlemmer() {
         formand.visMedlemmer();
-    }
-
-    public void getMedlemsListe() {
-         formand.visMedlemmer();
     }
 
     public String findSpecifiktMedlemsNavn(String cpr){

@@ -16,10 +16,6 @@ public class Formand {
         fileHandler.gemListeAfMedlemmer(medlemsListen);
     }
 
-    public void formandUI(boolean harBetalt) {
-
-    }
-
     // metode til at slette medlem via cpr
     public void sletMedlem(String cpr) {
         for (Medlem medlem : medlemsListen) {
@@ -30,25 +26,14 @@ public class Formand {
         }
     }
 
-    // metode til at redigere medlem
-    public void redigerMedlem(String cpr, String nytNavn, MedlemsStatus NY_MEDLEMSSTATUS, String nyAktivitetsForm, boolean nyHarBetalt) {
-        for (Medlem medlem : medlemsListen) {
-            if (medlem.getCpr().equals(cpr)) {
-                medlem.setNavn(nytNavn);
-                medlem.setMedlemsstatus(NY_MEDLEMSSTATUS);
-                medlem.setAktivitetsForm(nyAktivitetsForm);
-                medlem.setHarBetalt(nyHarBetalt);
-                fileHandler.gemListeAfMedlemmer(medlemsListen);
-            }
-        }
-    }
-
-    public String redigerMedlem2(Medlem medlem, int choice, String newValue) {
+    public String redigerMedlem(Medlem medlem, int choice, String newValue) {
         switch (choice) {
             case 1:
                 medlem.setNavn(newValue);
                 break;
             case 2:
+
+            int nyAlder = Integer.parseInt(newValue);
                 medlem.setCpr(newValue);
                 break;
             case 3:

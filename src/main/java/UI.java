@@ -74,10 +74,12 @@ public class UI {
                             case "3":
                                 System.out.println("Indtast CPR-nummer på det medlem der skal redigeres: ");
                                 String findMedlem = scanner.nextLine();
-                                System.out.println("Du kan nu redigere i " + controller.findSpecifiktMedlemsNavn(findMedlem) + "'s oplysninger.");
+                                Medlem nuværendeMedlem = controller.findSpecifiktMedlem(findMedlem);
+                                String nuværendeNavn = controller.findSpecifiktMedlemsNavn(findMedlem);
+                                System.out.println("Du kan nu redigere i " + nuværendeNavn + "'s oplysninger.");
 
-                                System.out.println(controller.findSpecifiktMedlemsNavn(findMedlem) + "'s nuværende informationer");
-                                System.out.println(controller.findSpecifiktMedlem(findMedlem));
+                                System.out.println(nuværendeNavn + "'s nuværende informationer");
+                                System.out.println(nuværendeMedlem);
 
 
                                 boolean redigering = true;
@@ -99,13 +101,24 @@ public class UI {
                                 continue;
                                 }
 
-                                    if (valgAfRedigering >= 1 && valgAfRedigering <= 5) {
+                                if(valgAfRedigering == 2){
+                                    System.out.println("Indtast ny information: ");
+                                    String ny = scanner.nextLine();
+                                    Medlem medlem1 = nuværendeMedlem;
+                                    medlem1.cprOmregning();
+
+                                    controller.redigerMedlem(medlem1, valgAfRedigering, ny);
+
+                                    System.out.println("Opdateret informationer: ");
+                                    System.out.println(medlem1);
+
+                                } else if (valgAfRedigering ==1 || valgAfRedigering ==3 || valgAfRedigering ==4 ||valgAfRedigering ==5) {
                                         System.out.println("Indtast ny information:");
                                         String newValue = scanner.nextLine();
 
-                                        controller.redigerMedlem2(controller.findSpecifiktMedlem(findMedlem), valgAfRedigering, newValue);
+                                        controller.redigerMedlem(controller.findSpecifiktMedlem(findMedlem), valgAfRedigering, newValue);
 
-                                        System.out.println("\nUpdateret informationer: ");
+                                        System.out.println("\nOpdateret informationer: ");
                                         System.out.println(controller.findSpecifiktMedlem(findMedlem));
                                     } else {
                                         System.out.println("ugyldigt");
