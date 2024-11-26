@@ -9,16 +9,16 @@ public class Controller {
         kasserer = new Kasserer();
     }
 
-    public void opretMedlem(String navn, String cpr, MedlemsStatus status, String aktivitetsForm) {
-        formand.tilføjMedlem(navn, cpr, status, aktivitetsForm);
+    public void opretMedlem(String navn, String cpr, MedlemsStatus status, String aktivitetsForm, boolean harBetalt) {
+        formand.tilføjMedlem(navn, cpr, status, aktivitetsForm, harBetalt);
     }
 
     public void sletMedlem(String cpr) {
         formand.sletMedlem(cpr);
     }
 
-    public void redigerMedlem(String cpr, String nytNavn, MedlemsStatus nyStatus, String nyAktivitetsForm) {
-        formand.redigerMedlem(cpr, nytNavn, nyStatus, nyAktivitetsForm);
+    public void redigerMedlem(String cpr, String nytNavn, MedlemsStatus nyStatus, String nyAktivitetsForm, boolean harBetalt) {
+        formand.redigerMedlem(cpr, nytNavn, nyStatus, nyAktivitetsForm, harBetalt);
     }
 
     public void visMedlemmer() {

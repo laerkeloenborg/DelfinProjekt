@@ -12,11 +12,12 @@ public class UI {
     public void start() {
         boolean kører = true;
         while (kører) {
-            System.out.println("Velkommen til Svømmeklubben Delfinen");
-            System.out.println("1 for Formand Menu");
-            System.out.println("2 for Kasserer Menu");
-            System.out.println("3 for at afslutte");
-            System.out.print("Vælg en mulighed (1-3): ");
+            System.out.println("Velkommen til Svømmeklubben Delfinen" +
+                    "\n1 for Formand Menu" +
+                    "\n2 for Kasserer Menu" +
+                    "\n3 for Træner Menu" +
+                    "\n4 for at afslutte" +
+                    "\n\nVælg en mulighed (1-4): \n");
 
             String valg = scanner.nextLine();
 
