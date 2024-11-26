@@ -133,7 +133,7 @@ public class Medlem {
                 ", Aldersgruppe: " + getALDERSGRUPPE() +
                 ", Aktivitets status: " + (MEDLEMSSTATUS== MedlemsStatus.AKTIV ? "Aktiv" : "Passiv") +
                 ", Aktivitetsform: " + getAktivitetsForm() +
-                ", Betalingsstatus: " + getHarBetalt();
+                ", Betalingsstatus: " + (this.getHarBetalt() ? "Betalt" : "Ikke betalt");
     }
 
     public String toStringTilFil(){

@@ -36,9 +36,9 @@ public class FileHandler {
 
             medlem = new Medlem(attributes[0],
                     (attributes[1]),
-                    MedlemsStatus.parseMedlemsStatus(attributes[2]),
-                    attributes[3],
-                    Boolean.parseBoolean([attributes[5]]));
+                    MedlemsStatus.parseMedlemsStatus(attributes[3]),
+                    attributes[4],
+                    Boolean.parseBoolean(attributes[5]));
 
             medlemsListe.add(medlem);
         }
