@@ -111,7 +111,7 @@ public class UI {
                                         System.out.println("ugyldigt");
                                     }
                                 }
-
+                                //TODO: indsæt at det gem metoden, så de nye oplysninger gemmes til filen
                                 break;
                             case "4":
                                 System.out.println("Her kommer medlemssortering");
