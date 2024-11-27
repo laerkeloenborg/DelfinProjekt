@@ -166,7 +166,10 @@ public class UI {
                     System.out.println("Kasserer menu kommer her");
                     break;
                 case "3":
-                    System.out.println("Programmet afsluttes");
+                    System.out.println("Træner menu kommer her");
+                    break;
+                case "4":
+                    System.out.println("Programmet lukkes ned....");
                     kører = false;
                     break;
                 default:
