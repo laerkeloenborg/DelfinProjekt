@@ -115,24 +115,22 @@ public class UI {
                                 break;
                             case "4":
                                 System.out.println("\n\nHvad vil sortere efter: " +
-                                        "\n1. Navn" +
-                                        "\n2. Alder" +
-                                        "\n3. Medlemsstatus" +
-                                        "\n4. Aldersgruppe" +
-                                        "\n5. Aktivitetsform" +
-                                        "\n6. Afslut");
+                                        "\n1. Medlemsstatus" +
+                                        "\n2. Aldersgruppe" +
+                                        "\n3. Aktivitetsform" +
+                                        "\n4. Afslut");
 
                                 boolean sortering = true;
                                 while (sortering) {
                                     int sorteringsValg = scanner.nextInt();
                                     scanner.nextLine();
 
-                                    if (sorteringsValg == 6) {
+                                    if (sorteringsValg == 4) {
                                         sortering = false;
                                         continue;
                                     }
 
-                                    if (sorteringsValg >= 1 && sorteringsValg <= 5) {
+                                    if (sorteringsValg >= 1 && sorteringsValg <= 3) {
                                         controller.sorterMedlemmerValgMetode(sorteringsValg);
                                     } else {
                                         System.out.println("Ugyldigt valg");
