@@ -18,7 +18,7 @@ public class Kasserer {
         }
 
         for (Medlem medlem : medlemsListe) {
-            if(medlem.getHarBetalt()){
+            if (medlem.getHarBetalt()) {
                 int medlemsKontingent = medlem.kontingent();
                 samletKontingent += medlemsKontingent;
             }
@@ -47,13 +47,12 @@ public class Kasserer {
     public String hentTilKasserer() {
         String udskriv = "";
         for (Medlem medlem : medlemsListe) {
-            udskriv = medlem.getNavn() + " "
-                    + medlem.getHarBetalt();
+            udskriv = medlem.getNavn() + ", " +
+                    medlem.cprOmregning() + "år," +
+                    medlem.getHarBetalt();
         }
         return udskriv;
     }
-
-
 
 
 }

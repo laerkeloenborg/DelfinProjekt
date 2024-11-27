@@ -125,7 +125,7 @@ public class UI {
                                         System.out.println("ugyldigt");
                                     }
                                 }
-                                //TODO: indsæt at det gem metoden, så de nye oplysninger gemmes til filen
+                                controller.gemListeAfMedlemmer();
                                 break;
                             case "4":
                                 System.out.println("\n\nHvad vil sortere efter: " +
