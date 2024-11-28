@@ -338,7 +338,8 @@ public class UI {
                                 "\n1 for at se den forventede indkomst i kontingent til klubben" +
                                 "\n2 for at se medlemmer der har betalt" +
                                 "\n3 for at se medlemmer i restance" +
-                                "\n4 for at gå tilbage til hovedmenuen" +
+                                "\n4 for at se antallet af medlemmer i klubben" +
+                                "\n5 for at gå tilbage til hovedmenuen" +
                                 "\n\nVælg en mulighed: \n");
 
                         String brugerValg = scanner.nextLine();
@@ -361,8 +362,12 @@ public class UI {
                                 System.out.println(controller.medlemmerIRestance());
                                 System.out.println("der er lige nu " + controller.restanceBeløb() + " kr. i restance, i klubben\n");
                                 break;
-                            //________________________tilbage til hovedmenu_____________________________________________
+                            //________________________antal af medlemmer i svømmeklubben________________________________
                             case "4":
+                                System.out.println("der er " + controller.antalAfMedlemmer() + "medlemmer i klubben pr. dags dato");
+                                break;
+                            //________________________tilbage til hovedmenu_____________________________________________
+                            case "5":
                                 kassererMenuKører = false;
                                 break;
                             default:
