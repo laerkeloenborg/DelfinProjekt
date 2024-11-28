@@ -21,7 +21,7 @@ class FormandTest {
         assertEquals(forventAntal, korrektAntal);
     }
 
-    @Disabled
+    @Disabled //TESTET OG VIRKER, DISABLED FJERNES NÅR RESTEN AF TEST ER DONE
     void sletMedlem() { //TODO: slet metoden skal fikse i formands klassen før testen virker
         // ----- Arrange -----
         Formand formand = new Formand();
@@ -69,6 +69,7 @@ class FormandTest {
         assertEquals(forventetNyeBetalingsstatus,korrektNyeBetalingsstatus);
     }
 
+    @DisplayName("Test af find specifikt medlem, kun navn returneres")
     @Disabled //TESTET OG VIRKER, DISABLED FJERNES NÅR RESTEN AF TEST ER DONE
     void findSpecifiktMedlemsNavn() {
         // ----- Arrange -----
@@ -84,6 +85,7 @@ class FormandTest {
         assertEquals(forventetFundAfMedlemsNavn,korrektFundAfMedlemsNavn);
     }
 
+    @DisplayName("Test af find specifikt medlem, alle oplysninger returneres")
     @Disabled //TESTET OG VIRKER, DISABLED FJERNES NÅR RESTEN AF TEST ER DONE
     void findSpecifiktMedlem() {
         // ----- Arrange -----
