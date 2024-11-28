@@ -26,12 +26,11 @@ public class Medlem {
         return navn;
     }
 
-
     public void setNavn(String navn) {
         this.navn = navn;
     }
 
-
+    //cpr skal være specifik 6 cifre ellers exception
     public String getCpr() {
         int cprLængde = cpr.length();
         if (cprLængde != 6) {
@@ -40,20 +39,17 @@ public class Medlem {
         return cpr;
     }
 
-
     public void setCpr(String cpr) {
         this.cpr = cpr;
     }
 
-
-    public MedlemsStatus getMedlemsstatus() {
+  public MedlemsStatus getMedlemsstatus(){
         return MEDLEMSSTATUS;
-    }
+  }
 
-
-    public void setMedlemsstatus(MedlemsStatus MEDLEMSSTATUS) {
+  public void setMedlemsstatus(MedlemsStatus MEDLEMSSTATUS){
         this.MEDLEMSSTATUS = MEDLEMSSTATUS;
-    }
+  }
 
 
     public AldersGruppe getALDERSGRUPPE() {
@@ -65,13 +61,11 @@ public class Medlem {
         }
 
         return ALDERSGRUPPE;
-    }
+  }
 
-
-    public void setALDERSGRUPPE(AldersGruppe ALDERSGRUPPE) {
+  public void setALDERSGRUPPE(AldersGruppe ALDERSGRUPPE){
         this.ALDERSGRUPPE = ALDERSGRUPPE;
-    }
-
+  }
 
     public String getAktivitetsForm() {
         if (aktivitetsForm.equalsIgnoreCase("konkurrence")) {
@@ -82,18 +76,15 @@ public class Medlem {
         return aktivitetsForm;
     }
 
-
     public void setAktivitetsForm(String aktivitetsForm) {
         this.aktivitetsForm = aktivitetsForm;
     }
 
-
-    public boolean getHarBetalt() {
+    public boolean getHarBetalt(){
         return harBetalt;
     }
 
-
-    public void setHarBetalt(boolean harBetalt) {
+    public void setHarBetalt(boolean harBetalt){
         this.harBetalt = harBetalt;
     }
     //__________________________________________________________________________________________________________________
@@ -106,7 +97,7 @@ public class Medlem {
         int dag = Integer.parseInt(cpr.substring(0, 2));
         int måned = Integer.parseInt(cpr.substring(2, 4));
         int år = Integer.parseInt(cpr.substring(4, 6));
-        if (år >= 0 && år <= LocalDate.now().getYear() % 100) {
+        if (år >= 0 && år <= LocalDate.now().getYear() % 100) { //TODO: kommentar til %
             år += 2000;
         } else {
             år += 1900;

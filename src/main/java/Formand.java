@@ -115,4 +115,8 @@ public class Formand {
             return medlemsListen;
         }
     }
+
+    public int antalMedlemmer (){
+        return medlemsListen.size();
+    }
 }

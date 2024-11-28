@@ -139,12 +139,23 @@ public class UI {
                                 break;
                             //________________________slet et medlem____________________________________________________
                             case "2":
-                                System.out.print("Indtast CPR-nummer på det medlem der skal slettes: ");
-                                String medlemCpr = scanner.nextLine();
-                                controller.sletMedlem(medlemCpr);
-                                System.out.println("Medlem er blevet slettet!");
-                                break;
-                            //________________________rediger i medlems oplysninger_____________________________________
+                                boolean sletning = true;
+                                while (sletning) {
+                                    System.out.print("indtast CPR-nummer på det medlem der skal slettes: ");
+                                    String medlemCpr = scanner.nextLine();
+                                    if (controller.sletMedlem(medlemCpr)){
+                                        System.out.println("medlemmet er blevet slettet!");
+                                        sletning = false;
+                                    } else{
+                                        System.out.println("medlemmet findes ikke, vil du prøve med et nyt CPRnr?");
+                                        System.out.println("Indtast ja eller nej");
+                                        String svar = scanner.nextLine().toLowerCase();
+                                        if (!svar.equals("ja")) {
+                                            sletning = false;
+                                        }
+                                    }
+                                } break;
+
                             case "3":
                                 boolean cprIndtasting = true;
 
