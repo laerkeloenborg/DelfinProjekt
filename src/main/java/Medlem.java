@@ -34,7 +34,6 @@ public class Medlem {
     public String getCpr() {
         int cprLængde = cpr.length();
         if (cprLængde != 6) {
-            throw new RuntimeException("Cpr nummeret skal være 6 cifre");
         }
         return cpr;
     }

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 class FormandTest {
 
     @DisplayName("Test af tilføj medlem")
-    @Disabled //TESTET OG VIRKER, DISABLED FJERNES NÅR RESTEN AF TEST ER DONE
+    @Test
     void tilføjMedlem() {
 
         //---- Arrange -----
@@ -25,7 +25,7 @@ class FormandTest {
     }
 
     @DisplayName("Test af slet medlem")
-    @Disabled //TESTET OG VIRKER, DISABLED FJERNES NÅR RESTEN AF TEST ER DONE
+    @Test
     void sletMedlem() { //TODO: slet metoden skal fikse i formands klassen før testen virker
         // ----- Arrange -----
         Formand formand = new Formand();
@@ -42,7 +42,7 @@ class FormandTest {
     }
 
     @DisplayName("Test af redigering af medlems navn")
-    @Disabled //TESTET OG VIRKER, DISABLED FJERNES NÅR RESTEN AF TEST ER DONE
+    @Test
     void redigerMedlem1() {
         // ----- Arrange -----
         Formand formand = new Formand();
@@ -58,7 +58,7 @@ class FormandTest {
     }
 
     @DisplayName("Test af redigering af medlems betalingsstatus")
-    @Disabled //TESTET OG VIRKER, DISABLED FJERNES NÅR RESTEN AF TEST ER DONE
+    @Test
     void redigerMedlem2() {
         // ----- Arrange -----
         Formand formand = new Formand();
@@ -74,7 +74,7 @@ class FormandTest {
     }
 
     @DisplayName("Test af find specifikt medlem, kun navn returneres")
-    @Disabled //TESTET OG VIRKER, DISABLED FJERNES NÅR RESTEN AF TEST ER DONE
+    @Test
     void findSpecifiktMedlemsNavn() {
         // ----- Arrange -----
         Formand formand = new Formand();
@@ -90,7 +90,7 @@ class FormandTest {
     }
 
     @DisplayName("Test af find specifikt medlem, alle oplysninger returneres")
-    @Disabled //TESTET OG VIRKER, DISABLED FJERNES NÅR RESTEN AF TEST ER DONE
+    @Test
     void findSpecifiktMedlem() {
         // ----- Arrange -----
         Formand formand = new Formand();
@@ -108,7 +108,6 @@ class FormandTest {
 
     @Disabled
     void sorterMedlemmerValgMetode() {
-
     }
 
     @Disabled
