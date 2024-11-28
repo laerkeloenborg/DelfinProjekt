@@ -364,7 +364,7 @@ public class UI {
                                 break;
                             //________________________antal af medlemmer i svømmeklubben________________________________
                             case "4":
-                                System.out.println("der er " + controller.antalAfMedlemmer() + "medlemmer i klubben pr. dags dato");
+                                System.out.println("der er " + controller.antalAfMedlemmer() + " medlemmer i klubben pr. dags dato");
                                 break;
                             //________________________tilbage til hovedmenu_____________________________________________
                             case "5":
