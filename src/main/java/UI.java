@@ -376,9 +376,11 @@ public class UI {
                         }
                     }
                     break;
+                //________________________træner menu___________________________________________________________________
                 case "3":
                     System.out.println("Træner menu kommer her");
                     break;
+                //________________________luk programmet ned____________________________________________________________
                 case "4":
                     System.out.println("Programmet lukkes ned....");
                     kører = false;

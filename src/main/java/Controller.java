@@ -13,6 +13,9 @@ public class Controller {
     }
 
 
+    //______________________Formands metoder____________________________________________________________________________
+
+
     //_______________________metode til at oprette medlem_______________________________________________________________
     public void opretMedlem(String navn, String cpr, MedlemsStatus status, String aktivitetsForm, boolean harBetalt) {
         formand.tilføjMedlem(navn, cpr, status, aktivitetsForm, harBetalt);
