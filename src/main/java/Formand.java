@@ -116,6 +116,8 @@ public class Formand {
         }
     }
 
+
+    //_______________________metode til at se antallet af medlemmer i klubben___________________________________________
     public int antalMedlemmer (){
         return medlemsListen.size();
     }

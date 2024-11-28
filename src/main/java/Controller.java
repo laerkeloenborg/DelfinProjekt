@@ -60,6 +60,11 @@ public class Controller {
         return formand.gemMedlem();
     }
 
+    //________________________metode til at se antallet af medlemmer i klubben__________________________________________
+    public int antalAfMedlemmer(){
+        return formand.antalMedlemmer();
+    }
+
 
     //_________________________Kasserer metoder_________________________________________________________________________
 
@@ -92,6 +97,7 @@ public class Controller {
     public String medlemmerIRestance(){
         return kasserer.medlemmerIRestance();
     }
+
 
 
 
