@@ -15,8 +15,8 @@ public class Controller {
         formand.tilføjMedlem(navn, cpr, status, aktivitetsForm, harBetalt);
     }
 
-    public void sletMedlem(String cpr) {
-        formand.sletMedlem(cpr);
+    public boolean sletMedlem(String cpr) {
+        return formand.sletMedlem(cpr);
     }
 
     public void redigerMedlem(Medlem medlem, int valg, String newValue){
