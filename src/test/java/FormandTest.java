@@ -2,8 +2,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.*;
 
+import java.util.ArrayList;
+
 class FormandTest {
 
+    @DisplayName("Test af tilføj medlem")
     @Disabled //TESTET OG VIRKER, DISABLED FJERNES NÅR RESTEN AF TEST ER DONE
     void tilføjMedlem() {
 
@@ -21,6 +24,7 @@ class FormandTest {
         assertEquals(forventAntal, korrektAntal);
     }
 
+    @DisplayName("Test af slet medlem")
     @Disabled //TESTET OG VIRKER, DISABLED FJERNES NÅR RESTEN AF TEST ER DONE
     void sletMedlem() { //TODO: slet metoden skal fikse i formands klassen før testen virker
         // ----- Arrange -----
@@ -102,12 +106,12 @@ class FormandTest {
 
     }
 
-    @Test
+    @Disabled
     void sorterMedlemmerValgMetode() {
 
     }
 
-    @Test
+    @Disabled
     void visMedlemmer() {
     }
 
