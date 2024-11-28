@@ -10,6 +10,7 @@ public class Controller {
 
     }
 
+
     public void opretMedlem(String navn, String cpr, MedlemsStatus status, String aktivitetsForm, boolean harBetalt) {
         formand.tilføjMedlem(navn, cpr, status, aktivitetsForm, harBetalt);
     }
@@ -42,5 +43,21 @@ public class Controller {
     public ArrayList<Medlem> gemListeAfMedlemmer (){
         return formand.gemMedlem();
     }
+
+    //_________________________Kasserer metoder______________________________________
+
+    public int forventetKontingent(){
+        return kasserer.forventetKontingentIndkomst();
+    }
+
+    public int restanceBeløb(){
+        return kasserer.restanceKontingent();
+    }
+
+    public String medlemmerIRestance(){
+        return kasserer.medlemmerIRestance();
+    }
+
+
 
 }

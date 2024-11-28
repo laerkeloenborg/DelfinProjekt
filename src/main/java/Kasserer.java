@@ -1,3 +1,4 @@
+import javax.swing.plaf.metal.MetalComboBoxEditor;
 import java.util.ArrayList;
 
 public class Kasserer {
@@ -43,16 +44,28 @@ public class Kasserer {
     }
 
 
-    //TODO: indsæt kontigent
-    public String hentTilKasserer() {
-        String udskriv = "";
+    public String medlemmerIRestance() {
+        String udskriv = " ";
+        int counter = 1;
         for (Medlem medlem : medlemsListe) {
-            udskriv = medlem.getNavn() + ", " +
-                    medlem.cprOmregning() + "år," +
-                    medlem.getHarBetalt();
+            if (!medlem.getHarBetalt()) {
+                udskriv += counter++ + ". " + medlem.getNavn() + ", " + medlem.getCpr() + ", -" + medlem.kontingent() + "\n ";
+            }
         }
-        return udskriv;
+        return udskriv.isEmpty() ? "ingen medlemmer i restnace" : udskriv;
     }
+
+
+    //TODO: indsæt kontigent
+//    public String hentTilKasserer() {
+//        String udskriv = "";
+//        for (Medlem medlem : medlemsListe) {
+//            udskriv = medlem.getNavn() + ", " +
+//                    medlem.cprOmregning() + "år," +
+//                    medlem.getHarBetalt();
+//        }
+//        return udskriv;
+//    }
 
 
 }
