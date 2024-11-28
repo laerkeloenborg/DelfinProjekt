@@ -28,14 +28,17 @@ public class Formand {
 
 
     //________________________metode til at slette medlem via CPR_______________________________________________________
-    public void sletMedlem(String cpr) {
+    public boolean sletMedlem(String cpr) {
         for (Medlem medlem : medlemsListen) {
             if (medlem.getCpr().equals(cpr)) {
                 medlemsListen.remove(medlem);
                 fileHandler.gemListeAfMedlemmer(medlemsListen);
+                return true;
             }
         }
+        return false;
     }
+
 
 
     //________________________metode til at redigerer i et medlems oplysninger__________________________________________
