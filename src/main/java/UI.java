@@ -4,6 +4,7 @@ public class UI {
     private Scanner scanner;
     private Controller controller;
 
+
     public UI() {
         scanner = new Scanner(System.in);
         controller = new Controller();
@@ -162,8 +163,39 @@ public class UI {
                     }
 
                     break;
+                //______________________________kasserer Menu______________________________________________________
                 case "2":
-                    System.out.println("Kasserer menu kommer her");
+                    boolean kassererMenuKører = true;
+                    while (kassererMenuKører) {
+                        System.out.println("Kasserer Menu:" +
+                                "\n1 for at se den forventede indkomst i kontingent til klubben" +
+                                "\n2 for at se beløb i restance" +
+                                "\n3 for at se medlemmer i restance" +
+                                "\n4 for at gå tilbage til hovedmenuen" +
+                                "\n\nVælg en mulighed: \n");
+
+                        String brugerValg = scanner.nextLine();
+
+                        switch (brugerValg) {
+                            case "1":
+                                System.out.println("det forventede indkomst i form af kontingent for svømmeklubben er:  ");
+                                System.out.print(controller.forventetKontingent() + " kr. årligt\n");
+                                break;
+                            case "2":
+                                System.out.println("der er lige nu " + controller.restanceBeløb() + " kr. i restance imellem medlemmerne i klubben\n");
+                                break;
+                            case "3":
+                                System.out.println("medlemmer der mangler at betale kontingent er:");
+                                System.out.println(controller.medlemmerIRestance());
+                                break;
+                            case "4":
+                                kassererMenuKører = false;
+                                break;
+                            default:
+                                System.out.println("ugyldigt valg, prøv igen");
+                                break;
+                        }
+                    }
                     break;
                 case "3":
                     System.out.println("Træner menu kommer her");
