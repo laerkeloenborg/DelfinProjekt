@@ -290,6 +290,9 @@ public class UI {
                                 break;
                                 //________________________sorter i listen af medlemmer__________________________________
                             case "4":
+                                for (Medlem medlem : controller.visMedlemmer()) {
+                                    System.out.println(medlem);
+                                }
                                 boolean sortering = true;
                                 while (sortering) {
                                     System.out.println("\n\nHvad vil sortere efter: " +
