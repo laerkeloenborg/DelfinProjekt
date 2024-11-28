@@ -52,7 +52,7 @@ public class UI {
                                 while (!validNavn) {
                                     try {
                                         navn = scanner.nextLine();
-                                        if (!navn.matches("[æøåa-zA-Z]+")) { //Gør at man kun kan skrive bogstaver fra A-Z - Der kan tilføjes ÆØÅ
+                                        if (!navn.matches("[æøåa-zA-Z\\s]+")) { //Gør at man kun kan skrive bogstaver fra A-Å og lave mellemrum
                                             throw new IllegalArgumentException("Navnet må kun indenholde bogstaver");
                                         }
                                         validNavn = true;
@@ -212,7 +212,7 @@ public class UI {
                                                 while (!validInput) {
                                                     System.out.println("Indtast nyt navn");
                                                     nyVærdi = scanner.nextLine();
-                                                    if (nyVærdi.matches("[æøåa-zA-z]+")) { //Gør at man kun kan skrive bogstaver fra A-Z - Der kan tilføjes ÆØÅ
+                                                    if (nyVærdi.matches("[æøåa-zA-z\\s]+")) { //Gør at man kun kan skrive bogstaver fra A-Å og lave mellemrum
                                                         validInput = true;
                                                     } else {
                                                         System.out.println("Navnet må kun indenholde bogstaver");
