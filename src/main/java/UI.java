@@ -5,12 +5,13 @@ public class UI {
     private Scanner scanner;
     private Controller controller;
 
-
+    //________________________konstuktør________________________________________________________________________________
     public UI() {
         scanner = new Scanner(System.in);
         controller = new Controller();
     }
 
+    //________________________start af UserInterfacet___________________________________________________________________
     public void start() {
         boolean kører = true;
         while (kører) {
@@ -24,6 +25,7 @@ public class UI {
             String valg = scanner.nextLine();
 
             switch (valg) {
+                //________________________formandens menu_______________________________________________________________
                 case "1":
                     boolean formandMenuKører = true;
                     while (formandMenuKører) {
@@ -38,6 +40,7 @@ public class UI {
                         String brugerValg = scanner.nextLine();
 
                         switch (brugerValg) {
+                            //_______________________opret nyt medlem___________________________________________________
                             case "1":
                                 System.out.println("Opret nyt medlem" +
                                         "\nIndtast navn: ");
@@ -134,6 +137,7 @@ public class UI {
 
                                 System.out.println("Medlemmet er blevet oprettet!");
                                 break;
+                            //________________________slet et medlem____________________________________________________
                             case "2":
                                 boolean sletning = true;
                                 while (sletning) {
@@ -254,7 +258,7 @@ public class UI {
                                 }
                                 controller.gemListeAfMedlemmer();
                                 break;
-
+                                //________________________sorter i listen af medlemmer__________________________________
                             case "4":
                                 boolean sortering = true;
                                 while (sortering) {
@@ -285,7 +289,7 @@ public class UI {
                                     }
                                 }
                                 break;
-
+                                //________________________tilbage til hovedmenu_________________________________________
                             case "5":
                                 formandMenuKører = false;
                                 break;
@@ -310,20 +314,24 @@ public class UI {
                         String brugerValg = scanner.nextLine();
 
                         switch (brugerValg) {
+                            //________________________forventet indkomst i svømmeklubben________________________________
                             case "1":
                                 System.out.println("det forventede indkomst i form af kontingent for svømmeklubben er:  " +
                                         controller.forventetKontingent() + " kr. årligt\n");
                                 break;
+                            //________________________medlemmer der har betalt kontingent_______________________________
                             case "2":
                                 System.out.println("medlemmer der har betalt kontingent: ");
                                 System.out.println(controller.medlemmerDerHarBetalt());
                                 System.out.println("der er lige nu indbtalt: " + controller.inbetaltKontingentForNu());
                                 break;
-                            case "3":
+                            //________________________medlemmer i restance______________________________________________
+                             case "3":
                                 System.out.println("medlemmer der mangler at betale kontingent er:");
                                 System.out.println(controller.medlemmerIRestance());
                                 System.out.println("der er lige nu " + controller.restanceBeløb() + " kr. i restance, i klubben\n");
                                 break;
+                            //________________________tilbage til hovedmenu_____________________________________________
                             case "4":
                                 kassererMenuKører = false;
                                 break;
