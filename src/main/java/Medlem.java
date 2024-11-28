@@ -10,6 +10,8 @@ public class Medlem {
     private String aktivitetsForm;
     private boolean harBetalt;
 
+
+    //________________________konstruktør_______________________________________________________________________________
     public Medlem(String navn, String cpr, MedlemsStatus MEDLEMSSTATUS, String aktivitetsForm, boolean harBetalt) {
         this.navn = navn;
         this.cpr = cpr;
@@ -19,16 +21,17 @@ public class Medlem {
     }
 
 
-    //------------------ GETTER & SETTER ----------------
+    //________________________GETTERE & SETTERE_________________________________________________________________________
     public String getNavn() {
         return navn;
     }
+
 
     public void setNavn(String navn) {
         this.navn = navn;
     }
 
-    //cpr skal være specifik 6 cifre ellers exception
+
     public String getCpr() {
         int cprLængde = cpr.length();
         if (cprLængde != 6) {
@@ -37,32 +40,38 @@ public class Medlem {
         return cpr;
     }
 
+
     public void setCpr(String cpr) {
         this.cpr = cpr;
     }
 
-  public MedlemsStatus getMedlemsstatus(){
+
+    public MedlemsStatus getMedlemsstatus() {
         return MEDLEMSSTATUS;
-  }
+    }
 
-  public void setMedlemsstatus(MedlemsStatus MEDLEMSSTATUS){
+
+    public void setMedlemsstatus(MedlemsStatus MEDLEMSSTATUS) {
         this.MEDLEMSSTATUS = MEDLEMSSTATUS;
-  }
+    }
 
-  public AldersGruppe getALDERSGRUPPE(){
-      int alder = this.cprOmregning();
-        if(alder < 18){ //TODO: spørgsmål til PO, vi antager at når man fylder 18 så skifter det til SENIOR
+
+    public AldersGruppe getALDERSGRUPPE() {
+        int alder = this.cprOmregning();
+        if (alder < 18) {
             setALDERSGRUPPE(AldersGruppe.JUNIOR);
-        } else{
+        } else {
             setALDERSGRUPPE(AldersGruppe.SENIOR);
         }
 
         return ALDERSGRUPPE;
-  }
+    }
 
-  public void setALDERSGRUPPE(AldersGruppe ALDERSGRUPPE){
+
+    public void setALDERSGRUPPE(AldersGruppe ALDERSGRUPPE) {
         this.ALDERSGRUPPE = ALDERSGRUPPE;
-  }
+    }
+
 
     public String getAktivitetsForm() {
         if (aktivitetsForm.equalsIgnoreCase("konkurrence")) {
@@ -73,21 +82,24 @@ public class Medlem {
         return aktivitetsForm;
     }
 
+
     public void setAktivitetsForm(String aktivitetsForm) {
         this.aktivitetsForm = aktivitetsForm;
     }
 
-    public boolean getHarBetalt(){
+
+    public boolean getHarBetalt() {
         return harBetalt;
     }
 
-    public void setHarBetalt(boolean harBetalt){
+
+    public void setHarBetalt(boolean harBetalt) {
         this.harBetalt = harBetalt;
     }
+    //__________________________________________________________________________________________________________________
 
-    //---------------------------------------------
 
-    //Metode til omregning af cpr til alder
+    //________________________metode til omregning af CPR til alder_____________________________________________________
     public int cprOmregning() {
         LocalDate nu = LocalDate.now();
         String cpr = this.getCpr();
@@ -104,43 +116,49 @@ public class Medlem {
         return alder;
     }
 
-    public int kontingent(){
+
+    //___________________metode til at se hvad det enkelte medlem skal betale i kontingent______________________________
+    public int kontingent() {
         int kontingent = 0;
         int alder = this.cprOmregning();
 
-        if(getMedlemsstatus().equals(MedlemsStatus.AKTIV)){
-            if (getALDERSGRUPPE().equals(AldersGruppe.JUNIOR)){
+        if (getMedlemsstatus().equals(MedlemsStatus.AKTIV)) {
+            if (getALDERSGRUPPE().equals(AldersGruppe.JUNIOR)) {
                 kontingent = 1000;
-            } else if(getALDERSGRUPPE().equals(AldersGruppe.SENIOR)){
-                if (alder > 60){
+            } else if (getALDERSGRUPPE().equals(AldersGruppe.SENIOR)) {
+                if (alder > 60) {
                     int rabat = 1600 * 25 / 100;
                     kontingent = 1600 - rabat;
                 } else {
                     kontingent = 1600;
                 }
             }
-        } else if(getMedlemsstatus().equals(MedlemsStatus.PASSIV)){
+        } else if (getMedlemsstatus().equals(MedlemsStatus.PASSIV)) {
             kontingent = 500;
         }
 
         return kontingent;
     }
 
+
+    //________________________toString metode, som udskriver et medlem til userinterfacet_______________________________
     @Override
     public String toString() {
         return "Navn: " + getNavn() +
-                ", Alder: " + cprOmregning() + " år" +
+                ", Alder: " + getCpr() +"(" + cprOmregning() + " år)" +
                 ", Aldersgruppe: " + getALDERSGRUPPE() +
-                ", Aktivitets status: " + (MEDLEMSSTATUS== MedlemsStatus.AKTIV ? "Aktiv" : "Passiv") +
+                ", Aktivitets status: " + (MEDLEMSSTATUS == MedlemsStatus.AKTIV ? "Aktiv" : "Passiv") +
                 ", Aktivitetsform: " + getAktivitetsForm() +
                 ", Betalingsstatus: " + (this.getHarBetalt() ? "Betalt" : "Ikke betalt");
     }
 
-    public String toStringTilFil(){
+
+    //________________________toString metode, som skriver til fil______________________________________________________
+    public String toStringTilFil() {
         return this.navn + ";" +
                 this.cpr + ";" +
                 this.getALDERSGRUPPE() + ";" +
-                (this.MEDLEMSSTATUS== MedlemsStatus.AKTIV ? "Aktiv" : "Passiv") + ";" +
+                (this.MEDLEMSSTATUS == MedlemsStatus.AKTIV ? "Aktiv" : "Passiv") + ";" +
                 this.getAktivitetsForm() + ";" +
                 this.getHarBetalt();
     }

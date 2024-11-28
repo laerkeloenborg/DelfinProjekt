@@ -23,8 +23,8 @@ public class Controller {
         formand.redigerMedlem(medlem, valg, newValue);
     }
 
-    public void visMedlemmer() {
-        formand.visMedlemmer();
+    public ArrayList<Medlem> visMedlemmer() {
+       return formand.visMedlemmer();
     }
 
     public String findSpecifiktMedlemsNavn(String cpr){
@@ -47,7 +47,15 @@ public class Controller {
     //_________________________Kasserer metoder______________________________________
 
     public int forventetKontingent(){
-        return kasserer.forventetKontingentIndkomst();
+        return kasserer.samletForventetKontingent();
+    }
+
+    public int inbetaltKontingentForNu(){
+        return kasserer.indbetaltKontingentForNu();
+    }
+
+    public String medlemmerDerHarBetalt(){
+        return kasserer.medlemmerDerHarBetalt();
     }
 
     public int restanceBeløb(){

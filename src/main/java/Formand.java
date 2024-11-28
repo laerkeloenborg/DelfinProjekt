@@ -6,33 +6,42 @@ public class Formand {
     private ArrayList<Medlem> medlemsListen;
     private FileHandler fileHandler;
 
+    //___________________________konstruktør____________________________________________________________________________
     public Formand() {
         fileHandler = new FileHandler();
         medlemsListen = fileHandler.hentListeAfMedlemmer();
     }
 
-    // metode til at tilføje et medlem
+
+    //________________________metode til at tilføje et medlem___________________________________________________________
     public void tilføjMedlem(String navn, String cpr, MedlemsStatus MEDLEMSSTATUS, String aktivitetsForm, boolean harBetalt) {
         Medlem nytMedlem = new Medlem(navn, cpr, MEDLEMSSTATUS, aktivitetsForm, harBetalt);
         medlemsListen.add(nytMedlem);
         fileHandler.gemListeAfMedlemmer(medlemsListen);
     }
 
+
+    //________________________metode til at gemme medlem i tekstfil_____________________________________________________
     public ArrayList<Medlem> gemMedlem() {
         return fileHandler.gemListeAfMedlemmer(medlemsListen);
     }
 
 
-    // metode til at slette medlem via cpr
-    public void sletMedlem(String cpr) {
+    //________________________metode til at slette medlem via CPR_______________________________________________________
+    public boolean sletMedlem(String cpr) {
         for (Medlem medlem : medlemsListen) {
             if (medlem.getCpr().equals(cpr)) {
                 medlemsListen.remove(medlem);
                 fileHandler.gemListeAfMedlemmer(medlemsListen);
+                return true;
             }
         }
+        return false;
     }
 
+
+
+    //________________________metode til at redigerer i et medlems oplysninger__________________________________________
     public String redigerMedlem(Medlem medlem, int choice, String newValue) {
         switch (choice) {
             case 1:
@@ -58,6 +67,7 @@ public class Formand {
     }
 
 
+    //________________________metode til at finde et specifikt medlems navn_____________________________________________
     public String findSpecifiktMedlemsNavn(String cpr) {
         String medlemNavn = "";
         for (Medlem medlem : medlemsListen) {
@@ -68,6 +78,8 @@ public class Formand {
         return medlemNavn;
     }
 
+
+    //________________________metode til at finde et specifikt medlem___________________________________________________
     public Medlem findSpecifiktMedlem(String cpr) {
         for (Medlem medlem : medlemsListen) {
             if (medlem.getCpr().equalsIgnoreCase(cpr)) {
@@ -78,6 +90,7 @@ public class Formand {
     }
 
 
+    //________________________metode til at sorterer i medlemmer efter eget valg________________________________________
     public void sorterMedlemmerValgMetode(int valg) {
         switch (valg) {
             case 1:
@@ -94,14 +107,12 @@ public class Formand {
     }
 
 
-    // metode til at printe medlemmer
-    public void visMedlemmer() {
+    //________________________metode til at printe medlemmer ___________________________________________________________
+    public ArrayList<Medlem> visMedlemmer() {
         if (medlemsListen.isEmpty()) {
-            System.out.println("Ingen medlemmer registreret");
+            return null;
         } else {
-            for (Medlem medlem : medlemsListen) {
-                System.out.println(medlem);
-            }
+            return medlemsListen;
         }
     }
 }

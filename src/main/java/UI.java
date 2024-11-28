@@ -1,5 +1,3 @@
-import java.time.DateTimeException;
-import java.time.LocalDate;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -17,10 +15,10 @@ public class UI {
         boolean kører = true;
         while (kører) {
             System.out.println("Velkommen til Svømmeklubben Delfinen" +
-                    "\n1 for Formand Menu" +
-                    "\n2 for Kasserer Menu" +
-                    "\n3 for Træner Menu" +
-                    "\n4 for at afslutte" +
+                    "\n1. Formand Menu" +
+                    "\n2. Kasserer Menu" +
+                    "\n3. Træner Menu" +
+                    "\n4. For at afslutte" +
                     "\n\nVælg en mulighed (1-4): \n");
 
             String valg = scanner.nextLine();
@@ -30,11 +28,11 @@ public class UI {
                     boolean formandMenuKører = true;
                     while (formandMenuKører) {
                         System.out.println("Formand Menu" +
-                                "\n1 for at oprette nyt medlem" +
-                                "\n2 for at slette et medlem" +
-                                "\n3 for at redigere et medlem" +
-                                "\n4 for at se medlemsliste" +
-                                "\n5 for at gå tilbage til hovedmenuen" +
+                                "\n1. for at oprette nyt medlem" +
+                                "\n2. for at slette et medlem" +
+                                "\n3. for at redigere et medlem" +
+                                "\n4. for at se medlemsliste" +
+                                "\n5. for at gå tilbage til hovedmenuen" +
                                 "\n\nVælg en mulighed: \n");
 
                         String brugerValg = scanner.nextLine();
@@ -49,12 +47,13 @@ public class UI {
                                 while (!validNavn) {
                                     try {
                                         navn = scanner.nextLine();
-                                        if (!navn.matches("[æøåa-zA-Z]+")) { //Gør at man kun kan skrive bogstaver fra A-Z - Der kan tilføjes ÆØÅ
+                                        if (!navn.matches("[a-zA-Z]+")) { //Gør at man kun kan skrive bogstaver fra A-Z - Der kan tilføjes ÆØÅ
                                             throw new IllegalArgumentException("Navnet må kun indenholde bogstaver");
                                         }
                                         validNavn = true;
                                     } catch (IllegalArgumentException ime) {
                                         System.out.println("Fejl: " + ime.getMessage());
+                                        ime.printStackTrace();
                                     }
                                 }
 
@@ -69,22 +68,9 @@ public class UI {
                                         if (!cpr.matches("[0-9]{6}")) { //Tager kun i mod tal fra 0-9 og skal være 6 langt
                                             throw new IllegalArgumentException("CPR skal være tal og 6 cifre langt");
                                         }
-
-                                        int dag = Integer.parseInt(cpr.substring(0, 2));
-                                        int måned = Integer.parseInt(cpr.substring(2, 4));
-                                        int år = Integer.parseInt(cpr.substring(4, 6));
-
-                                        if (år >= 0 && år <= LocalDate.now().getYear() % 100) {
-                                            år += 2000;
-                                        } else {
-                                            år += 1900;
-                                        }
-                                        LocalDate.of(år, måned, dag);
                                         validCpr = true;
                                     } catch (IllegalArgumentException iae) {
                                         System.out.println("Fejl: " + iae.getMessage());
-                                    } catch (DateTimeException dte) {
-                                        System.out.println("Fejl: " + "CPR indenholder en ugyldig dato");
                                     }
                                 }
 
@@ -155,133 +141,135 @@ public class UI {
                                 System.out.println("Medlem er blevet slettet!");
                                 break;
                             case "3":
-                                System.out.println("Indtast CPR-nummer på det medlem der skal redigeres: ");
-                                String findMedlem = scanner.nextLine();
-                                Medlem nuværendeMedlem = controller.findSpecifiktMedlem(findMedlem);
-                                String nuværendeNavn = controller.findSpecifiktMedlemsNavn(findMedlem);
-                                System.out.println("Du kan nu redigere i " + nuværendeNavn + "'s oplysninger.");
+                                boolean cprIndtasting = true;
 
-                                System.out.println(nuværendeNavn + "'s nuværende informationer");
-                                System.out.println(nuværendeMedlem);
+                                while (cprIndtasting) {
+                                    System.out.println("Indtast CPR-nummer på det medlem der skal redigeres: ");
+                                    String findMedlem = scanner.nextLine();
+                                    Medlem nuværendeMedlem = controller.findSpecifiktMedlem(findMedlem);
+                                    String nuværendeNavn = controller.findSpecifiktMedlemsNavn(findMedlem);
 
-
-                                boolean redigering = true;
-                                while (redigering) {
-                                    System.out.println("\n\nHvad vil du gerne redigere: " +
-                                            "\n1. Navn" +
-                                            "\n2. CPR" +
-                                            "\n3. Medlemsstatus" +
-                                            "\n4. Aktivitetsform" +
-                                            "\n5. Betalingsstatus" +
-                                            "\n6. Afslut redigering");
-
-
-                                    int valgAfRedigering = scanner.nextInt();
-                                    scanner.nextLine();
-
-
-                                    if (valgAfRedigering == 6) {
-                                        redigering = false;
-                                        continue;
-                                    }
-
-                                    boolean validInput = false;
-                                    String nyVærdi = "";
-
-                                    if (valgAfRedigering == 1) {
-                                        while (!validInput) {
-                                            System.out.println("Indtast nyt navn");
-                                            nyVærdi = scanner.nextLine();
-                                            if (nyVærdi.matches("[æøåa-zA-z]+")) {
-                                                validInput = true;
-                                            } else {
-                                                System.out.println("Navnet må kun indenholde bogstaver");
-                                            }
-                                        }
-                                    } else if (valgAfRedigering == 2) {
-                                        while (!validInput) {
-                                            System.out.println("Indast nyt CPR (6 cifre)");
-                                            nyVærdi = scanner.nextLine();
-                                            if (nyVærdi.matches("[0-9]{6}")) {
-                                                try {
-                                                    int dag = Integer.parseInt(nyVærdi.substring(0, 2));
-                                                    int måned = Integer.parseInt(nyVærdi.substring(2, 4));
-                                                    int år = Integer.parseInt(nyVærdi.substring(4, 6));
-
-                                                    if (år >= 0 && år <= LocalDate.now().getYear() % 100) {
-                                                        år += 2000;
-                                                    } else {
-                                                        år += 1900;
-                                                    }
-                                                    LocalDate.of(år, måned, dag);
-                                                    validInput = true;
-                                                } catch (DateTimeException dte) {
-                                                    System.out.println("Fejl: CPR indeholder en ugyldig dato");
-                                                }
-                                            } else {
-                                                System.out.println("CPR må kun indenholde tal og skal være 6 cifre langt");
-                                            }
-                                        }
-                                    } else if (valgAfRedigering == 3) {
-                                        while (!validInput) {
-                                            System.out.println("Indtast ny medlemsstatus (aktiv/passiv)");
-                                            nyVærdi = scanner.nextLine();
-                                            if (nyVærdi.equalsIgnoreCase("aktiv") || nyVærdi.equalsIgnoreCase("passiv")) {
-                                                validInput = true;
-                                            } else {
-                                                System.out.println("Medlemsstatus skal være aktiv eller passiv");
-                                            }
-                                        }
-                                    } else if (valgAfRedigering == 4) {
-                                        while (!validInput) {
-                                            System.out.println("Indtast ny aktivitetsform (motionist/konkurrence)");
-                                            nyVærdi = scanner.nextLine();
-                                            if (nyVærdi.equalsIgnoreCase("motionist") || nyVærdi.equalsIgnoreCase("konkurrence")) {
-                                                validInput = true;
-                                            } else {
-                                                System.out.println("Aktivitetsform skal være motionist eller konkurrence");
-                                            }
-                                        }
-                                    } else if (valgAfRedigering == 5) {
-                                        while (!validInput) {
-                                            System.out.println("Indtast om medlemmet har betalt (ja/nej)");
-                                            nyVærdi = scanner.nextLine();
-                                            if (nyVærdi.equalsIgnoreCase("ja") || nyVærdi.equalsIgnoreCase("nej")) {
-                                                validInput = true;
-                                            } else {
-                                                System.out.println("Betalingsstatus skal være ja eller nej");
-                                            }
-                                        }
-                                    }
-                                    if (validInput) {
-                                        controller.redigerMedlem(nuværendeMedlem, valgAfRedigering, nyVærdi);
-                                        System.out.println("Opdateret informationer: ");
+                                    if (controller.visMedlemmer().contains(nuværendeMedlem)) {
+                                        System.out.println("Du kan nu redigere i " + nuværendeNavn + "'s oplysninger.");
+                                        System.out.println(nuværendeNavn + "'s nuværende informationer");
                                         System.out.println(nuværendeMedlem);
+
+                                        boolean redigering = true;
+                                        while (redigering) {
+                                            System.out.println("\n\nHvad vil du gerne redigere: " +
+                                                    "\n1. Navn" +
+                                                    "\n2. CPR" +
+                                                    "\n3. Medlemsstatus" +
+                                                    "\n4. Aktivitetsform" +
+                                                    "\n5. Betalingsstatus" +
+                                                    "\n6. Afslut redigering");
+
+
+                                            int valgAfRedigering = scanner.nextInt();
+                                            scanner.nextLine();
+
+
+                                            if (valgAfRedigering == 6) {
+                                                redigering = false;
+                                                continue;
+                                            }
+
+                                            boolean validInput = false;
+                                            String nyVærdi = "";
+
+                                            if (valgAfRedigering == 1) {
+                                                while (!validInput) {
+                                                    System.out.println("Indtast nyt navn");
+                                                    nyVærdi = scanner.nextLine();
+                                                    if (nyVærdi.matches("[a-zA-z]+")) { //Gør at man kun kan skrive bogstaver fra A-Z - Der kan tilføjes ÆØÅ
+                                                        validInput = true;
+                                                    } else {
+                                                        System.out.println("Navnet må kun indenholde bogstaver");
+                                                    }
+                                                }
+                                            } else if (valgAfRedigering == 2) {
+                                                while (!validInput) {
+                                                    System.out.println("Indast nyt CPR (6 cifre)");
+                                                    nyVærdi = scanner.nextLine();
+                                                    if (nyVærdi.matches("[0-9]{6}")) {
+                                                        validInput = true;
+                                                    } else {
+                                                        System.out.println("CPR må kun indenholde tal og skal være 6 cifre langt");
+                                                    }
+                                                }
+                                            } else if (valgAfRedigering == 3) {
+                                                while (!validInput) {
+                                                    System.out.println("Indtast ny medlemsstatus (aktiv/passiv)");
+                                                    nyVærdi = scanner.nextLine();
+                                                    if (nyVærdi.equalsIgnoreCase("aktiv") || nyVærdi.equalsIgnoreCase("passiv")) {
+                                                        validInput = true;
+                                                    } else {
+                                                        System.out.println("Medlemsstatus skal være aktiv eller passiv");
+                                                    }
+                                                }
+                                            } else if (valgAfRedigering == 4) {
+                                                while (!validInput) {
+                                                    System.out.println("Indtast ny aktivitetsform (motionist/konkurrence)");
+                                                    nyVærdi = scanner.nextLine();
+                                                    if (nyVærdi.equalsIgnoreCase("motionist") || nyVærdi.equalsIgnoreCase("konkurrence")) {
+                                                        validInput = true;
+                                                    } else {
+                                                        System.out.println("Aktivitetsform skal være motionist eller konkurrence");
+                                                    }
+                                                }
+                                            } else if (valgAfRedigering == 5) {
+                                                while (!validInput) {
+                                                    System.out.println("Indtast om medlemmet har betalt (ja/nej)");
+                                                    nyVærdi = scanner.nextLine();
+                                                    if (nyVærdi.equalsIgnoreCase("ja") || nyVærdi.equalsIgnoreCase("nej")) {
+                                                        validInput = true;
+                                                    } else {
+                                                        System.out.println("Betalingsstatus skal være ja eller nej");
+                                                    }
+                                                }
+                                            }
+                                            if (validInput) {
+                                                controller.redigerMedlem(nuværendeMedlem, valgAfRedigering, nyVærdi);
+                                                System.out.println("Opdateret informationer: ");
+                                                System.out.println(nuværendeMedlem);
+                                                cprIndtasting = false;
+                                            }
+                                        }
+                                    } else {
+                                        System.out.println("Dette medlem findes ikke på listen");
+                                        System.out.println("Prøv igen...");
                                     }
                                 }
                                 controller.gemListeAfMedlemmer();
                                 break;
-                            case "4":
-                                System.out.println("\n\nHvad vil sortere efter: " +
-                                        "\n1. Medlemsstatus" +
-                                        "\n2. Aldersgruppe" +
-                                        "\n3. Aktivitetsform" +
-                                        "\n4. Afslut");
 
+                            case "4":
                                 boolean sortering = true;
                                 while (sortering) {
-                                    int sorteringsValg = scanner.nextInt();
-                                    scanner.nextLine();
+                                    System.out.println("\n\nHvad vil sortere efter: " +
+                                            "\n1. Medlemsstatus" +
+                                            "\n2. Aldersgruppe" +
+                                            "\n3. Aktivitetsform" +
+                                            "\n4. Gå tilbage til formand menu");
 
-                                    if (sorteringsValg == 4) {
-                                        sortering = false;
-                                        continue;
-                                    }
+                                    try {
+                                        int sorteringsValg = scanner.nextInt();
+                                        scanner.nextLine();
 
-                                    if (sorteringsValg >= 1 && sorteringsValg <= 3) {
-                                        controller.sorterMedlemmerValgMetode(sorteringsValg);
-                                    } else {
-                                        System.out.println("Ugyldigt valg");
+                                        if (sorteringsValg == 4) {
+                                            sortering = false;
+                                            continue;
+                                        }
+
+                                        if (sorteringsValg >= 1 && sorteringsValg <= 3) {
+                                            controller.sorterMedlemmerValgMetode(sorteringsValg);
+                                            for (Medlem medlem : controller.visMedlemmer()) {
+                                                System.out.println(medlem);
+                                            }
+                                        }
+                                    } catch (InputMismatchException e) {
+                                        System.out.println("Indtast et tal mellem 1-4");
+                                        scanner.nextLine();
                                     }
                                 }
                                 break;
@@ -302,7 +290,7 @@ public class UI {
                     while (kassererMenuKører) {
                         System.out.println("Kasserer Menu:" +
                                 "\n1 for at se den forventede indkomst i kontingent til klubben" +
-                                "\n2 for at se beløb i restance" +
+                                "\n2 for at se medlemmer der har betalt" +
                                 "\n3 for at se medlemmer i restance" +
                                 "\n4 for at gå tilbage til hovedmenuen" +
                                 "\n\nVælg en mulighed: \n");
@@ -311,15 +299,18 @@ public class UI {
 
                         switch (brugerValg) {
                             case "1":
-                                System.out.println("det forventede indkomst i form af kontingent for svømmeklubben er:  ");
-                                System.out.print(controller.forventetKontingent() + " kr. årligt\n");
+                                System.out.println("det forventede indkomst i form af kontingent for svømmeklubben er:  " +
+                                        controller.forventetKontingent() + " kr. årligt\n");
                                 break;
                             case "2":
-                                System.out.println("der er lige nu " + controller.restanceBeløb() + " kr. i restance imellem medlemmerne i klubben\n");
+                                System.out.println("medlemmer der har betalt kontingent: ");
+                                System.out.println(controller.medlemmerDerHarBetalt());
+                                System.out.println("der er lige nu indbtalt: " + controller.inbetaltKontingentForNu());
                                 break;
                             case "3":
                                 System.out.println("medlemmer der mangler at betale kontingent er:");
                                 System.out.println(controller.medlemmerIRestance());
+                                System.out.println("der er lige nu " + controller.restanceBeløb() + " kr. i restance, i klubben\n");
                                 break;
                             case "4":
                                 kassererMenuKører = false;
@@ -338,7 +329,7 @@ public class UI {
                     kører = false;
                     break;
                 default:
-                    System.out.println("Ugyldigt valgt. Indtast 1,2,3");
+                    System.out.println("Ugyldigt valgt. Indtast 1,2,3 eller 4");
                     break;
             }
         }
