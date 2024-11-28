@@ -4,12 +4,13 @@ public class Kasserer {
     private FileHandler fileHandler;
     private ArrayList<Medlem> medlemsListe;
 
+    //___________________________konstruktør____________________________________________________________________________
     public Kasserer() {
         fileHandler = new FileHandler();
         medlemsListe = fileHandler.hentListeAfMedlemmer();
     }
 
-    //TODO: Metode til at finde samlede beløb af alle medlemmernes kontigent
+    //___________________________metode til at finde samlet beløb af betalte kontingenter_______________________________
     public int indbetaltKontingentForNu() {
         int samletKontingent = 0;
 
@@ -26,6 +27,7 @@ public class Kasserer {
         return samletKontingent;
     }
 
+    //___________________________metode til at finde det samlede forventede kontingent til klubben______________________
     public int samletForventetKontingent(){
         int allesSamledeKontingent = 0;
         int allesSamledeKontingent2 = 0;
@@ -46,19 +48,21 @@ public class Kasserer {
         return allesSamledeKontingent + allesSamledeKontingent2;
     }
 
+    //___________________________metode til at se medlemmer som har betalt kontingent___________________________________
     public String medlemmerDerHarBetalt(){
         String udskriv = " ";
         int counter = 1;
         for (Medlem medlem : medlemsListe) {
             if (medlem.getHarBetalt()) {
-                udskriv += counter++ + ". " + medlem.getNavn() + ", " + medlem.getCpr() + ", " + medlem.kontingent() + "\n ";
+                udskriv += counter++ + ". " + medlem.getNavn() + ", " + medlem.getCpr() + "(" + medlem.cprOmregning() +
+                        " år), " + medlem.getMedlemsstatus() + ", " + medlem.kontingent() + "kr. \n ";
             }
         }
         return udskriv.isEmpty() ? "ingen medlemmer har betalt" : udskriv;
     }
 
 
-    // Metode til at finde samlede beløb af ikke betalte kontigenter
+    //___________________________metode til at finde samlet beløb af ikke betalte kontingenter__________________________
     public int restanceKontingent() {
         int restance = 0;
         if (medlemsListe.isEmpty()) {
@@ -75,29 +79,18 @@ public class Kasserer {
     }
 
 
-
+    //___________________________metode til at se alle medlemmer der er i restance______________________________________
     public String medlemmerIRestance() {
         String udskriv = " ";
         int counter = 1;
         for (Medlem medlem : medlemsListe) {
             if (!medlem.getHarBetalt()) {
-                udskriv += counter++ + ". " + medlem.getNavn() + ", " + medlem.getCpr() + ", -" + medlem.kontingent() + "\n ";
+                udskriv += counter++ + ". " + medlem.getNavn() + ", " + medlem.getCpr() + "(" + medlem.cprOmregning() +
+                        " år), " + medlem.getMedlemsstatus() + ", -" + medlem.kontingent() + " kr.\n ";
             }
         }
         return udskriv.isEmpty() ? "ingen medlemmer i restnace" : udskriv;
     }
-
-
-    //TODO: indsæt kontigent
-//    public String hentTilKasserer() {
-//        String udskriv = "";
-//        for (Medlem medlem : medlemsListe) {
-//            udskriv = medlem.getNavn() + ", " +
-//                    medlem.cprOmregning() + "år," +
-//                    medlem.getHarBetalt();
-//        }
-//        return udskriv;
-//    }
 
 
 }
