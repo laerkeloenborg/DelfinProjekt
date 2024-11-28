@@ -1,3 +1,5 @@
+import java.time.DateTimeException;
+import java.time.LocalDate;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -47,13 +49,12 @@ public class UI {
                                 while (!validNavn) {
                                     try {
                                         navn = scanner.nextLine();
-                                        if (!navn.matches("[a-zA-Z]+")) { //Gør at man kun kan skrive bogstaver fra A-Z - Der kan tilføjes ÆØÅ
+                                        if (!navn.matches("[æøåa-zA-Z]+")) { //Gør at man kun kan skrive bogstaver fra A-Z - Der kan tilføjes ÆØÅ
                                             throw new IllegalArgumentException("Navnet må kun indenholde bogstaver");
                                         }
                                         validNavn = true;
                                     } catch (IllegalArgumentException ime) {
                                         System.out.println("Fejl: " + ime.getMessage());
-                                        ime.printStackTrace();
                                     }
                                 }
 
@@ -68,9 +69,22 @@ public class UI {
                                         if (!cpr.matches("[0-9]{6}")) { //Tager kun i mod tal fra 0-9 og skal være 6 langt
                                             throw new IllegalArgumentException("CPR skal være tal og 6 cifre langt");
                                         }
+
+                                        int dag = Integer.parseInt(cpr.substring(0, 2));
+                                        int måned = Integer.parseInt(cpr.substring(2, 4));
+                                        int år = Integer.parseInt(cpr.substring(4, 6));
+
+                                        if (år >= 0 && år <= LocalDate.now().getYear() % 100) {
+                                            år += 2000;
+                                        } else {
+                                            år += 1900;
+                                        }
+                                        LocalDate.of(år, måned, dag);
                                         validCpr = true;
                                     } catch (IllegalArgumentException iae) {
                                         System.out.println("Fejl: " + iae.getMessage());
+                                    } catch (DateTimeException dte) {
+                                        System.out.println("Fejl: " + "CPR indenholder en ugyldig dato");
                                     }
                                 }
 
@@ -178,7 +192,7 @@ public class UI {
                                         while (!validInput) {
                                             System.out.println("Indtast nyt navn");
                                             nyVærdi = scanner.nextLine();
-                                            if (nyVærdi.matches("[a-zA-z]+")) {
+                                            if (nyVærdi.matches("[æøåa-zA-z]+")) {
                                                 validInput = true;
                                             } else {
                                                 System.out.println("Navnet må kun indenholde bogstaver");
@@ -189,7 +203,21 @@ public class UI {
                                             System.out.println("Indast nyt CPR (6 cifre)");
                                             nyVærdi = scanner.nextLine();
                                             if (nyVærdi.matches("[0-9]{6}")) {
-                                                validInput = true;
+                                                try {
+                                                    int dag = Integer.parseInt(nyVærdi.substring(0, 2));
+                                                    int måned = Integer.parseInt(nyVærdi.substring(2, 4));
+                                                    int år = Integer.parseInt(nyVærdi.substring(4, 6));
+
+                                                    if (år >= 0 && år <= LocalDate.now().getYear() % 100) {
+                                                        år += 2000;
+                                                    } else {
+                                                        år += 1900;
+                                                    }
+                                                    LocalDate.of(år, måned, dag);
+                                                    validInput = true;
+                                                } catch (DateTimeException dte) {
+                                                    System.out.println("Fejl: CPR indeholder en ugyldig dato");
+                                                }
                                             } else {
                                                 System.out.println("CPR må kun indenholde tal og skal være 6 cifre langt");
                                             }
