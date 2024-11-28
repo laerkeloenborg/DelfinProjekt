@@ -54,6 +54,9 @@ public class Controller {
         formand.sorterMedlemmerValgMetode(valg);
     }
 
+    public void sorteringNavn(){
+        formand.sorteringNavn();
+    }
 
     //_______________________metode til at gemme listen med medlemmer___________________________________________________
     public ArrayList<Medlem> gemListeAfMedlemmer (){
