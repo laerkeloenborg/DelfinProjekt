@@ -95,13 +95,15 @@ public class Formand {
 
 
     // metode til at printe medlemmer
-    public void visMedlemmer() {
+    public ArrayList<Medlem> visMedlemmer() {
         if (medlemsListen.isEmpty()) {
-            System.out.println("Ingen medlemmer registreret");
+            return null;
         } else {
-            for (Medlem medlem : medlemsListen) {
-                System.out.println(medlem);
-            }
+            return medlemsListen;
+//
+//            for (Medlem medlem : medlemsListen) {
+//                System.out.println(medlem);
+//            }
         }
     }
 }

@@ -23,8 +23,8 @@ public class Controller {
         formand.redigerMedlem(medlem, valg, newValue);
     }
 
-    public void visMedlemmer() {
-        formand.visMedlemmer();
+    public ArrayList<Medlem> visMedlemmer() {
+       return formand.visMedlemmer();
     }
 
     public String findSpecifiktMedlemsNavn(String cpr){
