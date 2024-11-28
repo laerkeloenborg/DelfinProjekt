@@ -244,26 +244,31 @@ public class UI {
                                 break;
 
                             case "4":
-                                System.out.println("\n\nHvad vil sortere efter: " +
-                                        "\n1. Medlemsstatus" +
-                                        "\n2. Aldersgruppe" +
-                                        "\n3. Aktivitetsform" +
-                                        "\n4. Afslut");
-
                                 boolean sortering = true;
                                 while (sortering) {
-                                    int sorteringsValg = scanner.nextInt();
-                                    scanner.nextLine();
+                                    System.out.println("\n\nHvad vil sortere efter: " +
+                                            "\n1. Medlemsstatus" +
+                                            "\n2. Aldersgruppe" +
+                                            "\n3. Aktivitetsform" +
+                                            "\n4. Gå tilbage til formand menu");
 
-                                    if (sorteringsValg == 4) {
-                                        sortering = false;
-                                        continue;
-                                    }
+                                    try {
+                                        int sorteringsValg = scanner.nextInt();
+                                        scanner.nextLine();
 
-                                    if (sorteringsValg >= 1 && sorteringsValg <= 3) {
-                                        controller.sorterMedlemmerValgMetode(sorteringsValg);
-                                    } else {
-                                        System.out.println("Ugyldigt valg");
+                                        if (sorteringsValg == 4) {
+                                            sortering = false;
+                                            continue;
+                                        }
+
+                                        if (sorteringsValg >= 1 && sorteringsValg <= 3) {
+                                            controller.sorterMedlemmerValgMetode(sorteringsValg);
+                                        } else {
+                                            System.out.println("Ugyldigt valg - indtast et tal mellem 1-4");
+                                        }
+                                    } catch (InputMismatchException e) {
+                                        System.out.println("Indtast et tal mellem 1-4");
+                                        scanner.nextLine();
                                     }
                                 }
                                 break;
