@@ -18,6 +18,8 @@ public class Controller {
         formand.tilføjMedlem(navn, cpr, status, aktivitetsForm, harBetalt);
     }
 
+
+    //_______________________metode til at slette medlem________________________________________________________________
     public boolean sletMedlem(String cpr) {
         return formand.sletMedlem(cpr);
     }
