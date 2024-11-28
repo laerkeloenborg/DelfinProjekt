@@ -1,5 +1,6 @@
 import java.time.DateTimeException;
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -158,10 +159,10 @@ public class UI {
                                 while (sletning) {
                                     System.out.print("indtast CPR-nummer på det medlem der skal slettes: ");
                                     String medlemCpr = scanner.nextLine();
-                                    if (controller.sletMedlem(medlemCpr)){
+                                    if (controller.sletMedlem(medlemCpr)) {
                                         System.out.println("medlemmet er blevet slettet!");
                                         sletning = false;
-                                    } else{
+                                    } else {
                                         System.out.println("medlemmet findes ikke, vil du prøve med et nyt CPRnr?");
                                         System.out.println("Indtast ja eller nej");
                                         String svar = scanner.nextLine().toLowerCase();
@@ -169,7 +170,8 @@ public class UI {
                                             sletning = false;
                                         }
                                     }
-                                } break;
+                                }
+                                break;
                             //_______________________redigering af medlem_______________________________________________
                             case "3":
                                 boolean cprIndtasting = true;
@@ -288,11 +290,14 @@ public class UI {
                                 }
                                 controller.gemListeAfMedlemmer();
                                 break;
-                                //________________________sorter i listen af medlemmer__________________________________
+                            //________________________sorter i listen af medlemmer__________________________________
                             case "4":
-                                for (Medlem medlem : controller.visMedlemmer()) {
+                                controller.sorteringNavn();
+                                System.out.println(controller.visMedlemmer());
+                                for (Medlem medlem : controller.visMedlemmer()) { //TODO: ekstra, fiks evt. så det ik står flere steder
                                     System.out.println(medlem);
                                 }
+
                                 boolean sortering = true;
                                 while (sortering) {
                                     System.out.println("\n\nHvad vil sortere efter: " +
@@ -322,7 +327,7 @@ public class UI {
                                     }
                                 }
                                 break;
-                                //________________________tilbage til hovedmenu_________________________________________
+                            //________________________tilbage til hovedmenu_________________________________________
                             case "5":
                                 formandMenuKører = false;
                                 break;
@@ -360,7 +365,7 @@ public class UI {
                                 System.out.println("der er lige nu indbtalt: " + controller.inbetaltKontingentForNu());
                                 break;
                             //________________________medlemmer i restance______________________________________________
-                             case "3":
+                            case "3":
                                 System.out.println("medlemmer der mangler at betale kontingent er:");
                                 System.out.println(controller.medlemmerIRestance());
                                 System.out.println("der er lige nu " + controller.restanceBeløb() + " kr. i restance, i klubben\n");

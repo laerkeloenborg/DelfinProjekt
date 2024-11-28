@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 
 
@@ -104,6 +105,10 @@ public class Formand {
                 break;
         }
         visMedlemmer();
+    }
+
+    public void sorteringNavn(){
+        Collections.sort(medlemsListen, new Comparators.sorteringNavn());
     }
 
 
