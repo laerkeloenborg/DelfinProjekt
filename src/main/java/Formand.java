@@ -100,10 +100,10 @@ public class Formand {
             return null;
         } else {
             return medlemsListen;
-//
-//            for (Medlem medlem : medlemsListen) {
-//                System.out.println(medlem);
-//            }
         }
+    }
+
+    public int antalMedlemmer (){
+        return medlemsListen.size();
     }
 }

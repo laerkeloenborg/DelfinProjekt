@@ -51,7 +51,7 @@ public class Medlem {
 
   public AldersGruppe getALDERSGRUPPE(){
       int alder = this.cprOmregning();
-        if(alder < 18){ //TODO: spørgsmål til PO, vi antager at når man fylder 18 så skifter det til SENIOR
+        if(alder < 18){
             setALDERSGRUPPE(AldersGruppe.JUNIOR);
         } else{
             setALDERSGRUPPE(AldersGruppe.SENIOR);
@@ -94,7 +94,7 @@ public class Medlem {
         int dag = Integer.parseInt(cpr.substring(0, 2));
         int måned = Integer.parseInt(cpr.substring(2, 4));
         int år = Integer.parseInt(cpr.substring(4, 6));
-        if (år >= 0 && år <= LocalDate.now().getYear() % 100) {
+        if (år >= 0 && år <= LocalDate.now().getYear() % 100) { //TODO: kommentar til %
             år += 2000;
         } else {
             år += 1900;
