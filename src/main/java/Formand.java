@@ -107,6 +107,8 @@ public class Formand {
         visMedlemmer();
     }
 
+
+    //________________________metode til at sorterer efter navn_________________________________________________________
     public void sorteringNavn(){
         Collections.sort(medlemsListen, new Comparators.sorteringNavn());
     }
