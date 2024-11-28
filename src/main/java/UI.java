@@ -169,7 +169,7 @@ public class UI {
                     while (kassererMenuKører) {
                         System.out.println("Kasserer Menu:" +
                                 "\n1 for at se den forventede indkomst i kontingent til klubben" +
-                                "\n2 for at se beløb i restance" +
+                                "\n2 for at se medlemmer der har betalt" +
                                 "\n3 for at se medlemmer i restance" +
                                 "\n4 for at gå tilbage til hovedmenuen" +
                                 "\n\nVælg en mulighed: \n");
@@ -178,15 +178,18 @@ public class UI {
 
                         switch (brugerValg) {
                             case "1":
-                                System.out.println("det forventede indkomst i form af kontingent for svømmeklubben er:  ");
-                                System.out.print(controller.forventetKontingent() + " kr. årligt\n");
+                                System.out.println("det forventede indkomst i form af kontingent for svømmeklubben er:  " +
+                                        controller.forventetKontingent() + " kr. årligt\n");
                                 break;
                             case "2":
-                                System.out.println("der er lige nu " + controller.restanceBeløb() + " kr. i restance imellem medlemmerne i klubben\n");
+                                System.out.println("medlemmer der har betalt kontingent: ");
+                                System.out.println(controller.medlemmerDerHarBetalt());
+                                System.out.println("der er lige nu indbtalt: " + controller.inbetaltKontingentForNu());
                                 break;
                             case "3":
                                 System.out.println("medlemmer der mangler at betale kontingent er:");
                                 System.out.println(controller.medlemmerIRestance());
+                                System.out.println("der er lige nu " + controller.restanceBeløb() + " kr. i restance, i klubben\n");
                                 break;
                             case "4":
                                 kassererMenuKører = false;
