@@ -21,7 +21,6 @@ public class Controller {
         formand.tilføjMedlem(navn, cpr, status, aktivitetsForm, harBetalt);
     }
 
-
     //_______________________metode til at slette medlem________________________________________________________________
     public boolean sletMedlem(String cpr) {
         return formand.sletMedlem(cpr);
@@ -29,8 +28,8 @@ public class Controller {
 
 
     //_______________________metode til at redigerer i medlemmets oplysninger___________________________________________
-    public void redigerMedlem(Medlem medlem, int valg, String newValue){
-        formand.redigerMedlem(medlem, valg, newValue);
+    public void redigerMedlem(Medlem medlem, int valg, String nyVærdi){
+        formand.redigerMedlem(medlem, valg, nyVærdi);
     }
 
 
@@ -57,6 +56,7 @@ public class Controller {
         formand.sorterMedlemmerValgMetode(valg);
     }
 
+    //_______________________metode til at sortere i medlemslisten efter navn___________________________________________
     public void sorteringNavn(){
         formand.sorteringNavn();
     }
