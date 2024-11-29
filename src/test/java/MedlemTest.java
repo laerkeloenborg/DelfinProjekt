@@ -10,7 +10,7 @@ class MedlemTest {
         Medlem john = new Medlem("John","021270", MedlemsStatus.PASSIV,"motionist",true);
 
         // ----- Act -----
-        int korrekteAlder = john.cprOmregning();
+        int korrekteAlder = john.cprOmregningTilAlder();
 
         // ----- Assert -----
         int forventetAlder = 53;

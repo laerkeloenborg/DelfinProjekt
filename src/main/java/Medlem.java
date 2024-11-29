@@ -49,7 +49,7 @@ public class Medlem {
 
 
     public AldersGruppe getAldersGruppe() {
-        int alder = this.cprOmregning();
+        int alder = this.cprOmregningTilAlder();
         if (alder < 18) {
             setAldersGruppe(AldersGruppe.JUNIOR);
         } else {
@@ -87,13 +87,13 @@ public class Medlem {
 
 
     //________________________metode til omregning af CPR til alder_____________________________________________________
-    public int cprOmregning() {
+    public int cprOmregningTilAlder() {
         LocalDate nu = LocalDate.now();
         String cpr = this.getCpr();
         int dag = Integer.parseInt(cpr.substring(0, 2));
         int måned = Integer.parseInt(cpr.substring(2, 4));
         int år = Integer.parseInt(cpr.substring(4, 6));
-        if (år >= 0 && år <= LocalDate.now().getYear() % 100) { //TODO: kommentar til %
+        if (år >= 0 && år <= LocalDate.now().getYear() % 100) { //TODO: cami skriv kommentarer til denne metode!!!
             år += 2000;
         } else {
             år += 1900;
@@ -107,7 +107,7 @@ public class Medlem {
     //___________________metode til at se hvad det enkelte medlem skal betale i kontingent______________________________
     public int kontingent() {
         int kontingent = 0;
-        int alder = this.cprOmregning();
+        int alder = this.cprOmregningTilAlder();
 
         if (getMedlemsstatus().equals(MedlemsStatus.AKTIV)) {
             if (getAldersGruppe().equals(AldersGruppe.JUNIOR)) {
@@ -132,7 +132,7 @@ public class Medlem {
     @Override
     public String toString() {
         return "Navn: " + getNavn() +
-                ", CPR: " + getCpr() +"(" + cprOmregning() + " år)" +
+                ", CPR: " + getCpr() +"(" + cprOmregningTilAlder() + " år)" +
                 ", Aldersgruppe: " + getAldersGruppe() +
                 ", Aktivitets status: " + (MEDLEMSSTATUS == MedlemsStatus.AKTIV ? "Aktiv" : "Passiv") +
                 ", Aktivitetsform: " + getAktivitetsForm() +

@@ -54,7 +54,7 @@ public class Kasserer {
         int counter = 1;
         for (Medlem medlem : medlemsListe) {
             if (medlem.getHarBetalt()) {
-                udskriv += counter++ + ". " + medlem.getNavn() + ", " + medlem.getCpr() + "(" + medlem.cprOmregning() +
+                udskriv += counter++ + ". " + medlem.getNavn() + ", " + medlem.getCpr() + "(" + medlem.cprOmregningTilAlder() +
                         " år), " + medlem.getMedlemsstatus() + ", " + medlem.kontingent() + "kr. \n ";
             }
         }
@@ -85,7 +85,7 @@ public class Kasserer {
         int tæller = 1;
         for (Medlem medlem : medlemsListe) {
             if (!medlem.getHarBetalt()) {
-                udskriv += tæller++ + ". " + medlem.getNavn() + ", " + medlem.getCpr() + "(" + medlem.cprOmregning() +
+                udskriv += tæller++ + ". " + medlem.getNavn() + ", " + medlem.getCpr() + "(" + medlem.cprOmregningTilAlder() +
                         " år), " + medlem.getMedlemsstatus() + ", -" + medlem.kontingent() + " kr.\n ";
             }
         }
