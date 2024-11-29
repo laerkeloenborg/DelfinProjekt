@@ -10,13 +10,6 @@ public class Comparators {
     }
 
 
-    //________________________comparator til sortering efter alder______________________________________________________
-    public static class sorteringAlder implements Comparator<Medlem> {
-        public int compare(Medlem m1, Medlem m2) {
-            return Integer.compare(m1.cprOmregning(), m2.cprOmregning());
-        }
-    }
-
 
     //________________________comparator til sortering efter medlems sattus_____________________________________________
     public static class sorteringMedlemsstatus implements Comparator<Medlem> {
