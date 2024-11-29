@@ -292,7 +292,6 @@ public class UI {
                             //________________________sorter i listen af medlemmer__________________________________
                             case "4":
                                 controller.sorteringNavn();
-                                System.out.println(controller.visMedlemmer());
                                 for (Medlem medlem : controller.visMedlemmer()) { //TODO: ekstra, fiks evt. så det ik står flere steder
                                     System.out.println(medlem);
                                 }
