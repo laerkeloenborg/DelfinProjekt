@@ -1,6 +1,5 @@
 import java.time.DateTimeException;
 import java.time.LocalDate;
-import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -362,7 +361,7 @@ public class UI {
                             case "2":
                                 System.out.println("medlemmer der har betalt kontingent: ");
                                 System.out.println(controller.medlemmerDerHarBetalt());
-                                System.out.println("der er lige nu indbtalt: " + controller.inbetaltKontingentForNu());
+                                System.out.println("der er lige nu indbtalt: " + controller.indbetaltKontingentForNu());
                                 break;
                             //________________________medlemmer i restance______________________________________________
                             case "3":

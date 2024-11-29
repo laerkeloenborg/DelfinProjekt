@@ -28,25 +28,25 @@ public class Controller {
 
 
     //_______________________metode til at redigerer i medlemmets oplysninger___________________________________________
-    public void redigerMedlem(Medlem medlem, int valg, String nyVærdi){
+    public void redigerMedlem(Medlem medlem, int valg, String nyVærdi) {
         formand.redigerMedlem(medlem, valg, nyVærdi);
     }
 
 
     //_______________________metode til at vise listen af medlemmer_____________________________________________________
     public ArrayList<Medlem> visMedlemmer() {
-       return formand.visMedlemmer();
+        return formand.visMedlemmer();
     }
 
 
     //_______________________metode til at finde et specifikt medlems navn ud fra cpr___________________________________
-    public String findSpecifiktMedlemsNavn(String cpr){
+    public String findSpecifiktMedlemsNavn(String cpr) {
         return formand.findSpecifiktMedlemsNavn(cpr);
     }
 
 
     //_______________________metode til at finde specifikt medlem_______________________________________________________
-    public Medlem findSpecifiktMedlem(String cpr){
+    public Medlem findSpecifiktMedlem(String cpr) {
         return formand.findSpecifiktMedlem(cpr);
     }
 
@@ -57,17 +57,17 @@ public class Controller {
     }
 
     //_______________________metode til at sortere i medlemslisten efter navn___________________________________________
-    public void sorteringNavn(){
+    public void sorteringNavn() {
         formand.sorteringNavn();
     }
 
     //_______________________metode til at gemme listen med medlemmer___________________________________________________
-    public ArrayList<Medlem> gemListeAfMedlemmer (){
+    public ArrayList<Medlem> gemListeAfMedlemmer() {
         return formand.gemMedlem();
     }
 
     //________________________metode til at se antallet af medlemmer i klubben__________________________________________
-    public int antalAfMedlemmer(){
+    public int antalAfMedlemmer() {
         return formand.antalMedlemmer();
     }
 
@@ -76,35 +76,33 @@ public class Controller {
 
 
     //_______________________metode til at se forventet kontigent for svømmeklubben_____________________________________
-    public int forventetKontingent(){
+    public int forventetKontingent() {
         return kasserer.samletForventetKontingent();
     }
 
 
     //_______________________metode til at se indbetalte kontingenter___________________________________________________
-    public int inbetaltKontingentForNu(){
+    public int indbetaltKontingentForNu() {
         return kasserer.indbetaltKontingentForNu();
     }
 
 
     //_______________________metode til at se liste af medlemmer der har betalt_________________________________________
-    public String medlemmerDerHarBetalt(){
+    public String medlemmerDerHarBetalt() {
         return kasserer.medlemmerDerHarBetalt();
     }
 
 
     //_______________________metode til at se retance beløbet___________________________________________________________
-    public int restanceBeløb(){
+    public int restanceBeløb() {
         return kasserer.restanceKontingent();
     }
 
 
     //_______________________metode til at se liste af medlemmer der ikke har betalt endnu______________________________
-    public String medlemmerIRestance(){
+    public String medlemmerIRestance() {
         return kasserer.medlemmerIRestance();
     }
-
-
 
 
 }

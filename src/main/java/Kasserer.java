@@ -28,7 +28,7 @@ public class Kasserer {
     }
 
     //___________________________metode til at finde det samlede forventede kontingent til klubben______________________
-    public int samletForventetKontingent(){
+    public int samletForventetKontingent() {
         int allesSamledeKontingent = 0;
         int allesSamledeKontingent2 = 0;
 
@@ -49,7 +49,7 @@ public class Kasserer {
     }
 
     //___________________________metode til at se medlemmer som har betalt kontingent___________________________________
-    public String medlemmerDerHarBetalt(){
+    public String medlemmerDerHarBetalt() {
         String udskriv = " ";
         int counter = 1;
         for (Medlem medlem : medlemsListe) {
@@ -82,10 +82,10 @@ public class Kasserer {
     //___________________________metode til at se alle medlemmer der er i restance______________________________________
     public String medlemmerIRestance() {
         String udskriv = " ";
-        int counter = 1;
+        int tæller = 1;
         for (Medlem medlem : medlemsListe) {
             if (!medlem.getHarBetalt()) {
-                udskriv += counter++ + ". " + medlem.getNavn() + ", " + medlem.getCpr() + "(" + medlem.cprOmregning() +
+                udskriv += tæller++ + ". " + medlem.getNavn() + ", " + medlem.getCpr() + "(" + medlem.cprOmregning() +
                         " år), " + medlem.getMedlemsstatus() + ", -" + medlem.kontingent() + " kr.\n ";
             }
         }

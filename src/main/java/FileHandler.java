@@ -27,22 +27,22 @@ public class FileHandler {
     public ArrayList<Medlem> hentListeAfMedlemmer() {
         ArrayList<Medlem> medlemsListe = new ArrayList<>();
         Scanner scanner = null;
-        File file = new File("medlemsListe");
+        File fil = new File("medlemsListe");
         try {
-            scanner = new Scanner(file);
+            scanner = new Scanner(fil);
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
         Medlem medlem = null;
         while (scanner.hasNext()) {
-            String line = scanner.nextLine();
-            String[] attributes = line.split(";");
+            String linje = scanner.nextLine();
+            String[] attributter = linje.split(";");
 
-            medlem = new Medlem(attributes[0],
-                    (attributes[1]),
-                    MedlemsStatus.parseMedlemsStatus(attributes[3]),
-                    attributes[4],
-                    Boolean.parseBoolean(attributes[5]));
+            medlem = new Medlem(attributter[0],
+                    (attributter[1]),
+                    MedlemsStatus.parseMedlemsStatus(attributter[3]),
+                    attributter[4],
+                    Boolean.parseBoolean(attributter[5]));
 
             medlemsListe.add(medlem);
         }
