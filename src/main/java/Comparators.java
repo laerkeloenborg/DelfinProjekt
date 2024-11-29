@@ -29,7 +29,7 @@ public class Comparators {
     //________________________comparator til sortering efter aldersgruppe_______________________________________________
     public static class sorteringAldersgruppe implements Comparator<Medlem> {
         public int compare(Medlem m1, Medlem m2) {
-            return m1.getALDERSGRUPPE().compareTo(m2.getALDERSGRUPPE());
+            return m1.getAldersGruppe().compareTo(m2.getAldersGruppe());
         }
     }
 

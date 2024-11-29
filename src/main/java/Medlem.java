@@ -32,9 +32,6 @@ public class Medlem {
 
     //cpr skal være specifik 6 cifre ellers exception
     public String getCpr() {
-        int cprLængde = cpr.length();
-        if (cprLængde != 6) {
-        }
         return cpr;
     }
 
@@ -51,18 +48,18 @@ public class Medlem {
   }
 
 
-    public AldersGruppe getALDERSGRUPPE() {
+    public AldersGruppe getAldersGruppe() {
         int alder = this.cprOmregning();
         if (alder < 18) {
-            setALDERSGRUPPE(AldersGruppe.JUNIOR);
+            setAldersGruppe(AldersGruppe.JUNIOR);
         } else {
-            setALDERSGRUPPE(AldersGruppe.SENIOR);
+            setAldersGruppe(AldersGruppe.SENIOR);
         }
 
         return ALDERSGRUPPE;
   }
 
-  public void setALDERSGRUPPE(AldersGruppe ALDERSGRUPPE){
+  public void setAldersGruppe(AldersGruppe ALDERSGRUPPE){
         this.ALDERSGRUPPE = ALDERSGRUPPE;
   }
 
@@ -113,9 +110,9 @@ public class Medlem {
         int alder = this.cprOmregning();
 
         if (getMedlemsstatus().equals(MedlemsStatus.AKTIV)) {
-            if (getALDERSGRUPPE().equals(AldersGruppe.JUNIOR)) {
+            if (getAldersGruppe().equals(AldersGruppe.JUNIOR)) {
                 kontingent = 1000;
-            } else if (getALDERSGRUPPE().equals(AldersGruppe.SENIOR)) {
+            } else if (getAldersGruppe().equals(AldersGruppe.SENIOR)) {
                 if (alder > 60) {
                     int rabat = 1600 * 25 / 100;
                     kontingent = 1600 - rabat;
@@ -136,7 +133,7 @@ public class Medlem {
     public String toString() {
         return "Navn: " + getNavn() +
                 ", CPR(alder): " + getCpr() +"(" + cprOmregning() + " år)" +
-                ", Aldersgruppe: " + getALDERSGRUPPE() +
+                ", Aldersgruppe: " + getAldersGruppe() +
                 ", Aktivitets status: " + (MEDLEMSSTATUS == MedlemsStatus.AKTIV ? "Aktiv" : "Passiv") +
                 ", Aktivitetsform: " + getAktivitetsForm() +
                 ", Betalingsstatus: " + (this.getHarBetalt() ? "Betalt" : "Ikke betalt");
@@ -147,7 +144,7 @@ public class Medlem {
     public String toStringTilFil() {
         return this.navn + ";" +
                 this.cpr + ";" +
-                this.getALDERSGRUPPE() + ";" +
+                this.getAldersGruppe() + ";" +
                 (this.MEDLEMSSTATUS == MedlemsStatus.AKTIV ? "Aktiv" : "Passiv") + ";" +
                 this.getAktivitetsForm() + ";" +
                 this.getHarBetalt();

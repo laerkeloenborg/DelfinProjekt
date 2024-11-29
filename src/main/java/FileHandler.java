@@ -7,8 +7,6 @@ import java.util.Scanner;
 public class FileHandler {
 
 
-    private
-
     //________________________metode til at gemme liste med medlemmer til fil___________________________________________
     public ArrayList<Medlem> gemListeAfMedlemmer(ArrayList<Medlem> medlemsListe) {
         PrintStream output = null;

@@ -17,8 +17,8 @@ public class Controller {
 
 
     //_______________________metode til at oprette medlem_______________________________________________________________
-    public void opretMedlem(String navn, String cpr, MedlemsStatus status, String aktivitetsForm, boolean harBetalt) {
-        formand.tilføjMedlem(navn, cpr, status, aktivitetsForm, harBetalt);
+    public void opretMedlem(String navn, String cpr, MedlemsStatus STATUS, String aktivitetsForm, boolean harBetalt) {
+        formand.tilføjMedlem(navn, cpr, STATUS, aktivitetsForm, harBetalt);
     }
 
     //_______________________metode til at slette medlem________________________________________________________________
