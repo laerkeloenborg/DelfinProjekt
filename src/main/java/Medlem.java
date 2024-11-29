@@ -132,7 +132,7 @@ public class Medlem {
     @Override
     public String toString() {
         return "Navn: " + getNavn() +
-                ", CPR(alder): " + getCpr() +"(" + cprOmregning() + " år)" +
+                ", CPR: " + getCpr() +"(" + cprOmregning() + " år)" +
                 ", Aldersgruppe: " + getAldersGruppe() +
                 ", Aktivitets status: " + (MEDLEMSSTATUS == MedlemsStatus.AKTIV ? "Aktiv" : "Passiv") +
                 ", Aktivitetsform: " + getAktivitetsForm() +
