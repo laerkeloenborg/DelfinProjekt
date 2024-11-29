@@ -42,7 +42,7 @@ public class Formand {
 
 
 
-    //________________________metode til at redigerer i et medlems oplysninger__________________________________________
+    //________________________metode til at redigere i et medlems oplysninger___________________________________________
     public String redigerMedlem(Medlem medlem, int valg, String nyVærdi) {
         switch (valg) {
             case 1:
