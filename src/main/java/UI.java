@@ -300,7 +300,7 @@ public class UI {
 
                                 boolean sortering = true;
                                 while (sortering) {
-                                    System.out.println("\n\nHvad vil sortere efter: " +
+                                    System.out.println("\n\nHvad vil du sortere efter: " +
                                             "\n1. Medlemsstatus" +
                                             "\n2. Aldersgruppe" +
                                             "\n3. Aktivitetsform" +
