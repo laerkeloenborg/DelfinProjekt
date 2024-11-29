@@ -43,22 +43,22 @@ public class Formand {
 
 
     //________________________metode til at redigerer i et medlems oplysninger__________________________________________
-    public String redigerMedlem(Medlem medlem, int choice, String newValue) {
-        switch (choice) {
+    public String redigerMedlem(Medlem medlem, int valg, String nyVærdi) {
+        switch (valg) {
             case 1:
-                medlem.setNavn(newValue);
+                medlem.setNavn(nyVærdi);
                 break;
             case 2:
-                medlem.setCpr(newValue);
+                medlem.setCpr(nyVærdi);
                 break;
             case 3:
-                medlem.setMedlemsstatus(MedlemsStatus.parseMedlemsStatus(newValue));
+                medlem.setMedlemsstatus(MedlemsStatus.parseMedlemsStatus(nyVærdi));
                 break;
             case 4:
-                medlem.setAktivitetsForm(newValue);
+                medlem.setAktivitetsForm(nyVærdi);
                 break;
             case 5:
-                boolean harBetalt = newValue.equalsIgnoreCase("ja");
+                boolean harBetalt = nyVærdi.equalsIgnoreCase("ja");
                 medlem.setHarBetalt(harBetalt);
                 break;
             default:
@@ -128,4 +128,5 @@ public class Formand {
     public int antalMedlemmer (){
         return medlemsListen.size();
     }
+
 }
