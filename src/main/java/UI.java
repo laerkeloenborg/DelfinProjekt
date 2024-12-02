@@ -1,5 +1,6 @@
 import java.time.DateTimeException;
 import java.time.LocalDate;
+import java.util.Comparator;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -384,20 +385,92 @@ public class UI {
                     break;
                 //________________________træner menu___________________________________________________________________
                 case "3":
-                    System.out.println("Træner menu kommer her");
+                    boolean trænerMenuKører = true;
+                    while (trænerMenuKører) {
+                        System.out.println("Træner Menu:" +
+                                "\n1 for at se en oversigt over klubbens konkurrencesvømmere" +
+                                "\n2 for at se en oversigt over svømmernes bedste resultater" +
+                                "\n3 for at se en oversigt over svømmere som har deltaget i konkurrencer" +
+                                "\n4 for at se en oversigt over top5 svømmere inden for hver disciplin" +
+                                "\n5 for at redigere i konkurrencesvømmerne" +
+                                "\n6 for at gå tilbage til hovedmenuen" +
+                                "\n\nVælg en mulighed: \n");
+
+                        String brugerValg = scanner.nextLine();
+
+                        switch (brugerValg) {
+
+                            case "1":
+                                System.out.println("Liste over klubbens konkurrencesvømmere: "); //TODO indsæt metode
+                                break;
+
+                            case "2":
+                                System.out.println("Liste over svømmernes bedste resultater: "); //TODO indsæt metode
+                                break;
+
+                            case "3":
+                                System.out.println("Liste over svømmere som har deltaget i konkurrence"); //TODO indsæt metode
+                                break;
+
+                            case "4":
+                                System.out.println("Liste over top5 svømmere"); //TODO indsæt metode
+                                break;
+
+                            case "5":
+                                boolean ændreKonkurrenceSvømmer = true;
+                                while (ændreKonkurrenceSvømmer) {
+                                    System.out.println("Vælg hvilken kategori du vil ændre i: " +
+                                            "\n1 for at rediger i resultater" +
+                                            "\n2 for at rediger svømmedisciplin" +
+                                            "\n3 for at rediger om svømmeren er konkurrencesvømmer" +
+                                            "\n4 for at gå tilbage til trænermenuen" +
+                                            "\n\nVælg en mulighed: \n");
+
+                                    String brugerValg2 = scanner.nextLine();
+
+                                    switch (brugerValg2) {
+
+                                        case "1":
+                                            System.out.println("Du kan nu ændre i svømmerens resultater"); //TODO metode til dette
+                                            break;
+
+                                        case "2":
+                                            System.out.println("Du kan nu ændre i svømmediscplin"); //TODO indsæt metode
+                                            break;
+
+                                        case "3":
+                                            System.out.println("Du kan nu tilføje/fjerne konkurrencesvømmere"); //TODO indsæt
+                                            break;
+
+                                        case "4":
+                                            ændreKonkurrenceSvømmer = false;
+                                            break;
+                                        default:
+                                            System.out.println("ugyldigt valg, prøv igen");
+                                            break;
+                                    }
+                                }
+                                break;
+                            case "6":
+                                trænerMenuKører = false;
+                                break;
+                            default:
+                                System.out.println("ugyldigt valg, prøv igen");
+                                break;
+                        }
+                    }
                     break;
-                //________________________luk programmet ned____________________________________________________________
-                case "4":
-                    System.out.println("Programmet lukkes ned....");
-                    kører = false;
-                    break;
-                default:
-                    System.out.println("Ugyldigt valgt. Indtast 1,2,3 eller 4");
-                    break;
+                        //________________________luk programmet ned____________________________________________________________
+                        case "4":
+                            System.out.println("Programmet lukkes ned....");
+                            kører = false;
+                            break;
+                        default:
+                            System.out.println("Ugyldigt valgt. Indtast 1,2,3 eller 4");
+                            break;
+                    }
+
             }
         }
     }
-
-
-}
 
