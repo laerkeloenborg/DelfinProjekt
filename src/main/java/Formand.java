@@ -40,7 +40,6 @@ public class Formand {
     }
 
 
-
     //________________________metode til at redigere i et medlems oplysninger___________________________________________
     public String redigerMedlem(Medlem medlem, int valg, String nyVærdi) {
         switch (valg) {
@@ -108,7 +107,7 @@ public class Formand {
 
 
     //________________________metode til at sorterer efter navn_________________________________________________________
-    public void sorteringNavn(){
+    public void sorteringNavn() {
         Collections.sort(medlemsListen, new Comparators.sorteringNavn());
     }
 
@@ -122,9 +121,8 @@ public class Formand {
         }
     }
 
-
     //_______________________metode til at se antallet af medlemmer i klubben___________________________________________
-    public int antalMedlemmer (){
+    public int antalMedlemmer() {
         return medlemsListen.size();
     }
 
