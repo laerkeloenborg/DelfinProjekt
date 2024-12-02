@@ -93,10 +93,10 @@ public class Medlem {
         int dag = Integer.parseInt(cpr.substring(0, 2));
         int måned = Integer.parseInt(cpr.substring(2, 4));
         int år = Integer.parseInt(cpr.substring(4, 6));
-        if (år >= 0 && år <= LocalDate.now().getYear() % 100) { //TODO: cami skriv kommentarer til denne metode!!!
-            år += 2000;
+        if (år >= 0 && år <= LocalDate.now().getYear() % 100) { // ved % får vi resten efter en heltalsdivision med 100. dvs. at vi får 24 ved nuværende år.
+            år += 2000; //hvis år er større end eller ligmed 0 og mindre end 24 sætter mand 20 foran de sidste to cifre i sit cpr.
         } else {
-            år += 1900;
+            år += 1900;//og 19 foran de sidste to hvis år er større end 24.
         }
         LocalDate fødselsdato = LocalDate.of(år, måned, dag);
         int alder = Period.between(fødselsdato, nu).getYears();
