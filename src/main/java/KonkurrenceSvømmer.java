@@ -19,6 +19,10 @@ public class KonkurrenceSvømmer extends Medlem{
         return SVØMMEDISCIPLIN;
     }
 
+    public void setSVØMMEDISCIPLIN(SvømmeDiscipliner SVØMMEDISCIPLIN){
+        this.SVØMMEDISCIPLIN = SVØMMEDISCIPLIN;
+    }
+
     public double getBedsteTid(){
         return bedsteTid;
     }
