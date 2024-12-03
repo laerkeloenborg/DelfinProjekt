@@ -404,7 +404,6 @@ public class UI {
                                 System.out.println("Liste over klubbens konkurrencesvømmere: "); //TODO indsæt metode
                                 System.out.println(controller.hentKonkurrenceSvømmereFraFil());
                                 break;
-
                             case "2":
                                 System.out.println("Liste over svømmernes bedste resultater: "); //TODO indsæt metode
 

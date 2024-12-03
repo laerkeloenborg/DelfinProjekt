@@ -41,6 +41,15 @@ public class KonkurrenceSvømmer extends Medlem{
 
     //__________________________________________________________________________________________________________________
 
+    @Override
+    public String toString() {
+        return ". Navn: " + this.getNavn() +
+                ", Aldersgruppe: " + this.getAldersGruppe() +
+                ", Aktivitets status: " + (this.getMedlemsstatus() == MedlemsStatus.AKTIV ? "Aktiv" : "Passiv") +
+                ", Svømme Disciplin: " + getSVØMMEDISCIPLIN() +
+                ", Bedstetid: " + getBedsteTid() +
+                ", Har Konkurreret: " + (getHarKonkurreret() ? "ja" : "nej") + "\n";
+    }
 
     public String toStringTilFil() {
         return this.getNavn() + ";" +
