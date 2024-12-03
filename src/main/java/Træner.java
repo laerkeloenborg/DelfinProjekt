@@ -44,36 +44,36 @@ public class Træner {
     }
 
     //TODO: exceptions
-public ArrayList<KonkurrenceSvømmer> top5(ArrayList<KonkurrenceSvømmer> topSvømmere, AldersGruppe ALDERSGRUPPE, SvømmeDiscipliner SVØMMEDISCIPLIN){
+    public ArrayList<KonkurrenceSvømmer> top5(ArrayList<KonkurrenceSvømmer> topSvømmere, AldersGruppe ALDERSGRUPPE, SvømmeDiscipliner SVØMMEDISCIPLIN) {
         ArrayList<KonkurrenceSvømmer> bestemteSvømmere = new ArrayList<>();
-        for (KonkurrenceSvømmer konkurrenceSvømmer : topSvømmere){
-            if(konkurrenceSvømmer.getAldersGruppe().equals(ALDERSGRUPPE) && konkurrenceSvømmer.getSVØMMEDISCIPLIN().equals(SVØMMEDISCIPLIN)){
+        for (KonkurrenceSvømmer konkurrenceSvømmer : topSvømmere) {
+            if (konkurrenceSvømmer.getAldersGruppe().equals(ALDERSGRUPPE) && konkurrenceSvømmer.getSVØMMEDISCIPLIN().equals(SVØMMEDISCIPLIN)) {
                 bestemteSvømmere.add(konkurrenceSvømmer);
             }
         }
 
         ArrayList<KonkurrenceSvømmer> top5 = new ArrayList<>();
-        for(int i = 0; i < Math.min(5,bestemteSvømmere.size());i++){
+        for (int i = 0; i < Math.min(5, bestemteSvømmere.size()); i++) {
             top5.add(bestemteSvømmere.get(i));
         }
 
         return top5;
-}
+    }
 
 
-public String printTop5(ArrayList<KonkurrenceSvømmer> topSvømmere){
+    public String printTop5(ArrayList<KonkurrenceSvømmer> topSvømmere) {
         String string = "";
         int tæller = 1;
 
-        for (KonkurrenceSvømmer konkurrenceSvømmer : topSvømmere){
+        for (KonkurrenceSvømmer konkurrenceSvømmer : topSvømmere) {
             string += tæller++ + konkurrenceSvømmer.toString();
         }
         return string;
-}
+    }
 
-public ArrayList<KonkurrenceSvømmer> getKonkurrenceSvømmerListe(){
+    public ArrayList<KonkurrenceSvømmer> getKonkurrenceSvømmerListe() {
         return konkurrenceSvømmerListe;
-}
+    }
 
 
     public String printJuniorHold() {
