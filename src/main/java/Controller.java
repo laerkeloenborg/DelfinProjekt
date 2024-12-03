@@ -24,7 +24,7 @@ public class Controller {
     }
 
     //_______________________metode til at oprette konkurrence Svømmer__________________________________________________
-    public void opretKonkurrenceSvømmer(String navn, String cpr, MedlemsStatus STATUS, String aktivitetsForm, boolean harBetalt, SvømmeDiscipliner svømmeDisciplin, double bedsteTid, boolean harKonkurreret){
+    public void opretKonkurrenceSvømmer(String navn, String cpr, MedlemsStatus STATUS, boolean harBetalt, String aktivitetsForm, SvømmeDiscipliner svømmeDisciplin, double bedsteTid, boolean harKonkurreret){
         formand.tilføjKonkurrenceSvømmer(navn, cpr, STATUS,harBetalt, aktivitetsForm, svømmeDisciplin, bedsteTid, harKonkurreret);
     }
 

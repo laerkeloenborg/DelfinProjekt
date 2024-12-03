@@ -110,22 +110,6 @@ public class UI {
                                     }
                                 }
 
-                                System.out.print("Vælg aktivitetsform (motionist/konkurrence): ");
-                                String aktivitetsForm = "";
-                                boolean validAktivitetsForm = false;
-
-                                while (!validAktivitetsForm) {
-                                    try {
-                                        aktivitetsForm = scanner.nextLine().toLowerCase();
-                                        if (!aktivitetsForm.equals("motionist") && !aktivitetsForm.equals("konkurrence")) {
-                                            throw new IllegalArgumentException("Indtast motionist eller konkurrence");
-                                        }
-                                        validAktivitetsForm = true;
-                                    } catch (IllegalArgumentException iae) {
-                                        System.out.println("Fejl: " + iae.getMessage());
-                                    }
-                                }
-
                                 System.out.println("Har medlemmet betalt? (ja/nej):  ");
                                 String harBetalt = "";
                                 boolean validBetaling = false;
@@ -216,9 +200,9 @@ public class UI {
                                     }
                                 }
                                 if (aktivitetsForm.equals("konkurrence")) {
-                                    controller.opretKonkurrenceSvømmer(navn, cpr, status, aktivitetsForm, brugerBetalt, svømmeDisciplin, bedsteTid, konkurreret);
+                                    controller.opretKonkurrenceSvømmer(navn, cpr, status, brugerBetalt, aktivitetsForm, svømmeDisciplin, bedsteTid, konkurreret);
                                 } else {
-                                    controller.opretMedlem(navn, cpr, status, aktivitetsForm, brugerBetalt);
+                                    controller.opretMedlem(navn, cpr, status, brugerBetalt, aktivitetsForm);
                                 }
 
                                 System.out.println("Medlemmet er blevet oprettet!");
