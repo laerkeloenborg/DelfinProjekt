@@ -6,6 +6,7 @@ public class Controller {
     private Træner træner;
 
 
+
     //________________________konstruktør_______________________________________________________________________________
     public Controller() {
         formand = new Formand();
@@ -23,8 +24,8 @@ public class Controller {
     }
 
     //_______________________metode til at oprette konkurrence Svømmer__________________________________________________
-    public void opretKonkurrenceSvømmer(String navn, String cpr, MedlemsStatus STATUS, String aktivitetsForm, boolean harBetalt, SvømmeDiscipliner svømmeDisciplin, double bedsteTid, boolean harKonkurreret) {
-        formand.tilføjKonkurrenceSvømmer(navn, cpr, STATUS, harBetalt, aktivitetsForm, svømmeDisciplin, bedsteTid, harKonkurreret);
+    public void opretKonkurrenceSvømmer(String navn, String cpr, MedlemsStatus STATUS, boolean harBetalt, String aktivitetsForm, SvømmeDiscipliner svømmeDisciplin, double bedsteTid, boolean harKonkurreret){
+        formand.tilføjKonkurrenceSvømmer(navn, cpr, STATUS,harBetalt, aktivitetsForm, svømmeDisciplin, bedsteTid, harKonkurreret);
     }
 
     //_______________________metode til at slette medlem________________________________________________________________
@@ -73,7 +74,7 @@ public class Controller {
     }
 
     //_______________________metode til at gemme liste af konkurrencesvømmere___________________________________________
-    public ArrayList<KonkurrenceSvømmer> gemListeAfKonkurrencesvømmere() {
+    public ArrayList<KonkurrenceSvømmer> gemListeAfKonkurrencesvømmere(){
         return formand.gemKonkurrenceSvømmer();
     }
 

@@ -81,8 +81,7 @@ public ArrayList<KonkurrenceSvømmer> getKonkurrenceSvømmerListe(){
         int tæller = 1;
         for (KonkurrenceSvømmer konkurrenceSvømmer : konkurrenceSvømmerListe) {
             if (konkurrenceSvømmer.getAldersGruppe().equals(AldersGruppe.JUNIOR)) {
-                string += tæller++ + ". " + konkurrenceSvømmer.getNavn() + ", " + konkurrenceSvømmer.getAldersGruppe() + ", " + konkurrenceSvømmer.getMedlemsstatus() +
-                        ", " + konkurrenceSvømmer.getSVØMMEDISCIPLIN() + ", " + konkurrenceSvømmer.getBedsteTid() + ", " + konkurrenceSvømmer.getHarKonkurreret() + "\n";
+                string += tæller++ + konkurrenceSvømmer.toString();
             }
         }
         return string;
@@ -93,19 +92,18 @@ public ArrayList<KonkurrenceSvømmer> getKonkurrenceSvømmerListe(){
         int tæller = 1;
         for (KonkurrenceSvømmer konkurrenceSvømmer : konkurrenceSvømmerListe) {
             if (konkurrenceSvømmer.getAldersGruppe().equals(AldersGruppe.SENIOR)) {
-                string += tæller++ + ". " + konkurrenceSvømmer.getNavn() + ", " + konkurrenceSvømmer.getAldersGruppe() + ", " + konkurrenceSvømmer.getMedlemsstatus() +
-                        ", " + konkurrenceSvømmer.getSVØMMEDISCIPLIN() + ", " + konkurrenceSvømmer.getBedsteTid() + ", " + konkurrenceSvømmer.getHarKonkurreret() + "\n";
+                string += tæller++ + konkurrenceSvømmer.toString();
             }
         }
         return string;
     }
 
+
     public String hentKonkurrenceSvømmereFraFil() {
         String string = "";
         int tæller = 1;
         for (KonkurrenceSvømmer konkurrenceSvømmer : konkurrenceSvømmerListe) {
-            string += tæller++ + ". " + konkurrenceSvømmer.getNavn() + ",  " + konkurrenceSvømmer.getAldersGruppe() + ", " + konkurrenceSvømmer.getMedlemsstatus() +
-                    ", " + konkurrenceSvømmer.getSVØMMEDISCIPLIN() + ", " + konkurrenceSvømmer.getBedsteTid() + ", " + konkurrenceSvømmer.getHarKonkurreret() + "\n";
+            string += tæller++ + konkurrenceSvømmer.toString();
         }
         return string;
     }
