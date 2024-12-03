@@ -134,31 +134,74 @@ public class UI {
                                 }
                                 System.out.print("Vælg aktivitetsform (motionist/konkurrence): ");
                                 String aktivitetsForm = "";
+                                SvømmeDiscipliner svømmeDisciplin = null;
+                                double bedsteTid = 0;
+                                String harKonkurreret = "";
+                                boolean konkurreret = false;
                                 boolean validAktivitetsForm = false;
 
                                 while (!validAktivitetsForm) {
                                     try {
                                         aktivitetsForm = scanner.nextLine().toLowerCase();
                                         if (!aktivitetsForm.equals("motionist") && !aktivitetsForm.equals("konkurrence")) {
-                                            throw new IllegalArgumentException("Indtast motionist eller konkurrence");
+                                            throw new IllegalArgumentException("Prøv igen");
                                         }
                                         if (aktivitetsForm.equals("motionist")) {
                                             validAktivitetsForm = true;
                                         } else if (aktivitetsForm.equals("konkurrence")){
-                                            System.out.println("Indtast svømmedisciplin");
-                                            aktivitetsForm = scanner.nextLine();
+                                            System.out.println("Indtast svømmedisciplin (Brystsvømning, Butterfly, Crawl, Rygcrawl): ");
+                                            String statusInput1 = "";
+                                            boolean validStatus1 = false;
+                                            SvømmeDiscipliner status1 = null;
+
+                                            while (!validStatus1) {
+                                                try {
+                                                    statusInput1 = scanner.nextLine().toUpperCase();
+                                                    switch (statusInput1) {
+                                                        case "BRYSTSVØMNING":
+                                                            status1 = SvømmeDiscipliner.BRYSTSVØMNING;
+                                                            break;
+                                                        case "BUTTERFLY":
+                                                            status1 = SvømmeDiscipliner.BUTTERFLY;
+                                                            break;
+                                                        case "CRAWL":
+                                                            status1 = SvømmeDiscipliner.CRAWL;
+                                                            break;
+                                                        case "RYGCRAWL":
+                                                            status1 = SvømmeDiscipliner.RYGCRAWL;
+                                                            break;
+                                                        default:
+                                                            throw new IllegalArgumentException("Indtast en gyldig svømmedisciplin (Brystsvømning, Butterfly, Crawl, Rygcrawl)");
+                                                    }
+                                                    validStatus1 = true;
+                                                } catch (IllegalArgumentException iae) {
+                                                    System.out.println("Fejl: " + iae.getMessage());
+                                                }
+                                            }
+                                            System.out.println("Valgt disciplin: " + status1);
+
                                             System.out.println("Indtast bedste tid");
-                                            aktivitetsForm = scanner.nextLine();
+                                            bedsteTid = scanner.nextDouble();
+                                            scanner.nextLine();
+
                                             System.out.println("Indtast om medlemmet har konkurret (ja/nej");
-                                            aktivitetsForm = scanner.nextLine();
-                                            validAktivitetsForm = true;
+                                            harKonkurreret = scanner.nextLine().trim().toLowerCase();
+                                            if (harKonkurreret.equals("ja")) {
+                                                konkurreret = true;
+                                                validStatus1 = true;
+                                                validAktivitetsForm = true;
+                                            } else if (harKonkurreret.equals("nej")) {
+                                                konkurreret = false;
+                                                validStatus1 = true;
+                                                validAktivitetsForm = true;
+                                            }
                                         }
                                     } catch (IllegalArgumentException iae) {
-                                        System.out.println("Fejl: " + iae.getMessage());
+                                        System.out.println("Fejl FEJL FEJL " + iae.getMessage());
                                     }
                                 }
                                 if (aktivitetsForm.equals("konkurrence")) {
-                                    controller.opretKonkurrenceMedlem(navn cpr, status, aktivitetsForm, brugerBetalt, svømmeDisciplin, bedsteTid, harKonkurreret);
+                                    controller.opretKonkurrenceSvømmer(navn, cpr, status, aktivitetsForm, brugerBetalt, svømmeDisciplin, bedsteTid, konkurreret);
                                 } else {
                                     controller.opretMedlem(navn, cpr, status, aktivitetsForm, brugerBetalt);
                                 }
