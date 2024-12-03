@@ -21,6 +21,7 @@ public class Medlem {
     }
 
 
+
     //________________________GETTERE & SETTERE_________________________________________________________________________
     public String getNavn() {
         return navn;
@@ -39,13 +40,13 @@ public class Medlem {
         this.cpr = cpr;
     }
 
-  public MedlemsStatus getMedlemsstatus(){
+    public MedlemsStatus getMedlemsstatus() {
         return MEDLEMSSTATUS;
-  }
+    }
 
-  public void setMedlemsstatus(MedlemsStatus MEDLEMSSTATUS){
+    public void setMedlemsstatus(MedlemsStatus MEDLEMSSTATUS) {
         this.MEDLEMSSTATUS = MEDLEMSSTATUS;
-  }
+    }
 
 
     public AldersGruppe getAldersGruppe() {
@@ -57,11 +58,11 @@ public class Medlem {
         }
 
         return ALDERSGRUPPE;
-  }
+    }
 
-  public void setAldersGruppe(AldersGruppe ALDERSGRUPPE){
+    public void setAldersGruppe(AldersGruppe ALDERSGRUPPE) {
         this.ALDERSGRUPPE = ALDERSGRUPPE;
-  }
+    }
 
     public String getAktivitetsForm() {
         if (aktivitetsForm.equalsIgnoreCase("konkurrence")) {
@@ -72,15 +73,16 @@ public class Medlem {
         return aktivitetsForm;
     }
 
+
     public void setAktivitetsForm(String aktivitetsForm) {
         this.aktivitetsForm = aktivitetsForm;
     }
 
-    public boolean getHarBetalt(){
+    public boolean getHarBetalt() {
         return harBetalt;
     }
 
-    public void setHarBetalt(boolean harBetalt){
+    public void setHarBetalt(boolean harBetalt) {
         this.harBetalt = harBetalt;
     }
     //__________________________________________________________________________________________________________________
@@ -132,7 +134,7 @@ public class Medlem {
     @Override
     public String toString() {
         return "Navn: " + getNavn() +
-                ", CPR: " + getCpr() +"(" + cprOmregningTilAlder() + " år)" +
+                ", CPR: " + getCpr() + "(" + cprOmregningTilAlder() + " år)" +
                 ", Aldersgruppe: " + getAldersGruppe() +
                 ", Aktivitets status: " + (MEDLEMSSTATUS == MedlemsStatus.AKTIV ? "Aktiv" : "Passiv") +
                 ", Aktivitetsform: " + getAktivitetsForm() +
@@ -149,7 +151,23 @@ public class Medlem {
                 this.getAktivitetsForm() + ";" +
                 this.getHarBetalt();
     }
+
+
+
+
+    //______________________________________________________________________________________________________________________
+//    public Object ændringAfObjekt(Medlem medlem) {
+//        if (medlem.getAktivitetsForm().equalsIgnoreCase("konkurrence")) {
+//            medlem = new KonkurrenceSvømmer(medlem.getNavn(), medlem.getCpr(), medlem.getMedlemsstatus(), medlem.getAktivitetsForm(), medlem.getHarBetalt());
+//        } else {
+//            return medlem;
+//        }
+//        return medlem;
+//    }
+
+
 }
+
 
 
 

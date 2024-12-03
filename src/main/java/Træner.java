@@ -1,7 +1,12 @@
+import java.io.File;
+import java.util.ArrayList;
+
 public class Træner {
 
-    public Træner() {
+    private FileHandler fileHandler;
 
+    public Træner() {
+        fileHandler = new FileHandler();
     }
 
 
@@ -25,5 +30,16 @@ public class Træner {
         }
         return "";
     }
+
+
+    public String print() {
+        String string = "";
+        int tæller = 1;
+        for (KonkurrenceSvømmer konkurrenceSvømmer : fileHandler.hentListeAfKonkurrenceSvømmere()){
+            string += tæller++ + ". " +  konkurrenceSvømmer.getNavn() + ",  " + konkurrenceSvømmer.getAldersGruppe() + ", " + konkurrenceSvømmer.getMedlemsstatus() +
+            ", " + konkurrenceSvømmer.getSVØMMEDISCIPLIN() + ", " + konkurrenceSvømmer.getBedsteTid() + ", " + konkurrenceSvømmer.getHarKonkurreret() +"\n";
+    }
+    return string;
+}
 
 }

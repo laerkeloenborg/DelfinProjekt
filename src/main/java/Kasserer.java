@@ -89,7 +89,7 @@ public class Kasserer {
                         " år), " + medlem.getMedlemsstatus() + ", -" + medlem.kontingent() + " kr.\n ";
             }
         }
-        return udskriv.isEmpty() ? "ingen medlemmer i restnace" : udskriv;
+        return udskriv.isEmpty() ? "ingen medlemmer i restance" : udskriv;
     }
 
 

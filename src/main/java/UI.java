@@ -402,6 +402,7 @@ public class UI {
 
                             case "1":
                                 System.out.println("Liste over klubbens konkurrencesvømmere: "); //TODO indsæt metode
+                                System.out.println(controller.print());
                                 break;
 
                             case "2":

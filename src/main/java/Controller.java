@@ -3,13 +3,15 @@ import java.util.ArrayList;
 public class Controller {
     private Formand formand;
     private Kasserer kasserer;
+    private Træner træner;
+
 
 
     //________________________konstruktør_______________________________________________________________________________
     public Controller() {
         formand = new Formand();
         kasserer = new Kasserer();
-
+        træner = new Træner();
     }
 
 
@@ -104,5 +106,14 @@ public class Controller {
         return kasserer.medlemmerIRestance();
     }
 
+
+    public String print(){
+        return træner.print();
+    }
+
+
+//    public String konkudtag(){
+//        return træner.konkudtag();
+//    }
 
 }
