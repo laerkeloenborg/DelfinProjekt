@@ -11,7 +11,7 @@ public class FileHandler {
     public ArrayList<Medlem> gemListeAfMedlemmer(ArrayList<Medlem> medlemsListe) {
         PrintStream output = null;
         try {
-            output = new PrintStream(new File("medlemsListe"));
+            output = new PrintStream(new File("medlemsListe.csv"));
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -27,7 +27,7 @@ public class FileHandler {
     public ArrayList<Medlem> hentListeAfMedlemmer() {
         ArrayList<Medlem> medlemsListe = new ArrayList<>();
         Scanner scanner = null;
-        File fil = new File("medlemsListe");
+        File fil = new File("medlemsListe.csv");
         try {
             scanner = new Scanner(fil);
         } catch (FileNotFoundException e) {
@@ -41,8 +41,8 @@ public class FileHandler {
             medlem = new Medlem(attributter[0],
                     (attributter[1]),
                     MedlemsStatus.parseMedlemsStatus(attributter[3]),
-                    attributter[4],
-                    Boolean.parseBoolean(attributter[5]));
+                    Boolean.parseBoolean(attributter[4]),
+                    attributter[5]);
 
             medlemsListe.add(medlem);
         }
@@ -53,11 +53,26 @@ public class FileHandler {
 
     //_______________________KONKURRENCESVØMMERLISTE FILEN______________________________________________________________
 
+    //________________________metode til at gemme liste af konkurrenceSvømmere til fil__________________________________
+    public ArrayList<KonkurrenceSvømmer> gemListeAfKonkurrenceSvømmere(ArrayList<KonkurrenceSvømmer> konkurrenceSvømmerListe) {
+        PrintStream output = null;
+        try {
+            output = new PrintStream(new File("medlemsListe.csv"));
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        for (KonkurrenceSvømmer konkurrenceSvømmer : konkurrenceSvømmerListe) {
+            output.println(konkurrenceSvømmer.toStringTilFil());
+        }
+        return konkurrenceSvømmerListe;
+    }
+
+
     //________________________metode til  at hente listen af konkurrenceSvømmere fra fil________________________________
     public ArrayList<KonkurrenceSvømmer> hentListeAfKonkurrenceSvømmere() {
         ArrayList<KonkurrenceSvømmer> konkurrenceSvømmerListe = new ArrayList<>();
         Scanner scanner = null;
-        File fil = new File("medlemsListe");
+        File fil = new File("medlemsListe.csv");
         try {
             scanner = new Scanner(fil);
         } catch (FileNotFoundException e) {
@@ -68,12 +83,12 @@ public class FileHandler {
             String linje = scanner.nextLine();
             String[] attributter = linje.split(";");
 
-            if (attributter[4].equalsIgnoreCase("konkurrence svømmer")) {
+            if (attributter[5].equalsIgnoreCase("konkurrence svømmer")) {
                 konkurrenceSvømmer = new KonkurrenceSvømmer(attributter[0],
                         (attributter[1]),
                         MedlemsStatus.parseMedlemsStatus(attributter[3]),
-                        attributter[4],
-                        Boolean.parseBoolean(attributter[5]),
+                        Boolean.parseBoolean(attributter[4]),
+                        attributter[5],
                         SvømmeDiscipliner.parseSvømmeDescipliner(attributter[6]),
                         Double.parseDouble(attributter[7]),
                         Boolean.parseBoolean(attributter[8]));
