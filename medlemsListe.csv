@@ -1,7 +1,7 @@
 Kasper Persson;011275;SENIOR;Aktiv;false;Motionist
 Camilla Hansen;061026;SENIOR;Aktiv;true;Konkurrence svømmer;BRYSTSVØMNING;1.55;true
 Isabella Rosendal;020202;SENIOR;Aktiv;false;Motionist
-Maja Lavrens;121215;JUNIOR;Aktiv;true;Konkurrence svømmer;BRYSTSVØMNING;1.55;true
+Maja Lavrens;121215;JUNIOR;Aktiv;true;Konkurrence svømmer;CRAWL;2.55;true
 Lærke Lønborg;121156;SENIOR;Passiv;true;Konkurrence svømmer;BRYSTSVØMNING;1.55;true
 Klara Karlsen;101023;JUNIOR;Aktiv;true;Motionist
 Elaine Schwalbe;080782;SENIOR;Passiv;true;Motionist
@@ -15,13 +15,13 @@ Signe Borch;180980;SENIOR;Passiv;true;Motionist
 Edith Terte;120791;SENIOR;Passiv;true;Konkurrence svømmer;BRYSTSVØMNING;1.55;true
 Hugh Hefner;010141;SENIOR;Passiv;true;Motionist
 Britney Spears;170979;SENIOR;Aktiv;true;Konkurrence svømmer;BRYSTSVØMNING;1.55;true
-Michael Bolton;051162;SENIOR;Passiv;false;Konkurrence svømmer;BRYSTSVØMNING;1.55;true
+Michael Bolton;051162;SENIOR;Passiv;false;Konkurrence svømmer;CRAWL;1.32;true
 Cindy Lou Who;241200;SENIOR;Aktiv;true;Konkurrence svømmer;BRYSTSVØMNING;1.55;true
 Walter White;060560;SENIOR;Passiv;true;Motionist
-Saul Goodman;091270;SENIOR;Passiv;false;Konkurrence svømmer;BRYSTSVØMNING;1.55;true
+Saul Goodman;091270;SENIOR;Passiv;false;Konkurrence svømmer;CRAWL;1.55;true
 Clark Kent;040400;SENIOR;Aktiv;true;Motionist
 Bruce Wayne;080880;SENIOR;Passiv;true;Konkurrence svømmer;BRYSTSVØMNING;1.55;true
-Peter Parker;101010;JUNIOR;Aktiv;true;Konkurrence svømmer;BRYSTSVØMNING;1.55;true
+Peter Parker;101010;JUNIOR;Aktiv;true;Konkurrence svømmer;CRAWL;1.55;true
 Jens Jørgensen;290300;SENIOR;Passiv;true;Motionist
 Mary Jane PArker;070700;SENIOR;Passiv;true;Motionist
 Harley Quinn;190919;JUNIOR;Aktiv;true;Motionist
@@ -48,5 +48,7 @@ Nathan Scott;231299;SENIOR;Passiv;false;Konkurrence svømmer;BRYSTSVØMNING;1.55
 Bridget Jones;121103;SENIOR;Aktiv;false;Konkurrence svømmer;BRYSTSVØMNING;1.55;true
 Meredith Grey;030210;JUNIOR;Passiv;false;Motionist
 Sanda OH;030303;SENIOR;Aktiv;true;Konkurrence svømmer;BRYSTSVØMNING;1.55;true
-Yvonne;020767;SENIOR;Aktiv;false;Konkurrence svømmer;Brystsvømning;1.23;true
-Marianne;121162;SENIOR;Aktiv;true;Konkurrence svømmer;Brystsvømning;1.23;true
+Yvonne Rasmussen;020767;SENIOR;Aktiv;false;Konkurrence svømmer;Brystsvømning;1.23;true
+Marianne Mogensen;121162;SENIOR;Aktiv;true;Konkurrence svømmer;Brystsvømning;1.23;true
+Luna Vilhelmsen;021210;JUNIOR;Aktiv;true;Konkurrence svømmer;Crawl;1.18;true
+Marie gurli;210115;JUNIOR;Aktiv;true;Konkurrence svømmer;Brystsvømning;1.10;true

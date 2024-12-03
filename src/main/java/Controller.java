@@ -6,7 +6,6 @@ public class Controller {
     private Træner træner;
 
 
-
     //________________________konstruktør_______________________________________________________________________________
     public Controller() {
         formand = new Formand();
@@ -24,8 +23,8 @@ public class Controller {
     }
 
     //_______________________metode til at oprette konkurrence Svømmer__________________________________________________
-    public void opretKonkurrenceSvømmer(String navn, String cpr, MedlemsStatus STATUS, String aktivitetsForm, boolean harBetalt, SvømmeDiscipliner svømmeDisciplin, double bedsteTid, boolean harKonkurreret){
-        formand.tilføjKonkurrenceSvømmer(navn, cpr, STATUS,harBetalt, aktivitetsForm, svømmeDisciplin, bedsteTid, harKonkurreret);
+    public void opretKonkurrenceSvømmer(String navn, String cpr, MedlemsStatus STATUS, String aktivitetsForm, boolean harBetalt, SvømmeDiscipliner svømmeDisciplin, double bedsteTid, boolean harKonkurreret) {
+        formand.tilføjKonkurrenceSvømmer(navn, cpr, STATUS, harBetalt, aktivitetsForm, svømmeDisciplin, bedsteTid, harKonkurreret);
     }
 
     //_______________________metode til at slette medlem________________________________________________________________
@@ -74,7 +73,7 @@ public class Controller {
     }
 
     //_______________________metode til at gemme liste af konkurrencesvømmere___________________________________________
-    public ArrayList<KonkurrenceSvømmer> gemListeAfKonkurrencesvømmere(){
+    public ArrayList<KonkurrenceSvømmer> gemListeAfKonkurrencesvømmere() {
         return formand.gemKonkurrenceSvømmer();
     }
 
@@ -117,25 +116,44 @@ public class Controller {
         return kasserer.medlemmerIRestance();
     }
 
-
-    public String hentKonkurrenceSvømmereFraFil(){
+    //_______________________metode til at se liste af konkurrencesvømmere fra fil (pæn layout)_________________________
+    public String hentKonkurrenceSvømmereFraFil() {
         return træner.hentKonkurrenceSvømmereFraFil();
     }
 
-public void sorteringTid(){
+    //_______________________metode til at sortere efter svømmers bedste tid________________________________________________
+    public void sorteringTid() {
         træner.sorteringTid();
-}
+    }
 
-public void sorteringKonkurrenceStatus(){
+    //_______________________metode til at se sortere efter om svømmerne har konkurreret før____________________________
+    public void sorteringKonkurrenceStatus() {
         træner.sortertingKonkurrenceStatus();
-}
+    }
 
-public String visJuniorHold(){
+    //_______________________metode til at se konkurrencesvømmere der er på juniorholdet________________________________
+    public String visJuniorHold() {
         return træner.printJuniorHold();
-}
+    }
 
-public String visSeniorHold(){
+    //_______________________metode til at se konkurrencesvømmere der er på seniorholdet________________________________
+    public String visSeniorHold() {
         return træner.printSeniorHold();
-}
+    }
+
+    //_______________________metode til at få listen over konkurrencesvømmere (uden layout)_____________________________
+    public ArrayList<KonkurrenceSvømmer> visKonkurrenceSvømmere() {
+        return træner.getKonkurrenceSvømmerListe();
+    }
+
+    //_______________________metode til at se se top5 svømmere (pæn layout)_____________________________________________
+    public String printTop5(ArrayList<KonkurrenceSvømmer> topSvømmere) {
+        return træner.printTop5(topSvømmere);
+    }
+
+    //_______________________metode til at se top5 svømmere i hver disciplin & aldersgruppe (uden layout)_______________
+    public ArrayList<KonkurrenceSvømmer> top5(ArrayList<KonkurrenceSvømmer> konkurrenceSvømmere, AldersGruppe ALDERSGRUPPE, SvømmeDiscipliner SVØMMEDISCIPLIN) {
+        return træner.top5(konkurrenceSvømmere, ALDERSGRUPPE, SVØMMEDISCIPLIN);
+    }
 
 }
