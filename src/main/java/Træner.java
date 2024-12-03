@@ -33,22 +33,13 @@ public class Træner {
         return "";
     }
 
-    public void sorteringAfHold (int valg){
-        switch (valg){
-            case 1:
-                Collections.sort(konkurrenceSvømmerListe, new Comparators.sorteringAldersgruppe());
-                Collections.sort(konkurrenceSvømmerListe, new Comparators.sorteringSvømmetider());
-                break;
-        }
-    }
-
-    public void sorteringJuniorTid(){
+    public void sorteringTid(){
         Comparators.sorteringSvømmetider comparator = new Comparators.sorteringSvømmetider();
         Collections.sort(konkurrenceSvømmerListe, comparator);
     }
 
-    public void sorteringSeniorTid(){
-        Comparators.sorteringSvømmetider comparator = new Comparators.sorteringSvømmetider();
+    public void sortertingKonkurrenceStatus(){
+        Comparators.sorteringKonkurrencestatus comparator = new Comparators.sorteringKonkurrencestatus();
         Collections.sort(konkurrenceSvømmerListe, comparator);
     }
 
@@ -82,7 +73,7 @@ public class Træner {
         for (KonkurrenceSvømmer konkurrenceSvømmer : konkurrenceSvømmerListe){
             string += tæller++ + ". " +  konkurrenceSvømmer.getNavn() + ",  " + konkurrenceSvømmer.getAldersGruppe() + ", " + konkurrenceSvømmer.getMedlemsstatus() +
             ", " + konkurrenceSvømmer.getSVØMMEDISCIPLIN() + ", " + konkurrenceSvømmer.getBedsteTid() + ", " + konkurrenceSvømmer.getHarKonkurreret() +"\n";
-    }
+        }
     return string;
 }
 

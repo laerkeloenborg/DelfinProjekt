@@ -122,12 +122,12 @@ public class Controller {
         return træner.hentKonkurrenceSvømmereFraFil();
     }
 
-public void sorteringJuniorHoldTid(){
-        træner.sorteringJuniorTid();
+public void sorteringTid(){
+        træner.sorteringTid();
 }
 
-public void sorteringSeniorHoldTid(){
-        træner.sorteringSeniorTid();
+public void sorteringKonkurrenceStatus(){
+        træner.sortertingKonkurrenceStatus();
 }
 
 public String visJuniorHold(){

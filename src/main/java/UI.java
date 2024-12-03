@@ -408,33 +408,24 @@ public class UI {
                             case "2":
                                 System.out.println("Liste over svømmernes bedste resultater: "); //TODO indsæt metode
 
-                                boolean sorteringHold = true;
-                                while (sorteringHold) {
-                                    System.out.println("1 juniorholdet" + "\n" +
-                                            "2 seniorholdet" + "\n" +
-                                            "3 for at gå tilbage til menuen");
+                                System.out.println("Junior holdet: ");
+                                controller.sorteringTid();
+                                System.out.println(controller.visJuniorHold());
 
-                                    int sortering = scanner.nextInt();
-                                    switch (sortering) {
-                                        case 1:
-                                            controller.sorteringJuniorHoldTid();
-                                            System.out.println(controller.visJuniorHold());
-                                            break;
-                                        case 2:
-                                            controller.sorteringSeniorHoldTid();
-                                            System.out.println(controller.visSeniorHold());
-                                            break;
-                                        case 3:
-                                            sorteringHold = false;
-                                            break;
-                                        default:
-                                            System.out.println("Vælg mellem 1,2 og 3");
-                                            break;
-                                    }
-                                }
+                                System.out.println("Senior holdet: ");
+                                controller.sorteringTid();
+                                System.out.println(controller.visSeniorHold());
                                 break;
                             case "3":
                                 System.out.println("Liste over svømmere som har deltaget i konkurrence"); //TODO indsæt metode
+
+                                System.out.println("Junior holdet: ");
+                                controller.sorteringKonkurrenceStatus();
+                                System.out.println(controller.visJuniorHold());
+
+                                System.out.println("Senior holdet: ");
+                                controller.sorteringKonkurrenceStatus();
+                                System.out.println(controller.visSeniorHold());
                                 break;
 
                             case "4":
