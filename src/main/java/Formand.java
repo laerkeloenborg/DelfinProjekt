@@ -4,6 +4,7 @@ import java.util.Collections;
 
 public class Formand {
     private ArrayList<Medlem> medlemsListen;
+    private ArrayList<KonkurrenceSvømmer> konkurrenceSvømmerListe;
     private FileHandler fileHandler;
 
     //___________________________konstruktør____________________________________________________________________________
@@ -20,6 +21,12 @@ public class Formand {
         fileHandler.gemListeAfMedlemmer(medlemsListen);
     }
 
+    public void tilføjKonkurrenceSvømmer(String navn, String cpr, MedlemsStatus MEDLEMSSTATUS, String aktivitetsform, boolean harBetalt, SvømmeDiscipliner svømmeDisciplin, double bedsteTid, boolean harKonkurreret){
+        KonkurrenceSvømmer nyKonkurrenceSvømmer = new KonkurrenceSvømmer(navn, cpr, MEDLEMSSTATUS, aktivitetsform,harBetalt, svømmeDisciplin, bedsteTid, harKonkurreret);
+        konkurrenceSvømmerListe.add(nyKonkurrenceSvømmer);
+        fileHandler.gemListeAfKonkurrenceSvømmere(konkurrenceSvømmerListe);
+    }
+
 
     //________________________metode til at gemme medlem i tekstfil_____________________________________________________
     public ArrayList<Medlem> gemMedlem() {
@@ -27,7 +34,7 @@ public class Formand {
     }
 
     public ArrayList<KonkurrenceSvømmer> gemKonkurrenceSvømmer(){
-        return fileHandler.gemListeAfKonkurrenceSvømmere(medlemsListen);
+        return fileHandler.gemListeAfKonkurrenceSvømmere(konkurrenceSvømmerListe);
     }
 
 

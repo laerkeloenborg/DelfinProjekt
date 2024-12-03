@@ -23,6 +23,11 @@ public class Controller {
         formand.tilføjMedlem(navn, cpr, STATUS, aktivitetsForm, harBetalt);
     }
 
+    //_______________________metode til at oprette konkurrence Svømmer__________________________________________________
+    public void opretKonkurrenceSvømmer(String navn, String cpr, MedlemsStatus STATUS, String aktivitetsForm, boolean harBetalt, SvømmeDiscipliner svømmeDisciplin, double bedsteTid, boolean harKonkurreret){
+        formand.tilføjKonkurrenceSvømmer(navn, cpr, STATUS, aktivitetsForm, harBetalt, svømmeDisciplin, bedsteTid, harKonkurreret);
+    }
+
     //_______________________metode til at slette medlem________________________________________________________________
     public boolean sletMedlem(String cpr) {
         return formand.sletMedlem(cpr);
@@ -72,7 +77,6 @@ public class Controller {
     public ArrayList<KonkurrenceSvømmer> gemListeAfKonkurrencesvømmere(){
         return formand.gemKonkurrenceSvømmer();
     }
-
 
 
     //________________________metode til at se antallet af medlemmer i klubben__________________________________________

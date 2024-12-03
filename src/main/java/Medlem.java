@@ -103,6 +103,7 @@ public class Medlem {
         LocalDate fødselsdato = LocalDate.of(år, måned, dag);
         int alder = Period.between(fødselsdato, nu).getYears();
         return alder;
+
     }
 
 
