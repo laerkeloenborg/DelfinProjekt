@@ -19,13 +19,13 @@ public class Controller {
 
 
     //_______________________metode til at oprette medlem_______________________________________________________________
-    public void opretMedlem(String navn, String cpr, MedlemsStatus STATUS, String aktivitetsForm, boolean harBetalt) {
-        formand.tilføjMedlem(navn, cpr, STATUS, aktivitetsForm, harBetalt);
+    public void opretMedlem(String navn, String cpr, MedlemsStatus STATUS, boolean harBetalt, String aktivitetsForm) {
+        formand.tilføjMedlem(navn, cpr, STATUS, harBetalt, aktivitetsForm);
     }
 
     //_______________________metode til at oprette konkurrence Svømmer__________________________________________________
     public void opretKonkurrenceSvømmer(String navn, String cpr, MedlemsStatus STATUS, String aktivitetsForm, boolean harBetalt, SvømmeDiscipliner svømmeDisciplin, double bedsteTid, boolean harKonkurreret){
-        formand.tilføjKonkurrenceSvømmer(navn, cpr, STATUS, aktivitetsForm, harBetalt, svømmeDisciplin, bedsteTid, harKonkurreret);
+        formand.tilføjKonkurrenceSvømmer(navn, cpr, STATUS,harBetalt, aktivitetsForm, svømmeDisciplin, bedsteTid, harKonkurreret);
     }
 
     //_______________________metode til at slette medlem________________________________________________________________
@@ -122,9 +122,20 @@ public class Controller {
         return træner.hentKonkurrenceSvømmereFraFil();
     }
 
+public void sorteringTid(){
+        træner.sorteringTid();
+}
 
-//    public String konkudtag(){
-//        return træner.konkudtag();
-//    }
+public void sorteringKonkurrenceStatus(){
+        træner.sortertingKonkurrenceStatus();
+}
+
+public String visJuniorHold(){
+        return træner.printJuniorHold();
+}
+
+public String visSeniorHold(){
+        return træner.printSeniorHold();
+}
 
 }

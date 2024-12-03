@@ -110,6 +110,21 @@ public class UI {
                                     }
                                 }
 
+                                System.out.print("Vælg aktivitetsform (motionist/konkurrence): ");
+                                String aktivitetsForm = "";
+                                boolean validAktivitetsForm = false;
+
+                                while (!validAktivitetsForm) {
+                                    try {
+                                        aktivitetsForm = scanner.nextLine().toLowerCase();
+                                        if (!aktivitetsForm.equals("motionist") && !aktivitetsForm.equals("konkurrence")) {
+                                            throw new IllegalArgumentException("Indtast motionist eller konkurrence");
+                                        }
+                                        validAktivitetsForm = true;
+                                    } catch (IllegalArgumentException iae) {
+                                        System.out.println("Fejl: " + iae.getMessage());
+                                    }
+                                }
 
                                 System.out.println("Har medlemmet betalt? (ja/nej):  ");
                                 String harBetalt = "";
@@ -451,7 +466,8 @@ public class UI {
                                 "\n6 for at gå tilbage til hovedmenuen" +
                                 "\n\nVælg en mulighed: \n");
 
-                        String brugerValg = scanner.nextLine();
+                        String brugerValg = scanner.next();
+
 
                         switch (brugerValg) {
 
@@ -462,14 +478,29 @@ public class UI {
 
                             case "2":
                                 System.out.println("Liste over svømmernes bedste resultater: "); //TODO indsæt metode
-                                break;
 
+                                System.out.println("Junior holdet: ");
+                                controller.sorteringTid();
+                                System.out.println(controller.visJuniorHold());
+
+                                System.out.println("Senior holdet: ");
+                                controller.sorteringTid();
+                                System.out.println(controller.visSeniorHold());
+                                break;
                             case "3":
                                 System.out.println("Liste over svømmere som har deltaget i konkurrence"); //TODO indsæt metode
+
+                                System.out.println("Junior holdet: ");
+                                controller.sorteringKonkurrenceStatus();
+                                System.out.println(controller.visJuniorHold());
+
+                                System.out.println("Senior holdet: ");
+                                controller.sorteringKonkurrenceStatus();
+                                System.out.println(controller.visSeniorHold());
                                 break;
 
                             case "4":
-                                System.out.println("Liste over top5 svømmere");//TODO indsæt metode
+                                System.out.println("Liste over top5 svømmere"); //TODO indsæt metode
                                 break;
 
                             case "5":
@@ -516,17 +547,17 @@ public class UI {
                         }
                     }
                     break;
-                        //________________________luk programmet ned____________________________________________________________
-                        case "4":
-                            System.out.println("Programmet lukkes ned....");
-                            kører = false;
-                            break;
-                        default:
-                            System.out.println("Ugyldigt valgt. Indtast 1,2,3 eller 4");
-                            break;
-                    }
-
+                //________________________luk programmet ned____________________________________________________________
+                case "4":
+                    System.out.println("Programmet lukkes ned....");
+                    kører = false;
+                    break;
+                default:
+                    System.out.println("Ugyldigt valgt. Indtast 1,2,3 eller 4");
+                    break;
             }
+
         }
     }
+}
 

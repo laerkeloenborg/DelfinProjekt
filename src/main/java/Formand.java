@@ -11,18 +11,19 @@ public class Formand {
     public Formand() {
         fileHandler = new FileHandler();
         medlemsListen = fileHandler.hentListeAfMedlemmer();
+
     }
 
 
     //________________________metode til at tilføje et medlem___________________________________________________________
-    public void tilføjMedlem(String navn, String cpr, MedlemsStatus MEDLEMSSTATUS, String aktivitetsForm, boolean harBetalt) {
-        Medlem nytMedlem = new Medlem(navn, cpr, MEDLEMSSTATUS, aktivitetsForm, harBetalt);
+    public void tilføjMedlem(String navn, String cpr, MedlemsStatus MEDLEMSSTATUS, boolean harBetalt, String aktivitetsForm) {
+        Medlem nytMedlem = new Medlem(navn, cpr, MEDLEMSSTATUS, harBetalt, aktivitetsForm);
         medlemsListen.add(nytMedlem);
         fileHandler.gemListeAfMedlemmer(medlemsListen);
     }
 
-    public void tilføjKonkurrenceSvømmer(String navn, String cpr, MedlemsStatus MEDLEMSSTATUS, String aktivitetsform, boolean harBetalt, SvømmeDiscipliner svømmeDisciplin, double bedsteTid, boolean harKonkurreret){
-        KonkurrenceSvømmer nyKonkurrenceSvømmer = new KonkurrenceSvømmer(navn, cpr, MEDLEMSSTATUS, aktivitetsform,harBetalt, svømmeDisciplin, bedsteTid, harKonkurreret);
+    public void tilføjKonkurrenceSvømmer(String navn, String cpr, MedlemsStatus MEDLEMSSTATUS, boolean harBetalt, String aktivitetsform, SvømmeDiscipliner svømmeDisciplin, double bedsteTid, boolean harKonkurreret){
+        KonkurrenceSvømmer nyKonkurrenceSvømmer = new KonkurrenceSvømmer(navn, cpr, MEDLEMSSTATUS, harBetalt, aktivitetsform, svømmeDisciplin, bedsteTid, harKonkurreret);
         konkurrenceSvømmerListe.add(nyKonkurrenceSvømmer);
         fileHandler.gemListeAfKonkurrenceSvømmere(konkurrenceSvømmerListe);
     }

@@ -12,14 +12,13 @@ public class Medlem {
 
 
     //________________________konstruktør_______________________________________________________________________________
-    public Medlem(String navn, String cpr, MedlemsStatus MEDLEMSSTATUS, String aktivitetsForm, boolean harBetalt) {
+    public Medlem(String navn, String cpr, MedlemsStatus MEDLEMSSTATUS, boolean harBetalt, String aktivitetsForm) {
         this.navn = navn;
         this.cpr = cpr;
         this.MEDLEMSSTATUS = MEDLEMSSTATUS;
         this.aktivitetsForm = aktivitetsForm;
         this.harBetalt = harBetalt;
     }
-
 
 
     //________________________GETTERE & SETTERE_________________________________________________________________________
@@ -87,7 +86,6 @@ public class Medlem {
     }
     //__________________________________________________________________________________________________________________
 
-
     //________________________metode til omregning af CPR til alder_____________________________________________________
     public int cprOmregningTilAlder() {
         LocalDate nu = LocalDate.now();
@@ -138,8 +136,8 @@ public class Medlem {
                 ", CPR: " + getCpr() + "(" + cprOmregningTilAlder() + " år)" +
                 ", Aldersgruppe: " + getAldersGruppe() +
                 ", Aktivitets status: " + (MEDLEMSSTATUS == MedlemsStatus.AKTIV ? "Aktiv" : "Passiv") +
-                ", Aktivitetsform: " + getAktivitetsForm() +
-                ", Betalingsstatus: " + (this.getHarBetalt() ? "Betalt" : "Ikke betalt");
+                ", Betalingsstatus: " + (this.getHarBetalt() ? "Betalt" : "Ikke betalt") +
+                ", Aktivitetsform: " + getAktivitetsForm();
     }
 
 
@@ -149,23 +147,9 @@ public class Medlem {
                 this.cpr + ";" +
                 this.getAldersGruppe() + ";" +
                 (this.MEDLEMSSTATUS == MedlemsStatus.AKTIV ? "Aktiv" : "Passiv") + ";" +
-                this.getHarBetalt()+ ";" +
-                this.getAktivitetsForm() ;
+                this.getHarBetalt() + ";" +
+                this.getAktivitetsForm();
     }
-
-
-
-
-    //______________________________________________________________________________________________________________________
-//    public Object ændringAfObjekt(Medlem medlem) {
-//        if (medlem.getAktivitetsForm().equalsIgnoreCase("konkurrence")) {
-//            medlem = new KonkurrenceSvømmer(medlem.getNavn(), medlem.getCpr(), medlem.getMedlemsstatus(), medlem.getAktivitetsForm(), medlem.getHarBetalt());
-//        } else {
-//            return medlem;
-//        }
-//        return medlem;
-//    }
-
 
 }
 
