@@ -1,6 +1,5 @@
 import java.time.DateTimeException;
 import java.time.LocalDate;
-import java.util.Comparator;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -396,7 +395,8 @@ public class UI {
                                 "\n6 for at gå tilbage til hovedmenuen" +
                                 "\n\nVælg en mulighed: \n");
 
-                        String brugerValg = scanner.nextLine();
+                        String brugerValg = scanner.next();
+
 
                         switch (brugerValg) {
 
@@ -407,8 +407,32 @@ public class UI {
 
                             case "2":
                                 System.out.println("Liste over svømmernes bedste resultater: "); //TODO indsæt metode
-                                break;
 
+                                boolean sorteringHold = true;
+                                while (sorteringHold) {
+                                    System.out.println("1 juniorholdet" + "\n" +
+                                            "2 seniorholdet" + "\n" +
+                                            "3 for at gå tilbage til menuen");
+
+                                    int sortering = scanner.nextInt();
+                                    switch (sortering) {
+                                        case 1:
+                                            controller.sorteringJuniorHoldTid();
+                                            System.out.println(controller.visJuniorHold());
+                                            break;
+                                        case 2:
+                                            controller.sorteringSeniorHoldTid();
+                                            System.out.println(controller.visSeniorHold());
+                                            break;
+                                        case 3:
+                                            sorteringHold = false;
+                                            break;
+                                        default:
+                                            System.out.println("Vælg mellem 1,2 og 3");
+                                            break;
+                                    }
+                                }
+                                break;
                             case "3":
                                 System.out.println("Liste over svømmere som har deltaget i konkurrence"); //TODO indsæt metode
                                 break;
@@ -461,17 +485,17 @@ public class UI {
                         }
                     }
                     break;
-                        //________________________luk programmet ned____________________________________________________________
-                        case "4":
-                            System.out.println("Programmet lukkes ned....");
-                            kører = false;
-                            break;
-                        default:
-                            System.out.println("Ugyldigt valgt. Indtast 1,2,3 eller 4");
-                            break;
-                    }
-
+                //________________________luk programmet ned____________________________________________________________
+                case "4":
+                    System.out.println("Programmet lukkes ned....");
+                    kører = false;
+                    break;
+                default:
+                    System.out.println("Ugyldigt valgt. Indtast 1,2,3 eller 4");
+                    break;
             }
+
         }
     }
+}
 

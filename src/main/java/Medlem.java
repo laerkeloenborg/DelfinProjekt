@@ -87,7 +87,6 @@ public class Medlem {
     }
     //__________________________________________________________________________________________________________________
 
-
     //________________________metode til omregning af CPR til alder_____________________________________________________
     public int cprOmregningTilAlder() {
         LocalDate nu = LocalDate.now();
@@ -151,20 +150,6 @@ public class Medlem {
                 this.getAktivitetsForm() + ";" +
                 this.getHarBetalt();
     }
-
-
-
-
-    //______________________________________________________________________________________________________________________
-//    public Object ændringAfObjekt(Medlem medlem) {
-//        if (medlem.getAktivitetsForm().equalsIgnoreCase("konkurrence")) {
-//            medlem = new KonkurrenceSvømmer(medlem.getNavn(), medlem.getCpr(), medlem.getMedlemsstatus(), medlem.getAktivitetsForm(), medlem.getHarBetalt());
-//        } else {
-//            return medlem;
-//        }
-//        return medlem;
-//    }
-
 
 }
 

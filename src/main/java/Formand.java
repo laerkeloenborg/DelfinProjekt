@@ -10,16 +10,17 @@ public class Formand {
     public Formand() {
         fileHandler = new FileHandler();
         medlemsListen = fileHandler.hentListeAfMedlemmer();
+
     }
 
 
     //________________________metode til at tilføje et medlem___________________________________________________________
     public void tilføjMedlem(String navn, String cpr, MedlemsStatus MEDLEMSSTATUS, String aktivitetsForm, boolean harBetalt) {
-        Medlem nytMedlem = new Medlem(navn, cpr, MEDLEMSSTATUS, aktivitetsForm, harBetalt);
-        medlemsListen.add(nytMedlem);
-        fileHandler.gemListeAfMedlemmer(medlemsListen);
-    }
+            Medlem nytMedlem = new Medlem(navn, cpr, MEDLEMSSTATUS, aktivitetsForm, harBetalt);
+            medlemsListen.add(nytMedlem);
+            fileHandler.gemListeAfMedlemmer(medlemsListen);
 
+    }
 
     //________________________metode til at gemme medlem i tekstfil_____________________________________________________
     public ArrayList<Medlem> gemMedlem() {
@@ -125,5 +126,6 @@ public class Formand {
     public int antalMedlemmer() {
         return medlemsListen.size();
     }
+
 
 }

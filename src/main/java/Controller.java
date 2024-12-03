@@ -111,9 +111,20 @@ public class Controller {
         return træner.print();
     }
 
+public void sorteringJuniorHoldTid(){
+        træner.sorteringJuniorTid();
+}
 
-//    public String konkudtag(){
-//        return træner.konkudtag();
-//    }
+public void sorteringSeniorHoldTid(){
+        træner.sorteringSeniorTid();
+}
+
+public String visJuniorHold(){
+        return træner.printJuniorHold();
+}
+
+public String visSeniorHold(){
+        return træner.printSeniorHold();
+}
 
 }
