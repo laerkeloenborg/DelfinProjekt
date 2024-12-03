@@ -53,6 +53,19 @@ public class FileHandler {
 
     //_______________________KONKURRENCESVØMMERLISTE FILEN______________________________________________________________
 
+    //________________________metode til at gemme liste af konkurrenceSvømmere til fil__________________________________
+    public ArrayList<KonkurrenceSvømmer> gemListeAfKonkurrenceSvømmere(ArrayList<KonkurrenceSvømmer> konkurrenceSvømmerListe) {
+        PrintStream output = null;
+        try {
+            output = new PrintStream(new File("medlemsListe"));
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        for (KonkurrenceSvømmer konkurrenceSvømmer : konkurrenceSvømmerListe) {
+            output.println(konkurrenceSvømmer.toStringTilFil());
+        }
+        return konkurrenceSvømmerListe;
+    }
 
 
     //________________________metode til  at hente listen af konkurrenceSvømmere fra fil________________________________

@@ -42,4 +42,16 @@ public class KonkurrenceSvømmer extends Medlem{
     //__________________________________________________________________________________________________________________
 
 
+    public String toStringTilFil() {
+        return this.getNavn() + ";" +
+                this.getCpr() + ";" +
+                this.getAldersGruppe() + ";" +
+                (this.getMedlemsstatus() == MedlemsStatus.AKTIV ? "Aktiv" : "Passiv") + ";" +
+                this.getHarBetalt()+ ";" +
+                this.getAktivitetsForm() + ";" +
+                this.getSVØMMEDISCIPLIN() + ";" +
+                this.getBedsteTid() + ";" +
+                (this.getHarKonkurreret() ? "har konkurreret" : "har ikke konkurreret");
+    }
+
 }

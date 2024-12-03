@@ -68,6 +68,13 @@ public class Controller {
         return formand.gemMedlem();
     }
 
+    //_______________________metode til at gemme liste af konkurrencesvømmere___________________________________________
+    public ArrayList<KonkurrenceSvømmer> gemListeAfKonkurrencesvømmere(){
+        return formand.gemKonkurrenceSvømmer();
+    }
+
+
+
     //________________________metode til at se antallet af medlemmer i klubben__________________________________________
     public int antalAfMedlemmer() {
         return formand.antalMedlemmer();
