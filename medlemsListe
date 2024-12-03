@@ -1,52 +1,52 @@
-Kasper Persson;011275;SENIOR;Aktiv;false;Motionist
-Camilla Hansen;061026;SENIOR;Aktiv;true;Konkurrence svømmer;BRYSTSVØMNING;1.55;true
-Isabella Rosendal;020202;SENIOR;Aktiv;false;Motionist
-Maja Lavrens;121215;JUNIOR;Aktiv;true;Konkurrence svømmer;BRYSTSVØMNING;1.55;true
-Lærke Lønborg;121156;SENIOR;Passiv;true;Konkurrence svømmer;BRYSTSVØMNING;1.55;true
-Klara Karlsen;101023;JUNIOR;Aktiv;true;Motionist
-Elaine Schwalbe;080782;SENIOR;Passiv;true;Motionist
-Martin Even;130179;SENIOR;Aktiv;true;Konkurrence svømmer;BRYSTSVØMNING;1.55;true
-Caroline Hansen;080785;SENIOR;Aktiv;true;Motionist
-Christian Decastro;240583;SENIOR;Passiv;true;Motionist
-Pernille Christiansen;170651;SENIOR;Passiv;true;Konkurrence svømmer;BRYSTSVØMNING;1.55;true
-Teresa Kaarsberg;150583;SENIOR;Aktiv;false;Konkurrence svømmer;BRYSTSVØMNING;1.55;true
-Christian Vinther;191194;SENIOR;Aktiv;true;Konkurrence svømmer;BRYSTSVØMNING;1.55;true
-Signe Borch;180980;SENIOR;Passiv;true;Motionist
-Edith Terte;120791;SENIOR;Passiv;true;Konkurrence svømmer;BRYSTSVØMNING;1.55;true
-Hugh Hefner;010141;SENIOR;Passiv;true;Motionist
-Britney Spears;170979;SENIOR;Aktiv;true;Konkurrence svømmer;BRYSTSVØMNING;1.55;true
-Michael Bolton;051162;SENIOR;Passiv;false;Konkurrence svømmer;BRYSTSVØMNING;1.55;true
-Cindy Lou Who;241200;SENIOR;Aktiv;true;Konkurrence svømmer;BRYSTSVØMNING;1.55;true
-Walter White;060560;SENIOR;Passiv;true;Motionist
-Saul Goodman;091270;SENIOR;Passiv;false;Konkurrence svømmer;BRYSTSVØMNING;1.55;true
-Clark Kent;040400;SENIOR;Aktiv;true;Motionist
-Bruce Wayne;080880;SENIOR;Passiv;true;Konkurrence svømmer;BRYSTSVØMNING;1.55;true
-Peter Parker;101010;JUNIOR;Aktiv;true;Konkurrence svømmer;BRYSTSVØMNING;1.55;true
-Jens Jørgensen;290300;SENIOR;Passiv;true;Motionist
-Mary Jane PArker;070700;SENIOR;Passiv;true;Motionist
-Harley Quinn;190919;JUNIOR;Aktiv;true;Motionist
-Piper Chapman;121212;JUNIOR;Passiv;false;Konkurrence svømmer;BRYSTSVØMNING;1.55;true
-Solveig Nielsen;090980;SENIOR;Passiv;true;Konkurrence svømmer;BRYSTSVØMNING;1.55;true
-Harry DeEsbe;101010;JUNIOR;Passiv;false;Motionist
-Nils Olsen;090674;SENIOR;Aktiv;false;Konkurrence svømmer;BRYSTSVØMNING;1.55;true
-Mads Jørgensen;080187;SENIOR;Aktiv;true;Konkurrence svømmer;BRYSTSVØMNING;1.55;true
-Philip Guldberg;040193;SENIOR;Aktiv;false;Konkurrence svømmer;BRYSTSVØMNING;1.55;true
-Simon Guldberg;040193;SENIOR;Aktiv;true;Konkurrence svømmer;BRYSTSVØMNING;1.55;true
-Cathrine Forchammer;080990;SENIOR;Aktiv;false;Motionist
-Susan Mayer;070880;SENIOR;Passiv;false;Konkurrence svømmer;BRYSTSVØMNING;1.55;true
-Lynette Scavo;120970;SENIOR;Passiv;false;Motionist
-Bree van de Kamp;121205;SENIOR;Passiv;true;Konkurrence svømmer;BRYSTSVØMNING;1.55;true
-Gabrielle Solis;091012;JUNIOR;Passiv;false;Konkurrence svømmer;BRYSTSVØMNING;1.55;true
-Mike Delfino;120977;SENIOR;Passiv;false;Motionist
-Carlotta Centimeri;021094;SENIOR;Aktiv;true;Konkurrence svømmer;BRYSTSVØMNING;1.55;true
-Sallie Thomsen;080887;SENIOR;Aktiv;true;Konkurrence svømmer;BRYSTSVØMNING;1.55;true
-Julie Andersen;300887;SENIOR;Aktiv;true;Konkurrence svømmer;BRYSTSVØMNING;1.55;true
-Jesper Jørgensen;020699;SENIOR;Passiv;true;Konkurrence svømmer;BRYSTSVØMNING;1.55;true
-Ash Ketchum;070915;JUNIOR;Passiv;false;Motionist
-Brooke Davis;020100;SENIOR;Passiv;false;Motionist
-Nathan Scott;231299;SENIOR;Passiv;false;Konkurrence svømmer;BRYSTSVØMNING;1.55;true
-Bridget Jones;121103;SENIOR;Aktiv;false;Konkurrence svømmer;BRYSTSVØMNING;1.55;true
-Meredith Grey;030210;JUNIOR;Passiv;false;Motionist
-Sanda OH;030303;SENIOR;Aktiv;true;Konkurrence svømmer;BRYSTSVØMNING;1.55;true
-Yvonne;020767;SENIOR;Aktiv;false;Konkurrence svømmer;Brystsvømning;1.23;true
-Marianne;121162;SENIOR;Aktiv;true;Konkurrence svømmer;Brystsvømning;1.23;true
+Kasper Persson;011275;SENIOR;Aktiv;false;false
+Camilla Hansen;061026;SENIOR;Aktiv;false;true
+Isabella Rosendal;020202;SENIOR;Aktiv;false;false
+Maja Lavrens;121215;JUNIOR;Aktiv;false;true
+Lærke Lønborg;121156;SENIOR;Passiv;false;true
+Klara Karlsen;101023;JUNIOR;Aktiv;false;true
+Elaine Schwalbe;080782;SENIOR;Passiv;false;true
+Martin Even;130179;SENIOR;Aktiv;false;true
+Caroline Hansen;080785;SENIOR;Aktiv;false;true
+Christian Decastro;240583;SENIOR;Passiv;false;true
+Pernille Christiansen;170651;SENIOR;Passiv;false;true
+Teresa Kaarsberg;150583;SENIOR;Aktiv;false;false
+Christian Vinther;191194;SENIOR;Aktiv;false;true
+Signe Borch;180980;SENIOR;Passiv;false;true
+Edith Terte;120791;SENIOR;Passiv;false;true
+Hugh Hefner;010141;SENIOR;Passiv;false;true
+Britney Spears;170979;SENIOR;Aktiv;false;true
+Michael Bolton;051162;SENIOR;Passiv;false;false
+Cindy Lou Who;241200;SENIOR;Aktiv;false;true
+Walter White;060560;SENIOR;Passiv;false;true
+Saul Goodman;091270;SENIOR;Passiv;false;false
+Clark Kent;040400;SENIOR;Aktiv;false;true
+Bruce Wayne;080880;SENIOR;Passiv;false;true
+Peter Parker;101010;JUNIOR;Aktiv;false;true
+Jens Jørgensen;290300;SENIOR;Passiv;false;true
+Mary Jane PArker;070700;SENIOR;Passiv;false;true
+Harley Quinn;190919;JUNIOR;Aktiv;false;true
+Piper Chapman;121212;JUNIOR;Passiv;false;false
+Solveig Nielsen;090980;SENIOR;Passiv;false;true
+Harry DeEsbe;101010;JUNIOR;Passiv;false;false
+Nils Olsen;090674;SENIOR;Aktiv;false;false
+Mads Jørgensen;080187;SENIOR;Aktiv;false;true
+Philip Guldberg;040193;SENIOR;Aktiv;false;false
+Simon Guldberg;040193;SENIOR;Aktiv;false;true
+Cathrine Forchammer;080990;SENIOR;Aktiv;false;false
+Susan Mayer;070880;SENIOR;Passiv;false;false
+Lynette Scavo;120970;SENIOR;Passiv;false;false
+Bree van de Kamp;121205;SENIOR;Passiv;false;true
+Gabrielle Solis;091012;JUNIOR;Passiv;false;false
+Mike Delfino;120977;SENIOR;Passiv;false;false
+Carlotta Centimeri;021094;SENIOR;Aktiv;false;true
+Sallie Thomsen;080887;SENIOR;Aktiv;false;true
+Julie Andersen;300887;SENIOR;Aktiv;false;true
+Jesper Jørgensen;020699;SENIOR;Passiv;false;true
+Ash Ketchum;070915;JUNIOR;Passiv;false;false
+Brooke Davis;020100;SENIOR;Passiv;false;false
+Nathan Scott;231299;SENIOR;Passiv;false;false
+Bridget Jones;121103;SENIOR;Aktiv;false;false
+Meredith Grey;030210;JUNIOR;Passiv;false;false
+Sanda OH;030303;SENIOR;Aktiv;false;true
+Yvonne;020767;SENIOR;Aktiv;false;false
+Marianne;121162;SENIOR;Aktiv;false;true

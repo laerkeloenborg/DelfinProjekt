@@ -157,8 +157,11 @@ public class UI {
                                         System.out.println("Fejl: " + iae.getMessage());
                                     }
                                 }
-
-                                controller.opretMedlem(navn, cpr, status, aktivitetsForm, brugerBetalt);
+                                if (aktivitetsForm.equals("konkurrence")) {
+                                    controller.opretKonkurrenceMedlem(navn cpr, status, aktivitetsForm, brugerBetalt, svømmeDisciplin, bedsteTid, harKonkurreret);
+                                } else {
+                                    controller.opretMedlem(navn, cpr, status, aktivitetsForm, brugerBetalt);
+                                }
 
                                 System.out.println("Medlemmet er blevet oprettet!");
                                 break;
