@@ -43,6 +43,7 @@ public class Træner {
         Collections.sort(konkurrenceSvømmerListe, comparator);
     }
 
+    //TODO: exceptions
 public ArrayList<KonkurrenceSvømmer> top5(ArrayList<KonkurrenceSvømmer> topSvømmere, AldersGruppe ALDERSGRUPPE, SvømmeDiscipliner SVØMMEDISCIPLIN){
         ArrayList<KonkurrenceSvømmer> bestemteSvømmere = new ArrayList<>();
         for (KonkurrenceSvømmer konkurrenceSvømmer : topSvømmere){
