@@ -1,6 +1,5 @@
 import java.time.DateTimeException;
 import java.time.LocalDate;
-import java.util.Comparator;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -412,7 +411,7 @@ public class UI {
 
                             case "1":
                                 System.out.println("Liste over klubbens konkurrencesvømmere: "); //TODO indsæt metode
-                                System.out.println(controller.print());
+                                System.out.println(controller.hentKonkurrenceSvømmereFraFil());
                                 break;
 
                             case "2":

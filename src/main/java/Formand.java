@@ -26,6 +26,10 @@ public class Formand {
         return fileHandler.gemListeAfMedlemmer(medlemsListen);
     }
 
+    public ArrayList<KonkurrenceSvømmer> gemKonkurrenceSvømmer(){
+        return fileHandler.gemListeAfKonkurrenceSvømmere(medlemsListen);
+    }
+
 
     //________________________metode til at slette medlem via CPR_______________________________________________________
     public boolean sletMedlem(String cpr) {

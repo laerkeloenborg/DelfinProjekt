@@ -148,8 +148,8 @@ public class Medlem {
                 this.cpr + ";" +
                 this.getAldersGruppe() + ";" +
                 (this.MEDLEMSSTATUS == MedlemsStatus.AKTIV ? "Aktiv" : "Passiv") + ";" +
-                this.getAktivitetsForm() + ";" +
-                this.getHarBetalt();
+                this.getHarBetalt()+ ";" +
+                this.getAktivitetsForm() ;
     }
 
 
