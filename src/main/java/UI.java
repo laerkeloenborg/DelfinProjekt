@@ -148,7 +148,7 @@ public class UI {
                                     }
                                 }
 
-                                controller.opretMedlem(navn, cpr, status, aktivitetsForm, brugerBetalt);
+                                controller.opretMedlem(navn, cpr, status, brugerBetalt, aktivitetsForm);
 
                                 System.out.println("Medlemmet er blevet oprettet!");
                                 break;

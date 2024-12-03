@@ -3,12 +3,12 @@ public class KonkurrenceSvømmer extends Medlem{
     private double bedsteTid;
     private boolean harKonkurreret;
 
-    public KonkurrenceSvømmer(String navn, String cpr, MedlemsStatus MEDLEMSSTATUS, String aktivitetsForm, boolean harBetalt){
-        super(navn, cpr, MEDLEMSSTATUS,aktivitetsForm, harBetalt);
+    public KonkurrenceSvømmer(String navn, String cpr, MedlemsStatus MEDLEMSSTATUS, boolean harBetalt, String aktivitetsForm){
+        super(navn, cpr, MEDLEMSSTATUS,harBetalt,aktivitetsForm);
     }
 
-    public KonkurrenceSvømmer(String navn, String cpr, MedlemsStatus MEDLEMSSTATUS, String aktivitetsForm, boolean harBetalt, SvømmeDiscipliner SVØMMEDISCIPLIN, double bedsteTid, boolean harKonkurreret){
-       super(navn, cpr, MEDLEMSSTATUS, aktivitetsForm, harBetalt);
+    public KonkurrenceSvømmer(String navn, String cpr, MedlemsStatus MEDLEMSSTATUS, boolean harBetalt, String aktivitetsForm, SvømmeDiscipliner SVØMMEDISCIPLIN, double bedsteTid, boolean harKonkurreret){
+       super(navn, cpr, MEDLEMSSTATUS, harBetalt, aktivitetsForm);
        this.SVØMMEDISCIPLIN = SVØMMEDISCIPLIN;
        this.bedsteTid = bedsteTid;
        this.harKonkurreret = harKonkurreret;
