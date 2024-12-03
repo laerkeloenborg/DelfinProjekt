@@ -65,8 +65,7 @@ public String printTop5(ArrayList<KonkurrenceSvømmer> topSvømmere){
         int tæller = 1;
 
         for (KonkurrenceSvømmer konkurrenceSvømmer : topSvømmere){
-            string += tæller++ + ". " + konkurrenceSvømmer.getNavn() + ", " + konkurrenceSvømmer.getAldersGruppe() + ", " + konkurrenceSvømmer.getMedlemsstatus() +
-                    ", " + konkurrenceSvømmer.getSVØMMEDISCIPLIN() + ", " + konkurrenceSvømmer.getBedsteTid() + ", " + konkurrenceSvømmer.getHarKonkurreret() + "\n";
+            string += tæller++ + konkurrenceSvømmer.toString();
         }
         return string;
 }
