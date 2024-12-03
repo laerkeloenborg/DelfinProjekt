@@ -33,48 +33,46 @@ public class Træner {
         return "";
     }
 
-    public void sorteringTid(){
+    public void sorteringTid() {
         Comparators.sorteringSvømmetider comparator = new Comparators.sorteringSvømmetider();
         Collections.sort(konkurrenceSvømmerListe, comparator);
     }
 
-    public void sortertingKonkurrenceStatus(){
+    public void sortertingKonkurrenceStatus() {
         Comparators.sorteringKonkurrencestatus comparator = new Comparators.sorteringKonkurrencestatus();
         Collections.sort(konkurrenceSvømmerListe, comparator);
     }
 
-    public String printJuniorHold(){
+    public String printJuniorHold() {
         String string = "";
         int tæller = 1;
-        for (KonkurrenceSvømmer konkurrenceSvømmer : konkurrenceSvømmerListe){
-            if (konkurrenceSvømmer.getAldersGruppe().equals(AldersGruppe.JUNIOR)){
-                string += tæller++ + ". " + konkurrenceSvømmer.getNavn() + ", " + konkurrenceSvømmer.getAldersGruppe() + ", " + konkurrenceSvømmer.getMedlemsstatus() +
-                        ", " + konkurrenceSvømmer.getSVØMMEDISCIPLIN() + ", " + konkurrenceSvømmer.getBedsteTid() + ", " + konkurrenceSvømmer.getHarKonkurreret() + "\n";
+        for (KonkurrenceSvømmer konkurrenceSvømmer : konkurrenceSvømmerListe) {
+            if (konkurrenceSvømmer.getAldersGruppe().equals(AldersGruppe.JUNIOR)) {
+                string += tæller++ + konkurrenceSvømmer.toString();
             }
         }
         return string;
     }
 
-    public String printSeniorHold(){
+    public String printSeniorHold() {
         String string = "";
         int tæller = 1;
-        for (KonkurrenceSvømmer konkurrenceSvømmer : konkurrenceSvømmerListe){
-            if (konkurrenceSvømmer.getAldersGruppe().equals(AldersGruppe.SENIOR)){
-                string += tæller++ + ". " + konkurrenceSvømmer.getNavn() + ", " + konkurrenceSvømmer.getAldersGruppe() + ", " + konkurrenceSvømmer.getMedlemsstatus() +
-                        ", " + konkurrenceSvømmer.getSVØMMEDISCIPLIN() + ", " + konkurrenceSvømmer.getBedsteTid() + ", " + konkurrenceSvømmer.getHarKonkurreret() + "\n";
+        for (KonkurrenceSvømmer konkurrenceSvømmer : konkurrenceSvømmerListe) {
+            if (konkurrenceSvømmer.getAldersGruppe().equals(AldersGruppe.SENIOR)) {
+                string += tæller++ + konkurrenceSvømmer.toString();
             }
         }
         return string;
     }
+
 
     public String hentKonkurrenceSvømmereFraFil() {
         String string = "";
         int tæller = 1;
-        for (KonkurrenceSvømmer konkurrenceSvømmer : konkurrenceSvømmerListe){
-            string += tæller++ + ". " +  konkurrenceSvømmer.getNavn() + ",  " + konkurrenceSvømmer.getAldersGruppe() + ", " + konkurrenceSvømmer.getMedlemsstatus() +
-            ", " + konkurrenceSvømmer.getSVØMMEDISCIPLIN() + ", " + konkurrenceSvømmer.getBedsteTid() + ", " + konkurrenceSvømmer.getHarKonkurreret() +"\n";
+        for (KonkurrenceSvømmer konkurrenceSvømmer : konkurrenceSvømmerListe) {
+            string += tæller++ + konkurrenceSvømmer.toString();
         }
-    return string;
-}
+        return string;
+    }
 
 }
