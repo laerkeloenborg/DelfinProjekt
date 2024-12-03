@@ -107,8 +107,8 @@ public class Controller {
     }
 
 
-    public String print(){
-        return træner.print();
+    public String hentKonkurrenceSvømmereFraFil(){
+        return træner.hentKonkurrenceSvømmereFraFil();
     }
 
 

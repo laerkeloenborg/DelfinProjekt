@@ -1,6 +1,3 @@
-import java.io.File;
-import java.util.ArrayList;
-
 public class Træner {
 
     private FileHandler fileHandler;
@@ -32,7 +29,7 @@ public class Træner {
     }
 
 
-    public String print() {
+    public String hentKonkurrenceSvømmereFraFil() {
         String string = "";
         int tæller = 1;
         for (KonkurrenceSvømmer konkurrenceSvømmer : fileHandler.hentListeAfKonkurrenceSvømmere()){
