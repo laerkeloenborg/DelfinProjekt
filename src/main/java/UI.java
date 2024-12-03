@@ -111,21 +111,6 @@ public class UI {
                                     }
                                 }
 
-                                System.out.print("Vælg aktivitetsform (motionist/konkurrence): ");
-                                String aktivitetsForm = "";
-                                boolean validAktivitetsForm = false;
-
-                                while (!validAktivitetsForm) {
-                                    try {
-                                        aktivitetsForm = scanner.nextLine().toLowerCase();
-                                        if (!aktivitetsForm.equals("motionist") && !aktivitetsForm.equals("konkurrence")) {
-                                            throw new IllegalArgumentException("Indtast motionist eller konkurrence");
-                                        }
-                                        validAktivitetsForm = true;
-                                    } catch (IllegalArgumentException iae) {
-                                        System.out.println("Fejl: " + iae.getMessage());
-                                    }
-                                }
 
                                 System.out.println("Har medlemmet betalt? (ja/nej):  ");
                                 String harBetalt = "";
@@ -143,6 +128,31 @@ public class UI {
                                             validBetaling = true;
                                         } else {
                                             throw new IllegalArgumentException("Indtast ja eller nej");
+                                        }
+                                    } catch (IllegalArgumentException iae) {
+                                        System.out.println("Fejl: " + iae.getMessage());
+                                    }
+                                }
+                                System.out.print("Vælg aktivitetsform (motionist/konkurrence): ");
+                                String aktivitetsForm = "";
+                                boolean validAktivitetsForm = false;
+
+                                while (!validAktivitetsForm) {
+                                    try {
+                                        aktivitetsForm = scanner.nextLine().toLowerCase();
+                                        if (!aktivitetsForm.equals("motionist") && !aktivitetsForm.equals("konkurrence")) {
+                                            throw new IllegalArgumentException("Indtast motionist eller konkurrence");
+                                        }
+                                        if (aktivitetsForm.equals("motionist")) {
+                                            validAktivitetsForm = true;
+                                        } else if (aktivitetsForm.equals("konkurrence")){
+                                            System.out.println("Indtast svømmedisciplin");
+                                            aktivitetsForm = scanner.nextLine();
+                                            System.out.println("Indtast bedste tid");
+                                            aktivitetsForm = scanner.nextLine();
+                                            System.out.println("Indtast om medlemmet har konkurret (ja/nej");
+                                            aktivitetsForm = scanner.nextLine();
+                                            validAktivitetsForm = true;
                                         }
                                     } catch (IllegalArgumentException iae) {
                                         System.out.println("Fejl: " + iae.getMessage());
@@ -414,7 +424,7 @@ public class UI {
                                 break;
 
                             case "4":
-                                System.out.println("Liste over top5 svømmere"); //TODO indsæt metode
+                                System.out.println("Liste over top5 svømmere");//TODO indsæt metode
                                 break;
 
                             case "5":
