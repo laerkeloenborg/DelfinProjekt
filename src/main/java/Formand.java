@@ -11,6 +11,7 @@ public class Formand {
     public Formand() {
         fileHandler = new FileHandler();
         medlemsListen = fileHandler.hentListeAfMedlemmer();
+
     }
 
 
