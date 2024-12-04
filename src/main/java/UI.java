@@ -461,7 +461,7 @@ public class UI {
 
                             case "1":
                                 System.out.println("Liste over klubbens konkurrencesvømmere: "); //TODO indsæt metode
-                                System.out.println(controller.hentKonkurrenceSvømmereFraFil());
+                                System.out.println(controller.visMedlemmer());
                                 break;
                             case "2":
                                 controller.sorteringTid();
@@ -499,41 +499,41 @@ public class UI {
                                         case 1:
                                             controller.sorteringTid();
                                             System.out.println("Junior holdet: ");
-                                            ArrayList<KonkurrenceSvømmer> butterflyJunior = controller.top5(controller.visKonkurrenceSvømmere(), AldersGruppe.JUNIOR, SvømmeDiscipliner.BUTTERFLY);
+                                            ArrayList<Medlem> butterflyJunior = controller.top5(controller.visKonkurrenceSvømmere(), AldersGruppe.JUNIOR, SvømmeDiscipliner.BUTTERFLY);
                                             System.out.println(controller.printTop5(butterflyJunior));
 
                                             System.out.println("Senior holdet: ");
-                                            ArrayList<KonkurrenceSvømmer> butterflySenior = controller.top5(controller.visKonkurrenceSvømmere(), AldersGruppe.SENIOR, SvømmeDiscipliner.BUTTERFLY);
+                                            ArrayList<Medlem> butterflySenior = controller.top5(controller.visKonkurrenceSvømmere(), AldersGruppe.SENIOR, SvømmeDiscipliner.BUTTERFLY);
                                             System.out.println(controller.printTop5(butterflySenior));
                                             break;
                                         case 2:
                                             controller.sorteringTid();
                                             System.out.println("Junior holdet: ");
-                                            ArrayList<KonkurrenceSvømmer> crawlJunior = controller.top5(controller.visKonkurrenceSvømmere(), AldersGruppe.JUNIOR, SvømmeDiscipliner.CRAWL);
+                                            ArrayList<Medlem> crawlJunior = controller.top5(controller.visKonkurrenceSvømmere(), AldersGruppe.JUNIOR, SvømmeDiscipliner.CRAWL);
                                             System.out.println(controller.printTop5(crawlJunior));
 
                                             System.out.println("Senior holdet: ");
-                                            ArrayList<KonkurrenceSvømmer> crawlSenior = controller.top5(controller.visKonkurrenceSvømmere(), AldersGruppe.SENIOR, SvømmeDiscipliner.CRAWL);
+                                            ArrayList<Medlem> crawlSenior = controller.top5(controller.visKonkurrenceSvømmere(), AldersGruppe.SENIOR, SvømmeDiscipliner.CRAWL);
                                             System.out.println(controller.printTop5(crawlSenior));
                                             break;
                                         case 3:
                                             controller.sorteringTid();
                                             System.out.println("Junior holdet: ");
-                                            ArrayList<KonkurrenceSvømmer> rygcrawlJunior = controller.top5(controller.visKonkurrenceSvømmere(), AldersGruppe.JUNIOR, SvømmeDiscipliner.RYGCRAWL);
+                                            ArrayList<Medlem> rygcrawlJunior = controller.top5(controller.visKonkurrenceSvømmere(), AldersGruppe.JUNIOR, SvømmeDiscipliner.RYGCRAWL);
                                             System.out.println(controller.printTop5(rygcrawlJunior));
 
                                             System.out.println("Senior holdet: ");
-                                            ArrayList<KonkurrenceSvømmer> rygcrawlSenior = controller.top5(controller.visKonkurrenceSvømmere(), AldersGruppe.SENIOR, SvømmeDiscipliner.RYGCRAWL);
+                                            ArrayList<Medlem> rygcrawlSenior = controller.top5(controller.visKonkurrenceSvømmere(), AldersGruppe.SENIOR, SvømmeDiscipliner.RYGCRAWL);
                                             System.out.println(controller.printTop5(rygcrawlSenior));
                                             break;
                                         case 4:
                                             controller.sorteringTid();
                                             System.out.println("Junior holdet: ");
-                                            ArrayList<KonkurrenceSvømmer> brystJunior = controller.top5(controller.visKonkurrenceSvømmere(), AldersGruppe.JUNIOR, SvømmeDiscipliner.BRYSTSVØMNING);
+                                            ArrayList<Medlem> brystJunior = controller.top5(controller.visKonkurrenceSvømmere(), AldersGruppe.JUNIOR, SvømmeDiscipliner.BRYSTSVØMNING);
                                             System.out.println(controller.printTop5(brystJunior));
 
                                             System.out.println("Senior holdet: ");
-                                            ArrayList<KonkurrenceSvømmer> brystSenior = controller.top5(controller.visKonkurrenceSvømmere(), AldersGruppe.SENIOR, SvømmeDiscipliner.BRYSTSVØMNING);
+                                            ArrayList<Medlem> brystSenior = controller.top5(controller.visKonkurrenceSvømmere(), AldersGruppe.SENIOR, SvømmeDiscipliner.BRYSTSVØMNING);
                                             System.out.println(controller.printTop5(brystSenior));
                                             break;
                                         case 5:

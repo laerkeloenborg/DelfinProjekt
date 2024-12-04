@@ -5,12 +5,13 @@ import java.util.Collections;
 public class Formand {
     private ArrayList<Medlem> medlemsListen;
     private FileHandler fileHandler;
+    private ArrayList<Medlem> konkurrenceSvømmerListe;
 
     //___________________________konstruktør____________________________________________________________________________
     public Formand() {
         fileHandler = new FileHandler();
         medlemsListen = fileHandler.hentListeAfMedlemmer();
-
+        konkurrenceSvømmerListe = fileHandler.hentListeAfMedlemmer();
     }
 
 
@@ -24,6 +25,8 @@ public class Formand {
     public void tilføjKonkurrenceSvømmer(String navn, String cpr, MedlemsStatus MEDLEMSSTATUS, boolean harBetalt, String aktivitetsform, SvømmeDiscipliner svømmeDisciplin, double bedsteTid, boolean harKonkurreret){
         KonkurrenceSvømmer nyKonkurrenceSvømmer = new KonkurrenceSvømmer(navn, cpr, MEDLEMSSTATUS, harBetalt, aktivitetsform, svømmeDisciplin, bedsteTid, harKonkurreret);
         medlemsListen.add(nyKonkurrenceSvømmer);
+        konkurrenceSvømmerListe.add(nyKonkurrenceSvømmer);
+        fileHandler.gemListeAfMedlemmer(konkurrenceSvømmerListe);
         fileHandler.gemListeAfMedlemmer(medlemsListen);
     }
 

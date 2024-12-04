@@ -139,17 +139,17 @@ public class Controller {
     }
 
     //_______________________metode til at få listen over konkurrencesvømmere (uden layout)_____________________________
-    public ArrayList<KonkurrenceSvømmer> visKonkurrenceSvømmere() {
+    public ArrayList<Medlem> visKonkurrenceSvømmere() {
         return træner.getKonkurrenceSvømmerListe();
     }
 
     //_______________________metode til at se se top5 svømmere (pæn layout)_____________________________________________
-    public String printTop5(ArrayList<KonkurrenceSvømmer> topSvømmere) {
+    public String printTop5(ArrayList<Medlem> topSvømmere) {
         return træner.printTop5(topSvømmere);
     }
 
     //_______________________metode til at se top5 svømmere i hver disciplin & aldersgruppe (uden layout)_______________
-    public ArrayList<KonkurrenceSvømmer> top5(ArrayList<KonkurrenceSvømmer> konkurrenceSvømmere, AldersGruppe ALDERSGRUPPE, SvømmeDiscipliner SVØMMEDISCIPLIN) {
+    public ArrayList<Medlem> top5(ArrayList<Medlem> konkurrenceSvømmere, AldersGruppe ALDERSGRUPPE, SvømmeDiscipliner SVØMMEDISCIPLIN) {
         return træner.top5(konkurrenceSvømmere, ALDERSGRUPPE, SVØMMEDISCIPLIN);
     }
 

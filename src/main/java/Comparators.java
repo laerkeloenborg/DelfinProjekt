@@ -35,23 +35,23 @@ public class Comparators {
     }
 
     //_______________________comparator til sortering af svømmedisciplin - konkurrencesvømmer__________________________________________
-    public static class sorteringSvømmedisciplin implements Comparator<KonkurrenceSvømmer> {
-        public int compare(KonkurrenceSvømmer k1, KonkurrenceSvømmer k2){
-            return k1.getSVØMMEDISCIPLIN().compareTo(k2.getSVØMMEDISCIPLIN());
+    public static class sorteringSvømmedisciplin implements Comparator<Medlem> {
+        public int compare(Medlem k1, Medlem k2){
+            return ((KonkurrenceSvømmer)k1).getSVØMMEDISCIPLIN().compareTo(((KonkurrenceSvømmer)k2).getSVØMMEDISCIPLIN());
         }
     }
 
     //______________________comparator til sortering af svømmetider - konkurrencesvømmer_______________________________________________
-    public static class sorteringSvømmetider implements Comparator<KonkurrenceSvømmer>{
-        public int compare(KonkurrenceSvømmer k1, KonkurrenceSvømmer k2){
-            return Double.compare(k1.getBedsteTid(),k2.getBedsteTid());
+    public static class sorteringSvømmetider implements Comparator<Medlem>{
+        public int compare(Medlem k1, Medlem k2){
+            return Double.compare(((KonkurrenceSvømmer)k1).getBedsteTid(),((KonkurrenceSvømmer)k2).getBedsteTid());
         }
     }
 
     //____________________comparator til sortering af konkurrence status - konkurrencesvømmer_________________________________________
-    public static  class sorteringKonkurrencestatus implements Comparator<KonkurrenceSvømmer>{
-        public int compare(KonkurrenceSvømmer k1, KonkurrenceSvømmer k2){
-            return Boolean.compare(k1.getHarKonkurreret(), k2.getHarKonkurreret());
+    public static  class sorteringKonkurrencestatus implements Comparator<Medlem>{
+        public int compare(Medlem k1, Medlem k2){
+            return Boolean.compare(((KonkurrenceSvømmer)k1).getHarKonkurreret(), ((KonkurrenceSvømmer)k2).getHarKonkurreret());
         }
     }
 

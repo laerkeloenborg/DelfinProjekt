@@ -1,14 +1,15 @@
+import javax.swing.plaf.metal.MetalComboBoxEditor;
 import java.util.ArrayList;
 import java.util.Collections;
 
 public class Træner {
 
     private FileHandler fileHandler;
-    private ArrayList<KonkurrenceSvømmer> konkurrenceSvømmerListe;
+    private ArrayList<Medlem> konkurrenceSvømmerListe;
 
     public Træner() {
         fileHandler = new FileHandler();
-        konkurrenceSvømmerListe = fileHandler.hentListeAfKonkurrenceSvømmere();
+        konkurrenceSvømmerListe = fileHandler.hentListeAfMedlemmer();
     }
 
 
@@ -44,15 +45,15 @@ public class Træner {
     }
 
     //TODO: exceptions
-    public ArrayList<KonkurrenceSvømmer> top5(ArrayList<KonkurrenceSvømmer> topSvømmere, AldersGruppe ALDERSGRUPPE, SvømmeDiscipliner SVØMMEDISCIPLIN) {
-        ArrayList<KonkurrenceSvømmer> bestemteSvømmere = new ArrayList<>();
-        for (KonkurrenceSvømmer konkurrenceSvømmer : topSvømmere) {
-            if (konkurrenceSvømmer.getAldersGruppe().equals(ALDERSGRUPPE) && konkurrenceSvømmer.getSVØMMEDISCIPLIN().equals(SVØMMEDISCIPLIN)) {
+    public ArrayList<Medlem> top5(ArrayList<Medlem> topSvømmere, AldersGruppe ALDERSGRUPPE, SvømmeDiscipliner SVØMMEDISCIPLIN) {
+        ArrayList<Medlem> bestemteSvømmere = new ArrayList<>();
+        for (Medlem konkurrenceSvømmer : topSvømmere) {
+            if (konkurrenceSvømmer.getAldersGruppe().equals(ALDERSGRUPPE) && ((KonkurrenceSvømmer)konkurrenceSvømmer).getSVØMMEDISCIPLIN().equals(SVØMMEDISCIPLIN)) {
                 bestemteSvømmere.add(konkurrenceSvømmer);
             }
         }
 
-        ArrayList<KonkurrenceSvømmer> top5 = new ArrayList<>();
+        ArrayList<Medlem> top5 = new ArrayList<>();
         for (int i = 0; i < Math.min(5, bestemteSvømmere.size()); i++) {
             top5.add(bestemteSvømmere.get(i));
         }
@@ -61,17 +62,17 @@ public class Træner {
     }
 
 
-    public String printTop5(ArrayList<KonkurrenceSvømmer> topSvømmere) {
+    public String printTop5(ArrayList<Medlem> topSvømmere) {
         String string = "";
         int tæller = 1;
 
-        for (KonkurrenceSvømmer konkurrenceSvømmer : topSvømmere) {
+        for (Medlem konkurrenceSvømmer : topSvømmere) {
             string += tæller++ + konkurrenceSvømmer.toString();
         }
         return string;
     }
 
-    public ArrayList<KonkurrenceSvømmer> getKonkurrenceSvømmerListe() {
+    public ArrayList<Medlem> getKonkurrenceSvømmerListe() {
         return konkurrenceSvømmerListe;
     }
 
@@ -79,7 +80,7 @@ public class Træner {
     public String printJuniorHold() {
         String string = "";
         int tæller = 1;
-        for (KonkurrenceSvømmer konkurrenceSvømmer : konkurrenceSvømmerListe) {
+        for (Medlem konkurrenceSvømmer : konkurrenceSvømmerListe) {
             if (konkurrenceSvømmer.getAldersGruppe().equals(AldersGruppe.JUNIOR)) {
                 string += tæller++ + konkurrenceSvømmer.toString();
             }
@@ -90,7 +91,7 @@ public class Træner {
     public String printSeniorHold() {
         String string = "";
         int tæller = 1;
-        for (KonkurrenceSvømmer konkurrenceSvømmer : konkurrenceSvømmerListe) {
+        for (Medlem konkurrenceSvømmer : konkurrenceSvømmerListe) {
             if (konkurrenceSvømmer.getAldersGruppe().equals(AldersGruppe.SENIOR)) {
                 string += tæller++ +  konkurrenceSvømmer.toString();
             }
@@ -102,7 +103,7 @@ public class Træner {
     public String hentKonkurrenceSvømmereFraFil() {
         String string = "";
         int tæller = 1;
-        for (KonkurrenceSvømmer konkurrenceSvømmer : konkurrenceSvømmerListe) {
+        for (Medlem konkurrenceSvømmer : konkurrenceSvømmerListe) {
             string += tæller++ + konkurrenceSvømmer.toString();
         }
         return string;
