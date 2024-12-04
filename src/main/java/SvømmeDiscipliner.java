@@ -13,4 +13,21 @@ public enum SvømmeDiscipliner {
         }
         return SvømmeDiscipliner.INGEN;
     }
+
+    static String ToString(SvømmeDiscipliner disciplin){
+        switch (disciplin){
+            case CRAWL:
+                return "crawl";
+            case RYGCRAWL:
+                return "Rygcrawl";
+            case BRYSTSVØMNING:
+                return "Brystsvømning";
+            case BUTTERFLY:
+                return "Butterfly";
+            default:
+                return "ingen disciplin registreret";
+        }
+    }
+
+
 }

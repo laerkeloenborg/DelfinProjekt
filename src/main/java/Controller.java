@@ -46,6 +46,7 @@ public class Controller {
     }
 
 
+
     //_______________________metode til at finde et specifikt medlems navn ud fra cpr___________________________________
     public String findSpecifiktMedlemsNavn(String cpr) {
         return formand.findSpecifiktMedlemsNavn(cpr);
@@ -71,11 +72,6 @@ public class Controller {
     //_______________________metode til at gemme listen med medlemmer___________________________________________________
     public ArrayList<Medlem> gemListeAfMedlemmer() {
         return formand.gemMedlem();
-    }
-
-    //_______________________metode til at gemme liste af konkurrencesvømmere___________________________________________
-    public ArrayList<KonkurrenceSvømmer> gemListeAfKonkurrencesvømmere(){
-        return formand.gemKonkurrenceSvømmer();
     }
 
 

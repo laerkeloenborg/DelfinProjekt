@@ -4,7 +4,6 @@ import java.util.Collections;
 
 public class Formand {
     private ArrayList<Medlem> medlemsListen;
-    private ArrayList<KonkurrenceSvømmer> konkurrenceSvømmerListe;
     private FileHandler fileHandler;
 
     //___________________________konstruktør____________________________________________________________________________
@@ -24,8 +23,8 @@ public class Formand {
 
     public void tilføjKonkurrenceSvømmer(String navn, String cpr, MedlemsStatus MEDLEMSSTATUS, boolean harBetalt, String aktivitetsform, SvømmeDiscipliner svømmeDisciplin, double bedsteTid, boolean harKonkurreret){
         KonkurrenceSvømmer nyKonkurrenceSvømmer = new KonkurrenceSvømmer(navn, cpr, MEDLEMSSTATUS, harBetalt, aktivitetsform, svømmeDisciplin, bedsteTid, harKonkurreret);
-        konkurrenceSvømmerListe.add(nyKonkurrenceSvømmer);
-        fileHandler.gemListeAfKonkurrenceSvømmere(konkurrenceSvømmerListe);
+        medlemsListen.add(nyKonkurrenceSvømmer);
+        fileHandler.gemListeAfMedlemmer(medlemsListen);
     }
 
 
@@ -34,9 +33,6 @@ public class Formand {
         return fileHandler.gemListeAfMedlemmer(medlemsListen);
     }
 
-    public ArrayList<KonkurrenceSvømmer> gemKonkurrenceSvømmer(){
-        return fileHandler.gemListeAfKonkurrenceSvømmere(konkurrenceSvømmerListe);
-    }
 
 
     //________________________metode til at slette medlem via CPR_______________________________________________________
@@ -132,6 +128,15 @@ public class Formand {
             return medlemsListen;
         }
     }
+
+    public ArrayList<Medlem> visKonkurrenceSvømmere() {
+        if (medlemsListen.isEmpty()) {
+            return null;
+        } else {
+            return medlemsListen;
+        }
+    }
+
 
     //_______________________metode til at se antallet af medlemmer i klubben___________________________________________
     public int antalMedlemmer() {

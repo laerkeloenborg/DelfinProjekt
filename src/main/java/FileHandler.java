@@ -37,13 +37,23 @@ public class FileHandler {
         while (scanner.hasNext()) {
             String linje = scanner.nextLine();
             String[] attributter = linje.split(";");
+            if (attributter[5].equalsIgnoreCase("konkurrence svømmer")) {
+                medlem = new KonkurrenceSvømmer(attributter[0],
+                        (attributter[1]),
+                        MedlemsStatus.parseMedlemsStatus(attributter[3]),
+                        Boolean.parseBoolean(attributter[4]),
+                        attributter[5],
+                        SvømmeDiscipliner.parseSvømmeDescipliner(attributter[6]),
+                        Double.parseDouble(attributter[7]),
+                        Boolean.parseBoolean(attributter[8]));
 
-            medlem = new Medlem(attributter[0],
-                    (attributter[1]),
-                    MedlemsStatus.parseMedlemsStatus(attributter[3]),
-                    Boolean.parseBoolean(attributter[4]),
-                    attributter[5]);
-
+            } else {
+                medlem = new Medlem(attributter[0],
+                        (attributter[1]),
+                        MedlemsStatus.parseMedlemsStatus(attributter[3]),
+                        Boolean.parseBoolean(attributter[4]),
+                        attributter[5]);
+            }
             medlemsListe.add(medlem);
         }
         scanner.close();

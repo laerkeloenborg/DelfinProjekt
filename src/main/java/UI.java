@@ -151,23 +151,23 @@ public class UI {
                                             System.out.println("Indtast svømmedisciplin (Brystsvømning, Butterfly, Crawl, Rygcrawl): ");
                                             String statusInput1 = "";
                                             boolean validStatus1 = false;
-                                            SvømmeDiscipliner status1 = null;
+                                            SvømmeDiscipliner svømmeDiscipliner = null;
 
                                             while (!validStatus1) {
                                                 try {
                                                     statusInput1 = scanner.nextLine().toUpperCase();
                                                     switch (statusInput1) {
                                                         case "BRYSTSVØMNING":
-                                                            status1 = SvømmeDiscipliner.BRYSTSVØMNING;
+                                                            svømmeDisciplin = SvømmeDiscipliner.BRYSTSVØMNING;
                                                             break;
                                                         case "BUTTERFLY":
-                                                            status1 = SvømmeDiscipliner.BUTTERFLY;
+                                                            svømmeDisciplin = SvømmeDiscipliner.BUTTERFLY;
                                                             break;
                                                         case "CRAWL":
-                                                            status1 = SvømmeDiscipliner.CRAWL;
+                                                            svømmeDisciplin = SvømmeDiscipliner.CRAWL;
                                                             break;
                                                         case "RYGCRAWL":
-                                                            status1 = SvømmeDiscipliner.RYGCRAWL;
+                                                            svømmeDisciplin = SvømmeDiscipliner.RYGCRAWL;
                                                             break;
                                                         default:
                                                             throw new IllegalArgumentException("Indtast en gyldig svømmedisciplin (Brystsvømning, Butterfly, Crawl, Rygcrawl)");
@@ -177,7 +177,7 @@ public class UI {
                                                     System.out.println("Fejl: " + iae.getMessage());
                                                 }
                                             }
-                                            System.out.println("Valgt disciplin: " + status1);
+                                            System.out.println("Valgt disciplin: " + svømmeDisciplin);
 
                                             System.out.println("Indtast bedste tid");
                                             bedsteTid = scanner.nextDouble();
@@ -201,9 +201,11 @@ public class UI {
                                 }
                                 if (aktivitetsForm.equals("konkurrence")) {
                                     controller.opretKonkurrenceSvømmer(navn, cpr, status, brugerBetalt, aktivitetsForm, svømmeDisciplin, bedsteTid, konkurreret);
+
                                 } else {
                                     controller.opretMedlem(navn, cpr, status, brugerBetalt, aktivitetsForm);
                                 }
+
 
                                 System.out.println("Medlemmet er blevet oprettet!");
                                 break;
@@ -350,6 +352,7 @@ public class UI {
                                 for (Medlem medlem : controller.visMedlemmer()) {
                                     System.out.println(medlem);
                                 }
+
 
                                 boolean sortering = true;
                                 while (sortering) {
