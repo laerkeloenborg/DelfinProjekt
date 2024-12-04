@@ -1,5 +1,6 @@
 import java.time.DateTimeException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -463,30 +464,88 @@ public class UI {
                                 System.out.println(controller.hentKonkurrenceSvømmereFraFil());
                                 break;
                             case "2":
+                                controller.sorteringTid();
                                 System.out.println("Liste over svømmernes bedste resultater: "); //TODO indsæt metode
 
                                 System.out.println("Junior holdet: ");
-                                controller.sorteringTid();
                                 System.out.println(controller.visJuniorHold());
 
                                 System.out.println("Senior holdet: ");
-                                controller.sorteringTid();
                                 System.out.println(controller.visSeniorHold());
                                 break;
                             case "3":
+                                controller.sorteringKonkurrenceStatus();
                                 System.out.println("Liste over svømmere som har deltaget i konkurrence"); //TODO indsæt metode
 
                                 System.out.println("Junior holdet: ");
-                                controller.sorteringKonkurrenceStatus();
                                 System.out.println(controller.visJuniorHold());
 
                                 System.out.println("Senior holdet: ");
-                                controller.sorteringKonkurrenceStatus();
                                 System.out.println(controller.visSeniorHold());
                                 break;
 
                             case "4":
-                                System.out.println("Liste over top5 svømmere"); //TODO indsæt metode
+                                boolean svømmediscipliner = true;
+                                while (svømmediscipliner) {
+                                    System.out.println("I hvilken svømmedisciplin vil du se top 5 svømmere?\n" +
+                                            "1 Butterfly\n" +
+                                            "2 Crawl\n" +
+                                            "3 Rygcrawl\n" +
+                                            "4 Brystsvømning\n" +
+                                            "5 tilbage til træner menu");
+
+                                    int top5 = scanner.nextInt();
+                                    switch (top5) {
+                                        case 1:
+                                            controller.sorteringTid();
+                                            System.out.println("Junior holdet: ");
+                                            ArrayList<KonkurrenceSvømmer> butterflyJunior = controller.top5(controller.visKonkurrenceSvømmere(), AldersGruppe.JUNIOR, SvømmeDiscipliner.BUTTERFLY);
+                                            System.out.println(controller.printTop5(butterflyJunior));
+
+                                            System.out.println("Senior holdet: ");
+                                            ArrayList<KonkurrenceSvømmer> butterflySenior = controller.top5(controller.visKonkurrenceSvømmere(), AldersGruppe.SENIOR, SvømmeDiscipliner.BUTTERFLY);
+                                            System.out.println(controller.printTop5(butterflySenior));
+                                            break;
+                                        case 2:
+                                            controller.sorteringTid();
+                                            System.out.println("Junior holdet: ");
+                                            ArrayList<KonkurrenceSvømmer> crawlJunior = controller.top5(controller.visKonkurrenceSvømmere(), AldersGruppe.JUNIOR, SvømmeDiscipliner.CRAWL);
+                                            System.out.println(controller.printTop5(crawlJunior));
+
+                                            System.out.println("Senior holdet: ");
+                                            ArrayList<KonkurrenceSvømmer> crawlSenior = controller.top5(controller.visKonkurrenceSvømmere(), AldersGruppe.SENIOR, SvømmeDiscipliner.CRAWL);
+                                            System.out.println(controller.printTop5(crawlSenior));
+                                            break;
+                                        case 3:
+                                            controller.sorteringTid();
+                                            System.out.println("Junior holdet: ");
+                                            ArrayList<KonkurrenceSvømmer> rygcrawlJunior = controller.top5(controller.visKonkurrenceSvømmere(), AldersGruppe.JUNIOR, SvømmeDiscipliner.RYGCRAWL);
+                                            System.out.println(controller.printTop5(rygcrawlJunior));
+
+                                            System.out.println("Senior holdet: ");
+                                            ArrayList<KonkurrenceSvømmer> rygcrawlSenior = controller.top5(controller.visKonkurrenceSvømmere(), AldersGruppe.SENIOR, SvømmeDiscipliner.RYGCRAWL);
+                                            System.out.println(controller.printTop5(rygcrawlSenior));
+                                            break;
+                                        case 4:
+                                            controller.sorteringTid();
+                                            System.out.println("Junior holdet: ");
+                                            ArrayList<KonkurrenceSvømmer> brystJunior = controller.top5(controller.visKonkurrenceSvømmere(), AldersGruppe.JUNIOR, SvømmeDiscipliner.BRYSTSVØMNING);
+                                            System.out.println(controller.printTop5(brystJunior));
+
+                                            System.out.println("Senior holdet: ");
+                                            ArrayList<KonkurrenceSvømmer> brystSenior = controller.top5(controller.visKonkurrenceSvømmere(), AldersGruppe.SENIOR, SvømmeDiscipliner.BRYSTSVØMNING);
+                                            System.out.println(controller.printTop5(brystSenior));
+                                            break;
+                                        case 5:
+                                            svømmediscipliner = false;
+                                            break;
+                                        default:
+                                            System.out.println("vælg mellem 1 og 5");
+                                            break;
+                                    }
+
+                                }
+
                                 break;
 
                             case "5":
