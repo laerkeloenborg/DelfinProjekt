@@ -13,26 +13,49 @@ public class Træner {
     }
 
 
-    public String ændringAfKonkurrenceSvømmer(KonkurrenceSvømmer konkurrenceSvømmer, int valg, String nyInfo) {
+    public String ændringAfKonkurrenceSvømmer(Medlem konkurrenceSvømmer, int valg, String nyInfo) {
         switch (valg) {
             case 1:
                 double nySvømmetid = Double.parseDouble(nyInfo);
-                konkurrenceSvømmer.setBedsteTid(nySvømmetid);
+                ((KonkurrenceSvømmer)konkurrenceSvømmer).setBedsteTid(nySvømmetid);
                 break;
             case 2:
                 Boolean nyKonkurrenceStatus = nyInfo.equalsIgnoreCase("ja");
-                konkurrenceSvømmer.setHarKonkurreret(nyKonkurrenceStatus);
+                ((KonkurrenceSvømmer)konkurrenceSvømmer).setHarKonkurreret(nyKonkurrenceStatus);
                 break;
 
             case 3:
                 SvømmeDiscipliner nySvømmedisciplin = SvømmeDiscipliner.valueOf(nyInfo);
-                konkurrenceSvømmer.setSVØMMEDISCIPLIN(nySvømmedisciplin);
+                ((KonkurrenceSvømmer)konkurrenceSvømmer).setSVØMMEDISCIPLIN(nySvømmedisciplin);
                 break;
             default:
                 return "Ugyldigt valg";
         }
         return "";
     }
+
+    //________________________metode til at finde et specifikt medlems navn_____________________________________________
+    public String findSpecifiktKonkurrenceSvømmersNavn(String info) {
+        String medlemNavn = "";
+        for (Medlem medlem : konkurrenceSvømmerListe) {
+            if (medlem.getNavn().equalsIgnoreCase(info)) {
+                medlemNavn = medlem.getNavn();
+            }
+        }
+        return medlemNavn;
+    }
+
+
+    //________________________metode til at finde et specifikt medlem___________________________________________________
+    public Medlem findSpecifiktKonkurrenceSvømmer(String info) {
+        for (Medlem medlem : konkurrenceSvømmerListe) {
+            if (medlem.getNavn().equalsIgnoreCase(info)) {
+                return medlem;
+            }
+        }
+        return null;
+    }
+
 
     public void sorteringTid() {
         Comparators.sorteringSvømmetider comparator = new Comparators.sorteringSvømmetider();

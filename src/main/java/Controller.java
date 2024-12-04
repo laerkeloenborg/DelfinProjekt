@@ -113,10 +113,7 @@ public class Controller {
         return kasserer.medlemmerIRestance();
     }
 
-    //_______________________metode til at se liste af konkurrencesvømmere fra fil (pæn layout)_________________________
-    public String hentKonkurrenceSvømmereFraFil() {
-        return træner.hentKonkurrenceSvømmereFraFil();
-    }
+    //_______________________Træner metoder_____________________________________________________________________________
 
     //_______________________metode til at sortere efter svømmers bedste tid________________________________________________
     public void sorteringTid() {
@@ -151,6 +148,21 @@ public class Controller {
     //_______________________metode til at se top5 svømmere i hver disciplin & aldersgruppe (uden layout)_______________
     public ArrayList<Medlem> top5(ArrayList<Medlem> konkurrenceSvømmere, AldersGruppe ALDERSGRUPPE, SvømmeDiscipliner SVØMMEDISCIPLIN) {
         return træner.top5(konkurrenceSvømmere, ALDERSGRUPPE, SVØMMEDISCIPLIN);
+    }
+
+    public String ændringAfKonkurrenceSvømmer(Medlem konkurrenceSvømmer, int valg, String nyInfo){
+        return træner.ændringAfKonkurrenceSvømmer(konkurrenceSvømmer, valg, nyInfo);
+    }
+
+    //_______________________metode til at finde et specifikt medlems navn ud fra cpr___________________________________
+    public String findSpecifiktKonkurrenceSvømmersNavn(String info) {
+        return træner.findSpecifiktKonkurrenceSvømmersNavn(info);
+    }
+
+
+    //_______________________metode til at finde specifikt medlem_______________________________________________________
+    public Medlem findSpecifiktKonkurrenceSvømmer(String info) {
+        return træner.findSpecifiktKonkurrenceSvømmer(info);
     }
 
 }

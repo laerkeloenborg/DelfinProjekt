@@ -148,7 +148,7 @@ public class UI {
                                         }
                                         if (aktivitetsForm.equals("motionist")) {
                                             validAktivitetsForm = true;
-                                        } else if (aktivitetsForm.equals("konkurrence")){
+                                        } else if (aktivitetsForm.equals("konkurrence")) {
                                             System.out.println("Indtast svømmedisciplin (Brystsvømning, Butterfly, Crawl, Rygcrawl): ");
                                             String statusInput1 = "";
                                             boolean validStatus1 = false;
@@ -549,37 +549,54 @@ public class UI {
                                 break;
 
                             case "5":
-                                boolean ændreKonkurrenceSvømmer = true;
-                                while (ændreKonkurrenceSvømmer) {
-                                    System.out.println("Vælg hvilken kategori du vil ændre i: " +
-                                            "\n1 for at rediger i resultater" +
-                                            "\n2 for at rediger svømmedisciplin" +
-                                            "\n3 for at rediger om svømmeren er konkurrencesvømmer" +
-                                            "\n4 for at gå tilbage til trænermenuen" +
-                                            "\n\nVælg en mulighed: \n");
+                                boolean findSvømmer = true;
+                                while (findSvømmer) {
+                                    System.out.println("Indtast fulde navn på den konkurrencesvømmer du vil redigere: ");
+                                    String findKonkurrenceSvømmer = scanner.next();
+                                    Medlem nuværendeKonkurrenceSvømmer = controller.findSpecifiktKonkurrenceSvømmer(findKonkurrenceSvømmer);
+                                    String nuværendeSvømmerNavn = controller.findSpecifiktMedlemsNavn(findKonkurrenceSvømmer);
 
-                                    String brugerValg2 = scanner.nextLine();
+                                    if (controller.visMedlemmer().contains(nuværendeKonkurrenceSvømmer)) {
+                                        System.out.println("Du kan nu redigere i " + nuværendeSvømmerNavn + "'s svømme oplysninger: ");
+                                        System.out.println(nuværendeKonkurrenceSvømmer);
 
-                                    switch (brugerValg2) {
+                                        boolean ændreKonkurrenceSvømmer = true;
+                                        while (ændreKonkurrenceSvømmer) {
+                                            System.out.println("Vælg hvilken kategori du vil ændre i: " +
+                                                    "\n1 for at rediger i resultater" +
+                                                    "\n2 for at rediger svømmedisciplin" +
+                                                    "\n3 for at rediger om svømmeren er konkurrencesvømmer" +
+                                                    "\n4 for at gå tilbage til trænermenuen" +
+                                                    "\n\nVælg en mulighed: \n");
 
-                                        case "1":
-                                            System.out.println("Du kan nu ændre i svømmerens resultater"); //TODO metode til dette
-                                            break;
+                                            String brugerValg2 = scanner.nextLine();
 
-                                        case "2":
-                                            System.out.println("Du kan nu ændre i svømmediscplin"); //TODO indsæt metode
-                                            break;
 
-                                        case "3":
-                                            System.out.println("Du kan nu tilføje/fjerne konkurrencesvømmere"); //TODO indsæt
-                                            break;
+                                            switch (brugerValg2) {
+                                                case "1":
+                                                    System.out.println("Du kan nu ændre i svømmerens resultater"); //TODO metode til dette
+                                                    System.out.println("Indtast ny bedste svømme tid: ");
+                                                    double nySvømmetid = scanner.nextInt();
+                                                    String formatteretNySvømmetid = String.valueOf(nySvømmetid);
+                                                    controller.ændringAfKonkurrenceSvømmer(nuværendeKonkurrenceSvømmer, 1, formatteretNySvømmetid);
+                                                    break;
 
-                                        case "4":
-                                            ændreKonkurrenceSvømmer = false;
-                                            break;
-                                        default:
-                                            System.out.println("ugyldigt valg, prøv igen");
-                                            break;
+                                                case "2":
+                                                    System.out.println("Du kan nu ændre i svømmediscplin"); //TODO indsæt metode
+                                                    break;
+
+                                                case "3":
+                                                    System.out.println("Du kan nu tilføje/fjerne konkurrencesvømmere"); //TODO indsæt
+                                                    break;
+
+                                                case "4":
+                                                    ændreKonkurrenceSvømmer = false;
+                                                    break;
+                                                default:
+                                                    System.out.println("ugyldigt valg, prøv igen");
+                                                    break;
+                                            }
+                                        }
                                     }
                                 }
                                 break;
@@ -591,8 +608,7 @@ public class UI {
                                 break;
                         }
                     }
-                    break;
-                //________________________luk programmet ned____________________________________________________________
+                    //________________________luk programmet ned____________________________________________________________
                 case "4":
                     System.out.println("Programmet lukkes ned....");
                     kører = false;
@@ -605,4 +621,7 @@ public class UI {
         }
     }
 }
+
+
+
 
