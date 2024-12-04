@@ -60,7 +60,7 @@ public class KonkurrenceSvømmer extends Medlem {
                 this.getAktivitetsForm() + ";" +
                 SvømmeDiscipliner.ToString(this.getSVØMMEDISCIPLIN()) + ";" +
                 this.getBedsteTid() + ";" +
-                (this.getHarKonkurreret() ? "har konkurreret" : "har ikke konkurreret");
+                this.getHarKonkurreret();
     }
 
 }

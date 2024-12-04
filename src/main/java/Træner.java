@@ -92,7 +92,7 @@ public class Træner {
         int tæller = 1;
         for (KonkurrenceSvømmer konkurrenceSvømmer : konkurrenceSvømmerListe) {
             if (konkurrenceSvømmer.getAldersGruppe().equals(AldersGruppe.SENIOR)) {
-                string += tæller++ + konkurrenceSvømmer.toString();
+                string += tæller++ +  konkurrenceSvømmer.toString();
             }
         }
         return string;
