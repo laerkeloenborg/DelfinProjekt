@@ -501,7 +501,7 @@ public class UI {
 
                                             System.out.println("Senior holdet: ");
                                             ArrayList<KonkurrenceSvømmer> butterflySenior = controller.top5(controller.visKonkurrenceSvømmere(), AldersGruppe.SENIOR, SvømmeDiscipliner.BUTTERFLY);
-                                            System.out.println(controller.printTop5(butterflyJunior));
+                                            System.out.println(controller.printTop5(butterflySenior));
                                             break;
                                         case 2:
                                             controller.sorteringTid();
