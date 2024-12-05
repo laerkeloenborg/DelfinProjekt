@@ -45,6 +45,10 @@ public class Controller {
         return formand.visMedlemmer();
     }
 
+    public ArrayList<KonkurrenceSvømmer> visKonkurrenceMedlemmer() {
+        return formand.visKonkurrenceMedlemmer();
+    }
+
 
 
     //_______________________metode til at finde et specifikt medlems navn ud fra cpr___________________________________
@@ -72,6 +76,9 @@ public class Controller {
     //_______________________metode til at gemme listen med medlemmer___________________________________________________
     public ArrayList<Medlem> gemListeAfMedlemmer() {
         return formand.gemMedlem();
+    }
+    public ArrayList<KonkurrenceSvømmer> gemListeAfKonkurrenceSvømmere() {
+        return formand.gemListeAfKonkurrenceSvømmere();
     }
 
 
@@ -138,6 +145,14 @@ public class Controller {
         return træner.printSeniorHold();
     }
 
+    public ArrayList<KonkurrenceSvømmer> hentSeniorHold() {
+        return træner.hentSeniorSvømmere();
+    }
+
+    public ArrayList<KonkurrenceSvømmer> hentJuniorHold() {
+        return træner.hentJuniorSvømmere();
+    }
+
     //_______________________metode til at få listen over konkurrencesvømmere (uden layout)_____________________________
     public ArrayList<KonkurrenceSvømmer> visKonkurrenceSvømmere() {
         return træner.getKonkurrenceSvømmerListe();
@@ -151,6 +166,16 @@ public class Controller {
     //_______________________metode til at se top5 svømmere i hver disciplin & aldersgruppe (uden layout)_______________
     public ArrayList<KonkurrenceSvømmer> top5(ArrayList<KonkurrenceSvømmer> konkurrenceSvømmere, AldersGruppe ALDERSGRUPPE, SvømmeDiscipliner SVØMMEDISCIPLIN) {
         return træner.top5(konkurrenceSvømmere, ALDERSGRUPPE, SVØMMEDISCIPLIN);
+    }
+
+    // Metode til at gemme konkurrenceSvømmere
+    public void gemKonkurrenceSvømmere(ArrayList<KonkurrenceSvømmer> konkurrenceSvømmerListe) {
+        træner.gemKonkurrenceSvømmere(konkurrenceSvømmerListe);
+    }
+
+    // Metode til at hente konkurrenceSvømmere
+    public ArrayList<KonkurrenceSvømmer> hentKonkurrenceSvømmere() {
+        return træner.hentKonkurrenceSvømmere();
     }
 
 }

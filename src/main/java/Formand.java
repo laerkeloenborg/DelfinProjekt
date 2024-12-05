@@ -5,11 +5,13 @@ import java.util.Collections;
 public class Formand {
     private ArrayList<Medlem> medlemsListen;
     private FileHandler fileHandler;
+    private ArrayList<KonkurrenceSvømmer> konkurrenceSvømmerListe;
 
     //___________________________konstruktør____________________________________________________________________________
     public Formand() {
         fileHandler = new FileHandler();
         medlemsListen = fileHandler.hentListeAfMedlemmer();
+        konkurrenceSvømmerListe = fileHandler.hentListeAfKonkurrenceSvømmere();
 
     }
 
@@ -31,6 +33,10 @@ public class Formand {
     //________________________metode til at gemme medlem i tekstfil_____________________________________________________
     public ArrayList<Medlem> gemMedlem() {
         return fileHandler.gemListeAfMedlemmer(medlemsListen);
+    }
+
+    public ArrayList<KonkurrenceSvømmer> gemListeAfKonkurrenceSvømmere() {
+        return fileHandler.gemListeAfKonkurrenceSvømmere(konkurrenceSvømmerListe);
     }
 
 
@@ -137,6 +143,14 @@ public class Formand {
         }
     }
 
+
+    public ArrayList<KonkurrenceSvømmer> visKonkurrenceMedlemmer() {
+        if (konkurrenceSvømmerListe.isEmpty()) {
+            return null;
+        } else {
+            return konkurrenceSvømmerListe;
+        }
+    }
 
     //_______________________metode til at se antallet af medlemmer i klubben___________________________________________
     public int antalMedlemmer() {

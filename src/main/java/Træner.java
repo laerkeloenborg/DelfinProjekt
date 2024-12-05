@@ -77,25 +77,44 @@ public class Træner {
 
 
     public String printJuniorHold() {
-        String string = "";
+        String result = "";
         int tæller = 1;
         for (KonkurrenceSvømmer konkurrenceSvømmer : konkurrenceSvømmerListe) {
             if (konkurrenceSvømmer.getAldersGruppe().equals(AldersGruppe.JUNIOR)) {
-                string += tæller++ + konkurrenceSvømmer.toString();
+                result += tæller++ + ". " + konkurrenceSvømmer.toString() + "\n";
             }
         }
-        return string;
+        return result;
     }
 
     public String printSeniorHold() {
-        String string = "";
+        String result = "";
         int tæller = 1;
         for (KonkurrenceSvømmer konkurrenceSvømmer : konkurrenceSvømmerListe) {
             if (konkurrenceSvømmer.getAldersGruppe().equals(AldersGruppe.SENIOR)) {
-                string += tæller++ +  konkurrenceSvømmer.toString();
+                result += tæller++ + ". " + konkurrenceSvømmer.toString() + "\n";
             }
         }
-        return string;
+        return result;
+    }
+
+    public ArrayList<KonkurrenceSvømmer> hentSeniorSvømmere() {
+        ArrayList<KonkurrenceSvømmer> seniorSvømmere = new ArrayList<>();
+        for (KonkurrenceSvømmer svømmer : konkurrenceSvømmerListe) {
+            if (svømmer.getAldersGruppe().equals(AldersGruppe.SENIOR)) {
+                seniorSvømmere.add(svømmer);
+            }
+        }
+        return seniorSvømmere;
+    }
+    public ArrayList<KonkurrenceSvømmer> hentJuniorSvømmere() {
+        ArrayList<KonkurrenceSvømmer> juniorSvømmere = new ArrayList<>();
+        for (KonkurrenceSvømmer svømmer : konkurrenceSvømmerListe) {
+            if (svømmer.getAldersGruppe().equals(AldersGruppe.JUNIOR)) {
+                juniorSvømmere.add(svømmer);
+            }
+        }
+        return juniorSvømmere;
     }
 
 
@@ -108,5 +127,14 @@ public class Træner {
         return string;
     }
 
+    // Metode til at gemme konkurrenceSvømmere
+    public void gemKonkurrenceSvømmere(ArrayList<KonkurrenceSvømmer> konkurrenceSvømmerListe) {
+        fileHandler.gemKonkurrenceSvømmere(konkurrenceSvømmerListe);
+    }
+
+    // Metode til at hente konkurrenceSvømmere
+    public ArrayList<KonkurrenceSvømmer> hentKonkurrenceSvømmere() {
+        return fileHandler.hentKonkurrenceSvømmere();
+    }
 
 }
