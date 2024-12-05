@@ -1,52 +1,62 @@
-Kasper Persson;011275;SENIOR;Aktiv;false;false
-Camilla Hansen;061026;SENIOR;Aktiv;true;false
-Isabella Rosendal;020202;SENIOR;Aktiv;false;false
-Maja Lavrens;121215;JUNIOR;Aktiv;true;false
-Lærke Lønborg;121156;SENIOR;Passiv;true;false
-Klara Karlsen;101023;JUNIOR;Aktiv;true;false
-Elaine Schwalbe;080782;SENIOR;Passiv;true;false
-Martin Even;130179;SENIOR;Aktiv;true;false
-Caroline Hansen;080785;SENIOR;Aktiv;true;false
-Christian Decastro;240583;SENIOR;Passiv;true;false
-Pernille Christiansen;170651;SENIOR;Passiv;true;false
-Teresa Kaarsberg;150583;SENIOR;Aktiv;false;false
-Christian Vinther;191194;SENIOR;Aktiv;true;false
-Signe Borch;180980;SENIOR;Passiv;true;false
-Edith Terte;120791;SENIOR;Passiv;true;false
-Hugh Hefner;010141;SENIOR;Passiv;true;false
-Britney Spears;170979;SENIOR;Aktiv;true;false
-Michael Bolton;051162;SENIOR;Passiv;false;false
-Cindy Lou Who;241200;SENIOR;Aktiv;true;false
-Walter White;060560;SENIOR;Passiv;true;false
-Saul Goodman;091270;SENIOR;Passiv;false;false
-Clark Kent;040400;SENIOR;Aktiv;true;false
-Bruce Wayne;080880;SENIOR;Passiv;true;false
-Peter Parker;101010;JUNIOR;Aktiv;true;false
-Jens Jørgensen;290300;SENIOR;Passiv;true;false
-Mary Jane PArker;070700;SENIOR;Passiv;true;false
-Harley Quinn;190919;JUNIOR;Aktiv;true;false
-Piper Chapman;121212;JUNIOR;Passiv;false;false
-Solveig Nielsen;090980;SENIOR;Passiv;true;false
-Harry DeEsbe;101010;JUNIOR;Passiv;false;false
-Nils Olsen;090674;SENIOR;Aktiv;false;false
-Mads Jørgensen;080187;SENIOR;Aktiv;true;false
-Philip Guldberg;040193;SENIOR;Aktiv;false;false
-Simon Guldberg;040193;SENIOR;Aktiv;true;false
-Cathrine Forchammer;080990;SENIOR;Aktiv;false;false
-Susan Mayer;070880;SENIOR;Passiv;false;false
-Lynette Scavo;120970;SENIOR;Passiv;false;false
-Bree van de Kamp;121205;SENIOR;Passiv;true;false
-Gabrielle Solis;091012;JUNIOR;Passiv;false;false
-Mike Delfino;120977;SENIOR;Passiv;false;false
-Carlotta Centimeri;021094;SENIOR;Aktiv;true;false
-Sallie Thomsen;080887;SENIOR;Aktiv;true;false
-Julie Andersen;300887;SENIOR;Aktiv;true;false
-Jesper Jørgensen;020699;SENIOR;Passiv;true;false
-Ash Ketchum;070915;JUNIOR;Passiv;false;false
-Brooke Davis;020100;SENIOR;Passiv;false;false
-Nathan Scott;231299;SENIOR;Passiv;false;false
-Bridget Jones;121103;SENIOR;Aktiv;false;false
-Meredith Grey;030210;JUNIOR;Passiv;false;false
-Sanda OH;030303;SENIOR;Aktiv;true;false
-Yvonne;020767;SENIOR;Aktiv;false;false
-Marianne;121162;SENIOR;Aktiv;true;false
+Albus Dumbledore;121212;JUNIOR;Aktiv;true;Konkurrence svømmer;Butterfly;1.1;true
+Cinde;121202;SENIOR;Aktiv;true;Konkurrence svømmer;Butterfly;1.5;true
+Camilla Hansen;061026;SENIOR;Aktiv;true;Konkurrence svømmer;Brystsvømning;1.55;true
+Maja Lavrens;121215;JUNIOR;Aktiv;true;Konkurrence svømmer;crawl;2.55;true
+Lærke Lønborg;121156;SENIOR;Passiv;true;Konkurrence svømmer;Brystsvømning;1.55;true
+Martin Even;130179;SENIOR;Aktiv;true;Konkurrence svømmer;Brystsvømning;1.55;true
+Pernille Christiansen;170651;SENIOR;Passiv;true;Konkurrence svømmer;Brystsvømning;1.55;true
+Teresa Kaarsberg;150583;SENIOR;Aktiv;false;Konkurrence svømmer;Brystsvømning;1.55;true
+Christian Vinther;191194;SENIOR;Aktiv;true;Konkurrence svømmer;Brystsvømning;1.55;true
+Edith Terte;120791;SENIOR;Passiv;true;Konkurrence svømmer;Brystsvømning;1.55;true
+Britney Spears;170979;SENIOR;Aktiv;true;Konkurrence svømmer;Brystsvømning;1.55;true
+Michael Bolton;051162;SENIOR;Passiv;false;Konkurrence svømmer;crawl;1.32;true
+Cindy Lou Who;241200;SENIOR;Aktiv;true;Konkurrence svømmer;Brystsvømning;1.55;true
+Saul Goodman;091270;SENIOR;Passiv;false;Konkurrence svømmer;crawl;1.55;true
+Bruce Wayne;080880;SENIOR;Passiv;true;Konkurrence svømmer;Brystsvømning;1.55;true
+Peter Parker;101010;JUNIOR;Aktiv;true;Konkurrence svømmer;crawl;1.55;true
+Piper Chapman;121212;JUNIOR;Passiv;false;Konkurrence svømmer;Brystsvømning;1.55;true
+Solveig Nielsen;090980;SENIOR;Passiv;true;Konkurrence svømmer;Brystsvømning;1.55;true
+Nils Olsen;090674;SENIOR;Aktiv;false;Konkurrence svømmer;Brystsvømning;1.55;true
+Mads Jørgensen;080187;SENIOR;Aktiv;true;Konkurrence svømmer;Brystsvømning;1.55;true
+Philip Guldberg;040193;SENIOR;Aktiv;false;Konkurrence svømmer;Brystsvømning;1.55;true
+Simon Guldberg;040193;SENIOR;Aktiv;true;Konkurrence svømmer;Brystsvømning;1.55;true
+Susan Mayer;070880;SENIOR;Passiv;false;Konkurrence svømmer;Brystsvømning;1.55;true
+Bree van de Kamp;121205;SENIOR;Passiv;true;Konkurrence svømmer;Brystsvømning;1.55;true
+Gabrielle Solis;091012;JUNIOR;Passiv;false;Konkurrence svømmer;Brystsvømning;1.55;true
+Carlotta Centimeri;021094;SENIOR;Aktiv;true;Konkurrence svømmer;Brystsvømning;1.55;true
+Sallie Thomsen;080887;SENIOR;Aktiv;true;Konkurrence svømmer;Brystsvømning;1.55;true
+Julie Andersen;300887;SENIOR;Aktiv;true;Konkurrence svømmer;Brystsvømning;1.55;true
+Jesper Jørgensen;020699;SENIOR;Passiv;true;Konkurrence svømmer;Brystsvømning;1.55;true
+Nathan Scott;231299;SENIOR;Passiv;false;Konkurrence svømmer;Brystsvømning;1.55;true
+Bridget Jones;121103;SENIOR;Aktiv;false;Konkurrence svømmer;Brystsvømning;1.55;true
+Sandra OH;030303;SENIOR;Aktiv;true;Konkurrence svømmer;Brystsvømning;1.55;true
+Yvonne Rasmussen;020767;SENIOR;Aktiv;false;Konkurrence svømmer;Brystsvømning;1.23;true
+Marianne Mogensen;121162;SENIOR;Aktiv;true;Konkurrence svømmer;Brystsvømning;1.23;true
+Luna Vilhelmsen;021210;JUNIOR;Aktiv;true;Konkurrence svømmer;crawl;1.18;true
+Marie gurli;210115;JUNIOR;Aktiv;true;Konkurrence svømmer;Brystsvømning;1.1;true
+Lars Larsem;121212;JUNIOR;Aktiv;true;Konkurrence svømmer;crawl;1.6;false
+Mads Madsen;090909;JUNIOR;Aktiv;true;Konkurrence svømmer;crawl;1.5;false
+Mikkel Madsen;080808;JUNIOR;Aktiv;true;Konkurrence svømmer;crawl;1.7;true
+Lego Las;121211;JUNIOR;Aktiv;true;Konkurrence svømmer;Butterfly;1.4;true
+Remus Lupin;301244;SENIOR;Aktiv;true;Konkurrence svømmer;Butterfly;1.5;true
+Vida Schwalbe;080411;JUNIOR;Aktiv;true;Konkurrence svømmer;Butterfly;0.5;true
+Søren Banjomus;241220;JUNIOR;Aktiv;true;Konkurrence svømmer;Butterfly;1.5;true
+Draco Malfoy;101115;JUNIOR;Aktiv;true;Konkurrence svømmer;Butterfly;1.4;true
+Alba Schwalbe;030512;JUNIOR;Aktiv;true;Konkurrence svømmer;Butterfly;1.4;true
+Emil DeCastro;081010;JUNIOR;Aktiv;true;Konkurrence svømmer;Butterfly;1.4;true
+Zelda Ursula;121213;JUNIOR;Aktiv;true;Konkurrence svømmer;Butterfly;0.3;false
+Link Excalibur;010101;SENIOR;Aktiv;false;Konkurrence svømmer;Rygcrawl;1.7;true
+Mario Superbro;121113;JUNIOR;Aktiv;true;Konkurrence svømmer;Rygcrawl;1.4;true
+Luigi Superbro;141211;JUNIOR;Aktiv;true;Konkurrence svømmer;Rygcrawl;1.4;true
+Princess Peach;070707;JUNIOR;Aktiv;true;Konkurrence svømmer;Rygcrawl;0.4;false
+Jungledyret Hugo;020202;SENIOR;Aktiv;true;Konkurrence svømmer;Rygcrawl;0.4;true
+Nanny McPhee;090303;SENIOR;Aktiv;true;Konkurrence svømmer;Rygcrawl;0.2;false
+Isabella Sydio;101299;SENIOR;Aktiv;false;Konkurrence svømmer;Rygcrawl;1.5;false
+Emiliano Remorini;141190;SENIOR;Passiv;false;Konkurrence svømmer;Rygcrawl;0.7;false
+Kasper Persson;011275;SENIOR;Aktiv;false;Motionist
+Isabella Rosendal;020202;SENIOR;Aktiv;false;Motionist
+Klara Karlsen;101023;JUNIOR;Aktiv;true;Motionist
+Elaine Schwalbe;080782;SENIOR;Passiv;true;Motionist
+Caroline Hansen;080785;SENIOR;Aktiv;true;Motionist
+Christian Decastro;240583;SENIOR;Passiv;true;Motionist
+Signe Borch;180980;SENIOR;Passiv;true;Motionist

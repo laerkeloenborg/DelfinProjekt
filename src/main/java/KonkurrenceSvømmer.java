@@ -41,14 +41,24 @@ public class KonkurrenceSvømmer extends Medlem {
 
     //__________________________________________________________________________________________________________________
 
-    @Override
-    public String toString() {
+
+    public String toStringTilTræner() {
         return "Navn: " + this.getNavn() +
                 ", Aldersgruppe: " + this.getAldersGruppe() +
                 ", Aktivitets status: " + (this.getMedlemsstatus() == MedlemsStatus.AKTIV ? "Aktiv" : "Passiv") +
                 ", Svømme Disciplin: " + getSVØMMEDISCIPLIN() +
                 ", Bedstetid: " + getBedsteTid() +
                 ", Har Konkurreret: " + (getHarKonkurreret() ? "ja" : "nej") + "\n";
+    }
+
+    @Override
+    public String toString() {
+        return "Navn: " + getNavn() +
+                ", CPR: " + getCpr() + "(" + cprOmregningTilAlder() + " år)" +
+                ", Aldersgruppe: " + getAldersGruppe() +
+                ", Aktivitets status: " + (getMedlemsstatus() == MedlemsStatus.AKTIV ? "Aktiv" : "Passiv") +
+                ", Betalingsstatus: " + (this.getHarBetalt() ? "Betalt" : "Ikke betalt") +
+                ", Aktivitetsform: " + getAktivitetsForm() + "\n";
     }
 
     public String toStringTilFil() {

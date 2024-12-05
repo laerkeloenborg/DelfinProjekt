@@ -45,6 +45,10 @@ public class Controller {
         return formand.visMedlemmer();
     }
 
+    public ArrayList<Medlem> visKonkurrenceSvømmere1(){
+        return formand.visKonkurrenceSvømmere();
+    }
+
 
 
     //_______________________metode til at finde et specifikt medlems navn ud fra cpr___________________________________

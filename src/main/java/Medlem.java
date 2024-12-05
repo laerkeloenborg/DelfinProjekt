@@ -137,7 +137,7 @@ public class Medlem {
                 ", Aldersgruppe: " + getAldersGruppe() +
                 ", Aktivitets status: " + (MEDLEMSSTATUS == MedlemsStatus.AKTIV ? "Aktiv" : "Passiv") +
                 ", Betalingsstatus: " + (this.getHarBetalt() ? "Betalt" : "Ikke betalt") +
-                ", Aktivitetsform: " + getAktivitetsForm();
+                ", Aktivitetsform: " + getAktivitetsForm() + "\n";
     }
 
 

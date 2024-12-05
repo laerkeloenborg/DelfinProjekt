@@ -454,7 +454,7 @@ public class UI {
                                 "\n6 for at gå tilbage til hovedmenuen" +
                                 "\n\nVælg en mulighed: \n");
 
-                        String brugerValg = scanner.next();
+                        String brugerValg = scanner.nextLine();
 
 
                         switch (brugerValg) {
@@ -608,6 +608,8 @@ public class UI {
                                 break;
                         }
                     }
+                    break;
+
                     //________________________luk programmet ned____________________________________________________________
                 case "4":
                     System.out.println("Programmet lukkes ned....");

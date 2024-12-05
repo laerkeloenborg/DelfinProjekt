@@ -59,12 +59,12 @@ public class Træner {
 
     public void sorteringTid() {
         Comparators.sorteringSvømmetider comparator = new Comparators.sorteringSvømmetider();
-        Collections.sort(konkurrenceSvømmerListe, comparator);
+        getKonkurrenceSvømmerListe().sort(comparator);
     }
 
     public void sortertingKonkurrenceStatus() {
         Comparators.sorteringKonkurrencestatus comparator = new Comparators.sorteringKonkurrencestatus();
-        Collections.sort(konkurrenceSvømmerListe, comparator);
+        getKonkurrenceSvømmerListe().sort(comparator);
     }
 
     //TODO: exceptions
@@ -90,7 +90,7 @@ public class Træner {
         int tæller = 1;
 
         for (Medlem konkurrenceSvømmer : topSvømmere) {
-            string += tæller++ + konkurrenceSvømmer.toString();
+            string += tæller++ + ((KonkurrenceSvømmer)konkurrenceSvømmer).toStringTilTræner();
         }
         return string;
     }
@@ -105,7 +105,7 @@ public class Træner {
         int tæller = 1;
         for (Medlem konkurrenceSvømmer : konkurrenceSvømmerListe) {
             if (konkurrenceSvømmer.getAldersGruppe().equals(AldersGruppe.JUNIOR)) {
-                string += tæller++ + konkurrenceSvømmer.toString();
+                string += tæller++ + ((KonkurrenceSvømmer)konkurrenceSvømmer).toStringTilTræner();
             }
         }
         return string;
@@ -116,7 +116,7 @@ public class Træner {
         int tæller = 1;
         for (Medlem konkurrenceSvømmer : konkurrenceSvømmerListe) {
             if (konkurrenceSvømmer.getAldersGruppe().equals(AldersGruppe.SENIOR)) {
-                string += tæller++ +  konkurrenceSvømmer.toString();
+                string += tæller++ +  ((KonkurrenceSvømmer)konkurrenceSvømmer).toStringTilTræner();
             }
         }
         return string;
@@ -127,7 +127,7 @@ public class Træner {
         String string = "";
         int tæller = 1;
         for (Medlem konkurrenceSvømmer : konkurrenceSvømmerListe) {
-            string += tæller++ + konkurrenceSvømmer.toString();
+            string += tæller++ + ((KonkurrenceSvømmer)konkurrenceSvømmer).toStringTilTræner();
         }
         return string;
     }
