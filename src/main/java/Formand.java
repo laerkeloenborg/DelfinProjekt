@@ -3,47 +3,37 @@ import java.util.Collections;
 
 
 public class Formand {
-    private ArrayList<Medlem> medlemsListen;
-    private FileHandler fileHandler;
-    private ArrayList<Medlem> konkurrenceSvømmerListe;
+    private Listen listen;
 
     //___________________________konstruktør____________________________________________________________________________
     public Formand() {
-        fileHandler = new FileHandler();
-        medlemsListen = fileHandler.hentListeAfMedlemmer();
-        konkurrenceSvømmerListe = fileHandler.hentListeAfMedlemmer();
+        this.listen = new Listen();
+    }
+
+
+    public ArrayList<Medlem> getMedlemsListen() {
+        return listen.getMedlemsListen();
     }
 
 
     //________________________metode til at tilføje et medlem___________________________________________________________
     public void tilføjMedlem(String navn, String cpr, MedlemsStatus MEDLEMSSTATUS, boolean harBetalt, String aktivitetsForm) {
         Medlem nytMedlem = new Medlem(navn, cpr, MEDLEMSSTATUS, harBetalt, aktivitetsForm);
-        medlemsListen.add(nytMedlem);
-        fileHandler.gemListeAfMedlemmer(medlemsListen);
+        listen.tilføjMedlem(nytMedlem);
     }
 
-    public void tilføjKonkurrenceSvømmer(String navn, String cpr, MedlemsStatus MEDLEMSSTATUS, boolean harBetalt, String aktivitetsform, SvømmeDiscipliner svømmeDisciplin, double bedsteTid, boolean harKonkurreret){
+    public void tilføjKonkurrenceSvømmer(String navn, String cpr, MedlemsStatus MEDLEMSSTATUS, boolean harBetalt, String aktivitetsform, SvømmeDiscipliner svømmeDisciplin, double bedsteTid, boolean harKonkurreret) {
         KonkurrenceSvømmer nyKonkurrenceSvømmer = new KonkurrenceSvømmer(navn, cpr, MEDLEMSSTATUS, harBetalt, aktivitetsform, svømmeDisciplin, bedsteTid, harKonkurreret);
-        medlemsListen.add(nyKonkurrenceSvømmer);
-        konkurrenceSvømmerListe.add(nyKonkurrenceSvømmer);
-        fileHandler.gemListeAfMedlemmer(konkurrenceSvømmerListe);
-        fileHandler.gemListeAfMedlemmer(medlemsListen);
-    }
-
-
-    //________________________metode til at gemme medlem i tekstfil_____________________________________________________
-    public ArrayList<Medlem> gemMedlem() {
-        return fileHandler.gemListeAfMedlemmer(medlemsListen);
+        listen.tilføjMedlem(nyKonkurrenceSvømmer);
     }
 
 
 
     //________________________metode til at slette medlem via CPR_______________________________________________________
     public boolean sletMedlem(String cpr) {
-        for (Medlem medlem : medlemsListen) {
+        for (Medlem medlem : listen.getMedlemsListen()) {
             if (medlem.getCpr().equals(cpr)) {
-                medlemsListen.remove(medlem);
-                fileHandler.gemListeAfMedlemmer(medlemsListen);
+                listen.fjernMedlem(medlem);
                 return true;
             }
         }
@@ -73,6 +63,7 @@ public class Formand {
             default:
                 return "Ugyldigt valg";
         }
+        listen.tilføjMedlem(medlem);
         return " ";
     }
 
@@ -80,7 +71,7 @@ public class Formand {
     //________________________metode til at finde et specifikt medlems navn_____________________________________________
     public String findSpecifiktMedlemsNavn(String cpr) {
         String medlemNavn = "";
-        for (Medlem medlem : medlemsListen) {
+        for (Medlem medlem : listen.getMedlemsListen()) {
             if (medlem.getCpr().equalsIgnoreCase(cpr)) {
                 medlemNavn = medlem.getNavn();
             }
@@ -91,7 +82,7 @@ public class Formand {
 
     //________________________metode til at finde et specifikt medlem___________________________________________________
     public Medlem findSpecifiktMedlem(String cpr) {
-        for (Medlem medlem : medlemsListen) {
+        for (Medlem medlem : listen.getMedlemsListen()) {
             if (medlem.getCpr().equalsIgnoreCase(cpr)) {
                 return medlem;
             }
@@ -102,6 +93,7 @@ public class Formand {
 
     //________________________metode til at sorterer i medlemmer efter eget valg________________________________________
     public void sorterMedlemmerValgMetode(int valg) {
+        ArrayList<Medlem> medlemsListen = listen.getMedlemsListen();
         switch (valg) {
             case 1:
                 Collections.sort(medlemsListen, new Comparators.sorteringMedlemsstatus());
@@ -117,33 +109,27 @@ public class Formand {
     }
 
 
-    //________________________metode til at sorterer efter navn_________________________________________________________
-    public void sorteringNavn() {
-        Collections.sort(medlemsListen, new Comparators.sorteringNavn());
-    }
-
 
     //________________________metode til at printe medlemmer ___________________________________________________________
     public ArrayList<Medlem> visMedlemmer() {
-        if (medlemsListen.isEmpty()) {
+        if (listen.getMedlemsListen().isEmpty()) {
             return null;
         } else {
-            return medlemsListen;
+            return listen.getMedlemsListen();
         }
     }
 
-    public ArrayList<Medlem> visKonkurrenceSvømmere() {
-        if (medlemsListen.isEmpty()) {
-            return null;
-        } else {
-            return medlemsListen;
-        }
+    public ArrayList<Medlem> getMedlemmerSorteretEfterNavn(){
+        ArrayList<Medlem> medlemsListen = listen.getMedlemsListen();
+       Collections.sort(medlemsListen, new Comparators.sorteringNavn());
+       return medlemsListen;
     }
+
 
 
     //_______________________metode til at se antallet af medlemmer i klubben___________________________________________
     public int antalMedlemmer() {
-        return medlemsListen.size();
+        return listen.getMedlemsListen().size();
     }
 
 }
