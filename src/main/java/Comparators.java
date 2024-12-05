@@ -10,7 +10,6 @@ public class Comparators {
     }
 
 
-
     //________________________comparator til sortering efter medlems status - medlemsliste_____________________________________________
     public static class sorteringMedlemsstatus implements Comparator<Medlem> {
         public int compare(Medlem m1, Medlem m2) {
@@ -35,27 +34,69 @@ public class Comparators {
     }
 
     //_______________________comparator til sortering af svømmedisciplin - konkurrencesvømmer__________________________________________
-    public static class sorteringSvømmedisciplin implements Comparator<Medlem> {
-        public int compare(Medlem k1, Medlem k2){
-            return ((KonkurrenceSvømmer)k1).getSVØMMEDISCIPLIN().compareTo(((KonkurrenceSvømmer)k2).getSVØMMEDISCIPLIN());
+//    public static class sorteringSvømmedisciplin implements Comparator<Medlem> {
+//        public int compare(Medlem k1, Medlem k2){
+//            return ((KonkurrenceSvømmer)k1).getSVØMMEDISCIPLIN().compareTo(((KonkurrenceSvømmer)k2).getSVØMMEDISCIPLIN());
+//        }
+//    }
+
+    public static class sorteringSvømDisciplin implements Comparator<Medlem> {
+        public int compare(Medlem k1, Medlem k2) {
+            if (k1 instanceof KonkurrenceSvømmer && k2 instanceof KonkurrenceSvømmer) {
+                return Double.compare(((KonkurrenceSvømmer) k1).getBedsteTid(), ((KonkurrenceSvømmer) k2).getBedsteTid());
+            } else if (k1 instanceof KonkurrenceSvømmer) {
+                return 1;
+            } else if (k2 instanceof KonkurrenceSvømmer) {
+                return -1;
+            } else {
+                return 0;
+            }
         }
     }
 
     //______________________comparator til sortering af svømmetider - konkurrencesvømmer_______________________________________________
-    public static class sorteringSvømmetider implements Comparator<Medlem>{
-        public int compare(Medlem k1, Medlem k2){
-            return Double.compare(((KonkurrenceSvømmer)k1).getBedsteTid(),((KonkurrenceSvømmer)k2).getBedsteTid());
+//    public static class sorteringSvømmetider implements Comparator<Medlem>{
+//        public int compare(Medlem k1, Medlem k2){
+//            return Double.compare(((KonkurrenceSvømmer)k1).getBedsteTid(),((KonkurrenceSvømmer)k2).getBedsteTid());
+//        }
+//    }
+
+    public static class sorteringSvømmeTider implements Comparator<Medlem> {
+        public int compare(Medlem k1, Medlem k2) {
+            if (k1 instanceof KonkurrenceSvømmer && k2 instanceof KonkurrenceSvømmer) {
+                return Double.compare(((KonkurrenceSvømmer) k1).getBedsteTid(), ((KonkurrenceSvømmer) k2).getBedsteTid());
+            } else if (k1 instanceof KonkurrenceSvømmer) {
+                return 1;
+            } else if (k2 instanceof KonkurrenceSvømmer) {
+                return -1;
+            } else {
+                return 0;
+            }
         }
     }
 
     //____________________comparator til sortering af konkurrence status - konkurrencesvømmer_________________________________________
-    public static  class sorteringKonkurrencestatus implements Comparator<Medlem>{
-        public int compare(Medlem k1, Medlem k2){
-            return Boolean.compare(((KonkurrenceSvømmer)k1).getHarKonkurreret(), ((KonkurrenceSvømmer)k2).getHarKonkurreret());
+//    public static  class sorteringKonkurrencestatus implements Comparator<Medlem>{
+//        public int compare(Medlem k1, Medlem k2){
+//            return Boolean.compare(((KonkurrenceSvømmer)k1).getHarKonkurreret(), ((KonkurrenceSvømmer)k2).getHarKonkurreret());
+//        }
+//    }
+
+    public static class sorteringKonkurrenceStatus implements Comparator<Medlem> {
+        public int compare(Medlem k1, Medlem k2) {
+            if (k1 instanceof KonkurrenceSvømmer && k2 instanceof KonkurrenceSvømmer) {
+                return Boolean.compare(((KonkurrenceSvømmer) k1).getHarKonkurreret(), ((KonkurrenceSvømmer) k2).getHarKonkurreret());
+            } else if (k1 instanceof KonkurrenceSvømmer) {
+                return 1;
+            } else if (k2 instanceof KonkurrenceSvømmer) {
+                return -1;
+            } else {
+                return 0;
+            }
         }
+
+
     }
-
-
 
 
 }

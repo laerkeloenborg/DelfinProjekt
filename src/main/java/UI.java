@@ -25,7 +25,7 @@ public class UI {
                     "\n4. For at afslutte" +
                     "\n\nVælg en mulighed (1-4): \n");
 
-            String valg = scanner.nextLine();
+            String valg = scanner.next();
 
             switch (valg) {
                 //________________________formandens menu_______________________________________________________________
@@ -345,12 +345,11 @@ public class UI {
                                         System.out.println("Prøv igen...");
                                     }
                                 }
-                                controller.gemListeAfMedlemmer();
+
                                 break;
                             //________________________sorter i listen af medlemmer__________________________________
                             case "4":
-                                controller.sorteringNavn();
-                                for (Medlem medlem : controller.visMedlemmer()) {
+                                for (Medlem medlem : controller.getMedlemmerSorteretEfterNavn()) {
                                     System.out.println(medlem);
                                 }
 
@@ -464,24 +463,24 @@ public class UI {
                                 System.out.println(controller.visMedlemmer());
                                 break;
                             case "2":
-                                controller.sorteringTid();
+
                                 System.out.println("Liste over svømmernes bedste resultater: "); //TODO indsæt metode
 
                                 System.out.println("Junior holdet: ");
-                                System.out.println(controller.visJuniorHold());
+                                System.out.println(controller.visJuniorHoldEfterTid());
 
                                 System.out.println("Senior holdet: ");
-                                System.out.println(controller.visSeniorHold());
+                                System.out.println(controller.visSeniorHoldEfterTid());
                                 break;
                             case "3":
-                                controller.sorteringKonkurrenceStatus();
+
                                 System.out.println("Liste over svømmere som har deltaget i konkurrence"); //TODO indsæt metode
 
                                 System.out.println("Junior holdet: ");
-                                System.out.println(controller.visJuniorHold());
+                                System.out.println(controller.visJuniorHoldEFterKonkurrence());
 
                                 System.out.println("Senior holdet: ");
-                                System.out.println(controller.visSeniorHold());
+                                System.out.println(controller.visSeniorHoldEfterKonkurrence());
                                 break;
 
                             case "4":
@@ -497,44 +496,32 @@ public class UI {
                                     int top5 = scanner.nextInt();
                                     switch (top5) {
                                         case 1:
-                                            controller.sorteringTid();
                                             System.out.println("Junior holdet: ");
-                                            ArrayList<Medlem> butterflyJunior = controller.top5(controller.visKonkurrenceSvømmere(), AldersGruppe.JUNIOR, SvømmeDiscipliner.BUTTERFLY);
-                                            System.out.println(controller.printTop5(butterflyJunior));
+                                            System.out.println(controller.printTop5(AldersGruppe.JUNIOR, SvømmeDiscipliner.BUTTERFLY));
 
                                             System.out.println("Senior holdet: ");
-                                            ArrayList<Medlem> butterflySenior = controller.top5(controller.visKonkurrenceSvømmere(), AldersGruppe.SENIOR, SvømmeDiscipliner.BUTTERFLY);
-                                            System.out.println(controller.printTop5(butterflySenior));
+                                            System.out.println(controller.printTop5(AldersGruppe.SENIOR, SvømmeDiscipliner.BUTTERFLY));
                                             break;
                                         case 2:
-                                            controller.sorteringTid();
                                             System.out.println("Junior holdet: ");
-                                            ArrayList<Medlem> crawlJunior = controller.top5(controller.visKonkurrenceSvømmere(), AldersGruppe.JUNIOR, SvømmeDiscipliner.CRAWL);
-                                            System.out.println(controller.printTop5(crawlJunior));
+                                            System.out.println(controller.printTop5(AldersGruppe.JUNIOR, SvømmeDiscipliner.CRAWL));
 
                                             System.out.println("Senior holdet: ");
-                                            ArrayList<Medlem> crawlSenior = controller.top5(controller.visKonkurrenceSvømmere(), AldersGruppe.SENIOR, SvømmeDiscipliner.CRAWL);
-                                            System.out.println(controller.printTop5(crawlSenior));
+                                            System.out.println(controller.printTop5( AldersGruppe.SENIOR, SvømmeDiscipliner.CRAWL));
                                             break;
                                         case 3:
-                                            controller.sorteringTid();
                                             System.out.println("Junior holdet: ");
-                                            ArrayList<Medlem> rygcrawlJunior = controller.top5(controller.visKonkurrenceSvømmere(), AldersGruppe.JUNIOR, SvømmeDiscipliner.RYGCRAWL);
-                                            System.out.println(controller.printTop5(rygcrawlJunior));
+                                            System.out.println(controller.printTop5(AldersGruppe.JUNIOR, SvømmeDiscipliner.RYGCRAWL));
 
                                             System.out.println("Senior holdet: ");
-                                            ArrayList<Medlem> rygcrawlSenior = controller.top5(controller.visKonkurrenceSvømmere(), AldersGruppe.SENIOR, SvømmeDiscipliner.RYGCRAWL);
-                                            System.out.println(controller.printTop5(rygcrawlSenior));
+                                            System.out.println(controller.printTop5(AldersGruppe.SENIOR, SvømmeDiscipliner.RYGCRAWL));
                                             break;
                                         case 4:
-                                            controller.sorteringTid();
                                             System.out.println("Junior holdet: ");
-                                            ArrayList<Medlem> brystJunior = controller.top5(controller.visKonkurrenceSvømmere(), AldersGruppe.JUNIOR, SvømmeDiscipliner.BRYSTSVØMNING);
-                                            System.out.println(controller.printTop5(brystJunior));
+                                            System.out.println(controller.printTop5( AldersGruppe.JUNIOR, SvømmeDiscipliner.BRYSTSVØMNING));
 
                                             System.out.println("Senior holdet: ");
-                                            ArrayList<Medlem> brystSenior = controller.top5(controller.visKonkurrenceSvømmere(), AldersGruppe.SENIOR, SvømmeDiscipliner.BRYSTSVØMNING);
-                                            System.out.println(controller.printTop5(brystSenior));
+                                            System.out.println(controller.printTop5(AldersGruppe.SENIOR, SvømmeDiscipliner.BRYSTSVØMNING));
                                             break;
                                         case 5:
                                             svømmediscipliner = false;
@@ -597,9 +584,9 @@ public class UI {
                                                     break;
                                             }
                                         }
+                                        break;
                                     }
                                 }
-                                break;
                             case "6":
                                 trænerMenuKører = false;
                                 break;
@@ -608,6 +595,7 @@ public class UI {
                                 break;
                         }
                     }
+                    break;
                     //________________________luk programmet ned____________________________________________________________
                 case "4":
                     System.out.println("Programmet lukkes ned....");

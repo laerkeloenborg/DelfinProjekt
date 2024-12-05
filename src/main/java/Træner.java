@@ -1,15 +1,12 @@
-import javax.swing.plaf.metal.MetalComboBoxEditor;
 import java.util.ArrayList;
 import java.util.Collections;
 
 public class Træner {
 
-    private FileHandler fileHandler;
-    private ArrayList<Medlem> konkurrenceSvømmerListe;
+   private Listen listen;
 
     public Træner() {
-        fileHandler = new FileHandler();
-        konkurrenceSvømmerListe = fileHandler.hentListeAfMedlemmer();
+       this.listen = new Listen();
     }
 
 
@@ -17,16 +14,16 @@ public class Træner {
         switch (valg) {
             case 1:
                 double nySvømmetid = Double.parseDouble(nyInfo);
-                ((KonkurrenceSvømmer)konkurrenceSvømmer).setBedsteTid(nySvømmetid);
+                ((KonkurrenceSvømmer) konkurrenceSvømmer).setBedsteTid(nySvømmetid);
                 break;
             case 2:
                 Boolean nyKonkurrenceStatus = nyInfo.equalsIgnoreCase("ja");
-                ((KonkurrenceSvømmer)konkurrenceSvømmer).setHarKonkurreret(nyKonkurrenceStatus);
+                ((KonkurrenceSvømmer) konkurrenceSvømmer).setHarKonkurreret(nyKonkurrenceStatus);
                 break;
 
             case 3:
                 SvømmeDiscipliner nySvømmedisciplin = SvømmeDiscipliner.valueOf(nyInfo);
-                ((KonkurrenceSvømmer)konkurrenceSvømmer).setSVØMMEDISCIPLIN(nySvømmedisciplin);
+                ((KonkurrenceSvømmer) konkurrenceSvømmer).setSVØMMEDISCIPLIN(nySvømmedisciplin);
                 break;
             default:
                 return "Ugyldigt valg";
@@ -37,7 +34,7 @@ public class Træner {
     //________________________metode til at finde et specifikt medlems navn_____________________________________________
     public String findSpecifiktKonkurrenceSvømmersNavn(String info) {
         String medlemNavn = "";
-        for (Medlem medlem : konkurrenceSvømmerListe) {
+        for (Medlem medlem : listen.getKonkurrenceSvømmer()) {
             if (medlem.getNavn().equalsIgnoreCase(info)) {
                 medlemNavn = medlem.getNavn();
             }
@@ -48,7 +45,7 @@ public class Træner {
 
     //________________________metode til at finde et specifikt medlem___________________________________________________
     public Medlem findSpecifiktKonkurrenceSvømmer(String info) {
-        for (Medlem medlem : konkurrenceSvømmerListe) {
+        for (Medlem medlem : listen.getKonkurrenceSvømmer()) {
             if (medlem.getNavn().equalsIgnoreCase(info)) {
                 return medlem;
             }
@@ -57,80 +54,95 @@ public class Træner {
     }
 
 
-    public void sorteringTid() {
-        Comparators.sorteringSvømmetider comparator = new Comparators.sorteringSvømmetider();
-        Collections.sort(konkurrenceSvømmerListe, comparator);
-    }
 
-    public void sortertingKonkurrenceStatus() {
-        Comparators.sorteringKonkurrencestatus comparator = new Comparators.sorteringKonkurrencestatus();
-        Collections.sort(konkurrenceSvømmerListe, comparator);
-    }
-
-    //TODO: exceptions
-    public ArrayList<Medlem> top5(ArrayList<Medlem> topSvømmere, AldersGruppe ALDERSGRUPPE, SvømmeDiscipliner SVØMMEDISCIPLIN) {
+    public String printTop5(AldersGruppe ALDERSGRUPPE, SvømmeDiscipliner SVØMMEDISCIPLIN) {
+        ArrayList<KonkurrenceSvømmer> konkurrenceSvømmere = listen.getKonkurrenceSvømmer();
+        Collections.sort(konkurrenceSvømmere, new Comparators.sorteringSvømmeTider());
+        String string = "";
+        int tæller = 1;
         ArrayList<Medlem> bestemteSvømmere = new ArrayList<>();
-        for (Medlem konkurrenceSvømmer : topSvømmere) {
+        for (Medlem konkurrenceSvømmer : konkurrenceSvømmere) {
+
+
+            if (!(konkurrenceSvømmer instanceof KonkurrenceSvømmer)) {
+                break;
+            }
+
             if (konkurrenceSvømmer.getAldersGruppe().equals(ALDERSGRUPPE) && ((KonkurrenceSvømmer)konkurrenceSvømmer).getSVØMMEDISCIPLIN().equals(SVØMMEDISCIPLIN)) {
                 bestemteSvømmere.add(konkurrenceSvømmer);
             }
         }
-
         ArrayList<Medlem> top5 = new ArrayList<>();
         for (int i = 0; i < Math.min(5, bestemteSvømmere.size()); i++) {
             top5.add(bestemteSvømmere.get(i));
         }
 
-        return top5;
-    }
-
-
-    public String printTop5(ArrayList<Medlem> topSvømmere) {
-        String string = "";
-        int tæller = 1;
-
-        for (Medlem konkurrenceSvømmer : topSvømmere) {
-            string += tæller++ + konkurrenceSvømmer.toString();
+        for (Medlem konkurrenceSvømmer : top5) {
+            string += tæller++ + ". " + ((KonkurrenceSvømmer) konkurrenceSvømmer).toStringTilTræner();
         }
         return string;
     }
 
-    public ArrayList<Medlem> getKonkurrenceSvømmerListe() {
-        return konkurrenceSvømmerListe;
+
+    public ArrayList<KonkurrenceSvømmer> getKonkurrenceSvømmerListe() {
+        return listen.getKonkurrenceSvømmer();
     }
 
 
-    public String printJuniorHold() {
+    public String printJuniorHoldEfterTid() {
+        ArrayList<KonkurrenceSvømmer> konkurrenceSvømmerListe = listen.getKonkurrenceSvømmer();
+        Collections.sort(konkurrenceSvømmerListe, new Comparators.sorteringSvømmeTider());
         String string = "";
         int tæller = 1;
-        for (Medlem konkurrenceSvømmer : konkurrenceSvømmerListe) {
+        for (Medlem konkurrenceSvømmer : listen.getKonkurrenceSvømmer()) {
             if (konkurrenceSvømmer.getAldersGruppe().equals(AldersGruppe.JUNIOR)) {
-                string += tæller++ + konkurrenceSvømmer.toString();
+                string += tæller++ + ". " + ((KonkurrenceSvømmer) konkurrenceSvømmer).toStringTilTræner();
             }
         }
         return string;
     }
 
-    public String printSeniorHold() {
+    public String printJuniorHoldEfterKonkurrence() {
+        ArrayList<KonkurrenceSvømmer> konkurrenceSvømmerListe = listen.getKonkurrenceSvømmer();
+        Collections.sort(konkurrenceSvømmerListe, new Comparators.sorteringKonkurrenceStatus());
         String string = "";
         int tæller = 1;
-        for (Medlem konkurrenceSvømmer : konkurrenceSvømmerListe) {
+        for (Medlem konkurrenceSvømmer : listen.getKonkurrenceSvømmer()) {
+            if (konkurrenceSvømmer.getAldersGruppe().equals(AldersGruppe.JUNIOR)) {
+                string += tæller++ + ". " + ((KonkurrenceSvømmer) konkurrenceSvømmer).toStringTilTræner();
+            }
+        }
+        return string;
+    }
+
+    public String printSeniorHoldEfterTid() {
+        ArrayList<KonkurrenceSvømmer> konkurrenceSvømmerListe = listen.getKonkurrenceSvømmer();
+        Collections.sort(konkurrenceSvømmerListe, new Comparators.sorteringSvømmeTider());
+        String string = "";
+        int tæller = 1;
+        for (Medlem konkurrenceSvømmer : listen.getKonkurrenceSvømmer()) {
             if (konkurrenceSvømmer.getAldersGruppe().equals(AldersGruppe.SENIOR)) {
-                string += tæller++ +  konkurrenceSvømmer.toString();
+                string += tæller++ + ". " + ((KonkurrenceSvømmer) konkurrenceSvømmer).toStringTilTræner();
+            }
+        }
+        return string;
+    }
+
+    public String printSeniorHoldEFterKonkurrence() {
+        ArrayList<KonkurrenceSvømmer> konkurrenceSvømmerListe = listen.getKonkurrenceSvømmer();
+        Collections.sort(konkurrenceSvømmerListe, new Comparators.sorteringKonkurrenceStatus());
+        String string = "";
+        int tæller = 1;
+        for (Medlem konkurrenceSvømmer : listen.getKonkurrenceSvømmer()) {
+            if (konkurrenceSvømmer.getAldersGruppe().equals(AldersGruppe.SENIOR)) {
+                string += tæller++ + ". " + ((KonkurrenceSvømmer) konkurrenceSvømmer).toStringTilTræner();
             }
         }
         return string;
     }
 
 
-    public String hentKonkurrenceSvømmereFraFil() {
-        String string = "";
-        int tæller = 1;
-        for (Medlem konkurrenceSvømmer : konkurrenceSvømmerListe) {
-            string += tæller++ + konkurrenceSvømmer.toString();
-        }
-        return string;
-    }
+
 
 
 }

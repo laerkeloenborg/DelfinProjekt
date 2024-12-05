@@ -45,6 +45,10 @@ public class Controller {
         return formand.visMedlemmer();
     }
 
+    public ArrayList<Medlem> getMedlemmerSorteretEfterNavn(){
+        return formand.getMedlemmerSorteretEfterNavn();
+    }
+
 
 
     //_______________________metode til at finde et specifikt medlems navn ud fra cpr___________________________________
@@ -65,14 +69,9 @@ public class Controller {
     }
 
     //_______________________metode til at sortere i medlemslisten efter navn___________________________________________
-    public void sorteringNavn() {
-        formand.sorteringNavn();
-    }
+
 
     //_______________________metode til at gemme listen med medlemmer___________________________________________________
-    public ArrayList<Medlem> gemListeAfMedlemmer() {
-        return formand.gemMedlem();
-    }
 
 
     //________________________metode til at se antallet af medlemmer i klubben__________________________________________
@@ -116,39 +115,43 @@ public class Controller {
     //_______________________Træner metoder_____________________________________________________________________________
 
     //_______________________metode til at sortere efter svømmers bedste tid________________________________________________
-    public void sorteringTid() {
-        træner.sorteringTid();
-    }
+
 
     //_______________________metode til at se sortere efter om svømmerne har konkurreret før____________________________
-    public void sorteringKonkurrenceStatus() {
-        træner.sortertingKonkurrenceStatus();
-    }
+
 
     //_______________________metode til at se konkurrencesvømmere der er på juniorholdet________________________________
-    public String visJuniorHold() {
-        return træner.printJuniorHold();
+    public String visJuniorHoldEfterTid() {
+        return træner.printJuniorHoldEfterTid();
+    }
+
+    public String visJuniorHoldEFterKonkurrence() {
+        return træner.printJuniorHoldEfterKonkurrence();
     }
 
     //_______________________metode til at se konkurrencesvømmere der er på seniorholdet________________________________
-    public String visSeniorHold() {
-        return træner.printSeniorHold();
+    public String visSeniorHoldEfterTid() {
+        return træner.printSeniorHoldEfterTid();
+    }
+
+    public String visSeniorHoldEfterKonkurrence() {
+        return træner.printSeniorHoldEFterKonkurrence();
     }
 
     //_______________________metode til at få listen over konkurrencesvømmere (uden layout)_____________________________
-    public ArrayList<Medlem> visKonkurrenceSvømmere() {
+    public ArrayList<KonkurrenceSvømmer> visKonkurrenceSvømmere() {
         return træner.getKonkurrenceSvømmerListe();
     }
 
     //_______________________metode til at se se top5 svømmere (pæn layout)_____________________________________________
-    public String printTop5(ArrayList<Medlem> topSvømmere) {
-        return træner.printTop5(topSvømmere);
+    public String printTop5(AldersGruppe ALDERSGRUPPE, SvømmeDiscipliner SVØMMEDISCIPLIN) {
+        return træner.printTop5(ALDERSGRUPPE ,SVØMMEDISCIPLIN);
     }
 
     //_______________________metode til at se top5 svømmere i hver disciplin & aldersgruppe (uden layout)_______________
-    public ArrayList<Medlem> top5(ArrayList<Medlem> konkurrenceSvømmere, AldersGruppe ALDERSGRUPPE, SvømmeDiscipliner SVØMMEDISCIPLIN) {
-        return træner.top5(konkurrenceSvømmere, ALDERSGRUPPE, SVØMMEDISCIPLIN);
-    }
+//    public ArrayList<Medlem> top5(AldersGruppe ALDERSGRUPPE, SvømmeDiscipliner SVØMMEDISCIPLIN) {
+//        return træner.top5(ALDERSGRUPPE, SVØMMEDISCIPLIN);
+//    }
 
     public String ændringAfKonkurrenceSvømmer(Medlem konkurrenceSvømmer, int valg, String nyInfo){
         return træner.ændringAfKonkurrenceSvømmer(konkurrenceSvømmer, valg, nyInfo);
