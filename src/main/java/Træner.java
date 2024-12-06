@@ -7,10 +7,12 @@ public class Træner {
 
     private FileHandler fileHandler;
     private ArrayList<KonkurrenceSvømmer> konkurrenceSvømmerListe;
+    private ArrayList<Medlem> medlemsListen;
 
     public Træner() {
         fileHandler = new FileHandler();
         konkurrenceSvømmerListe = fileHandler.hentListeAfKonkurrenceSvømmere();
+        medlemsListen = fileHandler.hentListeAfMedlemmer();
     }
 
 
@@ -19,18 +21,18 @@ public class Træner {
             case 1:
                 double nySvømmetid = Double.parseDouble(nyInfo);
                 ((KonkurrenceSvømmer)konkurrenceSvømmer).setBedsteTid(nySvømmetid);
-                fileHandler.gemListeAfKonkurrenceSvømmere(konkurrenceSvømmerListe);
+                fileHandler.gemListeAfMedlemmer(medlemsListen);
                 break;
             case 2:
                 SvømmeDiscipliner nySvømmedisciplin = SvømmeDiscipliner.valueOf(nyInfo);
                 ((KonkurrenceSvømmer)konkurrenceSvømmer).setSVØMMEDISCIPLIN(nySvømmedisciplin);
-                fileHandler.gemListeAfKonkurrenceSvømmere(konkurrenceSvømmerListe);
+                fileHandler.gemListeAfMedlemmer(medlemsListen);
                 break;
 
             case 3:
                 Boolean nyKonkurrenceStatus = nyInfo.equalsIgnoreCase("ja");
                 ((KonkurrenceSvømmer)konkurrenceSvømmer).setHarKonkurreret(nyKonkurrenceStatus);
-                fileHandler.gemListeAfKonkurrenceSvømmere(konkurrenceSvømmerListe);
+                fileHandler.gemListeAfMedlemmer(medlemsListen);
                 break;
             default:
                 return "Ugyldigt valg";

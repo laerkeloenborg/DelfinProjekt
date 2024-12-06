@@ -77,6 +77,7 @@ public class Controller {
     public ArrayList<Medlem> gemListeAfMedlemmer() {
         return formand.gemMedlem();
     }
+
     public ArrayList<KonkurrenceSvømmer> gemListeAfKonkurrenceSvømmere() {
         return formand.gemListeAfKonkurrenceSvømmere();
     }
