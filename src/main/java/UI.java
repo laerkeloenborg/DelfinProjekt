@@ -234,12 +234,12 @@ public class UI {
                                 boolean cprIndtasting = true;
 
                                 while (cprIndtasting) {
-                                    System.out.println("Indtast CPR-nummer på det medlem der skal redigeres: ");
+                                    System.out.println("Indtast navn på det medlem der skal redigeres: ");
                                     String findMedlem = scanner.nextLine();
                                     Medlem nuværendeMedlem = controller.findSpecifiktMedlem(findMedlem);
                                     String nuværendeNavn = controller.findSpecifiktMedlemsNavn(findMedlem);
 
-                                    if (controller.visMedlemmer().contains(nuværendeMedlem)) {
+                                    if (controller.getMedlemsListen().contains(nuværendeMedlem)){
                                         System.out.println("Du kan nu redigere i " + nuværendeNavn + "'s oplysninger.");
                                         System.out.println(nuværendeNavn + "'s nuværende informationer");
                                         System.out.println(nuværendeMedlem);
@@ -350,14 +350,7 @@ public class UI {
                             //________________________sorter i listen af medlemmer__________________________________
                             case "4":
                                 controller.sorteringNavn();
-                                for (Medlem medlem : controller.visMedlemmer()) {
-                                    System.out.println(medlem);
-                                }
-                                System.out.println("\n");
-                                controller.sorteringNavn();
-                                for (KonkurrenceSvømmer konkurrenceSvømmer : controller.visKonkurrenceMedlemmer()) {
-                                    System.out.println(konkurrenceSvømmer);
-                                }
+                                System.out.println(controller.visMedlemmerne());
 
                                 boolean sortering = true;
                                 while (sortering) {
@@ -378,9 +371,7 @@ public class UI {
 
                                         if (sorteringsValg >= 1 && sorteringsValg <= 3) {
                                             controller.sorterMedlemmerValgMetode(sorteringsValg);
-                                            for (Medlem medlem : controller.visMedlemmer()) {
-                                                System.out.println(medlem);
-                                            }
+                                            System.out.println(controller.visMedlemmerne());
                                         }
                                     } catch (InputMismatchException e) {
                                         System.out.println("Indtast et tal mellem 1-4");
@@ -638,8 +629,7 @@ public class UI {
                                                     "\n1 for at redigere i resultater" +
                                                     "\n2 for at redigere svømmedisciplin" +
                                                     "\n3 for at redigere om svømmeren er konkurrencesvømmer" +
-                                                    "\n4 for at redigere stævne" +
-                                                    "\n5 for at gå tilbage til trænermenuen" +
+                                                    "\n4 for at gå tilbage til trænermenuen" +
                                                     "\n\nVælg en mulighed: \n");
 
                                             String brugerValg2 = scanner.nextLine();
@@ -683,8 +673,6 @@ public class UI {
                                                     break;
 
                                                 case "4":
-                                                   //TODO: redigering af stævne
-                                                case "5":
                                                     ændreKonkurrenceSvømmer = false;
                                                     break;
                                                 default:

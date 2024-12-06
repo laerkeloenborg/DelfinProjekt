@@ -41,14 +41,18 @@ public class Controller {
 
 
     //_______________________metode til at vise listen af medlemmer_____________________________________________________
-    public ArrayList<Medlem> visMedlemmer() {
-        return formand.visMedlemmer();
+    public String visMedlemmerne(){
+        return formand.visMedlemmerne();
     }
 
     public ArrayList<KonkurrenceSvømmer> visKonkurrenceMedlemmer() {
         return formand.visKonkurrenceMedlemmer();
     }
 
+    //_______________________metode til at få fat på medlemslisten______________________________________________________
+    public ArrayList<Medlem> getMedlemsListen(){
+        return formand.getMedlemsListen();
+    }
 
 
     //_______________________metode til at finde et specifikt medlems navn ud fra cpr___________________________________

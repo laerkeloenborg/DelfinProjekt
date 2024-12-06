@@ -25,7 +25,9 @@ public class Formand {
     public void tilføjKonkurrenceSvømmer(String navn, String cpr, MedlemsStatus MEDLEMSSTATUS, boolean harBetalt, String aktivitetsform, SvømmeDiscipliner svømmeDisciplin, double bedsteTid, boolean harKonkurreret){
         KonkurrenceSvømmer nyKonkurrenceSvømmer = new KonkurrenceSvømmer(navn, cpr, MEDLEMSSTATUS, harBetalt, aktivitetsform, svømmeDisciplin, bedsteTid, harKonkurreret);
         medlemsListen.add(nyKonkurrenceSvømmer);
+        konkurrenceSvømmerListe.add(nyKonkurrenceSvømmer);
         fileHandler.gemListeAfMedlemmer(medlemsListen);
+       fileHandler.gemKonkurrenceSvømmere(konkurrenceSvømmerListe);
     }
 
 
@@ -80,10 +82,10 @@ public class Formand {
 
 
     //________________________metode til at finde et specifikt medlems navn_____________________________________________
-    public String findSpecifiktMedlemsNavn(String cpr) {
+    public String findSpecifiktMedlemsNavn(String navn) {
         String medlemNavn = "";
         for (Medlem medlem : medlemsListen) {
-            if (medlem.getCpr().equalsIgnoreCase(cpr)) {
+            if (medlem.getNavn().equalsIgnoreCase(navn)) {
                 medlemNavn = medlem.getNavn();
             }
         }
@@ -92,9 +94,9 @@ public class Formand {
 
 
     //________________________metode til at finde et specifikt medlem___________________________________________________
-    public Medlem findSpecifiktMedlem(String cpr) {
+    public Medlem findSpecifiktMedlem(String navn) {
         for (Medlem medlem : medlemsListen) {
-            if (medlem.getCpr().equalsIgnoreCase(cpr)) {
+            if (medlem.getNavn().equalsIgnoreCase(navn)) {
                 return medlem;
             }
         }
@@ -115,7 +117,7 @@ public class Formand {
                 Collections.sort(medlemsListen, new Comparators.sorteringAktivitetsform());
                 break;
         }
-        visMedlemmer();
+        visMedlemmerne();
     }
 
 
@@ -126,12 +128,17 @@ public class Formand {
 
 
     //________________________metode til at printe medlemmer ___________________________________________________________
-    public ArrayList<Medlem> visMedlemmer() {
-        if (medlemsListen.isEmpty()) {
-            return null;
+    public String visMedlemmerne(){
+        String string = "";
+        int tæller = 1;
+        if(medlemsListen.isEmpty()){
+            return "Der er ikke nogle medlemmer i klubben";
         } else {
-            return medlemsListen;
+            for (Medlem medlem : medlemsListen) {
+                string += tæller++ + ". " + medlem;
+            }
         }
+        return string;
     }
 
     public ArrayList<Medlem> visKonkurrenceSvømmere() {
@@ -156,4 +163,7 @@ public class Formand {
         return medlemsListen.size();
     }
 
+    public ArrayList<Medlem> getMedlemsListen(){
+        return medlemsListen;
+    }
 }
