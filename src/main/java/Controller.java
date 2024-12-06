@@ -66,6 +66,10 @@ public class Controller {
         return formand.findSpecifiktMedlem(cpr);
     }
 
+public String visMedlemOplysninger(String navn){
+        return formand.visMedlemsOplysninger(navn);
+}
+
 
     //_______________________metode til at sorterer i medlemlisten efter ønsket kategori________________________________
     public void sorterMedlemmerValgMetode(int valg) {

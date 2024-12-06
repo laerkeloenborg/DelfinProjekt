@@ -242,8 +242,13 @@ public class UI {
                                     if (controller.getMedlemsListen().contains(nuværendeMedlem)){
                                         System.out.println("Du kan nu redigere i " + nuværendeNavn + "'s oplysninger.");
                                         System.out.println(nuværendeNavn + "'s nuværende informationer");
-                                        System.out.println(nuværendeMedlem);
 
+                                        if (nuværendeMedlem.getAktivitetsForm().equalsIgnoreCase("Motionist")) {
+                                            System.out.println(nuværendeMedlem);
+                                        } else if (nuværendeMedlem.getAktivitetsForm().equalsIgnoreCase("Konkurrence svømmer")){
+                                            System.out.println(((KonkurrenceSvømmer)nuværendeMedlem).toStringTilFormand());
+                                        }
+                                        //System.out.println(controller.visMedlemOplysninger(nuværendeNavn));
                                         boolean redigering = true;
                                         while (redigering) {
                                             System.out.println("\n\nHvad vil du gerne redigere: " +
@@ -316,7 +321,7 @@ public class UI {
                                                 while (!validInput) {
                                                     System.out.println("Indtast ny aktivitetsform (motionist/konkurrence)");
                                                     nyVærdi = scanner.nextLine();
-                                                    if (nyVærdi.equalsIgnoreCase("motionist") || nyVærdi.equalsIgnoreCase("konkurrence")) {
+                                                    if (nyVærdi.equalsIgnoreCase("motionist") || nyVærdi.equalsIgnoreCase("konkurrence svømmer")) {
                                                         validInput = true;
                                                     } else {
                                                         System.out.println("Aktivitetsform skal være motionist eller konkurrence");
@@ -336,7 +341,13 @@ public class UI {
                                             if (validInput) {
                                                 controller.redigerMedlem(nuværendeMedlem, valgAfRedigering, nyVærdi);
                                                 System.out.println("Opdateret informationer: ");
-                                                System.out.println(nuværendeMedlem);
+
+                                                if (nuværendeMedlem.getAktivitetsForm().equalsIgnoreCase("Motionist")) {
+                                                    System.out.println(nuværendeMedlem);
+                                                } else if (nuværendeMedlem.getAktivitetsForm().equalsIgnoreCase("Konkurrence svømmer")){
+                                                    System.out.println(((KonkurrenceSvømmer)nuværendeMedlem).toStringTilFormand());
+                                                }
+                                                //System.out.println(controller.visMedlemOplysninger(nuværendeNavn));
                                                 cprIndtasting = false;
                                             }
                                         }

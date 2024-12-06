@@ -66,6 +66,7 @@ public class Formand {
                 break;
             case 3:
                 medlem.setMedlemsstatus(MedlemsStatus.parseMedlemsStatus(nyVærdi));
+               // medlem = new KonkurrenceSvømmer(medlem.getNavn(), medlem.getCpr(),medlem.getMedlemsstatus(), medlem.getHarBetalt(), medlem.getAktivitetsForm(),((KonkurrenceSvømmer)medlem).getSVØMMEDISCIPLIN(),((KonkurrenceSvømmer)medlem).getBedsteTid(), ((KonkurrenceSvømmer)medlem).getHarKonkurreret());
                 break;
             case 4:
                 medlem.setAktivitetsForm(nyVærdi);
@@ -101,6 +102,18 @@ public class Formand {
             }
         }
         return null;
+    }
+
+    public String visMedlemsOplysninger(String navn){
+        Medlem nuværendeMedlem = findSpecifiktMedlem(navn);
+        String string = "";
+
+        if (nuværendeMedlem.getAktivitetsForm().equalsIgnoreCase("Motionist")) {
+            string += nuværendeMedlem.toString();
+        } else if (nuværendeMedlem.getAktivitetsForm().equalsIgnoreCase("Konkurrence")){
+           string += ((KonkurrenceSvømmer)nuværendeMedlem).toStringTilFormand();
+        }
+        return string;
     }
 
 
