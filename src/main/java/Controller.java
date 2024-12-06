@@ -46,7 +46,7 @@ public class Controller {
     }
 
     public ArrayList<KonkurrenceSvømmer> visKonkurrenceMedlemmer() {
-        return formand.visKonkurrenceMedlemmer();
+        return formand.visMedlemmer();
     }
 
     //_______________________metode til at få fat på medlemslisten______________________________________________________

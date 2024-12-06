@@ -150,7 +150,7 @@ public class Formand {
     }
 
 
-    public ArrayList<KonkurrenceSvømmer> visKonkurrenceMedlemmer() {
+    public ArrayList<KonkurrenceSvømmer> visMedlemmer() {
         if (konkurrenceSvømmerListe.isEmpty()) {
             return null;
         } else {

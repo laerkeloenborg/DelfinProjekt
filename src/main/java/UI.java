@@ -456,6 +456,7 @@ public class UI {
 
                             case "1":
                                 System.out.println("Liste over klubbens konkurrencesvømmere: "); //TODO indsæt metode
+                                controller.sorteringNavn();
                                 System.out.println(controller.hentKonkurrenceSvømmereFraFil()); //TODO før .visMedlemmer()
                                 break;
                             case "2":
