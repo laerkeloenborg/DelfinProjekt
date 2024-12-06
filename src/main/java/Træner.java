@@ -1,15 +1,16 @@
 import javax.swing.plaf.metal.MetalComboBoxEditor;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 
 public class Træner {
 
     private FileHandler fileHandler;
-    private ArrayList<Medlem> konkurrenceSvømmerListe;
+    private ArrayList<KonkurrenceSvømmer> konkurrenceSvømmerListe;
 
     public Træner() {
         fileHandler = new FileHandler();
-        konkurrenceSvømmerListe = fileHandler.hentListeAfMedlemmer();
+        konkurrenceSvømmerListe = fileHandler.hentListeAfKonkurrenceSvømmere();
     }
 
 
@@ -18,21 +19,35 @@ public class Træner {
             case 1:
                 double nySvømmetid = Double.parseDouble(nyInfo);
                 ((KonkurrenceSvømmer)konkurrenceSvømmer).setBedsteTid(nySvømmetid);
+                fileHandler.gemListeAfKonkurrenceSvømmere(konkurrenceSvømmerListe);
                 break;
             case 2:
-                Boolean nyKonkurrenceStatus = nyInfo.equalsIgnoreCase("ja");
-                ((KonkurrenceSvømmer)konkurrenceSvømmer).setHarKonkurreret(nyKonkurrenceStatus);
+                SvømmeDiscipliner nySvømmedisciplin = SvømmeDiscipliner.valueOf(nyInfo);
+                ((KonkurrenceSvømmer)konkurrenceSvømmer).setSVØMMEDISCIPLIN(nySvømmedisciplin);
+                fileHandler.gemListeAfKonkurrenceSvømmere(konkurrenceSvømmerListe);
                 break;
 
             case 3:
-                SvømmeDiscipliner nySvømmedisciplin = SvømmeDiscipliner.valueOf(nyInfo);
-                ((KonkurrenceSvømmer)konkurrenceSvømmer).setSVØMMEDISCIPLIN(nySvømmedisciplin);
+                Boolean nyKonkurrenceStatus = nyInfo.equalsIgnoreCase("ja");
+                ((KonkurrenceSvømmer)konkurrenceSvømmer).setHarKonkurreret(nyKonkurrenceStatus);
+                fileHandler.gemListeAfKonkurrenceSvømmere(konkurrenceSvømmerListe);
                 break;
             default:
                 return "Ugyldigt valg";
         }
         return "";
     }
+
+    public void sorteringTid() {
+        Comparators.sorteringSvømmeTider comparator = new Comparators.sorteringSvømmeTider();
+        Collections.sort(konkurrenceSvømmerListe, comparator);
+    }
+
+    public void sortertingKonkurrenceStatus() {
+        Comparators.sorteringKonkurrenceStatus comparator = new Comparators.sorteringKonkurrenceStatus();
+        Collections.sort(konkurrenceSvømmerListe, comparator);
+    }
+
 
     //________________________metode til at finde et specifikt medlems navn_____________________________________________
     public String findSpecifiktKonkurrenceSvømmersNavn(String info) {
@@ -56,56 +71,40 @@ public class Træner {
         return null;
     }
 
-
-    public void sorteringTid() {
-        Comparators.sorteringSvømmetider comparator = new Comparators.sorteringSvømmetider();
-        getKonkurrenceSvømmerListe().sort(comparator);
-    }
-
-    public void sortertingKonkurrenceStatus() {
-        Comparators.sorteringKonkurrencestatus comparator = new Comparators.sorteringKonkurrencestatus();
-        getKonkurrenceSvømmerListe().sort(comparator);
-    }
-
     //TODO: exceptions
-    public ArrayList<Medlem> top5(ArrayList<Medlem> topSvømmere, AldersGruppe ALDERSGRUPPE, SvømmeDiscipliner SVØMMEDISCIPLIN) {
-        ArrayList<Medlem> bestemteSvømmere = new ArrayList<>();
-        for (Medlem konkurrenceSvømmer : topSvømmere) {
-            if (konkurrenceSvømmer.getAldersGruppe().equals(ALDERSGRUPPE) && ((KonkurrenceSvømmer)konkurrenceSvømmer).getSVØMMEDISCIPLIN().equals(SVØMMEDISCIPLIN)) {
-                bestemteSvømmere.add(konkurrenceSvømmer);
+    public String printTop5(AldersGruppe ALDERSGRUPPE, SvømmeDiscipliner SVØMMEDISCIPLIN){
+            ArrayList<KonkurrenceSvømmer> konkurrenceSvømmere = konkurrenceSvømmerListe;
+            Collections.sort(konkurrenceSvømmere, new Comparators.sorteringSvømmeTider());
+
+            String string = "";
+            int tæller = 1;
+            ArrayList<KonkurrenceSvømmer> bestemteSvømmere = new ArrayList<>();
+            for (KonkurrenceSvømmer konkurrenceSvømmer : konkurrenceSvømmere) {
+                if (konkurrenceSvømmer.getAldersGruppe().equals(ALDERSGRUPPE) && konkurrenceSvømmer.getSVØMMEDISCIPLIN().equals(SVØMMEDISCIPLIN)){
+                    bestemteSvømmere.add(konkurrenceSvømmer);
+                }
             }
-        }
+            ArrayList<KonkurrenceSvømmer> top5 = new ArrayList<>();
+            for (int i = 0; i < Math.min(5, bestemteSvømmere.size()); i++) {
+                top5.add(bestemteSvømmere.get(i));
+            }
 
-        ArrayList<Medlem> top5 = new ArrayList<>();
-        for (int i = 0; i < Math.min(5, bestemteSvømmere.size()); i++) {
-            top5.add(bestemteSvømmere.get(i));
-        }
-
-        return top5;
+            for (Medlem konkurrenceSvømmer : top5) {
+                string += tæller++ + ". " + konkurrenceSvømmer.toString();
+            }
+            return string;
     }
 
-
-    public String printTop5(ArrayList<Medlem> topSvømmere) {
-        String string = "";
-        int tæller = 1;
-
-        for (Medlem konkurrenceSvømmer : topSvømmere) {
-            string += tæller++ + ((KonkurrenceSvømmer)konkurrenceSvømmer).toStringTilTræner();
-        }
-        return string;
-    }
-
-    public ArrayList<Medlem> getKonkurrenceSvømmerListe() {
+    public ArrayList<KonkurrenceSvømmer> getKonkurrenceSvømmerListe() {
         return konkurrenceSvømmerListe;
     }
-
 
     public String printJuniorHold() {
         String string = "";
         int tæller = 1;
         for (Medlem konkurrenceSvømmer : konkurrenceSvømmerListe) {
             if (konkurrenceSvømmer.getAldersGruppe().equals(AldersGruppe.JUNIOR)) {
-                string += tæller++ + ((KonkurrenceSvømmer)konkurrenceSvømmer).toStringTilTræner();
+                string += tæller++ + ". " + konkurrenceSvømmer;
             }
         }
         return string;
@@ -116,21 +115,51 @@ public class Træner {
         int tæller = 1;
         for (Medlem konkurrenceSvømmer : konkurrenceSvømmerListe) {
             if (konkurrenceSvømmer.getAldersGruppe().equals(AldersGruppe.SENIOR)) {
-                string += tæller++ +  ((KonkurrenceSvømmer)konkurrenceSvømmer).toStringTilTræner();
+                string += tæller++ + ". " + konkurrenceSvømmer;
             }
         }
         return string;
     }
 
+    public ArrayList<KonkurrenceSvømmer> hentSeniorSvømmere() {
+        ArrayList<KonkurrenceSvømmer> seniorSvømmere = new ArrayList<>();
+        for (KonkurrenceSvømmer svømmer : konkurrenceSvømmerListe) {
+            if (svømmer.getAldersGruppe().equals(AldersGruppe.SENIOR)) {
+                seniorSvømmere.add(svømmer);
+            }
+        }
+        return seniorSvømmere;
+    }
+    public ArrayList<KonkurrenceSvømmer> hentJuniorSvømmere() {
+        ArrayList<KonkurrenceSvømmer> juniorSvømmere = new ArrayList<>();
+        for (KonkurrenceSvømmer svømmer : konkurrenceSvømmerListe) {
+            if (svømmer.getAldersGruppe().equals(AldersGruppe.JUNIOR)) {
+                juniorSvømmere.add(svømmer);
+            }
+        }
+        return juniorSvømmere;
+    }
 
     public String hentKonkurrenceSvømmereFraFil() {
         String string = "";
         int tæller = 1;
-        for (Medlem konkurrenceSvømmer : konkurrenceSvømmerListe) {
-            string += tæller++ + ((KonkurrenceSvømmer)konkurrenceSvømmer).toStringTilTræner();
+        for (KonkurrenceSvømmer konkurrenceSvømmer : konkurrenceSvømmerListe) {
+            string += tæller++ + ". " + konkurrenceSvømmer.toString();
         }
         return string;
     }
+
+    // Metode til at gemme konkurrenceSvømmere
+    public void gemKonkurrenceSvømmere(ArrayList<KonkurrenceSvømmer> konkurrenceSvømmerListe) {
+        fileHandler.gemKonkurrenceSvømmere(konkurrenceSvømmerListe);
+    }
+
+    // Metode til at hente konkurrenceSvømmere
+    public ArrayList<KonkurrenceSvømmer> hentKonkurrenceSvømmere() {
+        return fileHandler.hentKonkurrenceSvømmere();
+    }
+
+
 
 
 }

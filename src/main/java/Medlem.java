@@ -30,7 +30,6 @@ public class Medlem {
         this.navn = navn;
     }
 
-    //cpr skal være specifik 6 cifre ellers exception
     public String getCpr() {
         return cpr;
     }
