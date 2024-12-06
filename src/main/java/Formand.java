@@ -135,7 +135,11 @@ public class Formand {
             return "Der er ikke nogle medlemmer i klubben";
         } else {
             for (Medlem medlem : medlemsListen) {
-                string += tæller++ + ". " + medlem;
+                if (medlem.getAktivitetsForm().equalsIgnoreCase("konkurrence svømmer")){
+                    string += tæller++ + ". " + ((KonkurrenceSvømmer)medlem).toStringTilFormand();
+                } else {
+                    string += tæller++ + ". " + medlem;
+                }
             }
         }
         return string;
