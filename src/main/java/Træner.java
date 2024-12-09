@@ -104,9 +104,9 @@ public class Træner {
     public String printJuniorHold() {
         String string = "";
         int tæller = 1;
-        for (Medlem konkurrenceSvømmer : konkurrenceSvømmerListe) {
+        for (Medlem konkurrenceSvømmer : konkurrenceSvømmerListe) { //TODO, fiks så se de kun kommer frem hvis de har konkurreret
             if (konkurrenceSvømmer.getAldersGruppe().equals(AldersGruppe.JUNIOR)) {
-                string += tæller++ + ". " + konkurrenceSvømmer;
+                string += tæller++ + ". " + konkurrenceSvømmer + "\n";
             }
         }
         return string;
@@ -117,7 +117,7 @@ public class Træner {
         int tæller = 1;
         for (Medlem konkurrenceSvømmer : konkurrenceSvømmerListe) {
             if (konkurrenceSvømmer.getAldersGruppe().equals(AldersGruppe.SENIOR)) {
-                string += tæller++ + ". " + konkurrenceSvømmer;
+                string += tæller++ + ". " + konkurrenceSvømmer + "\n";
             }
         }
         return string;

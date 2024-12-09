@@ -66,7 +66,6 @@ public class Formand {
                 break;
             case 3:
                 medlem.setMedlemsstatus(MedlemsStatus.parseMedlemsStatus(nyVærdi));
-               // medlem = new KonkurrenceSvømmer(medlem.getNavn(), medlem.getCpr(),medlem.getMedlemsstatus(), medlem.getHarBetalt(), medlem.getAktivitetsForm(),((KonkurrenceSvømmer)medlem).getSVØMMEDISCIPLIN(),((KonkurrenceSvømmer)medlem).getBedsteTid(), ((KonkurrenceSvømmer)medlem).getHarKonkurreret());
                 break;
             case 4:
                 medlem.setAktivitetsForm(nyVærdi);

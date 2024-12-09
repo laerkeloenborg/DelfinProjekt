@@ -1,6 +1,6 @@
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintStream;
+import java.io.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -110,67 +110,137 @@ public class FileHandler {
 
     //-----------------------------METODE TIL AT GEMME OG HENTE KONKURRENCELISTE------------------------------------//
     public ArrayList<KonkurrenceSvømmer> gemKonkurrenceSvømmere(ArrayList<KonkurrenceSvømmer> konkurrenceSvømmerListe) {
-        PrintStream output = null;
-        try {
-            output = new PrintStream(new File("KonkurrenceListeFil.csv"));  // Gem til en separat fil for konkurrenceSvømmere
-        } catch (FileNotFoundException e) {
+        // Hent eksisterende svømmere fra filen
+        ArrayList<KonkurrenceSvømmer> eksisterendeSvømmere = hentKonkurrenceSvømmere();
+
+        // Gennemgå de svømmere, der skal gemmes, og opdater dem i eksisterendeSvømmere
+        for (KonkurrenceSvømmer nySvømmer : konkurrenceSvømmerListe) {
+            boolean findesAllerede = false;
+
+            // Tjek om svømmeren allerede findes i den eksisterende liste
+            for (KonkurrenceSvømmer eksisterendeSvømmer : eksisterendeSvømmere) {
+                // Brug svømmerens navn (eller et unikt id) til at finde den eksisterende svømmer
+                if (eksisterendeSvømmer.getNavn().equals(nySvømmer.getNavn())) {
+                    // Hvis svømmeren findes, opdaterer vi kun deres stævneresultater
+                    for (String resultat : nySvømmer.getKonkurrenceResultater()) {
+                        // Opdel resultatstrengen for at få stævne, placering og tid
+                        String[] dele = resultat.split(", ");
+                        String stævne = dele[0].split(": ")[1]; // Hent stævnenavnet
+                        int placering = Integer.parseInt(dele[1].split(": ")[1]); // Hent placeringen
+                        double tid = Double.parseDouble(dele[2].split(": ")[1]); // Hent tiden
+                        String datoStr = dele[3].split(": ")[1];
+                        LocalDate dato = LocalDate.parse(datoStr);
+
+                        // Først tjekke om stævnet allerede findes i den eksisterende svømmer
+                        boolean stævneFindesAllerede = false;
+                        for (String eksisterendeResultat : eksisterendeSvømmer.getKonkurrenceResultater()) {
+                            if (eksisterendeResultat.contains(stævne) && eksisterendeResultat.contains(String.valueOf(placering))) {
+                                stævneFindesAllerede = true;
+                                break;
+                            }
+                        }
+
+                        // Hvis stævnet ikke findes, tilføj det til svømmeren
+                        if (!stævneFindesAllerede) {
+                            eksisterendeSvømmer.tilføjKonkurrenceresultat(stævne, placering, tid, dato);
+                        }
+                    }
+                    findesAllerede = true;
+                    break;
+                }
+            }
+
+            // Hvis svømmeren ikke findes i den eksisterende liste, tilføjes den
+            if (!findesAllerede) {
+                eksisterendeSvømmere.add(nySvømmer);
+            }
+        }
+
+        // Når vi har opdateret svømmerne, skriv de opdaterede svømmere tilbage i filen
+        try (PrintWriter writer = new PrintWriter(new FileWriter("KonkurrenceListeFil.csv", false))) {
+            // Skriv hver svømmer til filen (uden at duplikere)
+            for (KonkurrenceSvømmer svømmer : eksisterendeSvømmere) {
+                writer.println(svømmer.toStringTilKonkurrenceFil());
+            }
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        for (KonkurrenceSvømmer konkurrenceSvømmer : konkurrenceSvømmerListe) {
-            output.println(konkurrenceSvømmer.toStringTilKonkurrenceFil());  // Gem konkurrenceSvømmere til fil
-        }
-        return konkurrenceSvømmerListe;  // Returner listen
+
+        return eksisterendeSvømmere;
     }
 
     // ________________________metode til at hente liste af konkurrenceSvømmere fra fil________________________
     public ArrayList<KonkurrenceSvømmer> hentKonkurrenceSvømmere() {
-        ArrayList<KonkurrenceSvømmer> konkurrenceSvømmerListe = new ArrayList<>();
-        Scanner scanner = null;
+        ArrayList<KonkurrenceSvømmer> konkurrenceSvømmereListe = new ArrayList<>();
         File fil = new File("KonkurrenceListeFil.csv");
 
-        try {
-            scanner = new Scanner(fil);
+        if (!fil.exists()) {
+            try {
+                fil.createNewFile(); // Opret filen, hvis den ikke eksisterer
+            } catch (IOException e) {
+                throw new RuntimeException("Fejl ved oprettelse af filen.", e);
+            }
+        }
+
+        try (Scanner scanner = new Scanner(fil)) {
+            while (scanner.hasNext()) {
+                String linje = scanner.nextLine();
+                String[] attributter = linje.split(";");
+
+                // Debugging: Tjek hvad vi får fra filen
+                //System.out.println("Læs linje: " + linje);
+                //System.out.println("Splittet attributter: " + Arrays.toString(attributter));
+
+                // Basisattributter for en konkurrencesvømmer
+                String navn = attributter[0];
+                String cpr = attributter[1];
+                MedlemsStatus medlemsStatus = MedlemsStatus.parseMedlemsStatus(attributter[3]);
+                boolean harBetalt = Boolean.parseBoolean(attributter[4]);
+                String aktivitetsform = attributter[5];
+                SvømmeDiscipliner svømmeDisciplin = SvømmeDiscipliner.parseSvømmeDescipliner(attributter[6]);
+                double bedsteTid = Double.parseDouble(attributter[7]);
+                boolean harKonkurreret = Boolean.parseBoolean(attributter[8]);
+
+                // Opret svømmeren
+                KonkurrenceSvømmer svømmer = new KonkurrenceSvømmer(navn, cpr, medlemsStatus, harBetalt, aktivitetsform, svømmeDisciplin, bedsteTid, harKonkurreret);
+
+                // Håndter konkurrenceresultater (fra index 9 og frem)
+                if (attributter.length > 9) {
+                    for (int i = 9; i < attributter.length; i += 4) {
+                        String stævne = attributter[i];
+                        int placering = Integer.parseInt(attributter[i + 1]);
+                        double tid = Double.parseDouble(attributter[i + 2]);
+
+                        String dato = attributter[i + 3];
+                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                        LocalDate datoNY = LocalDate.parse(dato, formatter);
+
+                        // Tilføj konkurrenceresultat til svømmeren
+                        svømmer.tilføjKonkurrenceresultatNY(new KonkurrenceResultat(stævne, placering, tid, datoNY));
+                    }
+                }
+
+                // Tilføj svømmeren til listen
+                konkurrenceSvømmereListe.add(svømmer);
+            }
         } catch (FileNotFoundException e) {
             throw new RuntimeException("Filen blev ikke fundet.", e);
         }
 
-        // Gennemgår hver linje i filen
-        while (scanner.hasNext()) {
-            String linje = scanner.nextLine();
-            String[] attributter = linje.split(";");
-
-            // Opretter en KonkurrenceSvømmer
-            KonkurrenceSvømmer konkurrenceSvømmer = new KonkurrenceSvømmer(
-                    attributter[0],  // Navn
-                    attributter[1],  // CPR
-                    MedlemsStatus.parseMedlemsStatus(attributter[3]),  // Medlemsstatus
-                    Boolean.parseBoolean(attributter[4]),  // Har betalt
-                    attributter[5],  // Aktivitet (Konkurrence Svømmer)
-                    SvømmeDiscipliner.parseSvømmeDescipliner(attributter[6]),  // Svømmedisciplin
-                    Double.parseDouble(attributter[7]),  // Bedste tid
-                    Boolean.parseBoolean(attributter[8])  // Har konkurreret
-            );
-
-            // Hent konkurrence resultater, hvis de findes (efter 8. index)
-            for (int i = 9; i < attributter.length; i += 3) {
-                if (i + 2 < attributter.length) {  // Sørg for at der er nok elementer
-                    String stævne = attributter[i];  // Stævnenavn
-                    int placering = Integer.parseInt(attributter[i + 1]);  // Placering (kan bruges senere hvis nødvendigt)
-                    double tid = Double.parseDouble(attributter[i + 2]);  // Tid (kan bruges senere hvis nødvendigt)
-
-                    // Tilføj stævne som en string til stævner listen
-                    konkurrenceSvømmer.tilføjStævne(stævne, placering, tid);
+        // Debugging: Tjek om vi har konkurrenceresultater for alle svømmere
+        for (KonkurrenceSvømmer svømmer : konkurrenceSvømmereListe) {
+            //System.out.println("Svømmer: " + svømmer.getNavn());
+            if (svømmer.getKonkurrenceResultaterNY().isEmpty()) {
+                //System.out.println("Ingen konkurrenceresultater");
+            } else {
+                //System.out.println("Konkurrenceresultater:");
+                for (KonkurrenceResultat resultat : svømmer.getKonkurrenceResultaterNY()) {
+                    //System.out.println("Stævne: " + resultat.getStævne() + ", Placering: " + resultat.getPlacering() + ", Tid: " + resultat.getTid());
                 }
             }
-
-            // Tilføj konkurrencesvømmeren til listen
-            konkurrenceSvømmerListe.add(konkurrenceSvømmer);
         }
 
-        scanner.close();  // Luk scanner
-        return konkurrenceSvømmerListe;  // Returner listen af konkurrenceSvømmere
+        return konkurrenceSvømmereListe;
     }
 }
-
-
 
