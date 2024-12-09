@@ -556,8 +556,6 @@ public class UI {
                                             valgtSvømmer.tilføjKonkurrenceresultat(stævne, placering, tid, dato);
 
                                             System.out.println("Resultat tilføjet til " + valgtSvømmer.getNavn() + "\n\n");
-                                            System.out.println("Liste over alle konkurrencemedlemmer:");
-                                            //System.out.println(controller.visJuniorHold());
                                         } else {
                                             System.out.println("Ugyldigt valg af svømmer.");
                                         }
