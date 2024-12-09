@@ -11,12 +11,7 @@ public class KonkurrenceSvømmer extends Medlem {
     private ArrayList<String> stævner;
     private ArrayList<KonkurrenceResultat> konkurrenceresultater;
 
-    //________________________konstruktør (arvet)_______________________________________________________________________
-    public KonkurrenceSvømmer(String navn, String cpr, MedlemsStatus MEDLEMSSTATUS, boolean harBetalt, String aktivitetsForm) {
-        super(navn, cpr, MEDLEMSSTATUS, harBetalt, aktivitetsForm);
-    }
-
-    //________________________overloadet konstruktør____________________________________________________________________
+    //________________________konstruktør_______________________________________________________________________________
     public KonkurrenceSvømmer(String navn, String cpr, MedlemsStatus MEDLEMSSTATUS, boolean harBetalt, String aktivitetsForm, SvømmeDiscipliner SVØMMEDISCIPLIN, double bedsteTid, boolean harKonkurreret) {
         super(navn, cpr, MEDLEMSSTATUS, harBetalt, aktivitetsForm);
         this.SVØMMEDISCIPLIN = SVØMMEDISCIPLIN;

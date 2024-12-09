@@ -190,10 +190,6 @@ public class FileHandler {
                 String linje = scanner.nextLine();
                 String[] attributter = linje.split(";");
 
-                // Debugging: Tjek hvad vi får fra filen
-                //System.out.println("Læs linje: " + linje);
-                //System.out.println("Splittet attributter: " + Arrays.toString(attributter));
-
                 // Basisattributter for en konkurrencesvømmer
                 String navn = attributter[0];
                 String cpr = attributter[1];
@@ -229,20 +225,6 @@ public class FileHandler {
         } catch (FileNotFoundException e) {
             throw new RuntimeException("Filen blev ikke fundet.", e);
         }
-
-        // Debugging: Tjek om vi har konkurrenceresultater for alle svømmere
-        for (KonkurrenceSvømmer svømmer : konkurrenceSvømmereListe) {
-            //System.out.println("Svømmer: " + svømmer.getNavn());
-            if (svømmer.getKonkurrenceResultaterNY().isEmpty()) {
-                //System.out.println("Ingen konkurrenceresultater");
-            } else {
-                //System.out.println("Konkurrenceresultater:");
-                for (KonkurrenceResultat resultat : svømmer.getKonkurrenceResultaterNY()) {
-                    //System.out.println("Stævne: " + resultat.getStævne() + ", Placering: " + resultat.getPlacering() + ", Tid: " + resultat.getTid());
-                }
-            }
-        }
-
         return konkurrenceSvømmereListe;
     }
 }

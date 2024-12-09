@@ -4,7 +4,6 @@ import datasource.FileHandler;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 
 public class Træner {
 
@@ -146,7 +145,6 @@ public class Træner {
         return seniorSvømmere;
     }
 
-
     //________________________metode til at hente junior listen_________________________________________________________
     public ArrayList<KonkurrenceSvømmer> hentJuniorSvømmere() {
         ArrayList<KonkurrenceSvømmer> juniorSvømmere = new ArrayList<>();
@@ -157,18 +155,6 @@ public class Træner {
         }
         return juniorSvømmere;
     }
-
-
-    //________________________metode til at hente konkurrenceSvømmerne ind fra vores fil________________________________
-    public String hentKonkurrenceSvømmereFraFil() {
-        String string = "";
-        int tæller = 1;
-        for (KonkurrenceSvømmer konkurrenceSvømmer : konkurrenceSvømmerListe) {
-            string += tæller++ + ". " + konkurrenceSvømmer.toString();
-        }
-        return string;
-    }
-
 
     //________________________Metode til at gemme konkurrenceSvømmere___________________________________________________
     public void gemKonkurrenceSvømmere(ArrayList<KonkurrenceSvømmer> konkurrenceSvømmerListe) {
@@ -185,8 +171,4 @@ public class Træner {
         }
         return string;
     }
-
-
-
-
 }
