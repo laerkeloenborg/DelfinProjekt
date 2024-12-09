@@ -260,7 +260,6 @@ public class UI {
 
                                             if (valgAfRedigering == 6) {
                                                 redigering = false;
-                                                continue;
                                             }
 
                                             boolean validInput = false;
@@ -345,6 +344,7 @@ public class UI {
                                         System.out.println("Dette medlem findes ikke på listen");
                                         System.out.println("Prøv igen...");
                                     }
+                                    break;
                                 }
                                 controller.gemListeAfMedlemmer();
                                 break;
