@@ -457,14 +457,7 @@ public class UI {
                             case "1": //TODO: refaktorer
                                 System.out.println("Liste over klubbens konkurrencesvømmere: ");
                                 controller.sorteringNavn();
-                                ArrayList<KonkurrenceSvømmer> svømmere = controller.hentKonkurrenceSvømmere();
-
-                                // Udskriv konkurrencesvømmerne og deres resultater med nummerering
-                                int nummer = 1;  // Start nummerering fra 1
-                                for (KonkurrenceSvømmer svømmer : svømmere) {
-                                    System.out.println(nummer + ". " + svømmer.toStringTest());
-                                    nummer++;  // Øg nummeret for næste svømmer
-                                }
+                                System.out.println(controller.hentKonkurrenceSvømmere());
                                 break;
                             case "2":
                                 controller.sorteringTid();

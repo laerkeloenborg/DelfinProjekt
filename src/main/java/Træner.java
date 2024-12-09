@@ -1,7 +1,5 @@
-import javax.swing.plaf.metal.MetalComboBoxEditor;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 
 public class Træner {
 
@@ -157,8 +155,13 @@ public class Træner {
     }
 
     // Metode til at hente konkurrenceSvømmere
-    public ArrayList<KonkurrenceSvømmer> hentKonkurrenceSvømmere() {
-        return fileHandler.hentKonkurrenceSvømmere();
+    public String hentKonkurrenceSvømmere() {
+        String string = "";
+        int tæller = 1;
+        for (KonkurrenceSvømmer konkurrenceSvømmer : fileHandler.hentKonkurrenceSvømmere()){
+            string += tæller++ + ". " + konkurrenceSvømmer.toStringStævne() + "\n";
+        }
+        return string;
     }
 
 

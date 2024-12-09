@@ -92,7 +92,7 @@ public class KonkurrenceSvømmer extends Medlem {
                 ", Aldersgruppe: " + this.getAldersGruppe() +
                 ", Aktivitets status: " + (this.getMedlemsstatus() == MedlemsStatus.AKTIV ? "Aktiv" : "Passiv") +
                 ", Svømme Disciplin: " + getSVØMMEDISCIPLIN() +
-                ", Bedstetid: " + getBedsteTid() +
+                ", Bedste tid: " + getBedsteTid() +
                 ", Har Konkurreret: " + (getHarKonkurreret() ? "ja" : "nej");
 
         // Hvis der er konkurrenceresultater, tilføj dem til udskriften
@@ -118,18 +118,6 @@ public class KonkurrenceSvømmer extends Medlem {
     }
 
     public String toStringTilFil() {
-        return this.getNavn() + ";" +
-                this.getCpr() + ";" +
-                this.getAldersGruppe() + ";" +
-                (this.getMedlemsstatus() == MedlemsStatus.AKTIV ? "Aktiv" : "Passiv") + ";" +
-                this.getHarBetalt() + ";" +
-                this.getAktivitetsForm() + ";" +
-                SvømmeDiscipliner.ToString(this.getSVØMMEDISCIPLIN()) + ";" +
-                this.getBedsteTid() + ";" +
-                this.getHarKonkurreret();
-    }
-
-    public String toStringTilKonkurrenceFil() {
         String resultat = this.getNavn() + ";" +
                 this.getCpr() + ";" +
                 this.getAldersGruppe() + ";" +
@@ -158,7 +146,7 @@ public class KonkurrenceSvømmer extends Medlem {
         return resultat;
     }
 
-    public String toStringTest() {
+    public String toStringStævne() {
         StringBuilder sb = new StringBuilder();
 
         // Formatér svømmerens hovedinformation på én linje
@@ -167,7 +155,7 @@ public class KonkurrenceSvømmer extends Medlem {
         sb.append("Aldersgruppe: ").append(this.getMedlemsstatus()).append(", ");
         sb.append("Aktivitets status: ").append(this.getMedlemsstatus()).append(", ");
         sb.append("Svømme Disciplin: ").append(this.getSVØMMEDISCIPLIN()).append(", ");
-        sb.append("Bedstetid: ").append(this.getBedsteTid()).append(", ");
+        sb.append("Bedste tid: ").append(this.getBedsteTid()).append(", ");
         sb.append("Har Konkurreret: ").append(this.getHarKonkurreret() ? "ja" : "nej").append("\n");
 
         // Formatér konkurrenceresultater

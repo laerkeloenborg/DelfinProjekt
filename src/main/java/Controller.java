@@ -195,7 +195,7 @@ public String visMedlemOplysninger(String navn){
     }
 
     // Metode til at hente konkurrenceSvømmere
-    public ArrayList<KonkurrenceSvømmer> hentKonkurrenceSvømmere() {
+    public String hentKonkurrenceSvømmere() {
         return træner.hentKonkurrenceSvømmere();
     }
 }

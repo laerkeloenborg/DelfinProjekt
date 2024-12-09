@@ -160,7 +160,7 @@ public class FileHandler {
         try (PrintWriter writer = new PrintWriter(new FileWriter("KonkurrenceListeFil.csv", false))) {
             // Skriv hver svømmer til filen (uden at duplikere)
             for (KonkurrenceSvømmer svømmer : eksisterendeSvømmere) {
-                writer.println(svømmer.toStringTilKonkurrenceFil());
+                writer.println(svømmer.toStringTilFil());
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
