@@ -20,7 +20,7 @@ public enum SvømmeDiscipliner {
 
 
     //____________________to string til at udskrive pænt________________________________________________________________
-    static String ToString(SvømmeDiscipliner disciplin){
+    static String toString(SvømmeDiscipliner disciplin){
         switch (disciplin){
             case CRAWL:
                 return "crawl";

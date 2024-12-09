@@ -32,8 +32,8 @@ public class Controller {
 
 
     //_______________________metode til at slette medlem________________________________________________________________
-    public boolean sletMedlem(String cpr) {
-        return formand.sletMedlem(cpr);
+    public boolean sletMedlem(String navn) {
+        return formand.sletMedlem(navn);
     }
 
 
@@ -56,14 +56,14 @@ public class Controller {
 
 
     //_______________________metode til at finde et specifikt medlems navn ud fra cpr___________________________________
-    public String findSpecifiktMedlemsNavn(String cpr) {
-        return formand.findSpecifiktMedlemsNavn(cpr);
+    public String findSpecifiktMedlemsNavn(String navn) {
+        return formand.findSpecifiktMedlemsNavn(navn);
     }
 
 
     //_______________________metode til at finde specifikt medlem_______________________________________________________
-    public Medlem findSpecifiktMedlem(String cpr) {
-        return formand.findSpecifiktMedlem(cpr);
+    public Medlem findSpecifiktMedlem(String navn) {
+        return formand.findSpecifiktMedlem(navn);
     }
 
 
@@ -89,13 +89,6 @@ public class Controller {
     public ArrayList<Medlem> gemListeAfMedlemmer() {
         return formand.gemMedlem();
     }
-
-
-    //________________________metode til at gemme liste med konkurrenceSvømmere_________________________________________
-    public ArrayList<KonkurrenceSvømmer> gemListeAfKonkurrenceSvømmere() {
-        return formand.gemListeAfKonkurrenceSvømmere();
-    }
-
 
     //________________________metode til at se antallet af medlemmer i klubben__________________________________________
     public int antalAfMedlemmer() {
@@ -138,13 +131,6 @@ public class Controller {
 
     //_______________________Træner metoder_____________________________________________________________________________
 
-
-    //_______________________metode til at se liste af konkurrencesvømmere fra fil (pæn layout)_________________________
-    public String hentKonkurrenceSvømmereFraFil() {
-        return træner.hentKonkurrenceSvømmereFraFil();
-    }
-
-
     //_______________________metode til at sortere efter svømmers bedste tid________________________________________________
     public void sorteringTid() {
         træner.sorteringTid();
@@ -176,12 +162,7 @@ public class Controller {
 
     public ArrayList<KonkurrenceSvømmer> hentJuniorHold() {
         return træner.hentJuniorSvømmere();
-    }
-
-
-    //_______________________metode til at få listen over konkurrencesvømmere (uden layout)_____________________________
-
-
+    } 
     //_______________________metode til at se se top5 svømmere (pæn layout)_____________________________________________
     public String printTop5(AldersGruppe ALDERSGRUPPE, SvømmeDiscipliner SVØMMEDISCIPLIN) {
         return træner.printTop5(ALDERSGRUPPE, SVØMMEDISCIPLIN);

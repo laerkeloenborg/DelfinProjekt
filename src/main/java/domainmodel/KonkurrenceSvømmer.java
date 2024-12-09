@@ -133,7 +133,7 @@ public class KonkurrenceSvømmer extends Medlem {
                 (this.getMedlemsstatus() == MedlemsStatus.AKTIV ? "Aktiv" : "Passiv") + ";" +
                 this.getHarBetalt() + ";" +
                 this.getAktivitetsForm() + ";" +
-                SvømmeDiscipliner.ToString(this.getSVØMMEDISCIPLIN()) + ";" +
+                SvømmeDiscipliner.toString(this.getSVØMMEDISCIPLIN()) + ";" +
                 this.getBedsteTid() + ";" +
                 this.getHarKonkurreret();
 
