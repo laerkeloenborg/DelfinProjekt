@@ -124,13 +124,13 @@ public class Formand {
     public void sorterMedlemmerValgMetode(int valg) {
         switch (valg) {
             case 1:
-                Collections.sort(medlemsListen, new Comparators.sorteringMedlemsstatus());
+                Collections.sort(medlemsListen, new ComparatorMedlemsstatus());
                 break;
             case 2:
-                Collections.sort(medlemsListen, new Comparators.sorteringAldersgruppe());
+                Collections.sort(medlemsListen, new ComparatorAldersgruppe());
                 break;
             case 3:
-                Collections.sort(medlemsListen, new Comparators.sorteringAktivitetsform());
+                Collections.sort(medlemsListen, new ComparatorAktivitetsform());
                 break;
         }
         visMedlemmerne();
@@ -139,7 +139,7 @@ public class Formand {
 
     //________________________metode til at sorterer efter navn_________________________________________________________
     public void sorteringNavn() {
-        Collections.sort(medlemsListen, new Comparators.sorteringNavn());
+        Collections.sort(medlemsListen, new ComparatorNavn());
     }
 
 

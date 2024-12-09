@@ -4,6 +4,7 @@ import datasource.FileHandler;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 
 public class Træner {
 
@@ -43,12 +44,12 @@ public class Træner {
     }
 
     public void sorteringTid() {
-        Comparators.sorteringSvømmeTider comparator = new Comparators.sorteringSvømmeTider();
+        ComparatorNavn comparator = new ComparatorNavn();
         Collections.sort(konkurrenceSvømmerListe, comparator);
     }
 
     public void sortertingKonkurrenceStatus() {
-        Comparators.sorteringKonkurrenceStatus comparator = new Comparators.sorteringKonkurrenceStatus();
+        ComparatorKonkurrenceStatus comparator = new ComparatorKonkurrenceStatus();
         Collections.sort(konkurrenceSvømmerListe, comparator);
     }
 
@@ -78,7 +79,7 @@ public class Træner {
     //TODO: exceptions
     public String printTop5(AldersGruppe ALDERSGRUPPE, SvømmeDiscipliner SVØMMEDISCIPLIN){
             ArrayList<KonkurrenceSvømmer> konkurrenceSvømmere = konkurrenceSvømmerListe;
-            Collections.sort(konkurrenceSvømmere, new Comparators.sorteringSvømmeTider());
+            Collections.sort(konkurrenceSvømmere, new ComparatorSvømmetider());
 
             String string = "";
             int tæller = 1;
@@ -94,7 +95,7 @@ public class Træner {
             }
 
             for (Medlem konkurrenceSvømmer : top5) {
-                string += tæller++ + ". " + konkurrenceSvømmer.toString();
+                string += tæller++ + ". " + konkurrenceSvømmer.toString() + "\n";
             }
             return string;
     }
