@@ -12,6 +12,8 @@ public class Træner {
     private ArrayList<KonkurrenceSvømmer> konkurrenceSvømmerListe;
     private ArrayList<Medlem> medlemsListen;
 
+
+    //________________________konstruktør_______________________________________________________________________________
     public Træner() {
         fileHandler = new FileHandler();
         konkurrenceSvømmerListe = fileHandler.hentListeAfKonkurrenceSvømmere();
@@ -19,6 +21,7 @@ public class Træner {
     }
 
 
+    //________________________metode til at redigerer i et konkurrenceSvømmer objekt____________________________________
     public String ændringAfKonkurrenceSvømmer(Medlem konkurrenceSvømmer, int valg, String nyInfo) {
         switch (valg) {
             case 1:
@@ -43,11 +46,15 @@ public class Træner {
         return "";
     }
 
+
+    //________________________metode til at sorterer medlemmer efter tid________________________________________________
     public void sorteringTid() {
         ComparatorNavn comparator = new ComparatorNavn();
         Collections.sort(konkurrenceSvømmerListe, comparator);
     }
 
+
+    //________________________metode til at sorterer efter konkurrenceStatus____________________________________________
     public void sortertingKonkurrenceStatus() {
         ComparatorKonkurrenceStatus comparator = new ComparatorKonkurrenceStatus();
         Collections.sort(konkurrenceSvømmerListe, comparator);
@@ -76,7 +83,8 @@ public class Træner {
         return null;
     }
 
-    //TODO: exceptions
+
+    //________________________metode til at printe top5 i en specifik svømme disciplin__________________________________
     public String printTop5(AldersGruppe ALDERSGRUPPE, SvømmeDiscipliner SVØMMEDISCIPLIN){
             ArrayList<KonkurrenceSvømmer> konkurrenceSvømmere = konkurrenceSvømmerListe;
             Collections.sort(konkurrenceSvømmere, new ComparatorSvømmetider());
@@ -100,14 +108,12 @@ public class Træner {
             return string;
     }
 
-    public ArrayList<KonkurrenceSvømmer> getKonkurrenceSvømmerListe() {
-        return konkurrenceSvømmerListe;
-    }
 
+    //________________________metode til at udskrive juniorlisten_______________________________________________________
     public String printJuniorHold() {
         String string = "";
         int tæller = 1;
-        for (Medlem konkurrenceSvømmer : konkurrenceSvømmerListe) { //TODO, fiks så se de kun kommer frem hvis de har konkurreret
+        for (Medlem konkurrenceSvømmer : konkurrenceSvømmerListe) {
             if (konkurrenceSvømmer.getAldersGruppe().equals(AldersGruppe.JUNIOR)) {
                 string += tæller++ + ". " + konkurrenceSvømmer + "\n";
             }
@@ -115,6 +121,8 @@ public class Træner {
         return string;
     }
 
+
+    //________________________metode til at udskrive senior listen______________________________________________________
     public String printSeniorHold() {
         String string = "";
         int tæller = 1;
@@ -126,6 +134,8 @@ public class Træner {
         return string;
     }
 
+
+    //________________________metode til at hente senior listen_________________________________________________________
     public ArrayList<KonkurrenceSvømmer> hentSeniorSvømmere() {
         ArrayList<KonkurrenceSvømmer> seniorSvømmere = new ArrayList<>();
         for (KonkurrenceSvømmer svømmer : konkurrenceSvømmerListe) {
@@ -135,6 +145,9 @@ public class Træner {
         }
         return seniorSvømmere;
     }
+
+
+    //________________________metode til at hente junior listen_________________________________________________________
     public ArrayList<KonkurrenceSvømmer> hentJuniorSvømmere() {
         ArrayList<KonkurrenceSvømmer> juniorSvømmere = new ArrayList<>();
         for (KonkurrenceSvømmer svømmer : konkurrenceSvømmerListe) {
@@ -145,6 +158,8 @@ public class Træner {
         return juniorSvømmere;
     }
 
+
+    //________________________metode til at hente konkurrenceSvømmerne ind fra vores fil________________________________
     public String hentKonkurrenceSvømmereFraFil() {
         String string = "";
         int tæller = 1;
@@ -154,12 +169,14 @@ public class Træner {
         return string;
     }
 
-    // Metode til at gemme konkurrenceSvømmere
+
+    //________________________Metode til at gemme konkurrenceSvømmere___________________________________________________
     public void gemKonkurrenceSvømmere(ArrayList<KonkurrenceSvømmer> konkurrenceSvømmerListe) {
         fileHandler.gemKonkurrenceSvømmere(konkurrenceSvømmerListe);
     }
 
-    // Metode til at hente konkurrenceSvømmere
+
+    //________________________Metode til at hente konkurrenceSvømmere___________________________________________________
     public String hentKonkurrenceSvømmere() {
         String string = "";
         int tæller = 1;

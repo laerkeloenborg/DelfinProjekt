@@ -26,6 +26,7 @@ public class Formand {
         fileHandler.gemListeAfMedlemmer(medlemsListen);
     }
 
+
     public void tilføjKonkurrenceSvømmer(String navn, String cpr, MedlemsStatus MEDLEMSSTATUS, boolean harBetalt, String aktivitetsform, SvømmeDiscipliner svømmeDisciplin, double bedsteTid, boolean harKonkurreret){
         KonkurrenceSvømmer nyKonkurrenceSvømmer = new KonkurrenceSvømmer(navn, cpr, MEDLEMSSTATUS, harBetalt, aktivitetsform, svømmeDisciplin, bedsteTid, harKonkurreret);
         medlemsListen.add(nyKonkurrenceSvømmer);
@@ -43,7 +44,6 @@ public class Formand {
     public ArrayList<KonkurrenceSvømmer> gemListeAfKonkurrenceSvømmere() {
         return fileHandler.gemListeAfKonkurrenceSvømmere(konkurrenceSvømmerListe);
     }
-
 
 
     //________________________metode til at slette medlem via CPR_______________________________________________________
@@ -77,7 +77,6 @@ public class Formand {
         }
         return false;
     }
-
 
 
     //________________________metode til at redigere i et medlems oplysninger___________________________________________
@@ -182,14 +181,6 @@ public class Formand {
         return string;
     }
 
-    public ArrayList<Medlem> visKonkurrenceSvømmere() {
-        if (medlemsListen.isEmpty()) {
-            return null;
-        } else {
-            return medlemsListen;
-        }
-    }
-
 
     public ArrayList<KonkurrenceSvømmer> visMedlemmer() {
         if (konkurrenceSvømmerListe.isEmpty()) {
@@ -199,10 +190,12 @@ public class Formand {
         }
     }
 
+
     //_______________________metode til at se antallet af medlemmer i klubben___________________________________________
     public int antalMedlemmer() {
         return medlemsListen.size();
     }
+
 
     public ArrayList<Medlem> getMedlemsListen(){
         return medlemsListen;

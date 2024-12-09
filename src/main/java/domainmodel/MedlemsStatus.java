@@ -5,7 +5,7 @@ public enum MedlemsStatus {
     PASSIV;
 
 
-    //metode der gør at vi kan split enum i fileHandler metoden hentListeAfMedlemmer
+    //_____metode der gør at vi kan split enum i fileHandler metoden hentListeAfMedlemmer_______________________________
     public static MedlemsStatus parseMedlemsStatus(String statusString){
         for (MedlemsStatus status : MedlemsStatus.values()) {
             if (status.name().equalsIgnoreCase(statusString)) {

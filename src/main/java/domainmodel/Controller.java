@@ -8,7 +8,6 @@ public class Controller {
     private Træner træner;
 
 
-
     //________________________konstruktør_______________________________________________________________________________
     public Controller() {
         formand = new Formand();
@@ -25,10 +24,12 @@ public class Controller {
         formand.tilføjMedlem(navn, cpr, STATUS, harBetalt, aktivitetsForm);
     }
 
+
     //_______________________metode til at oprette konkurrence Svømmer__________________________________________________
-    public void opretKonkurrenceSvømmer(String navn, String cpr, MedlemsStatus STATUS, boolean harBetalt, String aktivitetsForm, SvømmeDiscipliner svømmeDisciplin, double bedsteTid, boolean harKonkurreret){
-        formand.tilføjKonkurrenceSvømmer(navn, cpr, STATUS,harBetalt, aktivitetsForm, svømmeDisciplin, bedsteTid, harKonkurreret);
+    public void opretKonkurrenceSvømmer(String navn, String cpr, MedlemsStatus STATUS, boolean harBetalt, String aktivitetsForm, SvømmeDiscipliner svømmeDisciplin, double bedsteTid, boolean harKonkurreret) {
+        formand.tilføjKonkurrenceSvømmer(navn, cpr, STATUS, harBetalt, aktivitetsForm, svømmeDisciplin, bedsteTid, harKonkurreret);
     }
+
 
     //_______________________metode til at slette medlem________________________________________________________________
     public boolean sletMedlem(String cpr) {
@@ -43,16 +44,13 @@ public class Controller {
 
 
     //_______________________metode til at vise listen af medlemmer_____________________________________________________
-    public String visMedlemmerne(){
+    public String visMedlemmerne() {
         return formand.visMedlemmerne();
     }
 
-    public ArrayList<KonkurrenceSvømmer> visKonkurrenceMedlemmer() {
-        return formand.visMedlemmer();
-    }
 
     //_______________________metode til at få fat på medlemslisten______________________________________________________
-    public ArrayList<Medlem> getMedlemsListen(){
+    public ArrayList<Medlem> getMedlemsListen() {
         return formand.getMedlemsListen();
     }
 
@@ -68,9 +66,11 @@ public class Controller {
         return formand.findSpecifiktMedlem(cpr);
     }
 
-public String visMedlemOplysninger(String navn){
+
+    //________________________metode til at vise medlemmets oplysninger_________________________________________________
+    public String visMedlemOplysninger(String navn) {
         return formand.visMedlemsOplysninger(navn);
-}
+    }
 
 
     //_______________________metode til at sorterer i medlemlisten efter ønsket kategori________________________________
@@ -78,19 +78,24 @@ public String visMedlemOplysninger(String navn){
         formand.sorterMedlemmerValgMetode(valg);
     }
 
+
     //_______________________metode til at sortere i medlemslisten efter navn___________________________________________
     public void sorteringNavn() {
         formand.sorteringNavn();
     }
+
 
     //_______________________metode til at gemme listen med medlemmer___________________________________________________
     public ArrayList<Medlem> gemListeAfMedlemmer() {
         return formand.gemMedlem();
     }
 
+
+    //________________________metode til at gemme liste med konkurrenceSvømmere_________________________________________
     public ArrayList<KonkurrenceSvømmer> gemListeAfKonkurrenceSvømmere() {
         return formand.gemListeAfKonkurrenceSvømmere();
     }
+
 
     //________________________metode til at se antallet af medlemmer i klubben__________________________________________
     public int antalAfMedlemmer() {
@@ -130,6 +135,7 @@ public String visMedlemOplysninger(String navn){
         return kasserer.medlemmerIRestance();
     }
 
+
     //_______________________Træner metoder_____________________________________________________________________________
 
 
@@ -138,49 +144,56 @@ public String visMedlemOplysninger(String navn){
         return træner.hentKonkurrenceSvømmereFraFil();
     }
 
+
     //_______________________metode til at sortere efter svømmers bedste tid________________________________________________
     public void sorteringTid() {
         træner.sorteringTid();
     }
+
 
     //_______________________metode til at se sortere efter om svømmerne har konkurreret før____________________________
     public void sorteringKonkurrenceStatus() {
         træner.sortertingKonkurrenceStatus();
     }
 
+
     //_______________________metode til at se konkurrencesvømmere der er på juniorholdet________________________________
     public String visJuniorHold() {
         return træner.printJuniorHold();
     }
+
 
     //_______________________metode til at se konkurrencesvømmere der er på seniorholdet________________________________
     public String visSeniorHold() {
         return træner.printSeniorHold();
     }
 
+
     public ArrayList<KonkurrenceSvømmer> hentSeniorHold() {
         return træner.hentSeniorSvømmere();
     }
+
 
     public ArrayList<KonkurrenceSvømmer> hentJuniorHold() {
         return træner.hentJuniorSvømmere();
     }
 
+
     //_______________________metode til at få listen over konkurrencesvømmere (uden layout)_____________________________
-    public ArrayList<KonkurrenceSvømmer> visKonkurrenceSvømmere() {
-        return træner.getKonkurrenceSvømmerListe();
-    }
+
 
     //_______________________metode til at se se top5 svømmere (pæn layout)_____________________________________________
     public String printTop5(AldersGruppe ALDERSGRUPPE, SvømmeDiscipliner SVØMMEDISCIPLIN) {
-        return træner.printTop5(ALDERSGRUPPE,SVØMMEDISCIPLIN);
+        return træner.printTop5(ALDERSGRUPPE, SVØMMEDISCIPLIN);
     }
 
-    public String ændringAfKonkurrenceSvømmer(Medlem konkurrenceSvømmer, int valg, String nyInfo){
+
+    //________________________metode til at redigerer i et konkurrenceSvømmerObjekt_____________________________________
+    public String ændringAfKonkurrenceSvømmer(Medlem konkurrenceSvømmer, int valg, String nyInfo) {
         return træner.ændringAfKonkurrenceSvømmer(konkurrenceSvømmer, valg, nyInfo);
     }
 
-    //_______________________metode til at finde et specifikt medlems navn ud fra cpr___________________________________
+    //_______________________metode til at finde et specifikt medlems navn______________________________________________
     public String findSpecifiktKonkurrenceSvømmersNavn(String info) {
         return træner.findSpecifiktKonkurrenceSvømmersNavn(info);
     }
@@ -191,10 +204,12 @@ public String visMedlemOplysninger(String navn){
         return træner.findSpecifiktKonkurrenceSvømmer(info);
     }
 
+
     // Metode til at gemme konkurrenceSvømmere
     public void gemKonkurrenceSvømmere(ArrayList<KonkurrenceSvømmer> konkurrenceSvømmerListe) {
         træner.gemKonkurrenceSvømmere(konkurrenceSvømmerListe);
     }
+
 
     // Metode til at hente konkurrenceSvømmere
     public String hentKonkurrenceSvømmere() {

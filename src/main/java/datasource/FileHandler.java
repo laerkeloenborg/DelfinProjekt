@@ -24,7 +24,7 @@ public class FileHandler {
 
 
     //________________________metode til  at hente listen med medlemmer fra fil_________________________________________
-    //TODO: kommentér
+
     public ArrayList<Medlem> hentListeAfMedlemmer() {
         ArrayList<Medlem> medlemsListe = new ArrayList<>();
         Scanner scanner = null;
