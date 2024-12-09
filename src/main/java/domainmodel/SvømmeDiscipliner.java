@@ -7,6 +7,8 @@ public enum SvømmeDiscipliner {
     RYGCRAWL,
     BRYSTSVØMNING;
 
+
+    //_____________________metode til at parse enum til string__________________________________________________________
    public static SvømmeDiscipliner parseSvømmeDescipliner(String disciplinString){
         for (SvømmeDiscipliner disciplin : SvømmeDiscipliner.values()) {
             if (disciplin.name().equalsIgnoreCase(disciplinString)) {
@@ -16,6 +18,8 @@ public enum SvømmeDiscipliner {
         return SvømmeDiscipliner.INGEN;
     }
 
+
+    //____________________to string til at udskrive pænt________________________________________________________________
     static String ToString(SvømmeDiscipliner disciplin){
         switch (disciplin){
             case CRAWL:

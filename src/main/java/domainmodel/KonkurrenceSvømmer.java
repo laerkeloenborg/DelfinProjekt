@@ -11,10 +11,12 @@ public class KonkurrenceSvømmer extends Medlem {
     private ArrayList<String> stævner;
     private ArrayList<KonkurrenceResultat> konkurrenceresultater;
 
+    //________________________konstruktør (arvet)_______________________________________________________________________
     public KonkurrenceSvømmer(String navn, String cpr, MedlemsStatus MEDLEMSSTATUS, boolean harBetalt, String aktivitetsForm) {
         super(navn, cpr, MEDLEMSSTATUS, harBetalt, aktivitetsForm);
     }
 
+    //________________________overloadet konstruktør____________________________________________________________________
     public KonkurrenceSvømmer(String navn, String cpr, MedlemsStatus MEDLEMSSTATUS, boolean harBetalt, String aktivitetsForm, SvømmeDiscipliner SVØMMEDISCIPLIN, double bedsteTid, boolean harKonkurreret) {
         super(navn, cpr, MEDLEMSSTATUS, harBetalt, aktivitetsForm);
         this.SVØMMEDISCIPLIN = SVØMMEDISCIPLIN;
@@ -55,14 +57,17 @@ public class KonkurrenceSvømmer extends Medlem {
     }
 
     //__________________________________________________________________________________________________________________
+    //________________________metode til at tilføje et resultat til en konkurrenceSvømmer_______________________________
     public void tilføjKonkurrenceresultatNY(KonkurrenceResultat resultat) {
         this.konkurrenceresultater.add(resultat);
     }
+
 
     public ArrayList<KonkurrenceResultat> getKonkurrenceResultaterNY() {
         return this.konkurrenceresultater;
     }
 
+    //________________________metode til at tilføje resultater til konkurrencesvømmere + at få dato udskrevet korrekt___
     public void tilføjKonkurrenceresultat(String stævne, int placering, double tid, LocalDate dato) {
         try {
             // Hvis datoen allerede er et LocalDate, så formater den direkte til en String
@@ -84,9 +89,7 @@ public class KonkurrenceSvømmer extends Medlem {
     }
 
 
-
-
-
+    //________________________ToStrings_________________________________________________________________________________
     @Override
     public String toString() {
         // Grundlæggende oplysninger om svømmeren
@@ -110,6 +113,8 @@ public class KonkurrenceSvømmer extends Medlem {
         return result;
    }
 
+
+    //________________________toString så formanden ser det på en specifik måde i hans menu_____________________________
     public String toStringTilFormand() {
         return "Navn: " + getNavn() +
                 ", CPR: " + getCpr() + "(" + cprOmregningTilAlder() + " år)" +
@@ -119,6 +124,8 @@ public class KonkurrenceSvømmer extends Medlem {
                 ", Aktivitetsform: " + getAktivitetsForm() + "\n";
     }
 
+
+    //________________________for at udskrive korrekt til fil___________________________________________________________
     public String toStringTilFil() {
         String resultat = this.getNavn() + ";" +
                 this.getCpr() + ";" +
@@ -148,6 +155,8 @@ public class KonkurrenceSvømmer extends Medlem {
         return resultat;
     }
 
+
+    //________________________for at udskrive stævner pænt______________________________________________________________
     public String toStringStævne() {
         StringBuilder sb = new StringBuilder();
 

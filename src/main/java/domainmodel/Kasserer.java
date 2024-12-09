@@ -31,6 +31,7 @@ public class Kasserer {
         return samletKontingent;
     }
 
+
     //___________________________metode til at finde det samlede forventede kontingent til klubben______________________
     public int samletForventetKontingent() {
         int allesSamledeKontingent = 0;
@@ -51,6 +52,7 @@ public class Kasserer {
         }
         return allesSamledeKontingent + allesSamledeKontingent2;
     }
+
 
     //___________________________metode til at se medlemmer som har betalt kontingent___________________________________
     public String medlemmerDerHarBetalt() {
