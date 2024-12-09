@@ -1,8 +1,9 @@
 import static org.junit.jupiter.api.Assertions.*;
 
+import domainmodel.Formand;
+import domainmodel.Medlem;
+import domainmodel.MedlemsStatus;
 import org.junit.jupiter.api.*;
-
-import java.util.ArrayList;
 
 class FormandTest {
 

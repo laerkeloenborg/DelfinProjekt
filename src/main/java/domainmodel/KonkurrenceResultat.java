@@ -1,3 +1,5 @@
+package domainmodel;
+
 import java.time.LocalDate;
 
 public class KonkurrenceResultat {

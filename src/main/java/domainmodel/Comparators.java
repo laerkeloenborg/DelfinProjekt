@@ -1,7 +1,10 @@
+package domainmodel;
+
 import java.util.Comparator;
 
 public class Comparators {
 
+    //TODO: fjern static klasser
     //________________________comparator til sortering efter navn - medlemsliste_______________________________________________________
     public static class sorteringNavn implements Comparator<Medlem> {
         public int compare(Medlem m1, Medlem m2) {
@@ -34,9 +37,9 @@ public class Comparators {
     }
 
     //_______________________comparator til sortering af svømmedisciplin - konkurrencesvømmer__________________________________________
-//    public static class sorteringSvømmedisciplin implements Comparator<Medlem> {
-//        public int compare(Medlem k1, Medlem k2){
-//            return ((KonkurrenceSvømmer)k1).getSVØMMEDISCIPLIN().compareTo(((KonkurrenceSvømmer)k2).getSVØMMEDISCIPLIN());
+//    public static class sorteringSvømmedisciplin implements Comparator<domainmodel.Medlem> {
+//        public int compare(domainmodel.Medlem k1, domainmodel.Medlem k2){
+//            return ((domainmodel.KonkurrenceSvømmer)k1).getSVØMMEDISCIPLIN().compareTo(((domainmodel.KonkurrenceSvømmer)k2).getSVØMMEDISCIPLIN());
 //        }
 //    }
 
@@ -55,9 +58,9 @@ public class Comparators {
     }
 
     //______________________comparator til sortering af svømmetider - konkurrencesvømmer_______________________________________________
-//    public static class sorteringSvømmetider implements Comparator<Medlem>{
-//        public int compare(Medlem k1, Medlem k2){
-//            return Double.compare(((KonkurrenceSvømmer)k1).getBedsteTid(),((KonkurrenceSvømmer)k2).getBedsteTid());
+//    public static class sorteringSvømmetider implements Comparator<domainmodel.Medlem>{
+//        public int compare(domainmodel.Medlem k1, domainmodel.Medlem k2){
+//            return Double.compare(((domainmodel.KonkurrenceSvømmer)k1).getBedsteTid(),((domainmodel.KonkurrenceSvømmer)k2).getBedsteTid());
 //        }
 //    }
 
@@ -76,9 +79,9 @@ public class Comparators {
     }
 
     //____________________comparator til sortering af konkurrence status - konkurrencesvømmer_________________________________________
-//    public static  class sorteringKonkurrencestatus implements Comparator<Medlem>{
-//        public int compare(Medlem k1, Medlem k2){
-//            return Boolean.compare(((KonkurrenceSvømmer)k1).getHarKonkurreret(), ((KonkurrenceSvømmer)k2).getHarKonkurreret());
+//    public static  class sorteringKonkurrencestatus implements Comparator<domainmodel.Medlem>{
+//        public int compare(domainmodel.Medlem k1, domainmodel.Medlem k2){
+//            return Boolean.compare(((domainmodel.KonkurrenceSvømmer)k1).getHarKonkurreret(), ((domainmodel.KonkurrenceSvømmer)k2).getHarKonkurreret());
 //        }
 //    }
 

@@ -1,3 +1,7 @@
+package ui;
+
+import domainmodel.*;
+
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -152,7 +156,7 @@ public class UI {
                                             System.out.println("Indtast svømmedisciplin (Brystsvømning, Butterfly, Crawl, Rygcrawl): ");
                                             String statusInput1 = "";
                                             boolean validStatus1 = false;
-                                            // SvømmeDiscipliner svømmeDiscipliner = null; //TODO SKAL DEN VÆRE DER?
+                                            // domainmodel.SvømmeDiscipliner svømmeDiscipliner = null; //TODO SKAL DEN VÆRE DER?
 
                                             while (!validStatus1) {
                                                 try {

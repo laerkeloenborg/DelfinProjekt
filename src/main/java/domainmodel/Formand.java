@@ -1,3 +1,7 @@
+package domainmodel;
+
+import datasource.FileHandler;
+
 import java.util.ArrayList;
 import java.util.Collections;
 
