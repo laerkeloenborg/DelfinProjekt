@@ -467,7 +467,15 @@ public class UI {
 
                             case "1":
                                 System.out.println("Liste over klubbens konkurrencesvømmere: "); //TODO indsæt metode
-                                System.out.println(controller.hentKonkurrenceSvømmereFraFil());
+                                //System.out.println(controller.hentKonkurrenceSvømmereFraFil());
+                                ArrayList<KonkurrenceSvømmer> svømmere = controller.hentKonkurrenceSvømmere();
+
+                                // Udskriv konkurrencesvømmerne og deres resultater med nummerering
+                                int nummer = 1;  // Start nummerering fra 1
+                                for (KonkurrenceSvømmer svømmer : svømmere) {
+                                    System.out.println(nummer + ". " + svømmer.toStringTest());
+                                    nummer++;  // Øg nummeret for næste svømmer
+                                }
                                 break;
                             case "2":
                                 controller.sorteringTid();
@@ -497,12 +505,10 @@ public class UI {
                                     String svar = scanner.next();
 
                                     if (svar.equalsIgnoreCase("senior")) {
-                                        System.out.print("Vælg en svømmer fra senior holdet ved at indtaste svømmerens nummer: \n");
                                         System.out.println(controller.visSeniorHold());
                                         System.out.print("Vælg en svømmer fra senior holdet ved at indtaste svømmerens nummer: \n");
-
                                         int svømmerValg = scanner.nextInt();
-                                        scanner.nextLine();
+                                        scanner.nextLine(); // Ryd scanner-bufferen
 
                                         ArrayList<KonkurrenceSvømmer> seniorSvømmere = controller.hentSeniorHold();
 
@@ -510,6 +516,7 @@ public class UI {
                                             KonkurrenceSvømmer valgtSvømmer = seniorSvømmere.get(svømmerValg - 1);
                                             System.out.println("Du har valgt: " + valgtSvømmer);
 
+                                            // Indtast konkurrenceresultater
                                             System.out.print("Indtast stævnenavn: ");
                                             String stævne = scanner.nextLine();
 
@@ -519,24 +526,26 @@ public class UI {
                                             System.out.print("Indtast tid (i sekunder): ");
                                             double tid = scanner.nextDouble();
 
-                                            valgtSvømmer.tilføjKonkurrenceresultat(stævne, placering, tid);
+                                            scanner.nextLine();  // Ryd scanner-bufferen
 
-                                            System.out.println("Resultat tilføjet til " + valgtSvømmer.getNavn());
-                                            System.out.println(controller.visSeniorHold());
-                                            controller.gemKonkurrenceSvømmere(seniorSvømmere);
-                                            System.out.println("TEST\n TEST\n TEST");
-                                            //controller.hentKonkurrenceSvømmere();
+// Spørg om datoen
+                                            System.out.print("Indtast dato for konkurrencen (yyyy-MM-dd): ");
+                                            String datoStr = scanner.nextLine();
+                                            LocalDate dato = LocalDate.parse(datoStr);
 
+// Tilføj resultatet med datoen
+                                            valgtSvømmer.tilføjKonkurrenceresultat(stævne, placering, tid, dato);
+
+                                            System.out.println("Resultat tilføjet til " + valgtSvømmer.getNavn() + "\n\n");
+                                            System.out.println("Liste over alle konkurrencemedlemmer:");
                                         } else {
                                             System.out.println("Ugyldigt valg af svømmer.");
                                         }
                                     } else if (svar.equalsIgnoreCase("junior")) {
-                                        System.out.print("Vælg en svømmer fra junior holdet ved at indtaste svømmerens nummer: \n");
                                         System.out.println(controller.visJuniorHold());
                                         System.out.print("Vælg en svømmer fra junior holdet ved at indtaste svømmerens nummer: \n");
-
                                         int svømmerValg1 = scanner.nextInt();
-                                        scanner.nextLine();
+                                        scanner.nextLine(); // Ryd scanner-bufferen
 
                                         ArrayList<KonkurrenceSvømmer> juniorSvømmere = controller.hentJuniorHold();
 
@@ -554,23 +563,44 @@ public class UI {
                                             System.out.print("Indtast tid (i sekunder): ");
                                             double tid = scanner.nextDouble();
 
-                                            valgtSvømmer.tilføjKonkurrenceresultat(stævne, placering, tid);
+                                            scanner.nextLine();  // Ryd scanner-bufferen
 
-                                            System.out.println("Resultat tilføjet til " + valgtSvømmer.getNavn());
-                                            System.out.println(controller.visJuniorHold());
+// Spørg om datoen
+                                            System.out.print("Indtast dato for konkurrencen (yyyy-MM-dd): ");
+                                            String datoStr = scanner.nextLine();
+                                            LocalDate dato = LocalDate.parse(datoStr);
+
+// Tilføj resultatet med datoen
+                                            valgtSvømmer.tilføjKonkurrenceresultat(stævne, placering, tid, dato);
+
+                                            System.out.println("Resultat tilføjet til " + valgtSvømmer.getNavn() + "\n\n");
+                                            System.out.println("Liste over alle konkurrencemedlemmer:");
+                                            //System.out.println(controller.visJuniorHold());
                                         } else {
                                             System.out.println("Ugyldigt valg af svømmer.");
-                                            controller.gemKonkurrenceSvømmere(juniorSvømmere);
                                         }
                                     } else {
                                         System.out.println("Ugyldigt valg. Vælg enten 'junior' eller 'senior'.");
                                     }
                                 }
+// Saml begge hold i én liste og gem dem
+                                ArrayList<KonkurrenceSvømmer> alleSvømmere = new ArrayList<>();
+                                alleSvømmere.addAll(controller.hentJuniorHold());
+                                alleSvømmere.addAll(controller.hentSeniorHold());
+                                controller.gemKonkurrenceSvømmere(alleSvømmere);
 
                                 break;
-                            case "7":
-                                controller.hentKonkurrenceSvømmere();
-                                break;
+//                            case "7":
+//                                // Hent konkurrencesvømmere fra fil
+//                                ArrayList<KonkurrenceSvømmer> svømmere = controller.hentKonkurrenceSvømmere();
+//
+//                                // Udskriv konkurrencesvømmerne og deres resultater med nummerering
+//                                int nummer = 1;  // Start nummerering fra 1
+//                                for (KonkurrenceSvømmer svømmer : svømmere) {
+//                                    System.out.println(nummer + ". " + svømmer.toStringTest());
+//                                    nummer++;  // Øg nummeret for næste svømmer
+//                                }
+//                                break;
 
                             case "4":
                                 boolean svømmediscipliner = true;
