@@ -47,16 +47,37 @@ public class Formand {
 
 
     //________________________metode til at slette medlem via CPR_______________________________________________________
-    public boolean sletMedlem(String cpr) {
+    public boolean sletMedlem(String navn) {
+        boolean medlemFundet = false;
+        Medlem MedlemDerSlettes = null;
         for (Medlem medlem : medlemsListen) {
-            if (medlem.getCpr().equals(cpr)) {
-                medlemsListen.remove(medlem);
-                fileHandler.gemListeAfMedlemmer(medlemsListen);
-                return true;
+            if (medlem.getNavn().equals(navn.trim())) {
+                MedlemDerSlettes = medlem;
+                medlemFundet = true;
+                break;
             }
+        }
+        if (medlemFundet && MedlemDerSlettes != null) {
+            medlemsListen.remove(MedlemDerSlettes);
+            fileHandler.gemListeAfMedlemmer(medlemsListen);
+            if (MedlemDerSlettes instanceof KonkurrenceSvømmer) {
+                KonkurrenceSvømmer svømmerderslettes = null;
+                for (KonkurrenceSvømmer svømmer : konkurrenceSvømmerListe) {
+                    if (svømmer.getNavn().equals(navn.trim())) {
+                        svømmerderslettes = svømmer;
+                        break;
+                    }
+                }
+                if (svømmerderslettes != null) {
+                    konkurrenceSvømmerListe.remove(svømmerderslettes);
+                    fileHandler.gemKonkurrenceSvømmere(konkurrenceSvømmerListe);
+                }
+            }
+            return true;
         }
         return false;
     }
+
 
 
     //________________________metode til at redigere i et medlems oplysninger___________________________________________
