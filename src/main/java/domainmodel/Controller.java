@@ -154,15 +154,20 @@ public class Controller {
         return træner.printSeniorHold();
     }
 
-
+    //________________________metode til at se seniorHoldene____________________________________________________________
     public ArrayList<KonkurrenceSvømmer> hentSeniorHold() {
         return træner.hentSeniorSvømmere();
     }
 
-
+    //________________________metode til at se juniorholdene____________________________________________________________
     public ArrayList<KonkurrenceSvømmer> hentJuniorHold() {
         return træner.hentJuniorSvømmere();
-    } 
+    }
+
+
+    //_______________________metode til at få listen over konkurrencesvømmere (uden layout)_____________________________
+
+
     //_______________________metode til at se se top5 svømmere (pæn layout)_____________________________________________
     public String printTop5(AldersGruppe ALDERSGRUPPE, SvømmeDiscipliner SVØMMEDISCIPLIN) {
         return træner.printTop5(ALDERSGRUPPE, SVØMMEDISCIPLIN);
