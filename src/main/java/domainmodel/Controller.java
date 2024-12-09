@@ -91,12 +91,6 @@ public class Controller {
     }
 
 
-    //________________________metode til at gemme liste med konkurrenceSvømmere_________________________________________
-    public ArrayList<KonkurrenceSvømmer> gemListeAfKonkurrenceSvømmere() {
-        return formand.gemListeAfKonkurrenceSvømmere();
-    }
-
-
     //________________________metode til at se antallet af medlemmer i klubben__________________________________________
     public int antalAfMedlemmer() {
         return formand.antalMedlemmer();
@@ -168,12 +162,12 @@ public class Controller {
         return træner.printSeniorHold();
     }
 
-
+    //________________________metode til at se seniorHoldene____________________________________________________________
     public ArrayList<KonkurrenceSvømmer> hentSeniorHold() {
         return træner.hentSeniorSvømmere();
     }
 
-
+    //________________________metode til at se juniorholdene____________________________________________________________
     public ArrayList<KonkurrenceSvømmer> hentJuniorHold() {
         return træner.hentJuniorSvømmere();
     }

@@ -127,6 +127,8 @@ public class Formand {
         return null;
     }
 
+
+    //________________________metode til at vise medlemmernes oplysninger_______________________________________________
     public String visMedlemsOplysninger(String navn){
         Medlem nuværendeMedlem = findSpecifiktMedlem(navn);
         String string = "";
@@ -179,15 +181,6 @@ public class Formand {
             }
         }
         return string;
-    }
-
-
-    public ArrayList<KonkurrenceSvømmer> visMedlemmer() {
-        if (konkurrenceSvømmerListe.isEmpty()) {
-            return null;
-        } else {
-            return konkurrenceSvømmerListe;
-        }
     }
 
 
